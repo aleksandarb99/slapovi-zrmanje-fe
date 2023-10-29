@@ -1,0 +1,37 @@
+<main (scroll)="onScroll($event)" (click)="revertFlags()">
+    <div class="menu reservation-menu-position" [ngClass]="{'menu-spread': isReservationSpread}">
+        <div class="header-reservations-container menu-margin">
+            <img src="../../../assets/avatars/Reservation.png" class="reservation-icon"/>
+            <h3 class="reservations-text">Reservations</h3>
+        </div>
+        <hr>
+        <h3 class="menu-item">Camp</h3>
+        <h3 class="menu-item">Rooms</h3>
+        <h3 class="menu-item">Apartments</h3>
+    </div>
+    <div class="menu burger-menu-position" [ngClass]="{'menu-spread': isBurgerSpread}">
+        <img src="../../../assets/avatars/Burger.png" class="menu-margin"/>
+        <hr>
+        <h3 class="menu-item">Gallery</h3>
+        <h3 class="menu-item">Contact</h3>
+        <h3 class="menu-item">Language</h3>
+    </div>
+    <header>
+        <div class="header-reservations-container" (click)="changeReservationFlag($event)">
+            <img [src]="reservationImage" class="reservation-icon"/>
+            <h3 [ngClass]="{'reservations-text': !isDarkHeader, 'dark-reservations-text': isDarkHeader}">Reservations</h3>
+        </div>
+        <img [src]="logoImage" [ngClass]="{'logo': !isDarkHeader, 'dark-logo': isDarkHeader}"/>
+        <img [src]="burgerImage" class="burger-icon" (click)="changeBurgerFlag($event)"/>
+    </header>
+    <div class="landing-container">
+        <div class="landing-image-shadow"></div>
+        <img src="../../../assets/pictures/LandingPage.png" alt="Slapovi"/>
+        <h1 class="landing-text">Nature, Untouched</h1>
+        <h2 class="landing-text">Welcome to Slapovi Zrmanje, a place for rest and adventure.</h2>
+        <img src="../../../assets/avatars/Arrow.png" class="arrow" (click)="scrollToElement('jumpingArea')"/>
+    </div>
+    <div class="content" id="jumpingArea">
+        <p>bla bla</p>
+    </div>
+</main>
