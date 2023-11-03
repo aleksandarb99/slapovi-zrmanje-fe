@@ -1,4 +1,4 @@
-<div class="text-image-wrapper" [ngClass]="{'reverse-image-text': sectionIndex % 2 == 0}">
+<div id="{{'page' + sectionIndex}}" class="text-image-wrapper" [ngClass]="{'reverse-image-text': sectionIndex % 2 == 0}">
     <div class="text-wrapper" [ngClass]="{'text-wrapper-reversed-margin': sectionIndex % 2 == 0}">
         <div>
             <h1>{{title}}</h1>
