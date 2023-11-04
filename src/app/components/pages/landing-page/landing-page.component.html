@@ -1,6 +1,6 @@
-<main (scroll)="onScroll($event)" (click)="revertFlags()">
+<main (scroll)="onScroll($event)">
     <div class="menu reservation-menu-position" [ngClass]="{'menu-spread': isReservationSpread}">
-        <div class="header-reservations-container menu-margin add-top-margin-on-left-menu">
+        <div class="header-reservations-container menu-margin add-top-margin-on-left-menu" (click)="revertFlags()">
             <img src="../../../assets/avatars/Reservation.png" class="reservation-icon"/>
             <h3 class="reservations-text">{{text!.landingPageReservationTitle}}</h3>
         </div>
@@ -10,7 +10,7 @@
         <h3 class="menu-item">{{text!.landingPageReservationApartments}}</h3>
     </div>
     <div class="menu burger-menu-position" [ngClass]="{'menu-spread': isBurgerSpread}">
-        <img src="../../../assets/avatars/Burger.png" class="burger-icon menu-margin add-top-margin-on-right-menu"/>
+        <img src="../../../assets/avatars/Burger.png" class="burger-icon menu-margin add-top-margin-on-right-menu" (click)="revertFlags()"/>
         <hr>
         <h3 class="menu-item">{{text!.landingPageBurgerGallery}}</h3>
         <h3 class="menu-item">{{text!.landingPageBurgerContact}}</h3>
@@ -21,7 +21,7 @@
             <h3 class="menu-item second-level" (click)="selectPreferableLanguage(2)">{{text!.landingPageBurgerLanguageGerman}}</h3>
         </div>
     </div>
-    <header>
+    <header (click)="revertFlags()">
         <div class="header-reservations-container" (click)="changeReservationFlag($event)">
             <img [src]="reservationImage" class="reservation-icon"/>
             <h3 [ngClass]="{'reservations-text': !isDarkHeader, 'dark-reservations-text': isDarkHeader}">{{text!.landingPageReservationTitle}}</h3>
@@ -29,14 +29,14 @@
         <img [src]="logoImage" [ngClass]="{'logo': !isDarkHeader, 'dark-logo': isDarkHeader}" (click)="scrollToStart()"/>
         <img [src]="burgerImage" class="burger-icon" (click)="changeBurgerFlag($event)"/>
     </header>
-    <div class="landing-container">
+    <div class="landing-container" (click)="revertFlags()">
         <div class="landing-image-shadow" id="page0"></div>
         <img src="../../../assets/pictures/LandingPage.png" alt="Slapovi"/>
         <h1 class="landing-text">{{text!.landingPageTitle}}</h1>
         <h2 class="landing-text">{{text!.landingPageSubTitle}}</h2>
         <img src="../../../assets/avatars/Arrow.png" class="arrow" (click)="scrollToSection(100)"/>
     </div>
-    <div class="content" id="jumpingArea">
+    <div class="content" id="jumpingArea" (click)="revertFlags()">
         <app-page-section *ngFor="let section of sections; index as i" 
             [title]="section.title"
             [description]="section.description"
@@ -45,11 +45,11 @@
             [image]="section.image"
             [sectionIndex]="i + 1"/>
     </div>
-    <div class="about-info"  id="{{ 'page' + ( this.sections.length + 1 ) }}">
+    <div class="about-info"  id="{{ 'page' + ( this.sections.length + 1 ) }}" (click)="revertFlags()">
         <h1>{{text!.landingPageAboutUsTitle}}</h1>
         <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, beatae architecto illum fugit, explicabo saepe id sint reprehenderit vero accusantium sapiente laborum voluptate. Placeat voluptate nemo quam accusamus dolorum amet voluptates voluptatem beatae non quisquam, animi minus asperiores culpa accusantium a facere fugit mollitia consequuntur, error aperiam deleniti modi molestias, excepturi odit. Perspiciatis in assumenda molestias nostrum doloribus quam soluta, dolore ab, ut velit voluptatibus est fuga dolorem nulla. Eligendi quod, quibusdam quas eveniet aspernatur maxime non odio! Modi, rerum non. Aliquid sed optio inventore tempora odio commodi pariatur explicabo quos cumque in, debitis possimus temporibus eveniet doloribus aliquam ad odit nulla hic aspernatur aperiam ea fugiat praesentium repellendus non? Asperiores distinctio harum impedit omnis dolorem fugit cumque, maxime delectus. Maiores dolorum alias totam distinctio, nisi dicta tempora ipsa quibusdam aperiam? Necessitatibus labore, eveniet eligendi consequatur deserunt quae. Labore saepe commodi eius perferendis blanditiis similique quaerat, itaque cupiditate sint assumenda.</p>
     </div>
-    <footer>
+    <footer (click)="revertFlags()">
         <h3>{{text!.landingPageCopyrightText}} 2024 - Slapovi Zrmanje</h3>
     </footer>
 </main>
