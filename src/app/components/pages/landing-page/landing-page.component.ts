@@ -1,5 +1,8 @@
 import { Component, ElementRef } from '@angular/core';
 import { LandingPageSection } from 'src/app/model/landing-page-section.model';
+import { LanguageLabel } from 'src/app/model/language-label.model';
+import { pages } from 'src/assets/texts/sections';
+import { texts } from 'src/assets/texts/texts';
 
 @Component({
   selector: 'app-landing-page',
@@ -12,39 +15,41 @@ export class LandingPageComponent {
   reservationImage = `${this.path}/avatars/Reservation.png`;
   burgerImage = `${this.path}/avatars/Burger.png`;
   logoImage = `${this.path}/Logo.png`;
+  languageMenuIsOpened = false;
   isReservationSpread = false;
   isBurgerSpread = false;
+  text: LanguageLabel | undefined;
   screenIsMoving = false;
   currentSectionIndex = 0;
-  sections: LandingPageSection[] = [
-    {
-      title: 'NATURE BEAUTY',
-      description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum obcaecati dignissimos pariatur id recusandae, velitdebitis ab magni odit repudiandae fugiat doloremque porro id, sunt aliquam temporibus in voluptatem dignissimos. Doloribus autem nesciunt ipsum necessitatibus animi pariatur hic saepe maiores accusantium aut. Dolore quisquam dolorum accusantium quos! Voluptates cum, perferendis alias aut enim minima mollitia ea non, vel consequatur debitis ipsam earum provident nesciunt dolorum! Veritatis sequi blanditiis eaque voluptatibus consequuntur ipsam, aliquam culpa! Asperiores id, cupiditate eos nulla nemo obcaecati eligendi iure ullam earum, officia, eius omnis atque? Mollitia enim sapiente sequi perferendis consequuntur accusantium delectus odit laudantium eos et?  sapiente ducimus consequatur.',
-      comment: "“This is by far the best view I've had from a restaurant!”",
-      author: 'Bogdan Ilic',
-      image: '../../../assets/temporaryPictures/Zrmanja1.png',
-    },
-    {
-      title: 'RESTAURANT',
-      description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum obcaecati dignissimos pariatur id recusandae, velitdebitis ab magni odit repudiandae fugiat doloremque porro id, sunt aliquam temporibus in voluptatem dignissimos. Doloribus autem nesciunt ipsum necessitatibus animi pariatur hic saepe maiores accusantium aut. Dolore quisquam dolorum accusantium quos! Voluptates cum, perferendis alias aut enim minima mollitia ea non, vel consequatur debitis ipsam earum provident nesciunt dolorum! Veritatis sequi blanditiis eaque voluptatibus consequuntur ipsam, aliquam culpa! Asperiores id, cupiditate eos nulla nemo obcaecati eligendi iure ullam earum, officia, eius omnis atque? Mollitia enim sapiente sequi perferendis consequuntur accusantium delectus odit laudantium eos et?  sapiente ducimus consequatur.',
-      comment:
-        "“Great location, great food and absolute dream prices!! The 4 of us had three main courses and we couldn't manage it!! We really enjoyed it, a real insider tip, very few tourists!!😀👍🤗”",
-      author: 'Wolfgang Vogl',
-      image: '../../../assets/temporaryPictures/Zrmanja2.png',
-    },
-    {
-      title: 'CANOE SAFARI',
-      description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum obcaecati dignissimos pariatur id recusandae, velitdebitis ab magni odit repudiandae fugiat doloremque porro id, sunt aliquam temporibus in voluptatem dignissimos. Doloribus autem nesciunt ipsum necessitatibus animi pariatur hic saepe maiores accusantium aut. Dolore quisquam dolorum accusantium quos! Voluptates cum, perferendis alias aut enim minima mollitia ea non, vel consequatur debitis ipsam earum provident nesciunt dolorum! Veritatis sequi blanditiis eaque voluptatibus consequuntur ipsam, aliquam culpa! Asperiores id, cupiditate eos nulla nemo obcaecati eligendi iure ullam earum, officia, eius omnis atque? Mollitia enim sapiente sequi perferendis consequuntur accusantium delectus odit laudantium eos et?  sapiente ducimus consequatur.',
-      image: '../../../assets/temporaryPictures/Zrmanja3.png',
-      author: undefined,
-      comment: undefined,
-    },
-  ];
+  sections: LandingPageSection[] = [];
 
   constructor(private el: ElementRef) {
+    this.checkSavedPreferableLanguage();
+    this.overrideWheelEvent();
+  }
+
+  checkSavedPreferableLanguage() {
+    let savedLanguageIndex = localStorage.getItem('preferableLanguageIndex');
+
+    if (savedLanguageIndex !== null) {
+      this.updateTexts(Number.parseInt(savedLanguageIndex));
+    } else {
+      this.updateTexts(1);
+    }
+  }
+
+  selectPreferableLanguage(indexOfLanguage: number) {
+    this.updateTexts(indexOfLanguage);
+
+    localStorage.setItem('preferableLanguageIndex', indexOfLanguage.toString());
+  }
+
+  updateTexts(indexOfLanguage: number) {
+    this.text = texts[indexOfLanguage];
+    this.sections = pages[indexOfLanguage];
+  }
+
+  overrideWheelEvent() {
     document.addEventListener(
       'wheel',
       (event) => {
@@ -143,5 +148,13 @@ export class LandingPageComponent {
   revertFlags() {
     this.isReservationSpread = false;
     this.isBurgerSpread = false;
+    this.languageMenuIsOpened = false;
+  }
+
+  openLanguageMenu(event: Event) {
+    this.languageMenuIsOpened = !this.languageMenuIsOpened;
+    console.log(this.languageMenuIsOpened);
+
+    event.stopPropagation();
   }
 }
