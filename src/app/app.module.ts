@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './components/pages/landing-page/landing-page.component';
 import { PageSectionComponent } from './components/utils/page-section/page-section.component';
+import { CampPageComponent } from './components/pages/camp-page/camp-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
-    PageSectionComponent
+    PageSectionComponent,
+    CampPageComponent
   ],
   imports: [
     BrowserModule,
