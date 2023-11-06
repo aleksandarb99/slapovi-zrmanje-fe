@@ -6,19 +6,18 @@ import { AppComponent } from './app.component';
 import { LandingPageComponent } from './components/pages/landing-page/landing-page.component';
 import { PageSectionComponent } from './components/utils/page-section/page-section.component';
 import { CampPageComponent } from './components/pages/camp-page/camp-page.component';
+import { DropdownComponent } from './components/utils/dropdown/dropdown.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
     PageSectionComponent,
-    CampPageComponent
+    CampPageComponent,
+    DropdownComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

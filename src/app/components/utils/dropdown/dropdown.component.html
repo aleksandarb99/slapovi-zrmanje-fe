@@ -1,0 +1,60 @@
+<div class="input-wrapper">
+    <p class="input-label">Guests</p>
+    <div class="input-rectangle" (click)="openDiv($event)">
+        <p class="input-rectangle-text">{{guestLine}}</p>
+    </div>
+    <div *ngIf="divIsOpened" class="input-dropdown-container">
+        <div class="input-dropdown-container-item">
+            <div class="around-p">
+                <p class="big-p">Adults</p>
+                <p class="small-p">Age 13+</p>
+            </div>
+            <div class="around-buttons">
+                <button [ngClass]="{'disabled': numberOfAdults==0}" (click)="lower(0, $event)"><</button>
+                <div class="around-value">
+                    <p>{{numberOfAdults}}</p>
+                </div>
+                <button (click)="raise(0, $event)">></button>
+            </div>
+        </div>
+        <div class="input-dropdown-container-item">
+            <div class="around-p">
+                <p class="big-p">Children</p>
+                <p class="small-p">Ages 2-12</p>
+            </div>
+            <div class="around-buttons">
+                <button [ngClass]="{'disabled': numberOfChildren==0}" (click)="lower(1, $event)"><</button>
+                <div class="around-value">
+                    <p>{{numberOfChildren}}</p>
+                </div>
+                <button (click)="raise(1, $event)">></button>
+            </div>
+        </div>
+        <div class="input-dropdown-container-item">
+            <div class="around-p">
+                <p class="big-p">Infants</p>
+                <p class="small-p">Under 2</p>
+            </div>
+            <div class="around-buttons">
+                <button [ngClass]="{'disabled': numberOfInfants==0}" (click)="lower(2, $event)"><</button>
+                <div class="around-value">
+                    <p>{{numberOfInfants}}</p>
+                </div>
+                <button (click)="raise(2, $event)">></button>
+            </div>
+        </div>
+        <div class="input-dropdown-container-item">
+            <div class="around-p">
+                <p class="big-p">Pets</p>
+                <p class="small-p">All</p>
+            </div>
+            <div class="around-buttons">
+                <button [ngClass]="{'disabled': numberOfPets==0}" (click)="lower(3, $event)"><</button>
+                <div class="around-value">
+                    <p>{{numberOfPets}}</p>
+                </div>
+                <button (click)="raise(3, $event)">></button>
+            </div>
+        </div>
+    </div>
+</div>
