@@ -1,0 +1,99 @@
+<main>
+    <div class="menu reservation-menu-position" [ngClass]="{'menu-spread': isReservationSpread}">
+        <div class="header-reservations-container menu-margin add-top-margin-on-left-menu" (click)="revertFlags()">
+            <img src="../../../assets/avatars/Reservation.png" class="reservation-icon"/>
+            <h3 class="reservations-text">{{text!.landingPageReservationTitle}}</h3>
+        </div>
+        <hr>
+        <h3 class="menu-item">{{text!.landingPageReservationCamp}}</h3>
+        <h3 class="menu-item">{{text!.landingPageReservationRooms}}</h3>
+        <h3 class="menu-item">{{text!.landingPageReservationApartments}}</h3>
+    </div>
+    <div class="menu burger-menu-position" [ngClass]="{'menu-spread': isBurgerSpread}">
+        <img src="../../../assets/avatars/Burger.png" class="burger-icon menu-margin add-top-margin-on-right-menu" (click)="revertFlags()"/>
+        <hr>
+        <h3 class="menu-item">{{text!.landingPageBurgerGallery}}</h3>
+        <h3 class="menu-item">{{text!.landingPageBurgerContact}}</h3>
+        <h3 class="menu-item" (click)="openLanguageMenu($event)">{{text!.landingPageBurgerLanguage}}</h3>
+        <div *ngIf="languageMenuIsOpened">
+            <h3 class="menu-item second-level" (click)="selectPreferableLanguage(0)">{{text!.landingPageBurgerLanguageCroatian}}</h3>
+            <h3 class="menu-item second-level" (click)="selectPreferableLanguage(1)">{{text!.landingPageBurgerLanguageEnglish}}</h3>
+            <h3 class="menu-item second-level" (click)="selectPreferableLanguage(2)">{{text!.landingPageBurgerLanguageGerman}}</h3>
+        </div>
+    </div>
+    <header (click)="revertFlags()">
+        <div class="header-reservations-container" (click)="changeReservationFlag($event)">
+            <img [src]="reservationImage" class="reservation-icon"/>
+            <h3 [ngClass]="{'reservations-text': !isDarkHeader, 'dark-reservations-text': isDarkHeader}">{{text!.landingPageReservationTitle}}</h3>
+        </div>
+        <img [src]="logoImage" [ngClass]="{'logo': !isDarkHeader, 'dark-logo': isDarkHeader}" routerLink=""/>
+        <img [src]="burgerImage" class="burger-icon" (click)="changeBurgerFlag($event)"/>
+    </header>
+    <div (click)="revertFlags()">
+        <div class="landing-page">
+            <div class="fields">
+                <p class="input-label">Guests</p>
+                <div class="input-int" (click)="openDiv($event)">
+                    <p class="input-int-p">{{guestLine}}</p>
+                </div>
+                <div *ngIf="divIsOpened" class="chose-int">
+                    <div class="chose-int-item">
+                        <div class="around-p">
+                            <p class="big-p">Adults</p>
+                            <p class="small-p">Age 13+</p>
+                        </div>
+                        <div class="around-buttons">
+                            <button [ngClass]="{'disabled': numberOfAdults==0}" (click)="lower(0, $event)"><</button>
+                            <div class="around-value">
+                                <p>{{numberOfAdults}}</p>
+                            </div>
+                            <button (click)="raise(0, $event)">></button>
+                        </div>
+                    </div>
+                    <div class="chose-int-item">
+                        <div class="around-p">
+                            <p class="big-p">Children</p>
+                            <p class="small-p">Ages 2-12</p>
+                        </div>
+                        <div class="around-buttons">
+                            <button [ngClass]="{'disabled': numberOfChildren==0}" (click)="lower(1, $event)"><</button>
+                            <div class="around-value">
+                                <p>{{numberOfChildren}}</p>
+                            </div>
+                            <button (click)="raise(1, $event)">></button>
+                        </div>
+                    </div>
+                    <div class="chose-int-item">
+                        <div class="around-p">
+                            <p class="big-p">Infants</p>
+                            <p class="small-p">Under 2</p>
+                        </div>
+                        <div class="around-buttons">
+                            <button [ngClass]="{'disabled': numberOfInfants==0}" (click)="lower(2, $event)"><</button>
+                            <div class="around-value">
+                                <p>{{numberOfInfants}}</p>
+                            </div>
+                            <button (click)="raise(2, $event)">></button>
+                        </div>
+                    </div>
+                    <div class="chose-int-item">
+                        <div class="around-p">
+                            <p class="big-p">Pets</p>
+                            <p class="small-p">All</p>
+                        </div>
+                        <div class="around-buttons">
+                            <button [ngClass]="{'disabled': numberOfPets==0}" (click)="lower(3, $event)"><</button>
+                            <div class="around-value">
+                                <p>{{numberOfPets}}</p>
+                            </div>
+                            <button (click)="raise(3, $event)">></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>>
+    <footer (click)="revertFlags()">
+        <h3>{{text!.landingPageCopyrightText}} 2024 - Slapovi Zrmanje</h3>
+    </footer>
+</main>
