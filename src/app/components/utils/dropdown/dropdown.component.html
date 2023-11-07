@@ -1,57 +1,57 @@
 <div class="input-wrapper">
     <p class="input-label">Guests</p>
-    <div class="input-rectangle" (click)="openDiv($event)">
-        <p class="input-rectangle-text">{{guestLine}}</p>
+    <div class="input-rectangle" (click)="this.showOrHide($event)">
+        <p class="input-rectangle-text">{{line}}</p>
     </div>
-    <div *ngIf="divIsOpened" class="input-dropdown-container">
+    <div *ngIf="divIsOpened" class="input-dropdown-container" (click)="preventEvent($event)">
         <div class="input-dropdown-container-item">
             <div class="around-p">
-                <p class="big-p">Adults</p>
-                <p class="small-p">Age 13+</p>
+                <p class="big-p">{{title1}}</p>
+                <p class="small-p">{{subtitle1}}</p>
             </div>
             <div class="around-buttons">
-                <button [ngClass]="{'disabled': numberOfAdults==0}" (click)="lower(0, $event)"><</button>
+                <button [ngClass]="{'disabled': value1==0}" (click)="lower(0, $event)"><</button>
                 <div class="around-value">
-                    <p>{{numberOfAdults}}</p>
+                    <p>{{value1}}</p>
                 </div>
                 <button (click)="raise(0, $event)">></button>
             </div>
         </div>
         <div class="input-dropdown-container-item">
             <div class="around-p">
-                <p class="big-p">Children</p>
-                <p class="small-p">Ages 2-12</p>
+                <p class="big-p">{{title2}}</p>
+                <p class="small-p">{{subtitle2}}</p>
             </div>
             <div class="around-buttons">
-                <button [ngClass]="{'disabled': numberOfChildren==0}" (click)="lower(1, $event)"><</button>
+                <button [ngClass]="{'disabled': value2==0}" (click)="lower(1, $event)"><</button>
                 <div class="around-value">
-                    <p>{{numberOfChildren}}</p>
+                    <p>{{value2}}</p>
                 </div>
                 <button (click)="raise(1, $event)">></button>
             </div>
         </div>
         <div class="input-dropdown-container-item">
             <div class="around-p">
-                <p class="big-p">Infants</p>
-                <p class="small-p">Under 2</p>
+                <p class="big-p">{{title3}}</p>
+                <p class="small-p">{{subtitle3}}</p>
             </div>
             <div class="around-buttons">
-                <button [ngClass]="{'disabled': numberOfInfants==0}" (click)="lower(2, $event)"><</button>
+                <button [ngClass]="{'disabled': value3==0}" (click)="lower(2, $event)"><</button>
                 <div class="around-value">
-                    <p>{{numberOfInfants}}</p>
+                    <p>{{value3}}</p>
                 </div>
                 <button (click)="raise(2, $event)">></button>
             </div>
         </div>
         <div class="input-dropdown-container-item">
             <div class="around-p">
-                <p class="big-p">Pets</p>
-                <p class="small-p">All</p>
+                <p class="big-p">{{title4}}</p>
+                <p class="small-p">{{subtitle4}}</p>
             </div>
             <div class="around-buttons">
-                <button [ngClass]="{'disabled': numberOfPets==0}" (click)="lower(3, $event)"><</button>
+                <button [ngClass]="{'disabled': value4==0}" (click)="lower(3, $event)"><</button>
                 <div class="around-value">
-                    <p>{{numberOfPets}}</p>
+                    <p>{{value4}}</p>
                 </div>
                 <button (click)="raise(3, $event)">></button>
             </div>

@@ -31,7 +31,13 @@
     </header>
     <div>
         <div class="landing-page" (click)="revertFlags()">
-            <app-dropdown></app-dropdown>
+            <app-dropdown [initialLine]="'Choose guests'"
+                [divIsOpenedSubject]="divIsOpenedSubject"
+                [title1]="'Adults'" [subtitle1]="'Age 13+'"
+                [title2]="'Children'" [subtitle2]="'Ages 2-12'"
+                [title3]="'Infants'" [subtitle3]="'Under 2'"
+                [title4]="'Pets'" [subtitle4]="''"
+                (valueChangedEvent)="saveFirstIntValues($event)"></app-dropdown>
         </div>
     </div>>
     <footer (click)="revertFlags()">

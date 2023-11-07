@@ -1,8 +1,10 @@
 import { Component, ElementRef } from '@angular/core';
+import { IntValues } from 'src/app/model/int-values.model';
 import { LandingPageSection } from 'src/app/model/landing-page-section.model';
 import { LanguageLabel } from 'src/app/model/language-label.model';
 import { pages } from 'src/assets/texts/sections';
 import { texts } from 'src/assets/texts/texts';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-camp-page',
@@ -23,9 +25,23 @@ export class CampPageComponent {
   currentSectionIndex = 0;
   sections: LandingPageSection[] = [];
 
+  divIsOpenedSubject = new Subject<boolean>();
+
   constructor(private el: ElementRef) {
     this.checkSavedPreferableLanguage();
     this.overrideWheelEvent();
+  }
+
+  revertFlags() {
+    this.isReservationSpread = false;
+    this.isBurgerSpread = false;
+    this.languageMenuIsOpened = false;
+
+    this.divIsOpenedSubject.next(true);
+  }
+
+  saveFirstIntValues(intValues: IntValues) {
+    console.log(intValues);
   }
 
   checkSavedPreferableLanguage() {
@@ -128,14 +144,6 @@ export class CampPageComponent {
     }
     this.isBurgerSpread = true;
     event.stopPropagation();
-  }
-
-  revertFlags() {
-    console.log('REVERT');
-
-    this.isReservationSpread = false;
-    this.isBurgerSpread = false;
-    this.languageMenuIsOpened = false;
   }
 
   openLanguageMenu(event: Event) {
