@@ -9,6 +9,7 @@ import { TextValue } from 'src/app/model/text-value.model';
 export class TextInputComponent {
   value: string = '';
 
+  @Input() fill: boolean = false;
   @Input() label: string = '';
   @Input() inputType: string = 'TEXT';
   @Output() valueChangedEvent = new EventEmitter<TextValue>();

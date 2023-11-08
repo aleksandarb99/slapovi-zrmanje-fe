@@ -2,6 +2,8 @@ $base-blue-color: #17555E
 $base-light-blue-color: #CBD5E1
 $base-white: #FFF
 $base-red: #FF0000
+$div-width: 18vw
+$div-extended-width: 40vw
 
 .input-wrapper
     display: flex
@@ -18,17 +20,20 @@ $base-red: #FF0000
     line-height: 20px
 
 .input-rectangle
-    width: 300px
+    width: $div-width
     height: 44px
     border: 1px solid $base-light-blue-color
     background: $base-white
     font-size: 16px
     color: $base-blue-color
-    padding-left: 15px
-    padding-right: 15px
+    padding-left: 1vw
+    padding-right: 1vw
     font-family: Roboto Slab
     font-weight: bold
     outline: none
+
+.fill
+    width: $div-extended-width
 
 .input-rectangle:invalid
     border: 1px solid $base-red

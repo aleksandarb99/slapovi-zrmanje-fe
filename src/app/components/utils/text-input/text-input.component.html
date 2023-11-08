@@ -1,5 +1,9 @@
 <div class="input-wrapper">
     <p class="input-label">{{label}}</p>
-    <input *ngIf="inputType === 'TEXT'" class="input-rectangle" type="text" (input)="onInput($event)">
-    <input *ngIf="inputType === 'EMAIL'" class="input-rectangle" type="email" (input)="onInput($event)">
+    <input *ngIf="inputType === 'TEXT'" class="input-rectangle"
+        [ngClass]="{'fill': fill === true}"
+        type="text" (input)="onInput($event)">
+    <input *ngIf="inputType === 'EMAIL'" class="input-rectangle"
+        [ngClass]="{'fill': fill === true}"
+        type="email" (input)="onInput($event)">
 </div>
