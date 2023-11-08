@@ -47,7 +47,7 @@ export class DropdownComponent implements AfterContentInit {
       },
     });
 
-    this.generateQuestLine();
+    this.generateLine();
   }
 
   preventEvent(event: Event) {
@@ -59,7 +59,7 @@ export class DropdownComponent implements AfterContentInit {
     event.stopPropagation();
   }
 
-  generateQuestLine() {
+  generateLine() {
     if (
       this.value1 == 0 &&
       this.value2 == 0 &&
@@ -72,15 +72,15 @@ export class DropdownComponent implements AfterContentInit {
         this.value1 +
         ' ' +
         this.title1 +
-        ',' +
+        ', ' +
         this.value2 +
         ' ' +
         this.title2 +
-        ',' +
+        ', ' +
         this.value3 +
         ' ' +
         this.title3 +
-        ',' +
+        ', ' +
         this.value4 +
         ' ' +
         this.title4;
@@ -110,13 +110,14 @@ export class DropdownComponent implements AfterContentInit {
       this.value4--;
     }
 
-    this.generateQuestLine();
+    this.generateLine();
 
     let object: IntValues = {
       value1: this.value1,
       value2: this.value2,
       value3: this.value3,
       value4: this.value4,
+      label: this.label,
     };
 
     this.valueChangedEvent.emit(object);
@@ -134,13 +135,14 @@ export class DropdownComponent implements AfterContentInit {
       this.value4++;
     }
 
-    this.generateQuestLine();
+    this.generateLine();
 
     let object: IntValues = {
       value1: this.value1,
       value2: this.value2,
       value3: this.value3,
       value4: this.value4,
+      label: this.label,
     };
 
     this.valueChangedEvent.emit(object);

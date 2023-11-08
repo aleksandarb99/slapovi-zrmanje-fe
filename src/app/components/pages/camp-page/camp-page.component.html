@@ -31,24 +31,40 @@
     </header>
     <div>
         <div class="landing-page" (click)="revertFlags()">
-            <app-dropdown 
-                [initialLine]="'Choose guests'" [label]="'Guests'"
-                [divIsOpenedSubject]="d1IsOpenedSubject"
-                [title1]="'Adults'" [subtitle1]="'Age 13+'"
-                [title2]="'Children'" [subtitle2]="'Ages 2-12'"
-                [title3]="'Infants'" [subtitle3]="'Under 2'"
-                [title4]="'Pets'" [subtitle4]="''"
-                (valueChangedEvent)="saveFirstIntValues($event)">
-            </app-dropdown>
-            <app-dropdown 
-                [initialLine]="'Choose lodging'" [label]="'Lodging'"
-                [divIsOpenedSubject]="d2IsOpenedSubject"
-                [title1]="'Tent'"
-                [title2]="'Caravan'"
-                [title3]="'Car'"
-                [title4]="'Sleeping Bag'"
-                (valueChangedEvent)="saveSecondIntValues($event)">
-            </app-dropdown>
+            <div class="page-row">
+                <app-text-input
+                    [label]="'First Name'"
+                    (valueChangedEvent)="saveTextValue($event)">
+                </app-text-input>
+                <app-text-input
+                    [label]="'Last Name'">
+                </app-text-input>
+            </div>
+            <div class="page-row">
+                <app-text-input
+                    [label]="'Email Address'">
+                </app-text-input>
+            </div>
+            <div class="page-row">
+                <app-dropdown 
+                    [initialLine]="'Choose guests'" [label]="'Guests'"
+                    [divIsOpenedSubject]="d1IsOpenedSubject"
+                    [title1]="'Adults'" [subtitle1]="'Age 13+'"
+                    [title2]="'Children'" [subtitle2]="'Ages 2-12'"
+                    [title3]="'Infants'" [subtitle3]="'Under 2'"
+                    [title4]="'Pets'" [subtitle4]="''"
+                    (valueChangedEvent)="saveIntValues($event)">
+                </app-dropdown>
+                <app-dropdown 
+                    [initialLine]="'Choose lodging'" [label]="'Lodging'"
+                    [divIsOpenedSubject]="d2IsOpenedSubject"
+                    [title1]="'Tent'"
+                    [title2]="'Caravan'"
+                    [title3]="'Car'"
+                    [title4]="'Sleeping Bag'"
+                    (valueChangedEvent)="saveIntValues($event)">
+                </app-dropdown>
+            </div>
         </div>
     </div>>
     <footer (click)="revertFlags()">

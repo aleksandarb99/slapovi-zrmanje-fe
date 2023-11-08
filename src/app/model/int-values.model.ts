@@ -3,4 +3,5 @@ export interface IntValues {
   value2: number;
   value3: number;
   value4: number;
+  label: string;
 }

@@ -1,7 +1,7 @@
 <div class="input-wrapper">
     <p class="input-label">{{label}}</p>
     <div class="input-rectangle" (click)="this.showOrHide($event)">
-        <p class="input-rectangle-text">{{line}}</p>
+        <p class="input-rectangle-text" [ngClass]="{'disable-bold': this.line == this.initialLine}">{{line}}</p>
     </div>
     <div *ngIf="divIsOpened" class="input-dropdown-container" (click)="preventEvent($event)">
         <div class="input-dropdown-container-item">

@@ -7,6 +7,7 @@ import { LandingPageComponent } from './components/pages/landing-page/landing-pa
 import { PageSectionComponent } from './components/utils/page-section/page-section.component';
 import { CampPageComponent } from './components/pages/camp-page/camp-page.component';
 import { DropdownComponent } from './components/utils/dropdown/dropdown.component';
+import { TextInputComponent } from './components/utils/text-input/text-input.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { DropdownComponent } from './components/utils/dropdown/dropdown.componen
     PageSectionComponent,
     CampPageComponent,
     DropdownComponent,
+    TextInputComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

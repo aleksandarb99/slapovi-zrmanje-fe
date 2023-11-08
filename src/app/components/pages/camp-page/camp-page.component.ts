@@ -5,6 +5,7 @@ import { LanguageLabel } from 'src/app/model/language-label.model';
 import { pages } from 'src/assets/texts/sections';
 import { texts } from 'src/assets/texts/texts';
 import { Subject } from 'rxjs';
+import { TextValue } from 'src/app/model/text-value.model';
 
 @Component({
   selector: 'app-camp-page',
@@ -42,12 +43,12 @@ export class CampPageComponent {
     this.d2IsOpenedSubject.next(true);
   }
 
-  saveFirstIntValues(intValues: IntValues) {
-    console.log(intValues);
+  saveTextValue(textValue: TextValue) {
+    // console.log(textValue);
   }
 
-  saveSecondIntValues(intValues: IntValues) {
-    console.log(intValues);
+  saveIntValues(intValues: IntValues) {
+    // console.log(intValues);
   }
 
   checkSavedPreferableLanguage() {
