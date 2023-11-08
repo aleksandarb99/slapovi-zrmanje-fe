@@ -1,6 +1,7 @@
 $base-blue-color: #17555E
 $base-light-blue-color: #CBD5E1
 $base-white: #FFF
+$base-red: #FF0000
 
 .input-wrapper
     display: flex
@@ -27,3 +28,7 @@ $base-white: #FFF
     padding-right: 15px
     font-family: Roboto Slab
     font-weight: bold
+    outline: none
+
+.input-rectangle:invalid
+    border: 1px solid $base-red

@@ -35,6 +35,7 @@ export class DropdownComponent implements AfterContentInit {
   @Input() subtitle4: string = '';
 
   @Output() valueChangedEvent = new EventEmitter<IntValues>();
+  @Output() showDivEvent = new EventEmitter<string>();
 
   constructor() {}
 
@@ -56,6 +57,11 @@ export class DropdownComponent implements AfterContentInit {
 
   showOrHide(event: Event) {
     this.divIsOpened = !this.divIsOpened;
+
+    if (this.divIsOpened) {
+      this.showDivEvent.emit(this.label);
+    }
+
     event.stopPropagation();
   }
 

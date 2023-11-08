@@ -10,6 +10,7 @@ export class TextInputComponent {
   value: string = '';
 
   @Input() label: string = '';
+  @Input() inputType: string = 'TEXT';
   @Output() valueChangedEvent = new EventEmitter<TextValue>();
 
   constructor() {}

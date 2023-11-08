@@ -44,11 +44,20 @@ export class CampPageComponent {
   }
 
   saveTextValue(textValue: TextValue) {
+    // TODO: Validate if email
     // console.log(textValue);
   }
 
   saveIntValues(intValues: IntValues) {
     // console.log(intValues);
+  }
+
+  onShowDivEvent(label: string) {
+    if (label == 'Lodging') {
+      this.d1IsOpenedSubject.next(true);
+    } else {
+      this.d2IsOpenedSubject.next(true);
+    }
   }
 
   checkSavedPreferableLanguage() {
