@@ -23,6 +23,7 @@ export class DropdownComponent implements AfterContentInit {
 
   @Input() divIsOpenedSubject: any;
 
+  @Input() label: string = '';
   @Input() initialLine: string = '';
   @Input() title1: string = '';
   @Input() subtitle1: string = '';

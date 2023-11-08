@@ -25,7 +25,8 @@ export class CampPageComponent {
   currentSectionIndex = 0;
   sections: LandingPageSection[] = [];
 
-  divIsOpenedSubject = new Subject<boolean>();
+  d1IsOpenedSubject = new Subject<boolean>();
+  d2IsOpenedSubject = new Subject<boolean>();
 
   constructor(private el: ElementRef) {
     this.checkSavedPreferableLanguage();
@@ -37,10 +38,15 @@ export class CampPageComponent {
     this.isBurgerSpread = false;
     this.languageMenuIsOpened = false;
 
-    this.divIsOpenedSubject.next(true);
+    this.d1IsOpenedSubject.next(true);
+    this.d2IsOpenedSubject.next(true);
   }
 
   saveFirstIntValues(intValues: IntValues) {
+    console.log(intValues);
+  }
+
+  saveSecondIntValues(intValues: IntValues) {
     console.log(intValues);
   }
 
