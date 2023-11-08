@@ -34,6 +34,10 @@ export class CampPageComponent {
     this.overrideWheelEvent();
   }
 
+  checkAvailability() {
+    console.log('checkAvailability');
+  }
+
   revertFlags() {
     this.isReservationSpread = false;
     this.isBurgerSpread = false;
