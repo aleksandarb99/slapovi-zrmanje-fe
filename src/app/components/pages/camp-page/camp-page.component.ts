@@ -6,6 +6,7 @@ import { pages } from 'src/assets/texts/sections';
 import { texts } from 'src/assets/texts/texts';
 import { Subject } from 'rxjs';
 import { TextValue } from 'src/app/model/text-value.model';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-camp-page',
@@ -93,11 +94,11 @@ export class CampPageComponent {
     document.addEventListener(
       'wheel',
       (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        this.scrollToSection(event.deltaY);
-      },
-      { passive: false }
+        // event.preventDefault();
+        // event.stopPropagation();
+        // this.scrollToSection(event.deltaY);
+      }
+      // { passive: false }
     );
   }
 
