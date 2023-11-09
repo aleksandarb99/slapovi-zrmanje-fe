@@ -29,8 +29,8 @@
         <img [src]="logoImage" [ngClass]="{'logo': !isDarkHeader, 'dark-logo': isDarkHeader}" routerLink=""/>
         <img [src]="burgerImage" class="burger-icon" (click)="changeBurgerFlag($event)"/>
     </header>
-    <div>
-        <div class="landing-page" (click)="revertFlags()">
+    <div (click)="revertFlags()">
+        <div class="landing-page">
             <div class="page-row">
                 <app-text-input
                     [label]="text!.inputFirstNameText"
