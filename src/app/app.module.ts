@@ -8,6 +8,7 @@ import { PageSectionComponent } from './components/utils/page-section/page-secti
 import { CampPageComponent } from './components/pages/camp-page/camp-page.component';
 import { DropdownComponent } from './components/utils/dropdown/dropdown.component';
 import { TextInputComponent } from './components/utils/text-input/text-input.component';
+import { CheckboxComponent } from './components/utils/checkbox/checkbox.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { TextInputComponent } from './components/utils/text-input/text-input.com
     CampPageComponent,
     DropdownComponent,
     TextInputComponent,
+    CheckboxComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

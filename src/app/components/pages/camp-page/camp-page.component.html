@@ -74,6 +74,11 @@
                 </app-dropdown>
             </div>
             <div class="page-row">
+                <app-checkbox 
+                    [label]="text!.checkBoxTitle"
+                    (valueChangedEvent)="saveCheckboxValue($event)"></app-checkbox>
+            </div>
+            <div class="page-row">
                 <div class="check-button" (click)="checkAvailability()">{{text!.checkAvailabilityButtonText}}</div>
             </div>
         </div>

@@ -56,6 +56,10 @@ export class CampPageComponent {
     // console.log(intValues);
   }
 
+  saveCheckboxValue(booleanValue: boolean) {
+    // console.log(booleanValue);
+  }
+
   onShowDivEvent(label: string) {
     if (label === this.text!.dropdownLodgingLabel) {
       this.d1IsOpenedSubject.next(true);

@@ -41,6 +41,7 @@ export const texts: LanguageLabel[] = [
     dropdownLodgingSubtitle2: '',
     dropdownLodgingSubtitle3: '',
     dropdownLodgingSubtitle4: '',
+    checkBoxTitle: 'Korisćenje struje',
     checkAvailabilityButtonText: 'Provjera Dostupnosti',
   },
   {
@@ -83,6 +84,7 @@ export const texts: LanguageLabel[] = [
     dropdownLodgingSubtitle2: '',
     dropdownLodgingSubtitle3: '',
     dropdownLodgingSubtitle4: '',
+    checkBoxTitle: 'Power Supply',
     checkAvailabilityButtonText: 'Check Availability',
   },
   {
@@ -125,6 +127,7 @@ export const texts: LanguageLabel[] = [
     dropdownLodgingSubtitle2: '',
     dropdownLodgingSubtitle3: '',
     dropdownLodgingSubtitle4: '',
+    checkBoxTitle: 'Stromversorgung',
     checkAvailabilityButtonText: 'Verfügbarkeit Prüfen',
   },
 ];

@@ -36,6 +36,7 @@ export interface LanguageLabel {
   dropdownLodgingSubtitle2: string;
   dropdownLodgingSubtitle3: string;
   dropdownLodgingSubtitle4: string;
+  checkBoxTitle: string;
   checkAvailabilityButtonText: string;
 
   // TODO: Add every label here
