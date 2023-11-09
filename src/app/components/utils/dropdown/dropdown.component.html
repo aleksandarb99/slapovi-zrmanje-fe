@@ -1,7 +1,11 @@
 <div class="input-wrapper">
     <p class="input-label">{{label}}</p>
     <div class="input-rectangle" (click)="this.showOrHide($event)">
-        <p class="input-rectangle-text" [ngClass]="{'disable-bold': this.line == this.initialLine}">{{line}}</p>
+        <p class="input-rectangle-text" [ngClass]="{'disable-bold': this.line == this.initialLine}">
+            {{value1 == 0 &&
+                value2 == 0 &&
+                value3 == 0 &&
+                value4 == 0 ? initialLine : generateLine()}}</p>
     </div>
     <div *ngIf="divIsOpened" class="input-dropdown-container" (click)="preventEvent($event)">
         <div class="input-dropdown-container-item">

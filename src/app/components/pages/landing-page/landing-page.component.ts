@@ -153,7 +153,6 @@ export class LandingPageComponent {
 
   openLanguageMenu(event: Event) {
     this.languageMenuIsOpened = !this.languageMenuIsOpened;
-    console.log(this.languageMenuIsOpened);
 
     event.stopPropagation();
   }

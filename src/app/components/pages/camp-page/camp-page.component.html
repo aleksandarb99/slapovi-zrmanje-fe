@@ -33,19 +33,19 @@
         <div class="landing-page" (click)="revertFlags()">
             <div class="page-row">
                 <app-text-input
-                    [label]="'First Name'"
+                    [label]="text!.inputFirstNameText"
                     [inputType]="'TEXT'"
                     (valueChangedEvent)="saveTextValue($event)">
                 </app-text-input>
                 <app-text-input
-                    [label]="'Last Name'"
+                    [label]="text!.inputLastNameText"
                     [inputType]="'TEXT'"
                     (valueChangedEvent)="saveTextValue($event)">
                 </app-text-input>
             </div>
             <div class="page-row">
                 <app-text-input
-                    [label]="'Email Address'"
+                    [label]="text!.inputEmailText"
                     [inputType]="'EMAIL'"
                     [fill]="true"
                     (valueChangedEvent)="saveTextValue($event)">
@@ -53,28 +53,28 @@
             </div>
             <div class="page-row">
                 <app-dropdown 
-                    [initialLine]="'Choose guests'" [label]="'Guests'"
+                    [initialLine]="text!.dropdownGuestsInitialLine" [label]="text!.dropdownGuestsLabel"
                     [divIsOpenedSubject]="d1IsOpenedSubject"
-                    [title1]="'Adults'" [subtitle1]="'Age 13+'"
-                    [title2]="'Children'" [subtitle2]="'Ages 2-12'"
-                    [title3]="'Infants'" [subtitle3]="'Under 2'"
-                    [title4]="'Pets'" [subtitle4]="''"
+                    [title1]="text!.dropdownGuestsTitle1" [subtitle1]="text!.dropdownGuestsSubtitle1"
+                    [title2]="text!.dropdownGuestsTitle2" [subtitle2]="text!.dropdownGuestsSubtitle2"
+                    [title3]="text!.dropdownGuestsTitle3" [subtitle3]="text!.dropdownGuestsSubtitle3"
+                    [title4]="text!.dropdownGuestsTitle4" [subtitle4]="text!.dropdownGuestsSubtitle4"
                     (showDivEvent)="onShowDivEvent($event)"
                     (valueChangedEvent)="saveIntValues($event)">
                 </app-dropdown>
                 <app-dropdown 
-                    [initialLine]="'Choose lodging'" [label]="'Lodging'"
+                    [initialLine]="text!.dropdownLodgingInitialLine" [label]="text!.dropdownLodgingLabel"
                     [divIsOpenedSubject]="d2IsOpenedSubject"
-                    [title1]="'Tent'"
-                    [title2]="'Caravan'"
-                    [title3]="'Car'"
-                    [title4]="'Sleeping Bag'"
+                    [title1]="text!.dropdownLodgingTitle1" [subtitle1]="text!.dropdownLodgingSubtitle1"
+                    [title2]="text!.dropdownLodgingTitle2" [subtitle2]="text!.dropdownLodgingSubtitle2"
+                    [title3]="text!.dropdownLodgingTitle3" [subtitle3]="text!.dropdownLodgingSubtitle3"
+                    [title4]="text!.dropdownLodgingTitle4" [subtitle4]="text!.dropdownLodgingSubtitle4"
                     (showDivEvent)="onShowDivEvent($event)"
                     (valueChangedEvent)="saveIntValues($event)">
                 </app-dropdown>
             </div>
             <div class="page-row">
-                <div class="check-button" (click)="checkAvailability()">Check Availability</div>
+                <div class="check-button" (click)="checkAvailability()">{{text!.checkAvailabilityButtonText}}</div>
             </div>
         </div>
     </div>>

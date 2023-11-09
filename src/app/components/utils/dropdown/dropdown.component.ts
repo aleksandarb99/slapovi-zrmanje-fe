@@ -47,8 +47,6 @@ export class DropdownComponent implements AfterContentInit {
         }
       },
     });
-
-    this.generateLine();
   }
 
   preventEvent(event: Event) {
@@ -65,32 +63,24 @@ export class DropdownComponent implements AfterContentInit {
     event.stopPropagation();
   }
 
-  generateLine() {
-    if (
-      this.value1 == 0 &&
-      this.value2 == 0 &&
-      this.value3 == 0 &&
-      this.value4 == 0
-    ) {
-      this.line = this.initialLine;
-    } else {
-      this.line =
-        this.value1 +
-        ' ' +
-        this.title1 +
-        ', ' +
-        this.value2 +
-        ' ' +
-        this.title2 +
-        ', ' +
-        this.value3 +
-        ' ' +
-        this.title3 +
-        ', ' +
-        this.value4 +
-        ' ' +
-        this.title4;
-    }
+  generateLine(): string {
+    return (
+      this.value1 +
+      ' ' +
+      this.title1 +
+      ', ' +
+      this.value2 +
+      ' ' +
+      this.title2 +
+      ', ' +
+      this.value3 +
+      ' ' +
+      this.title3 +
+      ', ' +
+      this.value4 +
+      ' ' +
+      this.title4
+    );
   }
 
   lower(fieldIndex: number, event: Event) {
@@ -116,8 +106,6 @@ export class DropdownComponent implements AfterContentInit {
       this.value4--;
     }
 
-    this.generateLine();
-
     let object: IntValues = {
       value1: this.value1,
       value2: this.value2,
@@ -140,8 +128,6 @@ export class DropdownComponent implements AfterContentInit {
     } else if (fieldIndex == 3) {
       this.value4++;
     }
-
-    this.generateLine();
 
     let object: IntValues = {
       value1: this.value1,

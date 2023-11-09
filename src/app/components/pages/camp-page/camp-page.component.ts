@@ -57,7 +57,7 @@ export class CampPageComponent {
   }
 
   onShowDivEvent(label: string) {
-    if (label == 'Lodging') {
+    if (label === this.text!.dropdownLodgingLabel) {
       this.d1IsOpenedSubject.next(true);
     } else {
       this.d2IsOpenedSubject.next(true);
@@ -168,7 +168,6 @@ export class CampPageComponent {
 
   openLanguageMenu(event: Event) {
     this.languageMenuIsOpened = !this.languageMenuIsOpened;
-    console.log(this.languageMenuIsOpened);
 
     event.stopPropagation();
   }

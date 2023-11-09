@@ -13,5 +13,30 @@ export interface LanguageLabel {
   landingPageBurgerLanguageGerman: string;
   landingPageAboutUsTitle: string;
   landingPageCopyrightText: string;
+  inputFirstNameText: string;
+  inputLastNameText: string;
+  inputEmailText: string;
+  dropdownGuestsLabel: string;
+  dropdownGuestsInitialLine: string;
+  dropdownGuestsTitle1: string;
+  dropdownGuestsTitle2: string;
+  dropdownGuestsTitle3: string;
+  dropdownGuestsTitle4: string;
+  dropdownGuestsSubtitle1: string;
+  dropdownGuestsSubtitle2: string;
+  dropdownGuestsSubtitle3: string;
+  dropdownGuestsSubtitle4: string;
+  dropdownLodgingLabel: string;
+  dropdownLodgingInitialLine: string;
+  dropdownLodgingTitle1: string;
+  dropdownLodgingTitle2: string;
+  dropdownLodgingTitle3: string;
+  dropdownLodgingTitle4: string;
+  dropdownLodgingSubtitle1: string;
+  dropdownLodgingSubtitle2: string;
+  dropdownLodgingSubtitle3: string;
+  dropdownLodgingSubtitle4: string;
+  checkAvailabilityButtonText: string;
+
   // TODO: Add every label here
 }
