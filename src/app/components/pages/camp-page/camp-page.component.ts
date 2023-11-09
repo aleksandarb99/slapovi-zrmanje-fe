@@ -57,7 +57,7 @@ export class CampPageComponent {
   }
 
   saveCheckboxValue(booleanValue: boolean) {
-    console.log(booleanValue);
+    // console.log(booleanValue);
   }
 
   onShowDivEvent(label: string) {
