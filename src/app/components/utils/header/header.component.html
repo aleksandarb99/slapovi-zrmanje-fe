@@ -1,0 +1,30 @@
+<div class="menu reservation-menu-position" [ngClass]="{'menu-spread': isReservationSpread}">
+    <div class="header-reservations-container menu-margin add-top-margin-on-left-menu" (click)="revertFlags()">
+        <img src="../../../assets/avatars/Reservation.png" class="reservation-icon"/>
+        <h3 class="reservations-text">{{text!.landingPageReservationTitle}}</h3>
+    </div>
+    <hr>
+    <h3 class="menu-item" routerLink="camp">{{text!.landingPageReservationCamp}}</h3>
+    <h3 class="menu-item">{{text!.landingPageReservationRooms}}</h3>
+    <h3 class="menu-item">{{text!.landingPageReservationApartments}}</h3>
+</div>
+<div class="menu burger-menu-position" [ngClass]="{'menu-spread': isBurgerSpread}">
+    <img src="../../../assets/avatars/Burger.png" class="burger-icon menu-margin add-top-margin-on-right-menu" (click)="revertFlags()"/>
+    <hr>
+    <h3 class="menu-item">{{text!.landingPageBurgerGallery}}</h3>
+    <h3 class="menu-item">{{text!.landingPageBurgerContact}}</h3>
+    <h3 class="menu-item" (click)="openLanguageMenu($event)">{{text!.landingPageBurgerLanguage}}</h3>
+    <div *ngIf="languageMenuIsOpened">
+        <h3 class="menu-item second-level" (click)="selectPreferableLanguage(0)">{{text!.landingPageBurgerLanguageCroatian}}</h3>
+        <h3 class="menu-item second-level" (click)="selectPreferableLanguage(1)">{{text!.landingPageBurgerLanguageEnglish}}</h3>
+        <h3 class="menu-item second-level" (click)="selectPreferableLanguage(2)">{{text!.landingPageBurgerLanguageGerman}}</h3>
+    </div>
+</div>
+<header (click)="revertFlags()">
+    <div class="header-reservations-container" (click)="changeReservationFlag($event)">
+        <img [src]="reservationImage" class="reservation-icon"/>
+        <h3 [ngClass]="{'reservations-text': !isDarkHeader, 'dark-reservations-text': isDarkHeader}">{{text!.landingPageReservationTitle}}</h3>
+    </div>
+    <img [src]="logoImage" [ngClass]="{'logo': !isDarkHeader, 'dark-logo': isDarkHeader}" (click)="checkPageAndReact()"/>
+    <img [src]="burgerImage" class="burger-icon" (click)="changeBurgerFlag($event)"/>
+</header>

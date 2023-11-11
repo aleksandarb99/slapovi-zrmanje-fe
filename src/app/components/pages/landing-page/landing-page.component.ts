@@ -1,52 +1,32 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { LandingPageSection } from 'src/app/model/landing-page-section.model';
 import { LanguageLabel } from 'src/app/model/language-label.model';
-import { pages } from 'src/assets/texts/sections';
-import { texts } from 'src/assets/texts/texts';
+import { TextService } from 'src/app/services/text.service';
+import { HeaderComponent } from '../../utils/header/header.component';
 
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.sass'],
 })
-export class LandingPageComponent {
-  isDarkHeader: boolean = false;
-  path: string = '../../../assets/';
-  reservationImage = `${this.path}/avatars/Reservation.png`;
-  burgerImage = `${this.path}/avatars/Burger.png`;
-  logoImage = `${this.path}/Logo.png`;
-  languageMenuIsOpened = false;
-  isReservationSpread = false;
-  isBurgerSpread = false;
+export class LandingPageComponent implements OnInit {
   text: LanguageLabel | undefined;
   screenIsMoving = false;
   currentSectionIndex = 0;
   sections: LandingPageSection[] = [];
+  @ViewChild(HeaderComponent, {static : true}) headerComponent : HeaderComponent | undefined;
 
-  constructor(private el: ElementRef) {
-    this.checkSavedPreferableLanguage();
+  constructor(private el: ElementRef, private textService: TextService) {
     this.overrideWheelEvent();
   }
 
-  checkSavedPreferableLanguage() {
-    let savedLanguageIndex = localStorage.getItem('preferableLanguageIndex');
-
-    if (savedLanguageIndex !== null) {
-      this.updateTexts(Number.parseInt(savedLanguageIndex));
-    } else {
-      this.updateTexts(1);
-    }
+  ngOnInit() {
+    this.textService.text.subscribe(data => this.text = data);
+    this.headerComponent!.checkSavedPreferableLanguage();
   }
 
-  selectPreferableLanguage(indexOfLanguage: number) {
-    this.updateTexts(indexOfLanguage);
-
-    localStorage.setItem('preferableLanguageIndex', indexOfLanguage.toString());
-  }
-
-  updateTexts(indexOfLanguage: number) {
-    this.text = texts[indexOfLanguage];
-    this.sections = pages[indexOfLanguage];
+  setSections(sections: LandingPageSection[]) {
+    this.sections = sections;
   }
 
   overrideWheelEvent() {
@@ -63,17 +43,7 @@ export class LandingPageComponent {
 
   onScroll(event: Event): void {
     const element = event.target as HTMLElement;
-    if (element.scrollTop > 600) {
-      this.isDarkHeader = true;
-      this.reservationImage = `${this.path}/avatars/DarkReservation.png`;
-      this.burgerImage = `${this.path}/avatars/DarkBurger.png`;
-      this.logoImage = `${this.path}/DarkLogo.png`;
-    } else {
-      this.isDarkHeader = false;
-      this.reservationImage = `${this.path}/avatars/Reservation.png`;
-      this.burgerImage = `${this.path}/avatars/Burger.png`;
-      this.logoImage = `${this.path}/Logo.png`;
-    }
+    this.headerComponent?.changeHeaderTheme(element.scrollTop > 600 ? true : false);
   }
 
   scrollToStart(): void {
@@ -125,36 +95,5 @@ export class LandingPageComponent {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-  }
-
-  changeReservationFlag(event: Event) {
-    if (this.isBurgerSpread) {
-      this.isBurgerSpread = false;
-      return;
-    }
-    this.isReservationSpread = true;
-    event.stopPropagation();
-  }
-
-  changeBurgerFlag(event: Event) {
-    if (this.isReservationSpread) {
-      this.isReservationSpread = false;
-      return;
-    }
-    this.isBurgerSpread = true;
-    event.stopPropagation();
-  }
-
-  revertFlags() {
-    this.isReservationSpread = false;
-    this.isBurgerSpread = false;
-    this.languageMenuIsOpened = false;
-  }
-
-  openLanguageMenu(event: Event) {
-    this.languageMenuIsOpened = !this.languageMenuIsOpened;
-    console.log(this.languageMenuIsOpened);
-
-    event.stopPropagation();
   }
 }

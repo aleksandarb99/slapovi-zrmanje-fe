@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { LandingPageComponent } from './components/pages/landing-page/landing-page.component';
 import { PageSectionComponent } from './components/utils/page-section/page-section.component';
 import { CampPageComponent } from './components/pages/camp-page/camp-page.component';
+import { HeaderComponent } from './components/utils/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
     PageSectionComponent,
-    CampPageComponent
+    CampPageComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
