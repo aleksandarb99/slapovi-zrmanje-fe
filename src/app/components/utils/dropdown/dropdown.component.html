@@ -1,0 +1,64 @@
+<div class="input-wrapper">
+    <p class="input-label">{{label}}</p>
+    <div class="input-rectangle" (click)="this.showOrHide($event)">
+        <p class="input-rectangle-text" [ngClass]="{'disable-bold': this.line == this.initialLine}">
+            {{value1 == 0 &&
+                value2 == 0 &&
+                value3 == 0 &&
+                value4 == 0 ? initialLine : generateLine()}}</p>
+    </div>
+    <div *ngIf="divIsOpened" class="input-dropdown-container" (click)="preventEvent($event)">
+        <div class="input-dropdown-container-item">
+            <div class="around-p">
+                <p class="big-p">{{title1}}</p>
+                <p class="small-p">{{subtitle1}}</p>
+            </div>
+            <div class="around-buttons">
+                <button [ngClass]="{'disabled': value1==0}" (click)="lower(0, $event)"><</button>
+                <div class="around-value">
+                    <p>{{value1}}</p>
+                </div>
+                <button (click)="raise(0, $event)">></button>
+            </div>
+        </div>
+        <div class="input-dropdown-container-item">
+            <div class="around-p">
+                <p class="big-p">{{title2}}</p>
+                <p class="small-p">{{subtitle2}}</p>
+            </div>
+            <div class="around-buttons">
+                <button [ngClass]="{'disabled': value2==0}" (click)="lower(1, $event)"><</button>
+                <div class="around-value">
+                    <p>{{value2}}</p>
+                </div>
+                <button (click)="raise(1, $event)">></button>
+            </div>
+        </div>
+        <div class="input-dropdown-container-item">
+            <div class="around-p">
+                <p class="big-p">{{title3}}</p>
+                <p class="small-p">{{subtitle3}}</p>
+            </div>
+            <div class="around-buttons">
+                <button [ngClass]="{'disabled': value3==0}" (click)="lower(2, $event)"><</button>
+                <div class="around-value">
+                    <p>{{value3}}</p>
+                </div>
+                <button (click)="raise(2, $event)">></button>
+            </div>
+        </div>
+        <div class="input-dropdown-container-item">
+            <div class="around-p">
+                <p class="big-p">{{title4}}</p>
+                <p class="small-p">{{subtitle4}}</p>
+            </div>
+            <div class="around-buttons">
+                <button [ngClass]="{'disabled': value4==0}" (click)="lower(3, $event)"><</button>
+                <div class="around-value">
+                    <p>{{value4}}</p>
+                </div>
+                <button (click)="raise(3, $event)">></button>
+            </div>
+        </div>
+    </div>
+</div>

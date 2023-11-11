@@ -60,7 +60,7 @@ export class LandingPageComponent implements OnInit {
 
       setTimeout(() => {
         this.screenIsMoving = false;
-      }, 300);
+      }, 800);
     }
   }
 
@@ -85,7 +85,7 @@ export class LandingPageComponent implements OnInit {
 
       setTimeout(() => {
         this.screenIsMoving = false;
-      }, 300);
+      }, 800);
     }
   }
 

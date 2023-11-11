@@ -1,0 +1,117 @@
+$base-blue-color: #17555E
+$base-light-blue-color: #CBD5E1
+$base-white: #FFF
+$div-width: 20vw
+// $div-width: 330px
+
+.input-wrapper
+    display: flex
+    align-items: flex-start
+    flex-direction: column
+    margin-left: 2vw
+
+.input-label
+    color: $base-blue-color
+    font-family: Roboto Slab
+    font-size: 16px
+    font-style: normal
+    font-weight: bold
+    line-height: 20px
+
+.input-rectangle
+    -webkit-user-select: none
+    -ms-user-select: none
+    user-select: none
+    display: flex
+    width: $div-width
+    height: 46px
+    align-items: center
+    flex-shrink: 0
+    border: 1px solid $base-light-blue-color
+    background: $base-white
+    cursor: pointer
+
+.input-rectangle-text
+    margin-left: 1vw
+    font-size: 16px
+    color: $base-blue-color
+    font-weight: bold
+
+.disable-bold
+    font-weight: normal
+
+.input-dropdown-container
+    position: absolute
+    z-index: 2
+    margin-top: 100px
+    -webkit-user-select: none
+    -ms-user-select: none
+    user-select: none
+    display: flex
+    width: $div-width
+    flex-direction: column
+    align-items: center
+    flex-shrink: 0
+    border: 1px solid $base-light-blue-color
+    background: $base-white
+
+.input-dropdown-container-item
+    padding: 5px 0px
+    display: flex
+    align-items: center
+    justify-content: space-between
+    width: 100%
+
+.around-p
+    display: flex
+    flex-direction: column
+    margin-left: 20px
+    width: 120px
+
+.big-p
+    font-weight: bold
+    color: $base-blue-color
+    margin-bottom: 0px
+    margin-top: 0px
+
+.small-p
+    font-weight: normal
+    color: $base-blue-color
+    margin-top: 0px
+    margin-bottom: 0px
+
+.around-buttons
+    display: flex
+    flex-direction: row
+    align-items: center
+    margin-right: 20px
+
+.around-value
+    width: 30px
+    display: flex
+    align-items: center
+    justify-content: center
+    p
+        font-weight: bold
+        color: $base-blue-color
+
+.disabled
+    opacity: 0.3
+    cursor: default
+
+.disabled:hover
+    background-color: white
+
+button
+    margin-left: 5px
+    margin-right: 5px
+    cursor: pointer
+    background-color: white
+    border: 1px solid $base-light-blue-color
+    padding: 6px 12px
+    font-weight: bold
+    color: $base-blue-color
+    font-size: 16px
+
+button:hover
+    background-color: $base-light-blue-color
