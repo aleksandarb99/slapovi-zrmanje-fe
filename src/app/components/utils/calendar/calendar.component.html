@@ -1,0 +1,50 @@
+<div class="input-wrapper">
+    <p class="input-label">{{label}}</p>
+    <div class="input-rectangle" (click)="this.showOrHide($event)">
+        <p class="input-rectangle-text" [ngClass]="{'disable-bold': this.line == this.initialLine}">
+            {{chosenStartDate ? generateDateString(chosenStartDate) : checkInLabel}} - 
+            {{chosenEndDate ?  generateDateString(chosenEndDate) : checkOutLabel}}</p>
+    </div>
+    <div *ngIf="divIsOpened" class="input-calendar-container" (click)="preventEvent($event)">
+        <div class="input-calendar-container-item">
+            <div class="month-year-container">
+                <div>
+                    <button [ngClass]="{'disabled-button': !isLeftCalendarBackBtnClickable}" (click)="decreaseBothCalendars()"><</button>
+                    <button (click)="increaseBothCalendars()">></button>
+                </div>
+                <p class="month-year">{{leftCalendarMonth}} {{leftYearCounter}}</p>
+            </div>
+            <div class="days">
+                <div *ngFor="let day of days">{{day}}</div>
+            </div>
+            <button *ngFor="let day of [].constructor(leftCalendarsDayOfFirst); let i = index" class="hidden-button"></button>
+            <app-calendar-day *ngFor="let day of leftCalendarDaysList; let i = index" 
+            [currentDay]="currentDay"
+            [currentMonth]="currentMonth"
+            [currentYear]="currentYear"
+            [day]="i + 1"
+            [month]="leftMonthCounter"
+            [year]="leftYearCounter"></app-calendar-day>
+        </div>
+        <div class="input-calendar-container-item">
+            <div class="month-year-container reverse-month-year-arrows">
+                <div>
+                    <button [ngClass]="{'disabled-button': !isRightCalendarBackBtnClickable}" (click)="decreaseRightCalendar(true)"><</button>
+                    <button (click)="increaseRightCalendar(true)">></button>
+                </div>
+                <p class="month-year">{{rightCalendarMonth}} {{rightYearCounter}}</p>
+            </div>
+            <div class="days">
+                <div *ngFor="let day of days">{{day}}</div>
+            </div>
+            <button *ngFor="let day of [].constructor(rightCalendarsDayOfFirst); let i = index" class="hidden-button"></button>
+            <app-calendar-day *ngFor="let day of rightCalendarDaysList; let i = index" 
+            [currentDay]="currentDay"
+            [currentMonth]="currentMonth"
+            [currentYear]="currentYear"
+            [day]="i + 1"
+            [month]="rightMonthCounter"
+            [year]="rightYearCounter"></app-calendar-day>
+        </div>
+    </div>
+</div>

@@ -1,19 +1,20 @@
 $base-blue-color: #17555E
 $base-light-blue-color: #CBD5E1
 $base-white: #FFF
-$div-width: 20vw
+$div-width: 34vw
 // $div-width: 330px
 
 .input-wrapper
     display: flex
-    align-items: flex-start
     position: relative
+    align-items: flex-start
     flex-direction: column
     margin-left: 2vw
+    font-family: 'Roboto Slab', sans-serif !important
+    font-weight: 100 !important
 
 .input-label
     color: $base-blue-color
-    font-family: Roboto Slab
     font-size: 16px
     font-style: normal
     font-weight: bold
@@ -41,7 +42,7 @@ $div-width: 20vw
 .disable-bold
     font-weight: normal
 
-.input-dropdown-container
+.input-calendar-container
     position: absolute
     z-index: 2
     margin-top: 100px
@@ -50,42 +51,21 @@ $div-width: 20vw
     user-select: none
     display: flex
     width: $div-width
-    flex-direction: column
-    align-items: center
+    flex-direction: row
+    align-items: flex-start
+    justify-content: space-around
     flex-shrink: 0
     border: 1px solid $base-light-blue-color
     background: $base-white
+    padding-bottom: 2vh
+    box-shadow: 0px 12px 24px 0px rgba(0, 0, 0, 0.10)
 
-.input-dropdown-container-item
-    padding: 5px 0px
+.input-calendar-container-item
     display: flex
-    align-items: center
-    justify-content: space-between
-    width: 100%
-
-.around-p
-    display: flex
-    flex-direction: column
-    margin-left: 20px
-    width: 120px
-
-.big-p
-    font-weight: bold
-    color: $base-blue-color
-    margin-bottom: 0px
-    margin-top: 0px
-
-.small-p
-    font-weight: normal
-    color: $base-blue-color
-    margin-top: 0px
-    margin-bottom: 0px
-
-.around-buttons
-    display: flex
-    flex-direction: row
-    align-items: center
-    margin-right: 20px
+    flex-wrap: wrap
+    justify-content: flex-start
+    width: 14vw
+    overflow-x: hidden
 
 .around-value
     width: 30px
@@ -104,15 +84,54 @@ $div-width: 20vw
     background-color: white
 
 button
-    margin-left: 5px
-    margin-right: 5px
+    margin: 0
     cursor: pointer
     background-color: white
     border: 1px solid $base-light-blue-color
-    padding: 6px 12px
-    font-weight: bold
+    font-weight: 100
     color: $base-blue-color
     font-size: 16px
+    width: 2vw
+    height: 2vw
+
+.hidden-button
+    border: none
+
+.hidden-button:hover
+    background-color: white
+    cursor: default
 
 button:hover
     background-color: $base-light-blue-color
+
+.month-year-container
+    width: 100%
+    height: 7vh
+    display: flex
+    align-items: center
+    justify-content: space-between
+    button
+        border: none
+.month-year-container button:hover
+    cursor: default
+
+.month-year
+    color: $base-blue-color
+    font-size: 20px
+    font-weight: 200 !important
+
+.reverse-month-year-arrows
+    flex-direction: row-reverse
+
+.days
+    width: 100%
+    display: flex
+    flex-direction: row
+    justify-content: space-around
+    margin-bottom: 5px
+
+.disabled-button
+    color: $base-light-blue-color
+
+.disabled-button:hover
+    background-color: white
