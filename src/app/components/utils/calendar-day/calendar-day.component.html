@@ -1,0 +1,5 @@
+<button 
+    [ngClass]="{'chosen-day': isChosenDay, 'between-day': isBetweenDays, 'past-day': isForbidden}" 
+    (click)="clickedButton()">
+    {{day}}
+</button>

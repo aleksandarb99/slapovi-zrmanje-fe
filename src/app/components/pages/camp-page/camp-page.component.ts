@@ -15,8 +15,7 @@ export class CampPageComponent {
   text: LanguageLabel | undefined;
   @ViewChild(HeaderComponent, {static : true}) headerComponent : HeaderComponent | undefined;
 
-  d1IsOpenedSubject = new Subject<boolean>();
-  d2IsOpenedSubject = new Subject<boolean>();
+  divIsOpenedSubject = new Subject<string>();
 
   constructor(private textService: TextService) {
   }
@@ -31,8 +30,7 @@ export class CampPageComponent {
   }
 
   revertFlags() {
-    this.d1IsOpenedSubject.next(true);
-    this.d2IsOpenedSubject.next(true);
+    this.divIsOpenedSubject.next('');
   }
 
   saveTextValue(textValue: TextValue) {
@@ -49,10 +47,6 @@ export class CampPageComponent {
   }
 
   onShowDivEvent(label: string) {
-    if (label === this.text!.dropdownLodgingLabel) {
-      this.d1IsOpenedSubject.next(true);
-    } else {
-      this.d2IsOpenedSubject.next(true);
-    }
+    this.divIsOpenedSubject.next(label);
   }
 }

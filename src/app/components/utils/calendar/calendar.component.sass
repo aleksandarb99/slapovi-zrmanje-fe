@@ -1,0 +1,136 @@
+$base-blue-color: #17555E
+$base-light-blue-color: #CBD5E1
+$base-white: #FFF
+$div-width: 34vw
+// $div-width: 330px
+
+.input-wrapper
+    display: flex
+    align-items: flex-start
+    flex-direction: column
+    margin-left: 2vw
+    font-family: 'Roboto Slab', sans-serif !important
+    font-weight: 100 !important
+
+.input-label
+    color: $base-blue-color
+    font-size: 16px
+    font-style: normal
+    font-weight: bold
+    line-height: 20px
+
+.input-rectangle
+    -webkit-user-select: none
+    -ms-user-select: none
+    user-select: none
+    display: flex
+    width: $div-width
+    height: 46px
+    align-items: center
+    flex-shrink: 0
+    border: 1px solid $base-light-blue-color
+    background: $base-white
+    cursor: pointer
+
+.input-rectangle-text
+    margin-left: 1vw
+    font-size: 16px
+    color: $base-blue-color
+    font-weight: bold
+
+.disable-bold
+    font-weight: normal
+
+.input-calendar-container
+    position: absolute
+    z-index: 2
+    margin-top: 100px
+    -webkit-user-select: none
+    -ms-user-select: none
+    user-select: none
+    display: flex
+    width: $div-width
+    flex-direction: row
+    align-items: flex-start
+    justify-content: space-around
+    flex-shrink: 0
+    border: 1px solid $base-light-blue-color
+    background: $base-white
+    padding-bottom: 2vh
+    box-shadow: 0px 12px 24px 0px rgba(0, 0, 0, 0.10)
+
+.input-calendar-container-item
+    display: flex
+    flex-wrap: wrap
+    justify-content: flex-start
+    width: 14vw
+    overflow-x: hidden
+
+.around-value
+    width: 30px
+    display: flex
+    align-items: center
+    justify-content: center
+    p
+        font-weight: bold
+        color: $base-blue-color
+
+.disabled
+    opacity: 0.3
+    cursor: default
+
+.disabled:hover
+    background-color: white
+
+button
+    margin: 0
+    cursor: pointer
+    background-color: white
+    border: 1px solid $base-light-blue-color
+    font-weight: 100
+    color: $base-blue-color
+    font-size: 16px
+    width: 2vw
+    height: 2vw
+
+.hidden-button
+    border: none
+
+.hidden-button:hover
+    background-color: white
+    cursor: default
+
+button:hover
+    background-color: $base-light-blue-color
+
+.month-year-container
+    width: 100%
+    height: 7vh
+    display: flex
+    align-items: center
+    justify-content: space-between
+    button
+        border: none
+.month-year-container button:hover
+    cursor: default
+
+.month-year
+    color: $base-blue-color
+    font-size: 20px
+    font-weight: 200 !important
+
+.reverse-month-year-arrows
+    flex-direction: row-reverse
+
+.days
+    width: 100%
+    display: flex
+    flex-direction: row
+    justify-content: space-around
+    margin-bottom: 5px
+
+.disabled-button
+    color: $base-light-blue-color
+
+.disabled-button:hover
+    background-color: white

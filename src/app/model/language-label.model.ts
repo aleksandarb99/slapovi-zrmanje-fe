@@ -38,6 +38,8 @@ export interface LanguageLabel {
   dropdownLodgingSubtitle4: string;
   checkBoxTitle: string;
   checkAvailabilityButtonText: string;
-
+  calendarLabel: string;
+  calendarDays: string;
+  calendarMonths: string;
   // TODO: Add every label here
 }

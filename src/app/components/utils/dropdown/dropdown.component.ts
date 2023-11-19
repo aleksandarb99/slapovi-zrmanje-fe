@@ -41,9 +41,11 @@ export class DropdownComponent implements AfterContentInit {
 
   ngAfterContentInit(): void {
     this.divIsOpenedSubject.subscribe({
-      next: (v: boolean) => {
-        if (this.divIsOpened) {
-          this.divIsOpened = !this.divIsOpened;
+      next: (incomingLabel: string) => {
+        if (this.label === incomingLabel) {
+          this.divIsOpened = true;
+        } else {
+          this.divIsOpened = false;
         }
       },
     });
@@ -54,12 +56,11 @@ export class DropdownComponent implements AfterContentInit {
   }
 
   showOrHide(event: Event) {
-    this.divIsOpened = !this.divIsOpened;
-
     if (this.divIsOpened) {
+      this.divIsOpened = false;
+    } else {
       this.showDivEvent.emit(this.label);
     }
-
     event.stopPropagation();
   }
 

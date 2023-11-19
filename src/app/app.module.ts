@@ -10,6 +10,8 @@ import { DropdownComponent } from './components/utils/dropdown/dropdown.componen
 import { TextInputComponent } from './components/utils/text-input/text-input.component';
 import { CheckboxComponent } from './components/utils/checkbox/checkbox.component';
 import { HeaderComponent } from './components/utils/header/header.component';
+import { CalendarComponent } from './components/utils/calendar/calendar.component';
+import { CalendarDayComponent } from './components/utils/calendar-day/calendar-day.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { HeaderComponent } from './components/utils/header/header.component';
     DropdownComponent,
     TextInputComponent,
     CheckboxComponent,
-	  HeaderComponent
+	  HeaderComponent,
+   CalendarComponent,
+   CalendarDayComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
