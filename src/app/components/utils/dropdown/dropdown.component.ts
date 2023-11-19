@@ -3,16 +3,16 @@ import {
   Input,
   Output,
   EventEmitter,
-  AfterContentInit,
 } from '@angular/core';
 import { IntValues } from 'src/app/model/int-values.model';
+import { CommonService } from 'src/app/services/common.service';
 
 @Component({
   selector: 'app-dropdown',
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.sass'],
 })
-export class DropdownComponent implements AfterContentInit {
+export class DropdownComponent {
   line: string = '';
   divIsOpened: boolean = false;
 
@@ -20,8 +20,6 @@ export class DropdownComponent implements AfterContentInit {
   value2: number = 0;
   value3: number = 0;
   value4: number = 0;
-
-  @Input() divIsOpenedSubject: any;
 
   @Input() label: string = '';
   @Input() initialLine: string = '';
@@ -37,21 +35,11 @@ export class DropdownComponent implements AfterContentInit {
   @Output() valueChangedEvent = new EventEmitter<IntValues>();
   @Output() showDivEvent = new EventEmitter<string>();
 
-  constructor() {}
-
-  ngAfterContentInit(): void {
-    this.divIsOpenedSubject.subscribe({
-      next: (incomingLabel: string) => {
-        if (this.label === incomingLabel) {
-          this.divIsOpened = true;
-        } else {
-          this.divIsOpened = false;
-        }
-      },
-    });
+  constructor(private commonService: CommonService) {
+    this.commonService.componentOpenedCampPage.subscribe(incomingLabel => this.divIsOpened = this.label === incomingLabel);
   }
 
-  preventEvent(event: Event) {
+  preventEvent(event: Event){
     event.stopPropagation();
   }
 
@@ -59,7 +47,7 @@ export class DropdownComponent implements AfterContentInit {
     if (this.divIsOpened) {
       this.divIsOpened = false;
     } else {
-      this.showDivEvent.emit(this.label);
+      this.commonService.updateComponentVisibility(this.label);
     }
     event.stopPropagation();
   }

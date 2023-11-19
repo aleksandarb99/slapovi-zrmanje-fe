@@ -16,6 +16,7 @@ export class CalendarDayComponent implements OnInit {
 
   @Input() currentDay: number | undefined;
   @Input() currentMonth: number | undefined;
+  @Input() currentYear: number | undefined;
   @Input() day: number | undefined;
   @Input() month: number | undefined;
   @Input() year: number | undefined;
@@ -27,14 +28,14 @@ export class CalendarDayComponent implements OnInit {
 
   ngOnInit() {
     this.date = new Date(`${this.year}-${this.month}-${this.day}`);
-    if (this.day && this.currentDay && this.day < this.currentDay && this.month === this.currentMonth) {
+    if (this.day && this.currentDay && this.day < this.currentDay && this.month === this.currentMonth && this.year === this.currentYear) {
       this.isForbidden = true;
     }
     this.calendarService.startDate.subscribe(data => this.setStartDate(data));
     this.calendarService.endDate.subscribe(data => this.setEndDate(data));
   }
 
-  clickedButton() {
+  clickedButton(event: Event) {
     if (this.isForbidden) {
       return;
     }

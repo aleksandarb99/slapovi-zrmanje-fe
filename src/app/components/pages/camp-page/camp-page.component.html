@@ -1,6 +1,6 @@
 <main>
     <app-header #appHeader></app-header>
-    <div (click)="appHeader.revertFlags(); revertFlags()">
+    <div (click)="appHeader.revertFlags(); commonService.updateComponentVisibility('')">
         <div class="camp-page">
             <div class="page-row">
                 <app-text-input
@@ -25,32 +25,23 @@
             <div class="page-row">
                 <app-dropdown 
                     [initialLine]="text!.dropdownGuestsInitialLine" [label]="text!.dropdownGuestsLabel"
-                    [divIsOpenedSubject]="divIsOpenedSubject"
                     [title1]="text!.dropdownGuestsTitle1" [subtitle1]="text!.dropdownGuestsSubtitle1"
                     [title2]="text!.dropdownGuestsTitle2" [subtitle2]="text!.dropdownGuestsSubtitle2"
                     [title3]="text!.dropdownGuestsTitle3" [subtitle3]="text!.dropdownGuestsSubtitle3"
                     [title4]="text!.dropdownGuestsTitle4" [subtitle4]="text!.dropdownGuestsSubtitle4"
-                    (showDivEvent)="onShowDivEvent($event)"
                     (valueChangedEvent)="saveIntValues($event)">
                 </app-dropdown>
                 <app-dropdown 
                     [initialLine]="text!.dropdownLodgingInitialLine" [label]="text!.dropdownLodgingLabel"
-                    [divIsOpenedSubject]="divIsOpenedSubject"
                     [title1]="text!.dropdownLodgingTitle1" [subtitle1]="text!.dropdownLodgingSubtitle1"
                     [title2]="text!.dropdownLodgingTitle2" [subtitle2]="text!.dropdownLodgingSubtitle2"
                     [title3]="text!.dropdownLodgingTitle3" [subtitle3]="text!.dropdownLodgingSubtitle3"
                     [title4]="text!.dropdownLodgingTitle4" [subtitle4]="text!.dropdownLodgingSubtitle4"
-                    (showDivEvent)="onShowDivEvent($event)"
                     (valueChangedEvent)="saveIntValues($event)">
                 </app-dropdown>
             </div>
             <div class="page-row">
-                <app-calendar 
-                [initialLine]="text!.calendarLabel" 
-                [label]="text!.calendarLabel"
-                [divIsOpenedSubject]="divIsOpenedSubject"
-                (showDivEvent)="onShowDivEvent($event)"
-                ></app-calendar>
+                <app-calendar></app-calendar>
                 <app-checkbox 
                     [label]="text!.checkBoxTitle"
                     (valueChangedEvent)="saveCheckboxValue($event)"></app-checkbox>
@@ -78,7 +69,7 @@
 
         </div>
     </div>
-    <footer (click)="appHeader.revertFlags(); revertFlags()">
+    <footer (click)="appHeader.revertFlags(); commonService.updateComponentVisibility('')">
         <h3>{{text!.landingPageCopyrightText}} 2024 - Slapovi Zrmanje</h3>
     </footer>
 </main>

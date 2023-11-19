@@ -2,9 +2,9 @@ import { Component, ViewChild } from '@angular/core';
 import { IntValues } from 'src/app/model/int-values.model';
 import { LanguageLabel } from 'src/app/model/language-label.model';
 import { HeaderComponent } from '../../utils/header/header.component';
-import { Subject } from 'rxjs';
 import { TextValue } from 'src/app/model/text-value.model';
 import { TextService } from 'src/app/services/text.service';
+import { CommonService } from 'src/app/services/common.service';
 
 @Component({
   selector: 'app-camp-page',
@@ -15,9 +15,7 @@ export class CampPageComponent {
   text: LanguageLabel | undefined;
   @ViewChild(HeaderComponent, {static : true}) headerComponent : HeaderComponent | undefined;
 
-  divIsOpenedSubject = new Subject<string>();
-
-  constructor(private textService: TextService) {
+  constructor(private textService: TextService, protected commonService: CommonService) {
   }
 
   ngOnInit() {
@@ -27,10 +25,6 @@ export class CampPageComponent {
 
   checkAvailability() {
     console.log('checkAvailability');
-  }
-
-  revertFlags() {
-    this.divIsOpenedSubject.next('');
   }
 
   saveTextValue(textValue: TextValue) {
@@ -44,9 +38,5 @@ export class CampPageComponent {
 
   saveCheckboxValue(booleanValue: boolean) {
     // console.log(booleanValue);
-  }
-
-  onShowDivEvent(label: string) {
-    this.divIsOpenedSubject.next(label);
   }
 }
