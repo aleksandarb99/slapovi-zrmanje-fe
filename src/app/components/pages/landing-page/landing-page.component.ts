@@ -3,6 +3,7 @@ import { LandingPageSection } from 'src/app/model/landing-page-section.model';
 import { LanguageLabel } from 'src/app/model/language-label.model';
 import { TextService } from 'src/app/services/text.service';
 import { HeaderComponent } from '../../utils/header/header.component';
+import { CommonService } from 'src/app/services/common.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -16,8 +17,8 @@ export class LandingPageComponent implements OnInit {
   sections: LandingPageSection[] = [];
   @ViewChild(HeaderComponent, {static : true}) headerComponent : HeaderComponent | undefined;
 
-  constructor(private el: ElementRef, private textService: TextService) {
-    this.overrideWheelEvent();
+  constructor(private el: ElementRef, private textService: TextService, private commonService: CommonService) {
+    this.commonService.overrideWheelEvent(this);
   }
 
   ngOnInit() {
@@ -27,18 +28,6 @@ export class LandingPageComponent implements OnInit {
 
   setSections(sections: LandingPageSection[]) {
     this.sections = sections;
-  }
-
-  overrideWheelEvent() {
-    document.addEventListener(
-      'wheel',
-      (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        this.scrollToSection(event.deltaY);
-      },
-      { passive: false }
-    );
   }
 
   onScroll(event: Event): void {

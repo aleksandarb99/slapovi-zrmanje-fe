@@ -20,6 +20,7 @@ export class CampPageComponent {
 
   ngOnInit() {
     this.textService.text.subscribe(data => this.text = data);
+    this.commonService.removeWheelEvent();
     this.headerComponent?.changeHeaderTheme(true);
   }
 
