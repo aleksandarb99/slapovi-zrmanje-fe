@@ -1,5 +1,5 @@
 <main>
-    <app-header #appHeader></app-header>
+    <app-header #appHeader [position]="'sticky'"></app-header>
     <div (click)="appHeader.revertFlags(); commonService.updateComponentVisibility('')">
         <div class="camp-page">
             <div class="page-row">

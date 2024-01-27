@@ -1,5 +1,5 @@
 <main (scroll)="onScroll($event)">
-    <app-header #appHeader (sectionsEvent)="setSections($event)" (scrollUpEvent)="scrollToStart()"></app-header>
+    <app-header #appHeader (sectionsEvent)="setSections($event)" (scrollUpEvent)="scrollToStart()" [position]="'fixed'"></app-header>
     <div class="landing-container" (click)="appHeader.revertFlags()">
         <div class="landing-image-shadow" id="page0"></div>
         <img src="../../../assets/pictures/LandingPage.png"/>
