@@ -88,6 +88,8 @@ export class CampPageComponent {
       console.log('Invalid email');
       return;
     }
+
+    // TODO: Logic here
   }
 
   saveTextValue(textValue: TextValue) {
