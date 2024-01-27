@@ -6,6 +6,8 @@ import { TextValue } from 'src/app/model/text-value.model';
 import { TextService } from 'src/app/services/text.service';
 import { CommonService } from 'src/app/services/common.service';
 import { ReceiptItem } from 'src/app/model/receipt-item.model';
+import { GuestsValue } from 'src/app/model/guests.value.model';
+import { CampLodgingValue } from 'src/app/model/camp-lodging.model';
 
 @Component({
   selector: 'app-camp-page',
@@ -18,18 +20,26 @@ export class CampPageComponent {
     | HeaderComponent
     | undefined;
 
-  // TODO: Hardcoded values
-  receiptItems: ReceiptItem[] = [
-    {
-      name: 'Soba 1',
-      price: 10,
-    },
-    {
-      name: 'Soba 2',
-      price: 5,
-    },
-  ];
+  receiptItems: ReceiptItem[] = [];
   totalPrice: number = 0;
+
+  firstName: string = '';
+  lastName: string = '';
+  email: string = '';
+  guests: GuestsValue = {
+    adults: 0,
+    children: 0,
+    infants: 0,
+    pets: 0,
+  };
+  lodging: CampLodgingValue = {
+    tent: 0,
+    caravan: 0,
+    car: 0,
+    speepingBag: 0,
+  };
+  powerSupply: boolean = false;
+  dates: string[] = [];
 
   constructor(
     private textService: TextService,
@@ -42,29 +52,77 @@ export class CampPageComponent {
     this.headerComponent?.changeHeaderTheme(true);
   }
 
-  calculatePrice() {
-    console.log('usao');
+  // TODO: Do we keep this function here
+  validateEmail(email: string) {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  }
 
-    this.totalPrice = 0;
-    this.receiptItems.forEach((item) => {
-      this.totalPrice += item.price;
-    });
+  calculatePrice() {
+    // TODO: Uzmi podatke i salji na endpoint
+    let mockedResponse = {
+      items: [
+        {
+          name: 'Soba 1',
+          price: 10,
+        },
+        {
+          name: 'Soba 2',
+          price: 5,
+        },
+      ],
+      totalPrice: 25,
+    };
+
+    this.receiptItems = mockedResponse.items;
+    this.totalPrice = mockedResponse.totalPrice;
   }
 
   checkAvailability() {
     console.log('checkAvailability');
+
+    if (!this.validateEmail(this.email)) {
+      console.log('Invalid email');
+      return;
+    }
   }
 
   saveTextValue(textValue: TextValue) {
-    // TODO: Validate if email
-    // console.log(textValue);
+    if (textValue.label === 'First Name') {
+      this.firstName = textValue.value;
+    }
+    if (textValue.label === 'Last Name') {
+      this.lastName = textValue.value;
+    }
+    if (textValue.label === 'Email Address') {
+      this.email = textValue.value;
+    }
   }
 
   saveIntValues(intValues: IntValues) {
-    // console.log(intValues);
+    if (intValues.label === 'Lodging') {
+      this.lodging = {
+        tent: intValues.value1,
+        caravan: intValues.value2,
+        car: intValues.value3,
+        speepingBag: intValues.value4,
+      };
+    } else {
+      this.guests = {
+        adults: intValues.value1,
+        children: intValues.value2,
+        infants: intValues.value3,
+        pets: intValues.value4,
+      };
+    }
   }
 
   saveCheckboxValue(booleanValue: boolean) {
-    // console.log(booleanValue);
+    this.powerSupply = booleanValue;
   }
+
+  // TODO: Uradi primanje vrednosti datuma
 }
