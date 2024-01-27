@@ -2,52 +2,75 @@
     <app-header #appHeader [position]="'sticky'"></app-header>
     <div (click)="appHeader.revertFlags(); commonService.updateComponentVisibility('')">
         <div class="camp-page">
-            <div class="page-row">
-                <app-text-input
-                    [label]="text!.inputFirstNameText"
-                    [inputType]="'TEXT'"
-                    (valueChangedEvent)="saveTextValue($event)">
-                </app-text-input>
-                <app-text-input
-                    [label]="text!.inputLastNameText"
-                    [inputType]="'TEXT'"
-                    (valueChangedEvent)="saveTextValue($event)">
-                </app-text-input>
-            </div>
-            <div class="page-row">
-                <app-text-input
-                    [label]="text!.inputEmailText"
-                    [inputType]="'EMAIL'"
-                    [fill]="true"
-                    (valueChangedEvent)="saveTextValue($event)">
-                </app-text-input>
-            </div>
-            <div class="page-row">
-                <app-dropdown 
-                    [initialLine]="text!.dropdownGuestsInitialLine" [label]="text!.dropdownGuestsLabel"
-                    [title1]="text!.dropdownGuestsTitle1" [subtitle1]="text!.dropdownGuestsSubtitle1"
-                    [title2]="text!.dropdownGuestsTitle2" [subtitle2]="text!.dropdownGuestsSubtitle2"
-                    [title3]="text!.dropdownGuestsTitle3" [subtitle3]="text!.dropdownGuestsSubtitle3"
-                    [title4]="text!.dropdownGuestsTitle4" [subtitle4]="text!.dropdownGuestsSubtitle4"
-                    (valueChangedEvent)="saveIntValues($event)">
-                </app-dropdown>
-                <app-dropdown 
-                    [initialLine]="text!.dropdownLodgingInitialLine" [label]="text!.dropdownLodgingLabel"
-                    [title1]="text!.dropdownLodgingTitle1" [subtitle1]="text!.dropdownLodgingSubtitle1"
-                    [title2]="text!.dropdownLodgingTitle2" [subtitle2]="text!.dropdownLodgingSubtitle2"
-                    [title3]="text!.dropdownLodgingTitle3" [subtitle3]="text!.dropdownLodgingSubtitle3"
-                    [title4]="text!.dropdownLodgingTitle4" [subtitle4]="text!.dropdownLodgingSubtitle4"
-                    (valueChangedEvent)="saveIntValues($event)">
-                </app-dropdown>
-            </div>
-            <div class="page-row">
-                <app-calendar></app-calendar>
-                <app-checkbox 
-                    [label]="text!.checkBoxTitle"
-                    (valueChangedEvent)="saveCheckboxValue($event)"></app-checkbox>
-            </div>
-            <div class="page-row">
-                <div class="check-button" (click)="checkAvailability()">{{text!.checkAvailabilityButtonText}}</div>
+            <div class="upper-content">
+                <div class="form-div">
+                    <div class="page-row">
+                        <app-text-input
+                            [label]="text!.inputFirstNameText"
+                            [inputType]="'TEXT'"
+                            (valueChangedEvent)="saveTextValue($event)">
+                        </app-text-input>
+                        <app-text-input
+                            [label]="text!.inputLastNameText"
+                            [inputType]="'TEXT'"
+                            (valueChangedEvent)="saveTextValue($event)">
+                        </app-text-input>
+                    </div>
+                    <div class="page-row">
+                        <app-text-input
+                            [label]="text!.inputEmailText"
+                            [inputType]="'EMAIL'"
+                            [fill]="true"
+                            (valueChangedEvent)="saveTextValue($event)">
+                        </app-text-input>
+                    </div>
+                    <div class="page-row">
+                        <app-dropdown 
+                            [initialLine]="text!.dropdownGuestsInitialLine" [label]="text!.dropdownGuestsLabel"
+                            [title1]="text!.dropdownGuestsTitle1" [subtitle1]="text!.dropdownGuestsSubtitle1"
+                            [title2]="text!.dropdownGuestsTitle2" [subtitle2]="text!.dropdownGuestsSubtitle2"
+                            [title3]="text!.dropdownGuestsTitle3" [subtitle3]="text!.dropdownGuestsSubtitle3"
+                            [title4]="text!.dropdownGuestsTitle4" [subtitle4]="text!.dropdownGuestsSubtitle4"
+                            (valueChangedEvent)="saveIntValues($event)">
+                        </app-dropdown>
+                        <app-dropdown 
+                            [initialLine]="text!.dropdownLodgingInitialLine" [label]="text!.dropdownLodgingLabel"
+                            [title1]="text!.dropdownLodgingTitle1" [subtitle1]="text!.dropdownLodgingSubtitle1"
+                            [title2]="text!.dropdownLodgingTitle2" [subtitle2]="text!.dropdownLodgingSubtitle2"
+                            [title3]="text!.dropdownLodgingTitle3" [subtitle3]="text!.dropdownLodgingSubtitle3"
+                            [title4]="text!.dropdownLodgingTitle4" [subtitle4]="text!.dropdownLodgingSubtitle4"
+                            (valueChangedEvent)="saveIntValues($event)">
+                        </app-dropdown>
+                    </div>
+                    <div class="page-row">
+                        <app-calendar></app-calendar>
+                        <app-checkbox 
+                            [label]="text!.checkBoxTitle"
+                            (valueChangedEvent)="saveCheckboxValue($event)"></app-checkbox>
+                    </div>
+                    <div class="page-row">
+                        <div class="check-button" (click)="checkAvailability()">{{text!.checkAvailabilityButtonText}}</div>
+                    </div>
+                </div>
+                <div class="receipt-div">
+                    <div>
+                        <p>{{text!.receiptTitle}}</p>
+                        <p>{{text!.calculator}}</p>
+                        <div class="receipt-item-div"  *ngFor="let item of receiptItems">
+                            <p>{{item.name}}</p>
+                            <p>{{item.price}} €</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="receipt-total-div">
+                            <div class="calculate-button-div">
+                                <div class="calculate-button" (click)="calculatePrice()">{{text!.calculateButtonText}}</div>
+                                <p>{{text!.totalText}}</p>
+                            </div>
+                            <p>{{totalPrice}} €</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- TODO: Add photos -->
@@ -66,7 +89,6 @@
                 <div class="photo-div"></div>
                 <div class="photo-div"></div>
             </div>
-
         </div>
     </div>
     <footer (click)="appHeader.revertFlags(); commonService.updateComponentVisibility('')">

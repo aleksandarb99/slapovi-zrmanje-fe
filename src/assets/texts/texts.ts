@@ -45,7 +45,12 @@ export const texts: LanguageLabel[] = [
     checkAvailabilityButtonText: 'Provjera Dostupnosti',
     calendarLabel: 'Prijava & Odjava',
     calendarDays: 'Po, Ut, Sr, Če, Pe, Su, Ne',
-    calendarMonths: 'Januar, Februar, Mart, April, Maj, Jun, Jul, Avgust, Septembar, Oktobar, Novembar, Decembar'
+    calendarMonths:
+      'Januar, Februar, Mart, April, Maj, Jun, Jul, Avgust, Septembar, Oktobar, Novembar, Decembar',
+    receiptTitle: 'Neće biti naplaćeno još.',
+    calculator: 'Kalkulator:',
+    calculateButtonText: 'Izračunaj',
+    totalText: 'Ukupno:',
   },
   {
     // English
@@ -91,7 +96,12 @@ export const texts: LanguageLabel[] = [
     checkAvailabilityButtonText: 'Check Availability',
     calendarLabel: 'Check-In & Checkout',
     calendarDays: 'Mo, Tu, We, Th, Fr, Sa, Su',
-    calendarMonths: 'January, February, March, April, May, June, July, August, September, October, November, December'
+    calendarMonths:
+      'January, February, March, April, May, June, July, August, September, October, November, December',
+    receiptTitle: 'You wont be charged yet.',
+    calculator: 'Calculator:',
+    calculateButtonText: 'Calculate',
+    totalText: 'In total:',
   },
   {
     // German
@@ -137,6 +147,11 @@ export const texts: LanguageLabel[] = [
     checkAvailabilityButtonText: 'Verfügbarkeit Prüfen',
     calendarLabel: 'Einchecken & Auschecken',
     calendarDays: 'Mo, Di, Mi, Do, Fr, Sa, So',
-    calendarMonths: 'Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember'
+    calendarMonths:
+      'Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember',
+    receiptTitle: 'Ihnen wird noch kein Betrag in Rechnung gestellt.',
+    calculator: 'Taschenrechner:',
+    calculateButtonText: 'Berechnung',
+    totalText: 'In Summe:',
   },
 ];
