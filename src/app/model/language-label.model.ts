@@ -34,6 +34,9 @@ export interface LanguageLabel {
   dropdownRoomLodgingTitle1: string;
   dropdownRoomLodgingTitle2: string;
   dropdownRoomLodgingTitle3: string;
+  dropdownApartmentLodgingTitle1: string;
+  dropdownApartmentLodgingTitle2: string;
+  dropdownApartmentLodgingTitle3: string;
   dropdownLodgingTitle4: string;
   dropdownLodgingSubtitle1: string;
   dropdownLodgingSubtitle2: string;
@@ -41,6 +44,9 @@ export interface LanguageLabel {
   dropdownRoomLodgingSubtitle1: string;
   dropdownRoomLodgingSubtitle2: string;
   dropdownRoomLodgingSubtitle3: string;
+  dropdownApartmentLodgingSubtitle1: string;
+  dropdownApartmentLodgingSubtitle2: string;
+  dropdownApartmentLodgingSubtitle3: string;
   dropdownLodgingSubtitle4: string;
   checkBoxTitle: string;
   checkAvailabilityButtonText: string;

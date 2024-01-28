@@ -104,11 +104,7 @@ export class HeaderComponent {
     }
   }
 
-  redirectToCamp() {
-    this.router.navigate(['/camp']);
-  }
-
-  redirectToRoom() {
-    this.router.navigate(['/room']);
+  redirectTo(route: string) {
+    this.router.navigate(['/' + route]);
   }
 }

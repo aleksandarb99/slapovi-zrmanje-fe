@@ -57,6 +57,12 @@ export const texts: LanguageLabel[] = [
     dropdownRoomLodgingSubtitle1: '2 osobe',
     dropdownRoomLodgingSubtitle2: '2 osobe',
     dropdownRoomLodgingSubtitle3: '3 osobe',
+    dropdownApartmentLodgingTitle1: 'Apartman 1',
+    dropdownApartmentLodgingTitle2: 'Apartman 2',
+    dropdownApartmentLodgingTitle3: 'Apartman 3',
+    dropdownApartmentLodgingSubtitle1: '5 osobe',
+    dropdownApartmentLodgingSubtitle2: '4 osobe',
+    dropdownApartmentLodgingSubtitle3: '4 osobe',
   },
   {
     // English
@@ -114,6 +120,12 @@ export const texts: LanguageLabel[] = [
     dropdownRoomLodgingSubtitle1: '2 Persons',
     dropdownRoomLodgingSubtitle2: '2 Persons',
     dropdownRoomLodgingSubtitle3: '3 Persons',
+    dropdownApartmentLodgingTitle1: 'Apartment 1',
+    dropdownApartmentLodgingTitle2: 'Apartment 2',
+    dropdownApartmentLodgingTitle3: 'Apartment 3',
+    dropdownApartmentLodgingSubtitle1: '5 Persons',
+    dropdownApartmentLodgingSubtitle2: '4 Persons',
+    dropdownApartmentLodgingSubtitle3: '4 Persons',
   },
   {
     // German
@@ -171,5 +183,11 @@ export const texts: LanguageLabel[] = [
     dropdownRoomLodgingSubtitle1: '2 Personen',
     dropdownRoomLodgingSubtitle2: '2 Personen',
     dropdownRoomLodgingSubtitle3: '3 Personen',
+    dropdownApartmentLodgingTitle1: 'Wohnung 1',
+    dropdownApartmentLodgingTitle2: 'Wohnung 2',
+    dropdownApartmentLodgingTitle3: 'Wohnung 3',
+    dropdownApartmentLodgingSubtitle1: '5 Personen',
+    dropdownApartmentLodgingSubtitle2: '4 Personen',
+    dropdownApartmentLodgingSubtitle3: '4 Personen',
   },
 ];

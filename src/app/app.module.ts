@@ -13,6 +13,7 @@ import { HeaderComponent } from './components/utils/header/header.component';
 import { CalendarComponent } from './components/utils/calendar/calendar.component';
 import { CalendarDayComponent } from './components/utils/calendar-day/calendar-day.component';
 import { RoomPageComponent } from './components/pages/room-page/room-page.component';
+import { ApartmentPageComponent } from './components/pages/apartment-page/apartment-page.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { RoomPageComponent } from './components/pages/room-page/room-page.compon
     PageSectionComponent,
     CampPageComponent,
     RoomPageComponent,
+    ApartmentPageComponent,
     DropdownComponent,
     TextInputComponent,
     CheckboxComponent,
