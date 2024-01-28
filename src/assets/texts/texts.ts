@@ -51,6 +51,12 @@ export const texts: LanguageLabel[] = [
     calculator: 'Kalkulator:',
     calculateButtonText: 'Izračunaj',
     totalText: 'Ukupno:',
+    dropdownRoomLodgingTitle1: 'Soba 1',
+    dropdownRoomLodgingTitle2: 'Soba 2',
+    dropdownRoomLodgingTitle3: 'Soba 3',
+    dropdownRoomLodgingSubtitle1: '2 osobe',
+    dropdownRoomLodgingSubtitle2: '2 osobe',
+    dropdownRoomLodgingSubtitle3: '3 osobe',
   },
   {
     // English
@@ -102,6 +108,12 @@ export const texts: LanguageLabel[] = [
     calculator: 'Calculator:',
     calculateButtonText: 'Calculate',
     totalText: 'In total:',
+    dropdownRoomLodgingTitle1: 'Room 1',
+    dropdownRoomLodgingTitle2: 'Room 2',
+    dropdownRoomLodgingTitle3: 'Room 3',
+    dropdownRoomLodgingSubtitle1: '2 Persons',
+    dropdownRoomLodgingSubtitle2: '2 Persons',
+    dropdownRoomLodgingSubtitle3: '3 Persons',
   },
   {
     // German
@@ -153,5 +165,11 @@ export const texts: LanguageLabel[] = [
     calculator: 'Taschenrechner:',
     calculateButtonText: 'Berechnung',
     totalText: 'In Summe:',
+    dropdownRoomLodgingTitle1: 'Zimmer 1',
+    dropdownRoomLodgingTitle2: 'Zimmer 2',
+    dropdownRoomLodgingTitle3: 'Zimmer 3',
+    dropdownRoomLodgingSubtitle1: '2 Personen',
+    dropdownRoomLodgingSubtitle2: '2 Personen',
+    dropdownRoomLodgingSubtitle3: '3 Personen',
   },
 ];

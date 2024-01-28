@@ -97,10 +97,18 @@ export class HeaderComponent {
    * For CampPage    -> switch to Landing page
    */
   checkPageAndReact() {
-    if (this.router.url === '/camp') {
+    if (this.router.url !== '/') {
       this.router.navigate(['/']);
     } else {
       this.scrollUpEvent.emit();
     }
+  }
+
+  redirectToCamp() {
+    this.router.navigate(['/camp']);
+  }
+
+  redirectToRoom() {
+    this.router.navigate(['/room']);
   }
 }

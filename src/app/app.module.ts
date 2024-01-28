@@ -12,6 +12,7 @@ import { CheckboxComponent } from './components/utils/checkbox/checkbox.componen
 import { HeaderComponent } from './components/utils/header/header.component';
 import { CalendarComponent } from './components/utils/calendar/calendar.component';
 import { CalendarDayComponent } from './components/utils/calendar-day/calendar-day.component';
+import { RoomPageComponent } from './components/pages/room-page/room-page.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +20,13 @@ import { CalendarDayComponent } from './components/utils/calendar-day/calendar-d
     LandingPageComponent,
     PageSectionComponent,
     CampPageComponent,
+    RoomPageComponent,
     DropdownComponent,
     TextInputComponent,
     CheckboxComponent,
-	  HeaderComponent,
-   CalendarComponent,
-   CalendarDayComponent
+    HeaderComponent,
+    CalendarComponent,
+    CalendarDayComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

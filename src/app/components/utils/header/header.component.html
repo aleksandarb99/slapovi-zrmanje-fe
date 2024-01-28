@@ -4,8 +4,8 @@
         <h3 class="reservations-text">{{text!.landingPageReservationTitle}}</h3>
     </div>
     <hr>
-    <h3 class="menu-item" routerLink="camp">{{text!.landingPageReservationCamp}}</h3>
-    <h3 class="menu-item">{{text!.landingPageReservationRooms}}</h3>
+    <h3 class="menu-item" (click)="redirectToCamp()">{{text!.landingPageReservationCamp}}</h3>
+    <h3 class="menu-item" (click)="redirectToRoom()">{{text!.landingPageReservationRooms}}</h3>
     <h3 class="menu-item">{{text!.landingPageReservationApartments}}</h3>
 </div>
 <div class="menu burger-menu-position" [ngClass]="{'menu-spread': isBurgerSpread}">
