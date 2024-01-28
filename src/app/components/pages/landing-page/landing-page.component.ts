@@ -4,6 +4,7 @@ import { LanguageLabel } from 'src/app/model/language-label.model';
 import { TextService } from 'src/app/services/text.service';
 import { HeaderComponent } from '../../utils/header/header.component';
 import { CommonService } from 'src/app/services/common.service';
+import { TextValue } from 'src/app/model/text-value.model';
 
 @Component({
   selector: 'app-landing-page',
@@ -22,6 +23,7 @@ export class LandingPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.commonService.contactEmitter.subscribe(() => this.scrollToLastSection());
     this.textService.text.subscribe(data => this.text = data);
     this.headerComponent!.checkSavedPreferableLanguage();
   }
@@ -54,7 +56,7 @@ export class LandingPageComponent implements OnInit {
   }
 
   scrollToSection(deltaY: number): void {
-    if (deltaY >= 0 && this.currentSectionIndex === this.sections.length + 1) {
+    if (deltaY >= 0 && this.currentSectionIndex === this.sections.length + 2) {
       return;
     }
     if (deltaY < 0 && this.currentSectionIndex === 0) {
@@ -78,11 +80,32 @@ export class LandingPageComponent implements OnInit {
     }
   }
 
+  scrollToLastSection(): void {
+    if (this.screenIsMoving === false) {
+      this.screenIsMoving = true;
+
+      this.currentSectionIndex = this.sections.length + 2;
+      this.scrollToElement('page' + this.currentSectionIndex);
+
+      setTimeout(() => {
+        this.screenIsMoving = false;
+      }, 800);
+    }
+  }
+
   scrollToElement(elementId: string): void {
     const element = this.el.nativeElement.querySelector(`#${elementId}`);
 
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+  }
+
+  saveTextValue(textValue: TextValue) {
+    // TODO: Save input text value
+  }
+
+  sendMessage() {
+    // TODO: send a message
   }
 }

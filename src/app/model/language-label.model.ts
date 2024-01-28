@@ -41,5 +41,8 @@ export interface LanguageLabel {
   calendarLabel: string;
   calendarDays: string;
   calendarMonths: string;
+  restaurant: string;
+  accommodations: string;
+  activities: string;
   // TODO: Add every label here
 }
