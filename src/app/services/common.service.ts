@@ -8,7 +8,9 @@ import { LandingPageComponent } from '../components/pages/landing-page/landing-p
 export class CommonService {
 
   private componentOpenedCampPageSubject = new Subject<string>();
+  private contactSubject = new Subject<void>();
   componentOpenedCampPage = this.componentOpenedCampPageSubject.asObservable();
+  contactEmitter = this.contactSubject.asObservable();
 
   landingPage: LandingPageComponent | undefined;
   wheel = (event: WheelEvent) => {
@@ -21,6 +23,10 @@ export class CommonService {
 
   public updateComponentVisibility(openedComponent: string) {
     this.componentOpenedCampPageSubject.next(openedComponent);
+  }
+
+  public scrollToContactSectionEmit() {
+    this.contactSubject.next();
   }
 
   public overrideWheelEvent(landingPage: LandingPageComponent) {

@@ -45,7 +45,10 @@ export const texts: LanguageLabel[] = [
     checkAvailabilityButtonText: 'Provjera Dostupnosti',
     calendarLabel: 'Prijava & Odjava',
     calendarDays: 'Po, Ut, Sr, Če, Pe, Su, Ne',
-    calendarMonths: 'Januar, Februar, Mart, April, Maj, Jun, Jul, Avgust, Septembar, Oktobar, Novembar, Decembar'
+    calendarMonths: 'Januar, Februar, Mart, April, Maj, Jun, Jul, Avgust, Septembar, Oktobar, Novembar, Decembar',
+    restaurant: 'RESTORAN',
+    accommodations: 'SMEŠTAJI',
+    activities: 'AKTIVNOSTI'
   },
   {
     // English
@@ -91,7 +94,10 @@ export const texts: LanguageLabel[] = [
     checkAvailabilityButtonText: 'Check Availability',
     calendarLabel: 'Check-In & Checkout',
     calendarDays: 'Mo, Tu, We, Th, Fr, Sa, Su',
-    calendarMonths: 'January, February, March, April, May, June, July, August, September, October, November, December'
+    calendarMonths: 'January, February, March, April, May, June, July, August, September, October, November, December',
+    restaurant: 'RESTAURANT',
+    accommodations: 'ACCOMMODATIONS',
+    activities: 'ACTIVITIES'
   },
   {
     // German
@@ -137,6 +143,9 @@ export const texts: LanguageLabel[] = [
     checkAvailabilityButtonText: 'Verfügbarkeit Prüfen',
     calendarLabel: 'Einchecken & Auschecken',
     calendarDays: 'Mo, Di, Mi, Do, Fr, Sa, So',
-    calendarMonths: 'Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember'
+    calendarMonths: 'Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember',
+    restaurant: 'RESTAURANT',
+    accommodations: 'UNTERKÜNFTE',
+    activities: 'AKTIVITÄTEN'
   },
 ];

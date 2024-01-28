@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { LandingPageSection } from 'src/app/model/landing-page-section.model';
 import { LanguageLabel } from 'src/app/model/language-label.model';
+import { CommonService } from 'src/app/services/common.service';
 import { TextService } from 'src/app/services/text.service';
 import { pages } from 'src/assets/texts/sections';
 
@@ -23,8 +24,9 @@ export class HeaderComponent {
   text: LanguageLabel | undefined;
   @Output() sectionsEvent = new EventEmitter<LandingPageSection[]>();
   @Output() scrollUpEvent = new EventEmitter<void>();
+  @Output() contactEvent = new EventEmitter<void>();
 
-  constructor(private textService: TextService, private router: Router) {
+  constructor(private textService: TextService, private router: Router, private commonService: CommonService) {
     this.checkSavedPreferableLanguage();
   }
 
@@ -94,10 +96,21 @@ export class HeaderComponent {
    * For CampPage    -> switch to Landing page
    */
   checkPageAndReact() {
-    if (this.router.url === "/camp") {
+    if (this.router.url !== "/") {
       this.router.navigate(["/"]);
     } else {
       this.scrollUpEvent.emit();
+    }
+  }
+
+  moveToContactSection(): void {
+    if (this.router.url !== "/") {
+      this.router.navigate(["/"]);
+      setTimeout(() => {
+        this.commonService.scrollToContactSectionEmit();
+      }, 400);
+    } else {
+      this.commonService.scrollToContactSectionEmit();
     }
   }
 }
