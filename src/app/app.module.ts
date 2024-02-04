@@ -12,7 +12,6 @@ import { CheckboxComponent } from './components/utils/checkbox/checkbox.componen
 import { HeaderComponent } from './components/utils/header/header.component';
 import { CalendarComponent } from './components/utils/calendar/calendar.component';
 import { CalendarDayComponent } from './components/utils/calendar-day/calendar-day.component';
-import {MatIconModule} from '@angular/material/icon';
 import { GalleryPageComponent } from './components/pages/gallery-page/gallery-page.component';
 
 @NgModule({
@@ -24,12 +23,12 @@ import { GalleryPageComponent } from './components/pages/gallery-page/gallery-pa
     DropdownComponent,
     TextInputComponent,
     CheckboxComponent,
-	  HeaderComponent,
-   CalendarComponent,
-   CalendarDayComponent,
-   GalleryPageComponent
+    HeaderComponent,
+    CalendarComponent,
+    CalendarDayComponent,
+    GalleryPageComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, MatIconModule],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })
