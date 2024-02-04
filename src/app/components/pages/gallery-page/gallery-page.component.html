@@ -1,0 +1,23 @@
+<main>
+    <app-header #appHeader [position]="'sticky'"></app-header>
+    <div class="gallery-page" (click)="appHeader.revertFlags()">
+        <h1>{{text!.restaurant}}</h1>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni nisi natus harum, dicta repellendus recusandae, rerum amet minima, reprehenderit iure deleniti nesciunt beatae! Aliquid esse nemo accusantium tenetur nulla! Sapiente modi corrupti cumque neque eaque iste laborum consectetur totam quod tempore, aut libero fugiat perferendis. Molestias, dolor tempore quidem expedita odio et iure placeat corporis molestiae, libero alias esse unde, sit doloremque? Officiis quas pariatur temporibus aut voluptates maxime illo nesciunt voluptatem praesentium quisquam iusto dolorum, ullam ipsa odio modi assumenda error, sapiente dolor at deleniti! Veritatis cupiditate ipsum error mollitia quo repudiandae nobis blanditiis! Voluptatem ullam est eum ratione?</p>
+        <div class="page-row">
+            <div class="photo-div" *ngFor="let image of [].constructor(9);"></div>
+        </div>
+        <h1>{{text!.accommodations}}</h1>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni nisi natus harum, dicta repellendus recusandae, rerum amet minima, reprehenderit iure deleniti nesciunt beatae! Aliquid esse nemo accusantium tenetur nulla! Sapiente modi corrupti cumque neque eaque iste laborum consectetur totam quod tempore, aut libero fugiat perferendis. Molestias, dolor tempore quidem expedita odio et iure placeat corporis molestiae, libero alias esse unde, sit doloremque? Officiis quas pariatur temporibus aut voluptates maxime illo nesciunt voluptatem praesentium quisquam iusto dolorum, ullam ipsa odio modi assumenda error, sapiente dolor at deleniti! Veritatis cupiditate ipsum error mollitia quo repudiandae nobis blanditiis! Voluptatem ullam est eum ratione?</p>
+        <div class="page-row">
+            <div class="photo-div" *ngFor="let image of [].constructor(6);"></div>
+        </div>
+        <h1>{{text!.activities}}</h1>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni nisi natus harum, dicta repellendus recusandae, rerum amet minima, reprehenderit iure deleniti nesciunt beatae! Aliquid esse nemo accusantium tenetur nulla! Sapiente modi corrupti cumque neque eaque iste laborum consectetur totam quod tempore, aut libero fugiat perferendis. Molestias, dolor tempore quidem expedita odio et iure placeat corporis molestiae, libero alias esse unde, sit doloremque? Officiis quas pariatur temporibus aut voluptates maxime illo nesciunt voluptatem praesentium quisquam iusto dolorum, ullam ipsa odio modi assumenda error, sapiente dolor at deleniti! Veritatis cupiditate ipsum error mollitia quo repudiandae nobis blanditiis! Voluptatem ullam est eum ratione?</p>
+        <div class="page-row">
+            <div class="photo-div" *ngFor="let image of [].constructor(6);"></div>
+        </div>
+    </div>
+    <footer (click)="appHeader.revertFlags()">
+        <h3>{{text!.landingPageCopyrightText}} 2024 - Slapovi Zrmanje</h3>
+    </footer>
+</main>

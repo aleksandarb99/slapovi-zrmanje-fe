@@ -63,6 +63,9 @@ export const texts: LanguageLabel[] = [
     dropdownApartmentLodgingSubtitle1: '5 osobe',
     dropdownApartmentLodgingSubtitle2: '4 osobe',
     dropdownApartmentLodgingSubtitle3: '4 osobe',
+    restaurant: 'RESTORAN',
+    accommodations: 'SMEŠTAJI',
+    activities: 'AKTIVNOSTI',
   },
   {
     // English
@@ -126,6 +129,9 @@ export const texts: LanguageLabel[] = [
     dropdownApartmentLodgingSubtitle1: '5 Persons',
     dropdownApartmentLodgingSubtitle2: '4 Persons',
     dropdownApartmentLodgingSubtitle3: '4 Persons',
+    restaurant: 'RESTAURANT',
+    accommodations: 'ACCOMMODATIONS',
+    activities: 'ACTIVITIES',
   },
   {
     // German
@@ -189,5 +195,8 @@ export const texts: LanguageLabel[] = [
     dropdownApartmentLodgingSubtitle1: '5 Personen',
     dropdownApartmentLodgingSubtitle2: '4 Personen',
     dropdownApartmentLodgingSubtitle3: '4 Personen',
+    restaurant: 'RESTAURANT',
+    accommodations: 'UNTERKÜNFTE',
+    activities: 'AKTIVITÄTEN',
   },
 ];

@@ -14,6 +14,7 @@ import { CalendarComponent } from './components/utils/calendar/calendar.componen
 import { CalendarDayComponent } from './components/utils/calendar-day/calendar-day.component';
 import { RoomPageComponent } from './components/pages/room-page/room-page.component';
 import { ApartmentPageComponent } from './components/pages/apartment-page/apartment-page.component';
+import { GalleryPageComponent } from './components/pages/gallery-page/gallery-page.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ApartmentPageComponent } from './components/pages/apartment-page/apartm
     HeaderComponent,
     CalendarComponent,
     CalendarDayComponent,
+    GalleryPageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

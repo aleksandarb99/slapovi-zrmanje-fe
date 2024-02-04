@@ -16,9 +16,56 @@
             [image]="section.image"
             [sectionIndex]="i + 1"/>
     </div>
-    <div class="about-info"  id="{{ 'page' + ( this.sections.length + 1 ) }}" (click)="appHeader.revertFlags()">
+    <div class="about-info" id="{{ 'page' + ( this.sections.length + 1 ) }}" (click)="appHeader.revertFlags()">
         <h1>{{text!.landingPageAboutUsTitle}}</h1>
         <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, beatae architecto illum fugit, explicabo saepe id sint reprehenderit vero accusantium sapiente laborum voluptate. Placeat voluptate nemo quam accusamus dolorum amet voluptates voluptatem beatae non quisquam, animi minus asperiores culpa accusantium a facere fugit mollitia consequuntur, error aperiam deleniti modi molestias, excepturi odit. Perspiciatis in assumenda molestias nostrum doloribus quam soluta, dolore ab, ut velit voluptatibus est fuga dolorem nulla. Eligendi quod, quibusdam quas eveniet aspernatur maxime non odio! Modi, rerum non. Aliquid sed optio inventore tempora odio commodi pariatur explicabo quos cumque in, debitis possimus temporibus eveniet doloribus aliquam ad odit nulla hic aspernatur aperiam ea fugiat praesentium repellendus non? Asperiores distinctio harum impedit omnis dolorem fugit cumque, maxime delectus. Maiores dolorum alias totam distinctio, nisi dicta tempora ipsa quibusdam aperiam? Necessitatibus labore, eveniet eligendi consequatur deserunt quae. Labore saepe commodi eius perferendis blanditiis similique quaerat, itaque cupiditate sint assumenda.</p>
+    </div>
+    <div class="contact-container-wrapper" id="{{ 'page' + ( this.sections.length + 2 ) }}" (click)="appHeader.revertFlags()">
+        <h1>GET IN TOUCH</h1>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h4>Working time from April 28 to September 1:</h4>
+                <h4>from 9AM to 9PM</h4>
+                <br/>
+                <p>Slapovi Zrmanje</p>
+                <p>Paravinja Dolac 1, Muskovci</p>
+                <p>23450 Obrovac</p>
+                <p>Croatia</p>
+                <br/>
+                <p class="info-line">
+                    <!-- <mat-icon> mail_outline</mat-icon> -->
+                     slapovi.zrmanje@gmail.com</p>
+                <br/>
+                <p class="info-line">
+                    <!-- <mat-icon> local_phone</mat-icon> -->
+                     +385915331095</p>
+                <br/>
+                <p class="info-line">
+                    <!-- <mat-icon> location_on</mat-icon> -->
+                     Get directions</p>
+                <br/>
+                <hr/>
+            </div>
+            <div class="input-info">
+                <app-text-input
+                    [label]="'Name'"
+                    [inputType]="'TEXT'"
+                    (valueChangedEvent)="saveTextValue($event)">
+                </app-text-input>
+                <app-text-input
+                    [label]="'Email Address'"
+                    [inputType]="'EMAIL'"
+                    (valueChangedEvent)="saveTextValue($event)">
+                </app-text-input>
+                <app-text-input
+                    class="message-input"
+                    [label]="'Message'"
+                    [inputType]="'TEXT'"
+                    (valueChangedEvent)="saveTextValue($event)">
+                </app-text-input>
+                <div class="send-button" (click)="sendMessage()">Send</div>
+            </div>
+        </div>
     </div>
     <footer (click)="appHeader.revertFlags()">
         <h3>{{text!.landingPageCopyrightText}} 2024 - Slapovi Zrmanje</h3>

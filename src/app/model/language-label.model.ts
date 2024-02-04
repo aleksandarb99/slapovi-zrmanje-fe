@@ -57,6 +57,8 @@ export interface LanguageLabel {
   calculator: string;
   calculateButtonText: string;
   totalText: string;
-
+  restaurant: string;
+  accommodations: string;
+  activities: string;
   // TODO: Add every label here
 }

@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { LandingPageSection } from 'src/app/model/landing-page-section.model';
 import { LanguageLabel } from 'src/app/model/language-label.model';
+import { CommonService } from 'src/app/services/common.service';
 import { TextService } from 'src/app/services/text.service';
 import { pages } from 'src/assets/texts/sections';
 
@@ -22,11 +23,15 @@ export class HeaderComponent {
   text: LanguageLabel | undefined;
   @Output() sectionsEvent = new EventEmitter<LandingPageSection[]>();
   @Output() scrollUpEvent = new EventEmitter<void>();
+  @Output() contactEvent = new EventEmitter<void>();
 
-  // TODO: Fix position of header
   @Input() position: string = 'fixed';
 
-  constructor(private textService: TextService, private router: Router) {
+  constructor(
+    private textService: TextService,
+    private router: Router,
+    private commonService: CommonService
+  ) {
     this.checkSavedPreferableLanguage();
   }
 
@@ -106,5 +111,15 @@ export class HeaderComponent {
 
   redirectTo(route: string) {
     this.router.navigate(['/' + route]);
+  }
+  moveToContactSection(): void {
+    if (this.router.url !== '/') {
+      this.router.navigate(['/']);
+      setTimeout(() => {
+        this.commonService.scrollToContactSectionEmit();
+      }, 400);
+    } else {
+      this.commonService.scrollToContactSectionEmit();
+    }
   }
 }

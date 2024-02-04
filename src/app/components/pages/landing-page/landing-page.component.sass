@@ -1,3 +1,6 @@
+$base-blue-color: #17555E
+$base-white: #FFF
+
 main
     width: 100vw
     height: 100vh
@@ -59,9 +62,8 @@ h2
         transform: translateY(-15px)
 
 .about-info
-    margin-top: 25vh
     height: 50vh
-    padding: 0 15vw
+    padding: 25vh 15vw
     h1
         color: #17555E
         font-size: 36px
@@ -89,3 +91,58 @@ footer
     h3
         font-size: 14px
         color: white
+
+.contact-container-wrapper
+    width: 80vw
+    margin: 0 auto
+    color: #17555E
+    font-weight: bold
+    font-family: 'Roboto Slab', sans-serif !important
+    h1
+        font-size: 36px
+        line-height: 56px
+        margin: 30px 0
+    ::ng-deep .input-rectangle
+        width: 100% !important
+        margin-bottom: 5px
+
+.message-input
+    ::ng-deep .input-rectangle
+        width: 100% !important
+        height: 70px !important
+
+.contact-container
+    display: flex
+    flex-direction: row
+    .contact-info
+        width: 40%
+    .input-info
+        width: 60%
+    p
+        margin: 0
+
+.send-button
+    display: flex
+    align-items: center
+    justify-content: center
+    margin-left: 2vw
+    padding-left: 1vw
+    padding-right: 1vw
+    width: 96%
+    height: 52px
+    margin-top: 20px
+    color: $base-white
+    background-color: $base-blue-color
+    font-size: 18px
+    font-style: normal
+    font-weight: bold
+    cursor: pointer
+
+.info-line
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: flex-start
+
+h4
+    margin: 0
