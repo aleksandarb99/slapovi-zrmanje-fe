@@ -1,11 +1,5 @@
 <main (scroll)="onScroll($event)">
-    <app-header 
-        #appHeader 
-        (sectionsEvent)="setSections($event)" 
-        (scrollUpEvent)="scrollToStart()"
-        (contactEvent)="scrollToLastSection()"
-        >
-    </app-header>
+    <app-header #appHeader (sectionsEvent)="setSections($event)" (scrollUpEvent)="scrollToStart()" [position]="'fixed'"></app-header>
     <div class="landing-container" (click)="appHeader.revertFlags()">
         <div class="landing-image-shadow" id="page0"></div>
         <img src="../../../assets/pictures/LandingPage.png"/>
@@ -38,11 +32,17 @@
                 <p>23450 Obrovac</p>
                 <p>Croatia</p>
                 <br/>
-                <p class="info-line"><mat-icon> mail_outline</mat-icon> slapovi.zrmanje@gmail.com</p>
+                <p class="info-line">
+                    <!-- <mat-icon> mail_outline</mat-icon> -->
+                     slapovi.zrmanje@gmail.com</p>
                 <br/>
-                <p class="info-line"><mat-icon> local_phone</mat-icon> +385915331095</p>
+                <p class="info-line">
+                    <!-- <mat-icon> local_phone</mat-icon> -->
+                     +385915331095</p>
                 <br/>
-                <p class="info-line"><mat-icon> location_on</mat-icon> Get directions</p>
+                <p class="info-line">
+                    <!-- <mat-icon> location_on</mat-icon> -->
+                     Get directions</p>
                 <br/>
                 <hr/>
             </div>

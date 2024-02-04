@@ -7,14 +7,14 @@ import { TextService } from 'src/app/services/text.service';
 import { CommonService } from 'src/app/services/common.service';
 import { ReceiptItem } from 'src/app/model/receipt-item.model';
 import { GuestsValue } from 'src/app/model/guests.value.model';
-import { CampLodgingValue } from 'src/app/model/camp-lodging.model';
+import { ApartmentLodgingValue } from 'src/app/model/apartment-lodging.model';
 
 @Component({
-  selector: 'app-camp-page',
-  templateUrl: './camp-page.component.html',
-  styleUrls: ['./camp-page.component.sass'],
+  selector: 'app-apartment-page',
+  templateUrl: './apartment-page.component.html',
+  styleUrls: ['./apartment-page.component.sass'],
 })
-export class CampPageComponent {
+export class ApartmentPageComponent {
   text: LanguageLabel | undefined;
   @ViewChild(HeaderComponent, { static: true }) headerComponent:
     | HeaderComponent
@@ -32,11 +32,10 @@ export class CampPageComponent {
     infants: 0,
     pets: 0,
   };
-  lodging: CampLodgingValue = {
-    tent: 0,
-    caravan: 0,
-    car: 0,
-    speepingBag: 0,
+  lodging: ApartmentLodgingValue = {
+    apartment1: 0,
+    apartment2: 0,
+    apartment3: 0,
   };
   powerSupply: boolean = false;
   dates: string[] = [];
@@ -107,10 +106,9 @@ export class CampPageComponent {
   saveIntValues(intValues: IntValues) {
     if (intValues.label === 'Lodging') {
       this.lodging = {
-        tent: intValues.value1,
-        caravan: intValues.value2,
-        car: intValues.value3,
-        speepingBag: intValues.value4,
+        apartment1: intValues.value1,
+        apartment2: intValues.value2,
+        apartment3: intValues.value3,
       };
     } else {
       this.guests = {

@@ -1,7 +1,7 @@
 <main>
     <app-header #appHeader [position]="'sticky'"></app-header>
     <div (click)="appHeader.revertFlags(); commonService.updateComponentVisibility('')">
-        <div class="camp-page">
+        <div class="room-page">
             <div class="upper-content">
                 <div class="form-div">
                     <div class="page-row">
@@ -30,15 +30,13 @@
                             [title1]="text!.dropdownGuestsTitle1" [subtitle1]="text!.dropdownGuestsSubtitle1"
                             [title2]="text!.dropdownGuestsTitle2" [subtitle2]="text!.dropdownGuestsSubtitle2"
                             [title3]="text!.dropdownGuestsTitle3" [subtitle3]="text!.dropdownGuestsSubtitle3"
-                            [title4]="text!.dropdownGuestsTitle4" [subtitle4]="text!.dropdownGuestsSubtitle4"
                             (valueChangedEvent)="saveIntValues($event)">
                         </app-dropdown>
                         <app-dropdown 
                             [initialLine]="text!.dropdownLodgingInitialLine" [label]="text!.dropdownLodgingLabel"
-                            [title1]="text!.dropdownLodgingTitle1" [subtitle1]="text!.dropdownLodgingSubtitle1"
-                            [title2]="text!.dropdownLodgingTitle2" [subtitle2]="text!.dropdownLodgingSubtitle2"
-                            [title3]="text!.dropdownLodgingTitle3" [subtitle3]="text!.dropdownLodgingSubtitle3"
-                            [title4]="text!.dropdownLodgingTitle4" [subtitle4]="text!.dropdownLodgingSubtitle4"
+                            [title1]="text!.dropdownRoomLodgingTitle1" [subtitle1]="text!.dropdownRoomLodgingSubtitle1"
+                            [title2]="text!.dropdownRoomLodgingTitle2" [subtitle2]="text!.dropdownRoomLodgingSubtitle2"
+                            [title3]="text!.dropdownRoomLodgingTitle3" [subtitle3]="text!.dropdownRoomLodgingSubtitle3"
                             (valueChangedEvent)="saveIntValues($event)">
                         </app-dropdown>
                     </div>
@@ -74,16 +72,6 @@
             </div>
 
             <!-- TODO: Add photos -->
-            <div class="page-row">
-                <div class="photo-div"></div>
-                <div class="photo-div"></div>
-                <div class="photo-div"></div>
-            </div>
-            <div class="page-row">
-                <div class="photo-div"></div>
-                <div class="photo-div"></div>
-                <div class="photo-div"></div>
-            </div>
             <div class="page-row">
                 <div class="photo-div"></div>
                 <div class="photo-div"></div>
