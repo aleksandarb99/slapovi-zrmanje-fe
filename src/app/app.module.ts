@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,7 @@ import { CalendarDayComponent } from './components/utils/calendar-day/calendar-d
 import { RoomPageComponent } from './components/pages/room-page/room-page.component';
 import { ApartmentPageComponent } from './components/pages/apartment-page/apartment-page.component';
 import { GalleryPageComponent } from './components/pages/gallery-page/gallery-page.component';
+import { VerifyPageComponent } from './components/pages/verify-page/verify-page.component';
 
 @NgModule({
   declarations: [
@@ -31,8 +33,9 @@ import { GalleryPageComponent } from './components/pages/gallery-page/gallery-pa
     CalendarComponent,
     CalendarDayComponent,
     GalleryPageComponent,
+    VerifyPageComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

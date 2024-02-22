@@ -13,7 +13,7 @@ import { pages } from 'src/assets/texts/sections';
 })
 export class HeaderComponent {
   isDarkHeader: boolean = false;
-  path: string = '../../../assets/';
+  path: string = '../../../assets';
   reservationImage = `${this.path}/avatars/Reservation.png`;
   burgerImage = `${this.path}/avatars/Burger.png`;
   logoImage = `${this.path}/Logo.png`;

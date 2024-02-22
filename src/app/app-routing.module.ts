@@ -5,6 +5,7 @@ import { CampPageComponent } from './components/pages/camp-page/camp-page.compon
 import { RoomPageComponent } from './components/pages/room-page/room-page.component';
 import { ApartmentPageComponent } from './components/pages/apartment-page/apartment-page.component';
 import { GalleryPageComponent } from './components/pages/gallery-page/gallery-page.component';
+import { VerifyPageComponent } from './components/pages/verify-page/verify-page.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'gallery',
     component: GalleryPageComponent,
+  },
+  {
+    path: 'verify',
+    component: VerifyPageComponent,
   },
 ];
 
