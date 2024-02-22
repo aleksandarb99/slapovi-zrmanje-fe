@@ -93,19 +93,19 @@ export class CampPageComponent {
   }
 
   saveTextValue(textValue: TextValue) {
-    if (textValue.label === 'First Name') {
+    if (textValue.label === this.text!.inputFirstNameText) {
       this.firstName = textValue.value;
     }
-    if (textValue.label === 'Last Name') {
+    if (textValue.label === this.text!.inputLastNameText) {
       this.lastName = textValue.value;
     }
-    if (textValue.label === 'Email Address') {
+    if (textValue.label === this.text!.inputEmailText) {
       this.email = textValue.value;
     }
   }
 
   saveIntValues(intValues: IntValues) {
-    if (intValues.label === 'Lodging') {
+    if (intValues.label === this.text!.dropdownLodgingLabel) {
       this.lodging = {
         tent: intValues.value1,
         caravan: intValues.value2,
