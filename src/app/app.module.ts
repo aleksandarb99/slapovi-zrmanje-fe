@@ -17,6 +17,8 @@ import { RoomPageComponent } from './components/pages/room-page/room-page.compon
 import { ApartmentPageComponent } from './components/pages/apartment-page/apartment-page.component';
 import { GalleryPageComponent } from './components/pages/gallery-page/gallery-page.component';
 import { VerifyPageComponent } from './components/pages/verify-page/verify-page.component';
+import { RejectPageComponent } from './components/pages/reject-page/reject-page.component';
+import { AcceptPageComponent } from './components/pages/accept-page/accept-page.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { VerifyPageComponent } from './components/pages/verify-page/verify-page.
     CalendarDayComponent,
     GalleryPageComponent,
     VerifyPageComponent,
+    RejectPageComponent,
+    AcceptPageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

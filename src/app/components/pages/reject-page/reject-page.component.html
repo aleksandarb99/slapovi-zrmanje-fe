@@ -1,0 +1,5 @@
+<main>
+    <app-header #appHeader [position]="'sticky'"></app-header>
+    <p *ngIf="rejected">Uspesno odbijen</p>
+    <p *ngIf="rejected == false">Neuspesno odbijen</p>
+</main>

@@ -20,4 +20,16 @@ export class AccommodationService {
       `${env.apiUrl}/api/accommodation/verify?email=${email}&id=${id}&code=${code}`
     );
   }
+
+  public reject(email: string, id: string, code: string) {
+    return this.http.get<void>(
+      `${env.apiUrl}/api/accommodation/reject?email=${email}&id=${id}&code=${code}`
+    );
+  }
+
+  public accept(email: string, id: string, code: string) {
+    return this.http.get<void>(
+      `${env.apiUrl}/api/accommodation/accept?email=${email}&id=${id}&code=${code}`
+    );
+  }
 }

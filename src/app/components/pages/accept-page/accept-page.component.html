@@ -1,0 +1,5 @@
+<main>
+    <app-header #appHeader [position]="'sticky'"></app-header>
+    <p *ngIf="accepted">Uspesno prihvaceno</p>
+    <p *ngIf="accepted == false">Neuspesno prihvaceno</p>
+</main>
