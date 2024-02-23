@@ -8,6 +8,8 @@ import { GalleryPageComponent } from './components/pages/gallery-page/gallery-pa
 import { VerifyPageComponent } from './components/pages/verify-page/verify-page.component';
 import { RejectPageComponent } from './components/pages/reject-page/reject-page.component';
 import { AcceptPageComponent } from './components/pages/accept-page/accept-page.component';
+import { ReservePageComponent } from './components/pages/reserve-page/reserve-page.component';
+import { CancelPageComponent } from './components/pages/cancel-page/cancel-page.component';
 
 const routes: Routes = [
   {
@@ -41,6 +43,14 @@ const routes: Routes = [
   {
     path: 'accept',
     component: AcceptPageComponent,
+  },
+  {
+    path: 'reserve',
+    component: ReservePageComponent,
+  },
+  {
+    path: 'cancel',
+    component: CancelPageComponent,
   },
 ];
 

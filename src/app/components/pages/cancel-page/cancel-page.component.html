@@ -1,0 +1,5 @@
+<main>
+    <app-header #appHeader [position]="'sticky'"></app-header>
+    <p *ngIf="canceled">Uspesno otkazano</p>
+    <p *ngIf="canceled == false">Neuspesno otkazano</p>
+</main>

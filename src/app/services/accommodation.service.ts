@@ -32,4 +32,16 @@ export class AccommodationService {
       `${env.apiUrl}/api/accommodation/accept?email=${email}&id=${id}&code=${code}`
     );
   }
+
+  public reserve(email: string, id: string, code: string) {
+    return this.http.get<void>(
+      `${env.apiUrl}/api/accommodation/reserve?email=${email}&id=${id}&code=${code}`
+    );
+  }
+
+  public cancel(email: string, id: string, code: string) {
+    return this.http.get<void>(
+      `${env.apiUrl}/api/accommodation/cancel?email=${email}&id=${id}&code=${code}`
+    );
+  }
 }
