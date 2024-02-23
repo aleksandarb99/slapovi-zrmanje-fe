@@ -8,6 +8,9 @@ import { CommonService } from 'src/app/services/common.service';
 import { ReceiptItem } from 'src/app/model/receipt-item.model';
 import { GuestsValue } from 'src/app/model/guests.value.model';
 import { RoomLodgingValue } from 'src/app/model/room-lodging.model';
+import * as moment from 'moment';
+import { AccommodationService } from 'src/app/services/accommodation.service';
+import { CalendarService } from 'src/app/services/calendar.service';
 
 @Component({
   selector: 'app-room-page',
@@ -40,10 +43,22 @@ export class RoomPageComponent {
   powerSupply: boolean = false;
   dates: string[] = [];
 
+  chosenStartDate: Date | undefined;
+  chosenEndDate: Date | undefined;
+
   constructor(
+    private accommodationService: AccommodationService,
     private textService: TextService,
-    protected commonService: CommonService
-  ) {}
+    protected commonService: CommonService,
+    private calendarService: CalendarService
+  ) {
+    this.calendarService.startDate.subscribe(
+      (data) => (this.chosenStartDate = data)
+    );
+    this.calendarService.endDate.subscribe(
+      (data) => (this.chosenEndDate = data)
+    );
+  }
 
   ngOnInit() {
     this.textService.text.subscribe((data) => (this.text = data));
@@ -88,23 +103,50 @@ export class RoomPageComponent {
       return;
     }
 
-    // TODO: Logic here
+    let language = 'HR';
+    if (this.textService.index == 1) {
+      language = 'EN';
+    }
+    if (this.textService.index == 2) {
+      language = 'DE';
+    }
+
+    let data = {
+      email: this.email,
+      firstName: this.firstName,
+      lastName: this.lastName,
+      type: 'ROOM',
+      language: language,
+      powerSupply: this.powerSupply,
+      guests: this.guests,
+      lodging: this.lodging,
+      startDate: moment(this.chosenStartDate).format('YYYY-MM-DD'),
+      endDate: moment(this.chosenEndDate).format('YYYY-MM-DD'),
+    };
+    this.accommodationService.checkAvailability(data).subscribe(
+      (data) => {
+        console.log('Uspesno poslato');
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   saveTextValue(textValue: TextValue) {
-    if (textValue.label === 'First Name') {
+    if (textValue.label === this.text!.inputFirstNameText) {
       this.firstName = textValue.value;
     }
-    if (textValue.label === 'Last Name') {
+    if (textValue.label === this.text!.inputLastNameText) {
       this.lastName = textValue.value;
     }
-    if (textValue.label === 'Email Address') {
+    if (textValue.label === this.text!.inputEmailText) {
       this.email = textValue.value;
     }
   }
 
   saveIntValues(intValues: IntValues) {
-    if (intValues.label === 'Lodging') {
+    if (intValues.label === this.text!.dropdownLodgingLabel) {
       this.lodging = {
         room1: intValues.value1,
         room2: intValues.value2,
