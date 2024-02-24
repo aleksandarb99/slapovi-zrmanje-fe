@@ -1,6 +1,6 @@
 <div class="input-wrapper">
     <p class="input-label">{{label}}</p>
-    <div class="input-rectangle" (click)="this.showOrHide($event)">
+    <div class="input-rectangle" [ngClass]="{'input-rectangle-fill': this.fill}" (click)="this.showOrHide($event)">
         <p class="input-rectangle-text" [ngClass]="{'disable-bold': this.line == this.initialLine}">
             {{chosenStartDate ? generateDateString(chosenStartDate) : checkInLabel}} - 
             {{chosenEndDate ?  generateDateString(chosenEndDate) : checkOutLabel}}</p>

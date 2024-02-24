@@ -33,6 +33,7 @@
                             (valueChangedEvent)="saveIntValues($event)">
                         </app-dropdown>
                         <app-dropdown 
+                            [max1]="true"
                             [initialLine]="text!.dropdownLodgingInitialLine" [label]="text!.dropdownLodgingLabel"
                             [title1]="text!.dropdownApartmentLodgingTitle1" [subtitle1]="text!.dropdownApartmentLodgingSubtitle1"
                             [title2]="text!.dropdownApartmentLodgingTitle2" [subtitle2]="text!.dropdownApartmentLodgingSubtitle2"
@@ -41,10 +42,7 @@
                         </app-dropdown>
                     </div>
                     <div class="page-row">
-                        <app-calendar></app-calendar>
-                        <app-checkbox 
-                            [label]="text!.checkBoxTitle"
-                            (valueChangedEvent)="saveCheckboxValue($event)"></app-checkbox>
+                        <app-calendar [fill]="true"></app-calendar>
                     </div>
                     <div class="page-row">
                         <div class="check-button" (click)="checkAvailability()">{{text!.checkAvailabilityButtonText}}</div>

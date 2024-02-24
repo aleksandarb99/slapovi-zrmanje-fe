@@ -41,7 +41,6 @@ export class RoomPageComponent {
     room2: 0,
     room3: 0,
   };
-  powerSupply: boolean = false;
   dates: string[] = [];
 
   chosenStartDate: Date | undefined;
@@ -108,7 +107,7 @@ export class RoomPageComponent {
       lastName: this.lastName,
       type: 'ROOM',
       language: language,
-      powerSupply: this.powerSupply,
+      powerSupply: false,
       guests: this.guests,
       lodging: this.lodging,
       startDate: moment(this.chosenStartDate).format('YYYY-MM-DD'),
@@ -164,10 +163,4 @@ export class RoomPageComponent {
       };
     }
   }
-
-  saveCheckboxValue(booleanValue: boolean) {
-    this.powerSupply = booleanValue;
-  }
-
-  // TODO: Uradi primanje vrednosti datuma
 }

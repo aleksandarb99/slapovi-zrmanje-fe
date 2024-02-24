@@ -1,9 +1,4 @@
-import {
-  Component,
-  Input,
-  Output,
-  EventEmitter,
-} from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { IntValues } from 'src/app/model/int-values.model';
 import { CommonService } from 'src/app/services/common.service';
 
@@ -21,6 +16,8 @@ export class DropdownComponent {
   value3: number = 0;
   value4: number = 0;
 
+  @Input() max1: boolean = false;
+
   @Input() label: string = '';
   @Input() initialLine: string = '';
   @Input() title1: string = '';
@@ -36,10 +33,12 @@ export class DropdownComponent {
   @Output() showDivEvent = new EventEmitter<string>();
 
   constructor(private commonService: CommonService) {
-    this.commonService.componentOpenedCampPage.subscribe(incomingLabel => this.divIsOpened = this.label === incomingLabel);
+    this.commonService.componentOpenedCampPage.subscribe(
+      (incomingLabel) => (this.divIsOpened = this.label === incomingLabel)
+    );
   }
 
-  preventEvent(event: Event){
+  preventEvent(event: Event) {
     event.stopPropagation();
   }
 

@@ -18,7 +18,7 @@
                 <div class="around-value">
                     <p>{{value1}}</p>
                 </div>
-                <button (click)="raise(0, $event)">></button>
+                <button [ngClass]="{'disabled': max1 && value1 == 1}" (click)="raise(0, $event)">></button>
             </div>
         </div>
         <div class="input-dropdown-container-item">
@@ -31,7 +31,7 @@
                 <div class="around-value">
                     <p>{{value2}}</p>
                 </div>
-                <button (click)="raise(1, $event)">></button>
+                <button [ngClass]="{'disabled': max1 && value2 == 1}" (click)="raise(1, $event)">></button>
             </div>
         </div>
         <div class="input-dropdown-container-item">
@@ -44,7 +44,7 @@
                 <div class="around-value">
                     <p>{{value3}}</p>
                 </div>
-                <button (click)="raise(2, $event)">></button>
+                <button [ngClass]="{'disabled': max1 && value3 == 1}" (click)="raise(2, $event)">></button>
             </div>
         </div>
         <div class="input-dropdown-container-item" *ngIf="value4">
@@ -57,7 +57,7 @@
                 <div class="around-value">
                     <p>{{value4}}</p>
                 </div>
-                <button (click)="raise(3, $event)">></button>
+                <button [ngClass]="{'disabled': max1 && value4 == 1}" (click)="raise(3, $event)">></button>
             </div>
         </div>
     </div>
