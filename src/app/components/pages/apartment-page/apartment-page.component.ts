@@ -5,12 +5,13 @@ import { HeaderComponent } from '../../utils/header/header.component';
 import { TextValue } from 'src/app/model/text-value.model';
 import { TextService } from 'src/app/services/text.service';
 import { CommonService } from 'src/app/services/common.service';
-import { ReceiptItem } from 'src/app/model/receipt-item.model';
 import { GuestsValue } from 'src/app/model/guests.value.model';
 import { ApartmentLodgingValue } from 'src/app/model/apartment-lodging.model';
 import { AccommodationService } from 'src/app/services/accommodation.service';
 import { CalendarService } from 'src/app/services/calendar.service';
 import * as moment from 'moment';
+import { PriceResponse } from 'src/app/model/price-response.model';
+import { PriceItem } from 'src/app/model/price-item.model';
 
 @Component({
   selector: 'app-apartment-page',
@@ -23,7 +24,7 @@ export class ApartmentPageComponent {
     | HeaderComponent
     | undefined;
 
-  receiptItems: ReceiptItem[] = [];
+  receiptItems: PriceItem[] = [];
   totalPrice: number = 0;
 
   firstName: string = '';
@@ -76,33 +77,23 @@ export class ApartmentPageComponent {
   }
 
   calculatePrice() {
-    // TODO: Uzmi podatke i salji na endpoint
-    let mockedResponse = {
-      items: [
-        {
-          name: 'Soba 1',
-          price: 10,
-        },
-        {
-          name: 'Soba 2',
-          price: 5,
-        },
-      ],
-      totalPrice: 15,
-    };
+    let data = this.generateData();
 
-    this.receiptItems = mockedResponse.items;
-    this.totalPrice = mockedResponse.totalPrice;
+    this.accommodationService.checkPrice(data).subscribe(
+      (data: any) => {
+        let priceResponse = data as PriceResponse;
+        console.log('Got result');
+        console.log(data);
+        this.receiptItems = priceResponse.priceItems;
+        this.totalPrice = priceResponse.totalPrice;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
-  checkAvailability() {
-    console.log('checkAvailability');
-
-    if (!this.validateEmail(this.email)) {
-      console.log('Invalid email');
-      return;
-    }
-
+  generateData() {
     let language = 'HR';
     if (this.textService.index == 1) {
       language = 'EN';
@@ -111,7 +102,7 @@ export class ApartmentPageComponent {
       language = 'DE';
     }
 
-    let data = {
+    return {
       email: this.email,
       firstName: this.firstName,
       lastName: this.lastName,
@@ -123,6 +114,18 @@ export class ApartmentPageComponent {
       startDate: moment(this.chosenStartDate).format('YYYY-MM-DD'),
       endDate: moment(this.chosenEndDate).format('YYYY-MM-DD'),
     };
+  }
+
+  checkAvailability() {
+    console.log('checkAvailability');
+
+    if (!this.validateEmail(this.email)) {
+      console.log('Invalid email');
+      return;
+    }
+
+    let data = this.generateData();
+
     this.accommodationService.checkAvailability(data).subscribe(
       (data) => {
         console.log('Uspesno poslato');
