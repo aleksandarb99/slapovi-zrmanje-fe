@@ -11,8 +11,9 @@ export class CommonService {
   private contactSubject = new Subject<void>();
   componentOpenedCampPage = this.componentOpenedCampPageSubject.asObservable();
   contactEmitter = this.contactSubject.asObservable();
-
+  private loading: boolean = false;
   landingPage: LandingPageComponent | undefined;
+
   wheel = (event: WheelEvent) => {
     event.preventDefault();
     event.stopPropagation();
@@ -36,5 +37,13 @@ export class CommonService {
 
   public removeWheelEvent() {
     document.removeEventListener('wheel', this.wheel, false);
+  }
+
+  public setLoading(loading: boolean) {
+    this.loading = loading;
+  }
+
+  public getLoading(): boolean {
+    return this.loading;
   }
 }
