@@ -1,6 +1,6 @@
 <main>
     <app-header #appHeader [position]="'sticky'"></app-header>
-    <div class="verification" *ngIf="reserved">
+    <div class="verification" *ngIf="reserved == true">
         <div class="icon-container">
         <svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="green" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle">
             <circle cx="12" cy="12" r="10"></circle>
@@ -10,7 +10,7 @@
         <h2>Reservation Successful!</h2>
         <p>Your reservation has been successfull.</p>
     </div>
-    <div class="verification" *ngIf="!reserved">
+    <div class="verification" *ngIf="reserved == false">
         <div class="icon-container">
         <svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle">
             <circle cx="12" cy="12" r="10"></circle>

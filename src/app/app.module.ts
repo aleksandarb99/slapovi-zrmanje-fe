@@ -22,7 +22,6 @@ import { AcceptPageComponent } from './components/pages/accept-page/accept-page.
 import { ReservePageComponent } from './components/pages/reserve-page/reserve-page.component';
 import { CancelPageComponent } from './components/pages/cancel-page/cancel-page.component';
 import { SpinnerComponent } from './components/utils/spinner/spinner.component';
-import { LoadingInterceptor } from './services/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -47,11 +46,7 @@ import { LoadingInterceptor } from './services/loading.interceptor';
     SpinnerComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true
-    }
-  ],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

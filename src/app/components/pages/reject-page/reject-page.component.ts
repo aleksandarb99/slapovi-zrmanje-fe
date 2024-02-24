@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { HeaderComponent } from '../../utils/header/header.component';
 import { AccommodationService } from 'src/app/services/accommodation.service';
 import { ActivatedRoute } from '@angular/router';
+import { CommonService } from 'src/app/services/common.service';
 
 @Component({
   selector: 'app-reject-page',
@@ -16,7 +17,8 @@ export class RejectPageComponent {
   rejected: boolean | undefined;
   constructor(
     private accommodationService: AccommodationService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private commonService: CommonService
   ) {}
 
   ngOnInit() {
@@ -26,14 +28,18 @@ export class RejectPageComponent {
     const id = this.route.snapshot.queryParamMap.get('id');
     const code = this.route.snapshot.queryParamMap.get('code');
 
+    this.commonService.setLoading(true);
+
     this.accommodationService
       .reject(email as string, id as string, code as string)
       .subscribe(
         (data) => {
+          this.commonService.setLoading(false);
           this.rejected = true;
           console.log('Uspesno odbijen zahtev');
         },
         (error) => {
+          this.commonService.setLoading(false);
           this.rejected = false;
           console.log('Neuspesno odbijen zahtev');
         }
