@@ -40,7 +40,7 @@ export class CampPageComponent {
     tent: 0,
     caravan: 0,
     car: 0,
-    speepingBag: 0,
+    sleepingBag: 0,
   };
   powerSupply: boolean = false;
   dates: string[] = [];
@@ -149,7 +149,7 @@ export class CampPageComponent {
         tent: intValues.value1,
         caravan: intValues.value2,
         car: intValues.value3,
-        speepingBag: intValues.value4,
+        sleepingBag: intValues.value4,
       };
     } else {
       this.guests = {
