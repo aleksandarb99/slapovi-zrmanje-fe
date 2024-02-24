@@ -108,12 +108,24 @@ export class DropdownComponent {
 
   raise(fieldIndex: number, event: Event) {
     if (fieldIndex == 0) {
+      if (this.max1 && this.value1 == 1) {
+        return;
+      }
       this.value1++;
     } else if (fieldIndex == 1) {
+      if (this.max1 && this.value2 == 1) {
+        return;
+      }
       this.value2++;
     } else if (fieldIndex == 2) {
+      if (this.max1 && this.value3 == 1) {
+        return;
+      }
       this.value3++;
     } else if (fieldIndex == 3) {
+      if (this.max1 && this.value4 == 1) {
+        return;
+      }
       this.value4++;
     }
 

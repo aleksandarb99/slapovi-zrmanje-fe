@@ -21,7 +21,7 @@
                 <button [ngClass]="{'disabled': max1 && value1 == 1}" (click)="raise(0, $event)">></button>
             </div>
         </div>
-        <div class="input-dropdown-container-item">
+        <div class="input-dropdown-container-item" *ngIf="title2">
             <div class="around-p">
                 <p class="big-p">{{title2}}</p>
                 <p class="small-p">{{subtitle2}}</p>
@@ -34,7 +34,7 @@
                 <button [ngClass]="{'disabled': max1 && value2 == 1}" (click)="raise(1, $event)">></button>
             </div>
         </div>
-        <div class="input-dropdown-container-item">
+        <div class="input-dropdown-container-item" *ngIf="title3">
             <div class="around-p">
                 <p class="big-p">{{title3}}</p>
                 <p class="small-p">{{subtitle3}}</p>
