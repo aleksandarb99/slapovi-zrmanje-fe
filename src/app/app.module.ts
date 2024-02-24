@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +21,8 @@ import { RejectPageComponent } from './components/pages/reject-page/reject-page.
 import { AcceptPageComponent } from './components/pages/accept-page/accept-page.component';
 import { ReservePageComponent } from './components/pages/reserve-page/reserve-page.component';
 import { CancelPageComponent } from './components/pages/cancel-page/cancel-page.component';
+import { SpinnerComponent } from './components/utils/spinner/spinner.component';
+import { LoadingInterceptor } from './services/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -42,9 +44,14 @@ import { CancelPageComponent } from './components/pages/cancel-page/cancel-page.
     AcceptPageComponent,
     ReservePageComponent,
     CancelPageComponent,
+    SpinnerComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true
+    }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
