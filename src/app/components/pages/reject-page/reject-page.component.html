@@ -1,5 +1,25 @@
 <main>
     <app-header #appHeader [position]="'sticky'"></app-header>
-    <p *ngIf="rejected">Uspesno odbijen</p>
-    <p *ngIf="rejected == false">Neuspesno odbijen</p>
+    <div class="verification" *ngIf="rejected">
+        <div class="icon-container">
+        <svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="green" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="16 8 10 14 8 12"></polyline>
+        </svg>
+        </div>
+        <h2>Rejection Successful!</h2>
+        <p>The request has been successfully rejected.</p>
+    </div>
+    <div class="verification" *ngIf="!rejected">
+        <div class="icon-container">
+        <svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="15" y1="9" x2="9" y2="15"></line>
+            <line x1="9" y1="9" x2="15" y2="15"></line>
+        </svg>
+        </div>
+        <h2>Rejection Not Successful!</h2>
+        <p>The request has not been successfully rejected.</p>
+    </div>
+    <app-spinner></app-spinner>
 </main>
