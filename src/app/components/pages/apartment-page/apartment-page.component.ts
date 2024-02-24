@@ -93,13 +93,7 @@ export class ApartmentPageComponent {
   }
 
   generateData() {
-    let language = 'HR';
-    if (this.textService.index == 1) {
-      language = 'EN';
-    }
-    if (this.textService.index == 2) {
-      language = 'DE';
-    }
+    let language = this.textService.getLanguage();
 
     return {
       email: this.email,

@@ -10,12 +10,23 @@ export class TextService {
   private textSubject = new BehaviorSubject<LanguageLabel>(texts[1]);
   text = this.textSubject.asObservable();
 
-  public index: number | undefined;
+  private index: number = 1;
 
   constructor() {}
 
   public updateText(indexOfLanguage: number) {
     this.index = indexOfLanguage;
     this.textSubject.next(texts[indexOfLanguage]);
+  }
+
+  public getLanguage(): string {
+    let language = 'HR';
+    if (this.index == 1) {
+      language = 'EN';
+    }
+    if (this.index == 2) {
+      language = 'DE';
+    }
+    return language;
   }
 }
