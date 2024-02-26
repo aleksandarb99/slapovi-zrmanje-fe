@@ -52,23 +52,32 @@ export class DropdownComponent {
   }
 
   generateLine(): string {
-    return (
-      this.value1 +
-      ' ' +
-      this.title1 +
-      ', ' +
-      this.value2 +
-      ' ' +
-      this.title2 +
-      ', ' +
-      this.value3 +
-      ' ' +
-      this.title3 +
-      ', ' +
-      this.value4 +
-      ' ' +
-      this.title4
-    );
+    let line = '';
+    if (this.value1 !== 0) {
+      if (line != '') {
+        line += ', ';
+      }
+      line += this.value1 + ' ' + this.title1;
+    }
+    if (this.value2 !== 0) {
+      if (line != '') {
+        line += ', ';
+      }
+      line += this.value2 + ' ' + this.title2;
+    }
+    if (this.value3 !== 0) {
+      if (line != '') {
+        line += ', ';
+      }
+      line += this.value3 + ' ' + this.title3;
+    }
+    if (this.value4 !== 0) {
+      if (line != '') {
+        line += ', ';
+      }
+      line += this.value4 + ' ' + this.title4;
+    }
+    return line;
   }
 
   lower(fieldIndex: number, event: Event) {
