@@ -51,4 +51,11 @@ export class AccommodationService {
       `${env.apiUrl}/api/accommodation/cancel?email=${email}&id=${id}&code=${code}`
     );
   }
+
+  public getInTouch(data: any) {
+    return this.http.post<void>(
+      `${env.apiUrl}/api/accommodation/get-in-touch`,
+      data
+    );
+  }
 }

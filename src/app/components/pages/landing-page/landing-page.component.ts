@@ -5,6 +5,7 @@ import { TextService } from 'src/app/services/text.service';
 import { HeaderComponent } from '../../utils/header/header.component';
 import { CommonService } from 'src/app/services/common.service';
 import { TextValue } from 'src/app/model/text-value.model';
+import { AccommodationService } from 'src/app/services/accommodation.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -13,12 +14,15 @@ import { TextValue } from 'src/app/model/text-value.model';
 })
 export class LandingPageComponent implements OnInit {
   text: LanguageLabel | undefined;
+  name: string = '';
+  message: string = '';
+  email: string = '';
   screenIsMoving = false;
   currentSectionIndex = 0;
   sections: LandingPageSection[] = [];
   @ViewChild(HeaderComponent, {static : true}) headerComponent : HeaderComponent | undefined;
 
-  constructor(private el: ElementRef, private textService: TextService, private commonService: CommonService) {
+  constructor(private el: ElementRef, private textService: TextService, private commonService: CommonService, private accommodationService: AccommodationService) {
     this.commonService.overrideWheelEvent(this);
   }
 
@@ -102,10 +106,31 @@ export class LandingPageComponent implements OnInit {
   }
 
   saveTextValue(textValue: TextValue) {
-    // TODO: Save input text value
+    if (textValue.label === "Name") {
+      this.name = textValue.value;
+    }
+    if (textValue.label === "Message") {
+      this.message = textValue.value;
+    }
+    if (textValue.label === "Email Address") {
+      this.email = textValue.value;
+    }
+    // if (textValue.label === this.text!.inputEmailText) {
+    //   this.email = textValue.value;
+    // }
   }
 
   sendMessage() {
-    // TODO: send a message
+    let data = {
+      name: this.name,
+      email: this.email,
+      message: this.message
+    }
+
+    // TODO Koristiti ove complete, error i next sekcije u okviur subscribe-a jer nije deprecated
+    this.accommodationService.getInTouch(data).subscribe({
+      complete: () => console.log("Uspesno poslato pitanje!"),
+      error: (error) => console.log(error.error.message)
+    });
   }
 }
