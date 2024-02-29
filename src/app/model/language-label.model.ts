@@ -13,9 +13,11 @@ export interface LanguageLabel {
   landingPageBurgerLanguageGerman: string;
   landingPageAboutUsTitle: string;
   landingPageCopyrightText: string;
+  inputNameText: string;
   inputFirstNameText: string;
   inputLastNameText: string;
   inputEmailText: string;
+  inputMessageText: string;
   dropdownGuestsLabel: string;
   dropdownGuestsInitialLine: string;
   dropdownGuestsTitle1: string;
@@ -50,6 +52,7 @@ export interface LanguageLabel {
   dropdownLodgingSubtitle4: string;
   checkBoxTitle: string;
   checkAvailabilityButtonText: string;
+  sendButtonText: string;
   calendarLabel: string;
   calendarDays: string;
   calendarMonths: string;
@@ -60,5 +63,9 @@ export interface LanguageLabel {
   restaurant: string;
   accommodations: string;
   activities: string;
+  getInTouch: string;
+  workingMonths: string;
+  workingHours: string;
+  country: string;
   // TODO: Add every label here
 }

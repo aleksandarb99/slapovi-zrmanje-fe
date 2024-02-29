@@ -18,9 +18,11 @@ export const texts: LanguageLabel[] = [
     landingPageBurgerLanguageGerman: 'Njemački',
     landingPageAboutUsTitle: 'O NAMA',
     landingPageCopyrightText: 'Autorska prava',
+    inputNameText: 'Naziv',
     inputFirstNameText: 'Ime',
     inputLastNameText: 'Prezime',
     inputEmailText: 'Email adresa',
+    inputMessageText: 'Poruka',
     dropdownGuestsLabel: 'Gosti',
     dropdownGuestsInitialLine: 'Odaberite goste',
     dropdownGuestsTitle1: 'Odrasli',
@@ -66,6 +68,11 @@ export const texts: LanguageLabel[] = [
     restaurant: 'RESTORAN',
     accommodations: 'SMEŠTAJI',
     activities: 'AKTIVNOSTI',
+    getInTouch: 'STUPITE U KONTAKT',
+    workingMonths: 'Radno vreme od 28 Aprila do 1 Septembra',
+    workingHours: 'od 9h do 21h',
+    country: 'Hrvatska',
+    sendButtonText: 'Pošalji'
   },
   {
     // English
@@ -84,9 +91,11 @@ export const texts: LanguageLabel[] = [
     landingPageBurgerLanguageGerman: 'German',
     landingPageAboutUsTitle: 'ABOUT US',
     landingPageCopyrightText: 'Copyright',
+    inputNameText: 'Name',
     inputFirstNameText: 'First Name',
     inputLastNameText: 'Last Name',
     inputEmailText: 'Email Address',
+    inputMessageText: 'Message',
     dropdownGuestsLabel: 'Guests',
     dropdownGuestsInitialLine: 'Choose guests',
     dropdownGuestsTitle1: 'Adults',
@@ -132,6 +141,11 @@ export const texts: LanguageLabel[] = [
     restaurant: 'RESTAURANT',
     accommodations: 'ACCOMMODATIONS',
     activities: 'ACTIVITIES',
+    getInTouch: 'GET IN TOUCH',
+    workingMonths: 'Working time from April 28 to September 1',
+    workingHours: 'from 9AM to 9PM',
+    country: 'Croatia',
+    sendButtonText: 'Send'
   },
   {
     // German
@@ -150,9 +164,11 @@ export const texts: LanguageLabel[] = [
     landingPageBurgerLanguageGerman: 'Deutsch',
     landingPageAboutUsTitle: 'ÜBER UNS',
     landingPageCopyrightText: 'Urheberrechte',
+    inputNameText: 'Name',
     inputFirstNameText: 'Vorname',
     inputLastNameText: 'Familienname',
     inputEmailText: 'E-Mail-Adresse',
+    inputMessageText: 'Nachricht',
     dropdownGuestsLabel: 'Gäste',
     dropdownGuestsInitialLine: 'Wählen Sie Gäste aus',
     dropdownGuestsTitle1: 'Erwachsene',
@@ -198,5 +214,10 @@ export const texts: LanguageLabel[] = [
     restaurant: 'RESTAURANT',
     accommodations: 'UNTERKÜNFTE',
     activities: 'AKTIVITÄTEN',
+    getInTouch: 'IN KONTAKT KOMMEN',
+    workingMonths: 'Arbeitszeit vom 28. April bis 1. September',
+    workingHours: 'von 9 bis 21 Uhr',
+    country: 'Kroatien',
+    sendButtonText: 'Schicken'
   },
 ];
