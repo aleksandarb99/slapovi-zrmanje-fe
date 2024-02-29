@@ -6,6 +6,7 @@ import { HeaderComponent } from '../../utils/header/header.component';
 import { CommonService } from 'src/app/services/common.service';
 import { TextValue } from 'src/app/model/text-value.model';
 import { AccommodationService } from 'src/app/services/accommodation.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -22,7 +23,12 @@ export class LandingPageComponent implements OnInit {
   sections: LandingPageSection[] = [];
   @ViewChild(HeaderComponent, {static : true}) headerComponent : HeaderComponent | undefined;
 
-  constructor(private el: ElementRef, private textService: TextService, private commonService: CommonService, private accommodationService: AccommodationService) {
+  constructor(
+    private el: ElementRef, 
+    private textService: TextService, 
+    private commonService: CommonService, 
+    private accommodationService: AccommodationService,
+    private notificationService: NotificationService) {
     this.commonService.overrideWheelEvent(this);
   }
 
@@ -106,18 +112,15 @@ export class LandingPageComponent implements OnInit {
   }
 
   saveTextValue(textValue: TextValue) {
-    if (textValue.label === "Name") {
+    if (textValue.label === this.text!.inputNameText) {
       this.name = textValue.value;
     }
-    if (textValue.label === "Message") {
+    if (textValue.label === this.text!.inputMessageText) {
       this.message = textValue.value;
     }
-    if (textValue.label === "Email Address") {
+    if (textValue.label === this.text!.inputEmailText) {
       this.email = textValue.value;
     }
-    // if (textValue.label === this.text!.inputEmailText) {
-    //   this.email = textValue.value;
-    // }
   }
 
   sendMessage() {
@@ -129,8 +132,12 @@ export class LandingPageComponent implements OnInit {
 
     // TODO Koristiti ove complete, error i next sekcije u okviur subscribe-a jer nije deprecated
     this.accommodationService.getInTouch(data).subscribe({
-      complete: () => console.log("Uspesno poslato pitanje!"),
-      error: (error) => console.log(error.error.message)
+      complete: () => {
+        this.name = '';
+        this.email = '';
+        this.message = '';
+        this.notificationService.showSuccess("Successfully sent!")},
+      error: (error) => this.notificationService.showError(error.error.message)
     });
   }
 }
