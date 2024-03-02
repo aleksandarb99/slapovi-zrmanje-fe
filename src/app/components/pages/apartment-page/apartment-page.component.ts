@@ -76,6 +76,7 @@ export class ApartmentPageComponent {
   }
 
   calculatePrice() {
+    // TODO Disable button
     let data = this.generateData();
 
     this.accommodationService.checkPrice(data).subscribe(
@@ -109,7 +110,12 @@ export class ApartmentPageComponent {
     };
   }
 
-  checkAvailability() {
+  checkAvailability(event: Event) {
+    // TODO Extand and do for camp and room
+    if (!this.firstName || !this.lastName || !this.email) {
+      event.stopPropagation();
+      return;
+    }
     console.log('checkAvailability');
 
     if (!this.validateEmail(this.email)) {
@@ -121,6 +127,10 @@ export class ApartmentPageComponent {
 
     this.accommodationService.checkAvailability(data).subscribe(
       (data) => {
+        // TODO Reset other fields
+        this.firstName = '';
+        this.lastName = '';
+        this.email = '';
         console.log('Uspesno poslato');
       },
       (error) => {
