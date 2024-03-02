@@ -28,18 +28,14 @@ export class AcceptPageComponent {
     const id = this.route.snapshot.queryParamMap.get('id');
     const code = this.route.snapshot.queryParamMap.get('code');
 
-    this.commonService.setLoading(true);
-
     this.accommodationService
       .accept(email as string, id as string, code as string)
       .subscribe(
         (data) => {
-          this.commonService.setLoading(false);
           this.accepted = true;
           console.log('Uspesno prihvacen zahtev');
         },
         (error) => {
-          this.commonService.setLoading(false);
           this.accepted = false;
           console.log('Neuspesno prihvacen zahtev');
         }
