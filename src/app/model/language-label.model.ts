@@ -56,7 +56,6 @@ export interface LanguageLabel {
   calendarLabel: string;
   calendarDays: string;
   calendarMonths: string;
-  receiptTitle: string;
   calculator: string;
   calculateButtonText: string;
   totalText: string;

@@ -49,8 +49,7 @@ export const texts: LanguageLabel[] = [
     calendarDays: 'Po, Ut, Sr, Če, Pe, Su, Ne',
     calendarMonths:
       'Januar, Februar, Mart, April, Maj, Jun, Jul, Avgust, Septembar, Oktobar, Novembar, Decembar',
-    receiptTitle: 'Neće biti naplaćeno još.',
-    calculator: 'Kalkulator:',
+    calculator: 'Pregled cene:',
     calculateButtonText: 'Izračunaj',
     totalText: 'Ukupno:',
     dropdownRoomLodgingTitle1: 'Soba 1',
@@ -72,7 +71,7 @@ export const texts: LanguageLabel[] = [
     workingMonths: 'Radno vreme od 28 Aprila do 1 Septembra',
     workingHours: 'od 9h do 21h',
     country: 'Hrvatska',
-    sendButtonText: 'Pošalji'
+    sendButtonText: 'Pošalji',
   },
   {
     // English
@@ -122,8 +121,7 @@ export const texts: LanguageLabel[] = [
     calendarDays: 'Mo, Tu, We, Th, Fr, Sa, Su',
     calendarMonths:
       'January, February, March, April, May, June, July, August, September, October, November, December',
-    receiptTitle: 'You wont be charged yet.',
-    calculator: 'Calculator:',
+    calculator: 'Price preview:',
     calculateButtonText: 'Calculate',
     totalText: 'In total:',
     dropdownRoomLodgingTitle1: 'Room 1',
@@ -145,7 +143,7 @@ export const texts: LanguageLabel[] = [
     workingMonths: 'Working time from April 28 to September 1',
     workingHours: 'from 9AM to 9PM',
     country: 'Croatia',
-    sendButtonText: 'Send'
+    sendButtonText: 'Send',
   },
   {
     // German
@@ -195,8 +193,7 @@ export const texts: LanguageLabel[] = [
     calendarDays: 'Mo, Di, Mi, Do, Fr, Sa, So',
     calendarMonths:
       'Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember',
-    receiptTitle: 'Ihnen wird noch kein Betrag in Rechnung gestellt.',
-    calculator: 'Taschenrechner:',
+    calculator: 'Preisvorschau:',
     calculateButtonText: 'Berechnung',
     totalText: 'In Summe:',
     dropdownRoomLodgingTitle1: 'Zimmer 1',
@@ -218,6 +215,6 @@ export const texts: LanguageLabel[] = [
     workingMonths: 'Arbeitszeit vom 28. April bis 1. September',
     workingHours: 'von 9 bis 21 Uhr',
     country: 'Kroatien',
-    sendButtonText: 'Schicken'
+    sendButtonText: 'Schicken',
   },
 ];

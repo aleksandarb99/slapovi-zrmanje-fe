@@ -53,8 +53,7 @@
                 </div>
                 <div class="receipt-div">
                     <div>
-                        <p>{{text!.receiptTitle}}</p>
-                        <p>{{text!.calculator}}</p>
+                        <h2>{{text!.calculator}}</h2>
                         <div class="receipt-item-div"  *ngFor="let item of receiptItems">
                             <p style="width: 120px;">{{item.name}}</p>
                             <p style="width: 50px; text-align: right;">{{item.count}}</p>
