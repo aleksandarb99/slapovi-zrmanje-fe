@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { TextValue } from 'src/app/model/text-value.model';
+import { CommonService } from 'src/app/services/common.service';
 
 @Component({
   selector: 'app-text-input',
@@ -7,14 +8,13 @@ import { TextValue } from 'src/app/model/text-value.model';
   styleUrls: ['./text-input.component.sass'],
 })
 export class TextInputComponent {
-  value: string = '';
-
+  @Input() value: string = '';
   @Input() fill: boolean = false;
   @Input() label: string = '';
   @Input() inputType: string = 'TEXT';
   @Output() valueChangedEvent = new EventEmitter<TextValue>();
 
-  constructor() {}
+  constructor(private commonService: CommonService) {}
 
   onInput(event: Event) {
     this.value = (<HTMLTextAreaElement>event.target).value;

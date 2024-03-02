@@ -1,6 +1,9 @@
 <div class="input-wrapper">
     <p class="input-label">{{label}}</p>
-    <input class="input-rectangle"
+    <input 
+        class="input-rectangle"
         [ngClass]="{'fill': fill === true}"
-        type="{{inputType.toLowerCase()}}" (input)="onInput($event)">
+        type="{{inputType.toLowerCase()}}" 
+        [(ngModel)] = "value"
+        (input)="onInput($event)">
 </div>
