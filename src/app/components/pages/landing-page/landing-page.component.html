@@ -40,29 +40,34 @@
                     <img src="../../../assets/icons/PhoneIcon.png"/>
                     +385915331095</p>
                 <br/>
-                <p class="info-line">
-                     Get directions</p>
                 <br/>
+                <br/>
+                <!-- <p class="info-line">
+                     Get directions</p>
+                <br/> -->
                 <hr/>
             </div>
             <div class="input-info">
                 <app-text-input
+                    [value]="name"
                     [label]="text!.inputNameText"
                     [inputType]="'TEXT'"
                     (valueChangedEvent)="saveTextValue($event)">
                 </app-text-input>
                 <app-text-input
+                    [value]="email"
                     [label]="text!.inputEmailText"
                     [inputType]="'EMAIL'"
                     (valueChangedEvent)="saveTextValue($event)">
                 </app-text-input>
                 <app-text-input
+                    [value]="message"
                     class="message-input"
                     [label]="text!.inputMessageText"
                     [inputType]="'TEXT'"
                     (valueChangedEvent)="saveTextValue($event)">
                 </app-text-input>
-                <div class="send-button" [ngClass]="{'disable-send-button': this.name === '' || this.email === '' || this.message === ''}" (click)="sendMessage()">{{text!.sendButtonText}}</div>
+                <div class="send-button" [ngClass]="{'disable-send-button': !this.name || !this.email || !this.message}" (click)="sendMessage($event)">{{text!.sendButtonText}}</div>
             </div>
         </div>
     </div>

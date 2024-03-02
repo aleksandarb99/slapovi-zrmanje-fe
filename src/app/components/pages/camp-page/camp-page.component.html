@@ -6,11 +6,13 @@
                 <div class="form-div">
                     <div class="page-row">
                         <app-text-input
+                            [value]="firstName"
                             [label]="text!.inputFirstNameText"
                             [inputType]="'TEXT'"
                             (valueChangedEvent)="saveTextValue($event)">
                         </app-text-input>
                         <app-text-input
+                            [value]="lastName"
                             [label]="text!.inputLastNameText"
                             [inputType]="'TEXT'"
                             (valueChangedEvent)="saveTextValue($event)">
@@ -18,6 +20,7 @@
                     </div>
                     <div class="page-row">
                         <app-text-input
+                            [value]="email"
                             [label]="text!.inputEmailText"
                             [inputType]="'EMAIL'"
                             [fill]="true"

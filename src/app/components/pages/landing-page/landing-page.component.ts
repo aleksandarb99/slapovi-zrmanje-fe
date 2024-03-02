@@ -123,14 +123,18 @@ export class LandingPageComponent implements OnInit {
     }
   }
 
-  sendMessage() {
+  sendMessage(event: Event) {
+    if (!this.name || !this.email || !this.message) {
+      event.stopPropagation();
+      return;
+    }
+
     let data = {
       name: this.name,
       email: this.email,
       message: this.message
     }
 
-    // TODO Koristiti ove complete, error i next sekcije u okviur subscribe-a jer nije deprecated
     this.accommodationService.getInTouch(data).subscribe({
       complete: () => {
         this.name = '';
