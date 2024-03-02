@@ -12,6 +12,9 @@ import { CalendarService } from 'src/app/services/calendar.service';
 import * as moment from 'moment';
 import { PriceResponse } from 'src/app/model/price-response.model';
 import { PriceItem } from 'src/app/model/price-item.model';
+import { NotificationService } from 'src/app/services/notification.service';
+import { EmailValidator } from '@angular/forms';
+import { EmailValidatorService } from 'src/app/services/email-validator.service';
 
 @Component({
   selector: 'app-apartment-page',
@@ -50,7 +53,9 @@ export class ApartmentPageComponent {
     private accommodationService: AccommodationService,
     private textService: TextService,
     protected commonService: CommonService,
-    private calendarService: CalendarService
+    private calendarService: CalendarService,
+    private emailValidator: EmailValidatorService,
+    private notificationService: NotificationService
   ) {
     this.calendarService.startDate.subscribe(
       (data) => (this.chosenStartDate = data)
@@ -66,15 +71,6 @@ export class ApartmentPageComponent {
     this.headerComponent?.changeHeaderTheme(true);
   }
 
-  // TODO: Do we keep this function here
-  validateEmail(email: string) {
-    return String(email)
-      .toLowerCase()
-      .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      );
-  }
-
   calculatePrice() {
     // TODO Disable button
     let data = this.generateData();
@@ -82,13 +78,11 @@ export class ApartmentPageComponent {
     this.accommodationService.checkPrice(data).subscribe(
       (data: any) => {
         let priceResponse = data as PriceResponse;
-        console.log('Got result');
-        console.log(data);
         this.receiptItems = priceResponse.priceItems;
         this.totalPrice = priceResponse.totalPrice;
       },
       (error) => {
-        console.log(error);
+        this.notificationService.showError(error.error.message);
       }
     );
   }
@@ -111,15 +105,13 @@ export class ApartmentPageComponent {
   }
 
   checkAvailability(event: Event) {
-    // TODO Extand and do for camp and room
     if (!this.firstName || !this.lastName || !this.email) {
       event.stopPropagation();
       return;
     }
-    console.log('checkAvailability');
 
-    if (!this.validateEmail(this.email)) {
-      console.log('Invalid email');
+    if (!this.emailValidator.validateEmail(this.email)) {
+      this.notificationService.showError('Email address is invalid');
       return;
     }
 
@@ -131,10 +123,11 @@ export class ApartmentPageComponent {
         this.firstName = '';
         this.lastName = '';
         this.email = '';
-        console.log('Uspesno poslato');
+        // TODO: Prevedi sve errore i poruke
+        this.notificationService.showSuccess('Uspesno poslat zahtev');
       },
       (error) => {
-        console.log(error);
+        this.notificationService.showError(error.error.message);
       }
     );
   }

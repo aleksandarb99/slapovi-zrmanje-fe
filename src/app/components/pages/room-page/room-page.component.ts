@@ -12,6 +12,8 @@ import { AccommodationService } from 'src/app/services/accommodation.service';
 import { CalendarService } from 'src/app/services/calendar.service';
 import { PriceResponse } from 'src/app/model/price-response.model';
 import { PriceItem } from 'src/app/model/price-item.model';
+import { EmailValidatorService } from 'src/app/services/email-validator.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-room-page',
@@ -50,7 +52,9 @@ export class RoomPageComponent {
     private accommodationService: AccommodationService,
     private textService: TextService,
     protected commonService: CommonService,
-    private calendarService: CalendarService
+    private calendarService: CalendarService,
+    private emailValidator: EmailValidatorService,
+    private notificationService: NotificationService
   ) {
     this.calendarService.startDate.subscribe(
       (data) => (this.chosenStartDate = data)
@@ -66,28 +70,17 @@ export class RoomPageComponent {
     this.headerComponent?.changeHeaderTheme(true);
   }
 
-  // TODO: Do we keep this function here
-  validateEmail(email: string) {
-    return String(email)
-      .toLowerCase()
-      .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      );
-  }
-
   calculatePrice() {
     let data = this.generateData();
 
     this.accommodationService.checkPrice(data).subscribe(
       (data: any) => {
         let priceResponse = data as PriceResponse;
-        console.log('Got result');
-        console.log(data);
         this.receiptItems = priceResponse.priceItems;
         this.totalPrice = priceResponse.totalPrice;
       },
       (error) => {
-        console.log(error);
+        this.notificationService.showError(error.error.message);
       }
     );
   }
@@ -109,11 +102,14 @@ export class RoomPageComponent {
     };
   }
 
-  checkAvailability() {
-    console.log('checkAvailability');
+  checkAvailability(event: Event) {
+    if (!this.firstName || !this.lastName || !this.email) {
+      event.stopPropagation();
+      return;
+    }
 
-    if (!this.validateEmail(this.email)) {
-      console.log('Invalid email');
+    if (!this.emailValidator.validateEmail(this.email)) {
+      this.notificationService.showError('Email address is invalid');
       return;
     }
 
@@ -121,10 +117,10 @@ export class RoomPageComponent {
 
     this.accommodationService.checkAvailability(data).subscribe(
       (data) => {
-        console.log('Uspesno poslato');
+        this.notificationService.showSuccess('Uspesno poslat zahtev');
       },
       (error) => {
-        console.log(error);
+        this.notificationService.showError(error.error.message);
       }
     );
   }

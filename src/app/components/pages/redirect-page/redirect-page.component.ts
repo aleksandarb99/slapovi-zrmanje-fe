@@ -4,6 +4,7 @@ import { AccommodationService } from 'src/app/services/accommodation.service';
 import { ActivatedRoute } from '@angular/router';
 import { TextService } from 'src/app/services/text.service';
 import { LanguageLabel } from 'src/app/model/language-label.model';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-redirect-page',
@@ -22,7 +23,8 @@ export class RedirectPageComponent {
   constructor(
     private accommodationService: AccommodationService,
     private route: ActivatedRoute,
-    private textService: TextService
+    private textService: TextService,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit() {
@@ -103,11 +105,9 @@ export class RedirectPageComponent {
         .subscribe(
           (data) => {
             this.flag = true;
-            console.log('Uspesno verifikovan mejl');
           },
           (error) => {
             this.flag = false;
-            console.log('Neuspesno verifikovan mejl');
           }
         );
     } else if (this.type === 'reject') {
@@ -116,11 +116,9 @@ export class RedirectPageComponent {
         .subscribe(
           (data) => {
             this.flag = true;
-            console.log('Uspesno verifikovan mejl');
           },
           (error) => {
             this.flag = false;
-            console.log('Neuspesno verifikovan mejl');
           }
         );
     } else if (this.type === 'accept') {
@@ -129,11 +127,9 @@ export class RedirectPageComponent {
         .subscribe(
           (data) => {
             this.flag = true;
-            console.log('Uspesno verifikovan mejl');
           },
           (error) => {
             this.flag = false;
-            console.log('Neuspesno verifikovan mejl');
           }
         );
     } else if (this.type === 'cancel') {
@@ -142,11 +138,9 @@ export class RedirectPageComponent {
         .subscribe(
           (data) => {
             this.flag = true;
-            console.log('Uspesno verifikovan mejl');
           },
           (error) => {
             this.flag = false;
-            console.log('Neuspesno verifikovan mejl');
           }
         );
     } else if (this.type === 'reserve') {
@@ -155,11 +149,9 @@ export class RedirectPageComponent {
         .subscribe(
           (data) => {
             this.flag = true;
-            console.log('Uspesno verifikovan mejl');
           },
           (error) => {
             this.flag = false;
-            console.log('Neuspesno verifikovan mejl');
           }
         );
     }
