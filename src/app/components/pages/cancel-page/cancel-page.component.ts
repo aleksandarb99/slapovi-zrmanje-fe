@@ -28,18 +28,14 @@ export class CancelPageComponent {
     const id = this.route.snapshot.queryParamMap.get('id');
     const code = this.route.snapshot.queryParamMap.get('code');
 
-    this.commonService.setLoading(true);
-
     this.accommodationService
       .cancel(email as string, id as string, code as string)
       .subscribe(
         (data) => {
-          this.commonService.setLoading(false);
           this.canceled = true;
           console.log('Uspesno otkazan zahtev');
         },
         (error) => {
-          this.commonService.setLoading(false);
           this.canceled = false;
           console.log('Neuspesno otkazan zahtev');
         }

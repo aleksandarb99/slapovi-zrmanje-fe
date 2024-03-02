@@ -28,18 +28,14 @@ export class ReservePageComponent {
     const id = this.route.snapshot.queryParamMap.get('id');
     const code = this.route.snapshot.queryParamMap.get('code');
 
-    this.commonService.setLoading(true);
-
     this.accommodationService
       .reserve(email as string, id as string, code as string)
       .subscribe(
         (data) => {
-          this.commonService.setLoading(false);
           this.reserved = true;
           console.log('Uspesno rezervisan zahtev');
         },
         (error) => {
-          this.commonService.setLoading(false);
           this.reserved = false;
           console.log('Neuspesno rezervisan zahtev');
         }

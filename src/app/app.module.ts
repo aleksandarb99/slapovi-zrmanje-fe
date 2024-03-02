@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -24,6 +24,7 @@ import { AcceptPageComponent } from './components/pages/accept-page/accept-page.
 import { ReservePageComponent } from './components/pages/reserve-page/reserve-page.component';
 import { CancelPageComponent } from './components/pages/cancel-page/cancel-page.component';
 import { SpinnerComponent } from './components/utils/spinner/spinner.component';
+import { LoadingInterceptor } from './loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -48,12 +49,19 @@ import { SpinnerComponent } from './components/utils/spinner/spinner.component';
     SpinnerComponent,
   ],
   imports: [
-    BrowserModule, 
+    BrowserModule,
     AppRoutingModule,
-    HttpClientModule, 
+    HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()],
-  providers: [],
+    ToastrModule.forRoot(),
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
