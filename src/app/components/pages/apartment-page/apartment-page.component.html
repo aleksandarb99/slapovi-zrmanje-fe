@@ -2,6 +2,7 @@
     <app-header #appHeader [position]="'sticky'"></app-header>
     <div (click)="appHeader.revertFlags(); commonService.updateComponentVisibility('')">
         <div class="apartment-page">
+            <h1>{{text!.landingPageReservationApartments}}</h1>
             <div class="upper-content">
                 <div class="form-div">
                     <div class="page-row">
@@ -53,8 +54,7 @@
                 </div>
                 <div class="receipt-div">
                     <div>
-                        <p>{{text!.receiptTitle}}</p>
-                        <p>{{text!.calculator}}</p>
+                        <h2>{{text!.calculator}}</h2>
                         <div class="receipt-item-div"  *ngFor="let item of receiptItems">
                             <p style="width: 120px;">{{item.name}}</p>
                             <p style="width: 50px; text-align: right;">{{item.count}}</p>

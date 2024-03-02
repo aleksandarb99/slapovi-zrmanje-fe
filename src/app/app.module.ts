@@ -19,13 +19,9 @@ import { CalendarDayComponent } from './components/utils/calendar-day/calendar-d
 import { RoomPageComponent } from './components/pages/room-page/room-page.component';
 import { ApartmentPageComponent } from './components/pages/apartment-page/apartment-page.component';
 import { GalleryPageComponent } from './components/pages/gallery-page/gallery-page.component';
-import { VerifyPageComponent } from './components/pages/verify-page/verify-page.component';
-import { RejectPageComponent } from './components/pages/reject-page/reject-page.component';
-import { AcceptPageComponent } from './components/pages/accept-page/accept-page.component';
-import { ReservePageComponent } from './components/pages/reserve-page/reserve-page.component';
-import { CancelPageComponent } from './components/pages/cancel-page/cancel-page.component';
 import { SpinnerComponent } from './components/utils/spinner/spinner.component';
 import { LoadingInterceptor } from './loading.interceptor';
+import { RedirectPageComponent } from './components/pages/redirect-page/redirect-page.component';
 
 @NgModule({
   declarations: [
@@ -42,12 +38,8 @@ import { LoadingInterceptor } from './loading.interceptor';
     CalendarComponent,
     CalendarDayComponent,
     GalleryPageComponent,
-    VerifyPageComponent,
-    RejectPageComponent,
-    AcceptPageComponent,
-    ReservePageComponent,
-    CancelPageComponent,
     SpinnerComponent,
+    RedirectPageComponent,
   ],
   imports: [
     BrowserModule,
