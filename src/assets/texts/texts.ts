@@ -49,7 +49,7 @@ export const texts: LanguageLabel[] = [
     calendarDays: 'Po, Ut, Sr, Če, Pe, Su, Ne',
     calendarMonths:
       'Januar, Februar, Mart, April, Maj, Jun, Jul, Avgust, Septembar, Oktobar, Novembar, Decembar',
-    calculator: 'Pregled cene:',
+    calculator: 'Pregled cene',
     calculateButtonText: 'Izračunaj',
     totalText: 'Ukupno:',
     dropdownRoomLodgingTitle1: 'Soba 1',
@@ -121,7 +121,7 @@ export const texts: LanguageLabel[] = [
     calendarDays: 'Mo, Tu, We, Th, Fr, Sa, Su',
     calendarMonths:
       'January, February, March, April, May, June, July, August, September, October, November, December',
-    calculator: 'Price preview:',
+    calculator: 'Price preview',
     calculateButtonText: 'Calculate',
     totalText: 'In total:',
     dropdownRoomLodgingTitle1: 'Room 1',
@@ -193,7 +193,7 @@ export const texts: LanguageLabel[] = [
     calendarDays: 'Mo, Di, Mi, Do, Fr, Sa, So',
     calendarMonths:
       'Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember',
-    calculator: 'Preisvorschau:',
+    calculator: 'Preisvorschau',
     calculateButtonText: 'Berechnung',
     totalText: 'In Summe:',
     dropdownRoomLodgingTitle1: 'Zimmer 1',

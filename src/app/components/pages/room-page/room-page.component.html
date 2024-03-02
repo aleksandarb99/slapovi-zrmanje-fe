@@ -2,6 +2,7 @@
     <app-header #appHeader [position]="'sticky'"></app-header>
     <div (click)="appHeader.revertFlags(); commonService.updateComponentVisibility('')">
         <div class="room-page">
+            <h1>{{text!.landingPageReservationRooms}}</h1>
             <div class="upper-content">
                 <div class="form-div">
                     <div class="page-row">
