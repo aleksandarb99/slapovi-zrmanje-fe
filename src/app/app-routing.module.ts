@@ -10,6 +10,7 @@ import { RejectPageComponent } from './components/pages/reject-page/reject-page.
 import { AcceptPageComponent } from './components/pages/accept-page/accept-page.component';
 import { ReservePageComponent } from './components/pages/reserve-page/reserve-page.component';
 import { CancelPageComponent } from './components/pages/cancel-page/cancel-page.component';
+import { RedirectPageComponent } from './components/pages/redirect-page/redirect-page.component';
 
 const routes: Routes = [
   {
@@ -34,23 +35,38 @@ const routes: Routes = [
   },
   {
     path: 'verify',
-    component: VerifyPageComponent,
+    component: RedirectPageComponent,
+    data: {
+      type: 'verify',
+    },
   },
   {
     path: 'reject',
-    component: RejectPageComponent,
+    component: RedirectPageComponent,
+    data: {
+      type: 'reject',
+    },
   },
   {
     path: 'accept',
-    component: AcceptPageComponent,
+    component: RedirectPageComponent,
+    data: {
+      type: 'accept',
+    },
   },
   {
     path: 'reserve',
-    component: ReservePageComponent,
+    component: RedirectPageComponent,
+    data: {
+      type: 'reserve',
+    },
   },
   {
     path: 'cancel',
-    component: CancelPageComponent,
+    component: RedirectPageComponent,
+    data: {
+      type: 'cancel',
+    },
   },
 ];
 

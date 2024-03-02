@@ -66,5 +66,29 @@ export interface LanguageLabel {
   workingMonths: string;
   workingHours: string;
   country: string;
-  // TODO: Add every label here
+
+  successTitleVerify: string;
+  successContentVerify: string;
+  failedTitleVerify: string;
+  failedContentVerify: string;
+
+  successTitleReject: string;
+  successContentReject: string;
+  failedTitleReject: string;
+  failedContentReject: string;
+
+  successTitleAccept: string;
+  successContentAccept: string;
+  failedTitleAccept: string;
+  failedContentAccept: string;
+
+  successTitleReserve: string;
+  successContentReserve: string;
+  failedTitleReserve: string;
+  failedContentReserve: string;
+
+  successTitleCancel: string;
+  successContentCancel: string;
+  failedTitleCancel: string;
+  failedContentCancel: string;
 }

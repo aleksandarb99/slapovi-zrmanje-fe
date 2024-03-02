@@ -72,6 +72,36 @@ export const texts: LanguageLabel[] = [
     workingHours: 'od 9h do 21h',
     country: 'Hrvatska',
     sendButtonText: 'Pošalji',
+
+    successTitleVerify: 'Uspešna verifikacija!',
+    successContentVerify:
+      'Uspešno ste verifikovali Vaš email nalog. Odgovor će Vam biti dostavljen na pomenuti nalog.',
+    failedTitleVerify: 'Greška prilikom verifikacije!',
+    failedContentVerify:
+      'Iz nepoznatog razloga nije moguće verifikovati Vaš email nalog.',
+
+    successTitleReject: 'Uspešno odbijanje!',
+    successContentReject: 'Uspešno ste odbili zahtev za proveru smeštaja.',
+    failedTitleReject: 'Greška prilikom odbijanja!',
+    failedContentReject:
+      'Iz nepoznatog razloga nije moguće odbiti zahtev za proveru smeštaja.',
+
+    successTitleAccept: 'Uspešno prihvatanje!',
+    successContentAccept: 'Uspešno ste prihvatili zahtev za proveru smeštaja.',
+    failedTitleAccept: 'Greška prilikom prihvatanja!',
+    failedContentAccept:
+      'Iz nepoznatog razloga nije moguće prihvatiti zahtev za proveru smeštaja.',
+
+    successTitleReserve: 'Uspešna rezervacija!',
+    successContentReserve: 'Uspešno ste rezervisali smeštaj.',
+    failedTitleReserve: 'Greška prilikom rezervacije!',
+    failedContentReserve:
+      'Iz nepoznatog razloga nije moguće rezervisati smeštaj.',
+
+    successTitleCancel: 'Uspešno otkazivanje!',
+    successContentCancel: 'Uspešno ste otkazali smeštaj.',
+    failedTitleCancel: 'Greška prilikom otkazivanja!',
+    failedContentCancel: 'Iz nepoznatog razloga nije moguće otkazati smeštaj.',
   },
   {
     // English
@@ -144,6 +174,39 @@ export const texts: LanguageLabel[] = [
     workingHours: 'from 9AM to 9PM',
     country: 'Croatia',
     sendButtonText: 'Send',
+
+    successTitleVerify: 'Successful Verification!',
+    successContentVerify:
+      'You have successfully verified your email account. A response will be sent to the mentioned account.',
+    failedTitleVerify: 'Verification Error!',
+    failedContentVerify:
+      'For unknown reasons, it is not possible to verify your email account.',
+
+    successTitleReject: 'Successful Rejection!',
+    successContentReject:
+      'You have successfully rejected the accommodation verification request.',
+    failedTitleReject: 'Rejection Error!',
+    failedContentReject:
+      'For unknown reasons, it is not possible to reject the accommodation verification request.',
+
+    successTitleAccept: 'Successful Acceptance!',
+    successContentAccept:
+      'You have successfully accepted the accommodation verification request.',
+    failedTitleAccept: 'Acceptance Error!',
+    failedContentAccept:
+      'For unknown reasons, it is not possible to accept the accommodation verification request.',
+
+    successTitleReserve: 'Successful Reservation!',
+    successContentReserve: 'You have successfully reserved accommodation.',
+    failedTitleReserve: 'Reservation Error!',
+    failedContentReserve:
+      'For unknown reasons, it is not possible to reserve accommodation.',
+
+    successTitleCancel: 'Successful Cancellation!',
+    successContentCancel: 'You have successfully canceled accommodation.',
+    failedTitleCancel: 'Cancellation Error!',
+    failedContentCancel:
+      'For unknown reasons, it is not possible to cancel accommodation.',
   },
   {
     // German
@@ -216,5 +279,38 @@ export const texts: LanguageLabel[] = [
     workingHours: 'von 9 bis 21 Uhr',
     country: 'Kroatien',
     sendButtonText: 'Schicken',
+
+    successTitleVerify: 'Erfolgreiche Verifizierung!',
+    successContentVerify:
+      'Sie haben Ihr E-Mail-Konto erfolgreich verifiziert. Eine Antwort wird an das angegebene Konto gesendet.',
+    failedTitleVerify: 'Verifizierungsfehler!',
+    failedContentVerify:
+      'Aus unbekannten Gründen ist es nicht möglich, Ihr E-Mail-Konto zu verifizieren.',
+
+    successTitleReject: 'Erfolgreiche Ablehnung!',
+    successContentReject:
+      'Sie haben den Antrag auf Überprüfung der Unterkunft erfolgreich abgelehnt.',
+    failedTitleReject: 'Ablehnungsfehler!',
+    failedContentReject:
+      'Aus unbekannten Gründen ist es nicht möglich, den Antrag auf Überprüfung der Unterkunft abzulehnen.',
+
+    successTitleAccept: 'Erfolgreiche Annahme!',
+    successContentAccept:
+      'Sie haben den Antrag auf Überprüfung der Unterkunft erfolgreich angenommen.',
+    failedTitleAccept: 'Annahmefehler!',
+    failedContentAccept:
+      'Aus unbekannten Gründen ist es nicht möglich, den Antrag auf Überprüfung der Unterkunft anzunehmen.',
+
+    successTitleReserve: 'Erfolgreiche Reservierung!',
+    successContentReserve: 'Sie haben die Unterkunft erfolgreich reserviert.',
+    failedTitleReserve: 'Reservierungsfehler!',
+    failedContentReserve:
+      'Aus unbekannten Gründen ist es nicht möglich, die Unterkunft zu reservieren.',
+
+    successTitleCancel: 'Erfolgreiche Stornierung!',
+    successContentCancel: 'Sie haben die Unterkunft erfolgreich storniert.',
+    failedTitleCancel: 'Stornierungsfehler!',
+    failedContentCancel:
+      'Aus unbekannten Gründen ist es nicht möglich, die Unterkunft zu stornieren.',
   },
 ];

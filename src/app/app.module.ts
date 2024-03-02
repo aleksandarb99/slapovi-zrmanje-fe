@@ -26,6 +26,7 @@ import { ReservePageComponent } from './components/pages/reserve-page/reserve-pa
 import { CancelPageComponent } from './components/pages/cancel-page/cancel-page.component';
 import { SpinnerComponent } from './components/utils/spinner/spinner.component';
 import { LoadingInterceptor } from './loading.interceptor';
+import { RedirectPageComponent } from './components/pages/redirect-page/redirect-page.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { LoadingInterceptor } from './loading.interceptor';
     ReservePageComponent,
     CancelPageComponent,
     SpinnerComponent,
+    RedirectPageComponent,
   ],
   imports: [
     BrowserModule,
