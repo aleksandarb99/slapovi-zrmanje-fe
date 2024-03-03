@@ -81,11 +81,19 @@ export class ApartmentPageComponent {
     this.accommodationService.checkPriceForRoomOrApartment(data).subscribe({
       next: (data: any) => {
         let priceResponse = data as PriceResponse;
-        this.receiptItems = priceResponse.priceItems;
         this.totalPrice = priceResponse.totalPrice;
+        this.setReceiptItems(priceResponse.priceItems);
       },
       error: (error) => this.notificationService.showError(error.error.message),
     });
+  }
+
+  setReceiptItems(items: PriceItem[]) {
+    // if (text) {
+    // }
+    // TODO: Map here items to correct language
+
+    this.receiptItems = items;
   }
 
   protected isAvailabilityDisabled(): boolean {
