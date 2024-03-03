@@ -1,5 +1,11 @@
 <div class="input-wrapper">
-    <p class="input-label">{{label}}</p>
+    <p class="input-label" 
+       [class.content-en]="textService.getLanguage() === 'EN'" 
+       [class.content-de]="textService.getLanguage() === 'DE'" 
+       [class.content-hr]="textService.getLanguage() === 'HR'" 
+    >
+    {{label}}
+    </p>
     <div class="input-rectangle" [ngClass]="{'input-rectangle-fill': this.fill}" (click)="this.showOrHide($event)">
         <p class="input-rectangle-text" [ngClass]="{'disable-bold': this.line == this.initialLine}">
             {{chosenStartDate ? generateDateString(chosenStartDate) : checkInLabel}} - 

@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { TextValue } from 'src/app/model/text-value.model';
-import { CommonService } from 'src/app/services/common.service';
+import { TextService } from 'src/app/services/text.service';
 
 @Component({
   selector: 'app-text-input',
@@ -14,7 +14,7 @@ export class TextInputComponent {
   @Input() inputType: string = 'TEXT';
   @Output() valueChangedEvent = new EventEmitter<TextValue>();
 
-  constructor(private commonService: CommonService) {}
+  constructor(protected textService: TextService) {}
 
   onInput(event: Event) {
     this.value = (<HTMLTextAreaElement>event.target).value;
