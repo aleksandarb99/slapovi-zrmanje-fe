@@ -34,6 +34,7 @@ export class LandingPageComponent implements OnInit {
 
   ngOnInit() {
     this.commonService.contactEmitter.subscribe(() => this.scrollToLastSection());
+    this.commonService.aboutUsEmitter.subscribe(() => this.scrollToAboutUsSection());
     this.textService.text.subscribe(data => this.text = data);
     this.headerComponent!.checkSavedPreferableLanguage();
   }
@@ -95,6 +96,19 @@ export class LandingPageComponent implements OnInit {
       this.screenIsMoving = true;
 
       this.currentSectionIndex = this.sections.length + 2;
+      this.scrollToElement('page' + this.currentSectionIndex);
+
+      setTimeout(() => {
+        this.screenIsMoving = false;
+      }, 800);
+    }
+  }
+
+  scrollToAboutUsSection(): void {
+    if (this.screenIsMoving === false) {
+      this.screenIsMoving = true;
+
+      this.currentSectionIndex = this.sections.length + 1;
       this.scrollToElement('page' + this.currentSectionIndex);
 
       setTimeout(() => {

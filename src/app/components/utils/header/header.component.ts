@@ -112,6 +112,7 @@ export class HeaderComponent {
   redirectTo(route: string) {
     this.router.navigate(['/' + route]);
   }
+
   moveToContactSection(): void {
     if (this.router.url !== '/') {
       this.router.navigate(['/']);
@@ -120,6 +121,17 @@ export class HeaderComponent {
       }, 400);
     } else {
       this.commonService.scrollToContactSectionEmit();
+    }
+  }
+
+  moveToAboutUsSection(): void {
+    if (this.router.url !== '/') {
+      this.router.navigate(['/']);
+      setTimeout(() => {
+        this.commonService.scrollToAboutUsSectionEmit();
+      }, 400);
+    } else {
+      this.commonService.scrollToAboutUsSectionEmit();
     }
   }
 }

@@ -13,6 +13,7 @@
     <hr>
     <h3 class="menu-item" routerLink="/gallery">{{text!.landingPageBurgerGallery}}</h3>
     <h3 class="menu-item" (click)="moveToContactSection()">{{text!.landingPageBurgerContact}}</h3>
+    <h3 class="menu-item" (click)="moveToAboutUsSection()">{{text!.landingPageBurgerAboutUs}}</h3>
     <h3 class="menu-item" (click)="openLanguageMenu($event)">{{text!.landingPageBurgerLanguage}}</h3>
     <div *ngIf="languageMenuIsOpened">
         <h3 class="menu-item second-level" (click)="selectPreferableLanguage(0)">{{text!.landingPageBurgerLanguageCroatian}}</h3>

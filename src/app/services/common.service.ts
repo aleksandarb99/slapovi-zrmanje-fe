@@ -9,8 +9,10 @@ export class CommonService {
 
   private componentOpenedCampPageSubject = new Subject<string>();
   private contactSubject = new Subject<void>();
+  private aboutUsSubject = new Subject<void>();
   componentOpenedCampPage = this.componentOpenedCampPageSubject.asObservable();
   contactEmitter = this.contactSubject.asObservable();
+  aboutUsEmitter = this.aboutUsSubject.asObservable();
   private loading: boolean = false;
   landingPage: LandingPageComponent | undefined;
 
@@ -28,6 +30,10 @@ export class CommonService {
 
   public scrollToContactSectionEmit() {
     this.contactSubject.next();
+  }
+
+  public scrollToAboutUsSectionEmit() {
+    this.aboutUsSubject.next();
   }
 
   public overrideWheelEvent(landingPage: LandingPageComponent) {

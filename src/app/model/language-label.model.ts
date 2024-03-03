@@ -7,6 +7,7 @@ export interface LanguageLabel {
   landingPageReservationApartments: string;
   landingPageBurgerGallery: string;
   landingPageBurgerContact: string;
+  landingPageBurgerAboutUs: string;
   landingPageBurgerLanguage: string;
   landingPageBurgerLanguageCroatian: string;
   landingPageBurgerLanguageEnglish: string;
