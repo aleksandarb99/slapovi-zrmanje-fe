@@ -10,9 +10,11 @@ export class CommonService {
   private componentOpenedCampPageSubject = new Subject<string>();
   private contactSubject = new Subject<void>();
   private aboutUsSubject = new Subject<void>();
+  private resetDropdownSubject = new Subject<void>();
   componentOpenedCampPage = this.componentOpenedCampPageSubject.asObservable();
   contactEmitter = this.contactSubject.asObservable();
   aboutUsEmitter = this.aboutUsSubject.asObservable();
+  resetDropdownEmitter = this.resetDropdownSubject.asObservable();
   private loading: boolean = false;
   landingPage: LandingPageComponent | undefined;
 
@@ -34,6 +36,10 @@ export class CommonService {
 
   public scrollToAboutUsSectionEmit() {
     this.aboutUsSubject.next();
+  }
+  
+  public resetDropdowns() {
+    this.resetDropdownSubject.next();
   }
 
   public overrideWheelEvent(landingPage: LandingPageComponent) {

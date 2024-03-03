@@ -33,6 +33,7 @@ export class DropdownComponent {
   @Output() showDivEvent = new EventEmitter<string>();
 
   constructor(private commonService: CommonService) {
+    this.commonService.resetDropdownEmitter.subscribe(() => this.resetValues());
     this.commonService.componentOpenedCampPage.subscribe(
       (incomingLabel) => (this.divIsOpened = this.label === incomingLabel)
     );
@@ -148,5 +149,22 @@ export class DropdownComponent {
 
     this.valueChangedEvent.emit(object);
     event.stopPropagation();
+  }
+
+  private resetValues(): void {
+    this.value1 = 0;
+    this.value2 = 0;
+    this.value3 = 0;
+    this.value4 = 0;
+
+    let object: IntValues = {
+      value1: this.value1,
+      value2: this.value2,
+      value3: this.value3,
+      value4: this.value4,
+      label: this.label,
+    };
+    
+    this.valueChangedEvent.emit(object);
   }
 }

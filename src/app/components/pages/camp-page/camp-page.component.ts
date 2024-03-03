@@ -12,7 +12,7 @@ import * as moment from 'moment';
 import { CalendarService } from 'src/app/services/calendar.service';
 import { PriceResponse } from 'src/app/model/price-response.model';
 import { PriceItem } from 'src/app/model/price-item.model';
-import { EmailValidatorService } from 'src/app/services/email-validator.service';
+import { ValidatorService } from 'src/app/services/validator.service';
 import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
@@ -55,7 +55,7 @@ export class CampPageComponent {
     private textService: TextService,
     protected commonService: CommonService,
     private calendarService: CalendarService,
-    private emailValidator: EmailValidatorService,
+    private validator: ValidatorService,
     private notificationService: NotificationService
   ) {
     this.calendarService.startDate.subscribe(
@@ -93,7 +93,7 @@ export class CampPageComponent {
       return;
     }
 
-    if (!this.emailValidator.validateEmail(this.email)) {
+    if (!this.validator.validateEmail(this.email)) {
       this.notificationService.showError('Email address is invalid');
       return;
     }

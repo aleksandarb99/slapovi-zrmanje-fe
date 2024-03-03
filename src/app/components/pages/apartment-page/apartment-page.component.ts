@@ -13,8 +13,7 @@ import * as moment from 'moment';
 import { PriceResponse } from 'src/app/model/price-response.model';
 import { PriceItem } from 'src/app/model/price-item.model';
 import { NotificationService } from 'src/app/services/notification.service';
-import { EmailValidator } from '@angular/forms';
-import { EmailValidatorService } from 'src/app/services/email-validator.service';
+import { ValidatorService } from 'src/app/services/validator.service';
 
 @Component({
   selector: 'app-apartment-page',
@@ -54,7 +53,7 @@ export class ApartmentPageComponent {
     private textService: TextService,
     protected commonService: CommonService,
     private calendarService: CalendarService,
-    private emailValidator: EmailValidatorService,
+    private validator: ValidatorService,
     private notificationService: NotificationService
   ) {
     this.calendarService.startDate.subscribe(
@@ -71,8 +70,12 @@ export class ApartmentPageComponent {
     this.headerComponent?.changeHeaderTheme(true);
   }
 
-  calculatePrice() {
-    // TODO Disable button
+  calculatePrice(event: Event) {
+    if (this.isCalculationDisabled()) {
+      event.stopPropagation();
+      return;
+    }
+
     let data = this.generateData();
 
     this.accommodationService.checkPrice(data).subscribe(
@@ -85,6 +88,20 @@ export class ApartmentPageComponent {
         this.notificationService.showError(error.error.message);
       }
     );
+  }
+
+  protected isAvailabilityDisabled(): boolean {
+    return !this.firstName || 
+           !this.lastName ||
+           !this.email ||
+           this.isCalculationDisabled();
+  }
+
+  protected isCalculationDisabled(): boolean {
+    return !this.validator.validateApartments(this.lodging) || 
+           !this.validator.validateGuests(this.guests) || 
+           !this.chosenStartDate || 
+           !this.chosenEndDate;
   }
 
   generateData() {
@@ -105,12 +122,12 @@ export class ApartmentPageComponent {
   }
 
   checkAvailability(event: Event) {
-    if (!this.firstName || !this.lastName || !this.email) {
+    if (this.isAvailabilityDisabled()) {
       event.stopPropagation();
       return;
     }
 
-    if (!this.emailValidator.validateEmail(this.email)) {
+    if (!this.validator.validateEmail(this.email)) {
       this.notificationService.showError('Email address is invalid');
       return;
     }
@@ -119,10 +136,12 @@ export class ApartmentPageComponent {
 
     this.accommodationService.checkAvailability(data).subscribe(
       (data) => {
-        // TODO Reset other fields
         this.firstName = '';
         this.lastName = '';
         this.email = '';
+        this.commonService.resetDropdowns();
+        this.calendarService.updateStartDate(undefined);
+        this.calendarService.updateEndDate(undefined);
         // TODO: Prevedi sve errore i poruke
         this.notificationService.showSuccess('Uspesno poslat zahtev');
       },
@@ -151,6 +170,7 @@ export class ApartmentPageComponent {
         apartment2: intValues.value2,
         apartment3: intValues.value3,
       };
+      console.log(this.lodging)
     } else {
       this.guests = {
         adults: intValues.value1,
@@ -158,6 +178,7 @@ export class ApartmentPageComponent {
         infants: intValues.value3,
         pets: intValues.value4,
       };
+      console.log(this.guests)
     }
   }
 }

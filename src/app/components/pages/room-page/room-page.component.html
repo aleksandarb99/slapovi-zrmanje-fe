@@ -49,7 +49,7 @@
                         <app-calendar [fill]="true"></app-calendar>
                     </div>
                     <div class="page-row">
-                        <div class="check-button" (click)="checkAvailability($event)">{{text!.checkAvailabilityButtonText}}</div>
+                        <div class="check-button" [ngClass]="{'disable-button': true}" (click)="checkAvailability($event)">{{text!.checkAvailabilityButtonText}}</div>
                     </div>
                 </div>
                 <div class="receipt-div">
@@ -65,7 +65,7 @@
                     <div>
                         <div class="receipt-total-div">
                             <div class="calculate-button-div">
-                                <div class="calculate-button" (click)="calculatePrice()">{{text!.calculateButtonText}}</div>
+                                <div class="calculate-button" [ngClass]="{'disable-button': true}" (click)="calculatePrice()">{{text!.calculateButtonText}}</div>
                                 <p>{{text!.totalText}}</p>
                             </div>
                             <p>{{totalPrice}} €</p>
