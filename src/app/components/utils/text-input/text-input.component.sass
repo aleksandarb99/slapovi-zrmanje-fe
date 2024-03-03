@@ -18,6 +18,26 @@ $div-extended-width: 45.1vw
     font-style: normal
     font-weight: bold
     line-height: 20px
+    position: relative
+    &::before
+        content: '*'
+        color: red
+        position: absolute
+        top: -8px
+        right: -8px  
+    &::after
+        content: 'Required' // TODO Check how to change based on language
+        position: absolute
+        top: -18px
+        right: -60px
+        color: $base-blue-color
+        opacity: 0
+        pointer-events: none
+        font-size: 12px
+        transition: opacity 0.3s ease-in-out
+
+.input-label:hover:after
+    opacity: 1
 
 .input-rectangle
     width: $div-width
