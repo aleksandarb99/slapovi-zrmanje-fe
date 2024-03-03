@@ -7,9 +7,12 @@
     {{label}}
     </p>
     <input 
+        #input
         class="input-rectangle"
         [ngClass]="{'fill': fill === true}"
         type="{{inputType.toLowerCase()}}" 
         [(ngModel)] = "value"
-        (input)="onInput($event)">
+        (input)="onInput()"
+        (focus)="onFocus()"
+        >
 </div>
