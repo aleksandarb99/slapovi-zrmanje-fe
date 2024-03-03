@@ -70,9 +70,16 @@ export class CampPageComponent {
 
     this.commonService.removeWheelEvent();
     this.headerComponent?.changeHeaderTheme(true);
+    this.calendarService.updateStartDate(undefined);
+    this.calendarService.updateEndDate(undefined);
   }
 
-  calculatePrice() {
+  calculatePrice(event: Event) {
+    if (this.isCalculationDisabled()) {
+      event.stopPropagation();
+      return;
+    }
+
     let data = this.generateData();
 
     this.accommodationService.checkPriceForCamp(data).subscribe({
@@ -86,7 +93,7 @@ export class CampPageComponent {
   }
 
   checkAvailability(event: Event) {
-    if (!this.firstName || !this.lastName || !this.email) {
+    if (this.isAvailabilityDisabled()) {
       event.stopPropagation();
       return;
     }
@@ -100,7 +107,6 @@ export class CampPageComponent {
 
     this.accommodationService.checkAvailability(data).subscribe({
       complete: () => {
-        // TODO Reset other fields
         this.firstName = '';
         this.lastName = '';
         this.email = '';
@@ -112,6 +118,24 @@ export class CampPageComponent {
       },
       error: (error) => this.notificationService.showError(error.error.message),
     });
+  }
+
+  protected isAvailabilityDisabled(): boolean {
+    return (
+      !this.firstName ||
+      !this.lastName ||
+      !this.email ||
+      this.isCalculationDisabled()
+    );
+  }
+
+  protected isCalculationDisabled(): boolean {
+    return (
+      !this.validator.validateCamp(this.lodging) ||
+      !this.validator.validateGuests(this.guests) ||
+      !this.chosenStartDate ||
+      !this.chosenEndDate
+    );
   }
 
   generateData() {

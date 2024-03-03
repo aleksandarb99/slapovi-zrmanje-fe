@@ -4,7 +4,6 @@ import {
   Output,
   EventEmitter,
   ViewChild,
-  AfterContentInit,
 } from '@angular/core';
 import { TextValue } from 'src/app/model/text-value.model';
 import { TextService } from 'src/app/services/text.service';
@@ -24,10 +23,6 @@ export class TextInputComponent {
   @ViewChild('input') input: any;
 
   constructor(protected textService: TextService) {}
-
-  onFocus() {
-    this.onInput();
-  }
 
   onInput() {
     this.value = this.input.nativeElement.value;
