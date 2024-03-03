@@ -23,8 +23,7 @@ export class RedirectPageComponent {
   constructor(
     private accommodationService: AccommodationService,
     private route: ActivatedRoute,
-    private textService: TextService,
-    private notificationService: NotificationService
+    private textService: TextService
   ) {}
 
   ngOnInit() {
@@ -99,61 +98,33 @@ export class RedirectPageComponent {
     const id = this.route.snapshot.queryParamMap.get('id');
     const code = this.route.snapshot.queryParamMap.get('code');
 
+    let callback1 = () => {
+      this.flag = true;
+    };
+    let callback2 = () => {
+      this.flag = false;
+    };
+
     if (this.type === 'verify') {
       this.accommodationService
         .verifyEmail(email as string, id as string, code as string)
-        .subscribe(
-          (data) => {
-            this.flag = true;
-          },
-          (error) => {
-            this.flag = false;
-          }
-        );
+        .subscribe(callback1, callback2);
     } else if (this.type === 'reject') {
       this.accommodationService
         .reject(email as string, id as string, code as string)
-        .subscribe(
-          (data) => {
-            this.flag = true;
-          },
-          (error) => {
-            this.flag = false;
-          }
-        );
+        .subscribe(callback1, callback2);
     } else if (this.type === 'accept') {
       this.accommodationService
         .accept(email as string, id as string, code as string)
-        .subscribe(
-          (data) => {
-            this.flag = true;
-          },
-          (error) => {
-            this.flag = false;
-          }
-        );
+        .subscribe(callback1, callback2);
     } else if (this.type === 'cancel') {
       this.accommodationService
         .cancel(email as string, id as string, code as string)
-        .subscribe(
-          (data) => {
-            this.flag = true;
-          },
-          (error) => {
-            this.flag = false;
-          }
-        );
+        .subscribe(callback1, callback2);
     } else if (this.type === 'reserve') {
       this.accommodationService
         .reserve(email as string, id as string, code as string)
-        .subscribe(
-          (data) => {
-            this.flag = true;
-          },
-          (error) => {
-            this.flag = false;
-          }
-        );
+        .subscribe(callback1, callback2);
     }
   }
 }
