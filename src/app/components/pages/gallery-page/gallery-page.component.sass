@@ -24,12 +24,19 @@ h1
     justify-content: flex-start
     flex-wrap: wrap
 
+=zoom($scale)
+  transition: transform 0.3s ease-in-out
+  transform-origin: center
+  transform: scale($scale)
+
 .photo-div
     background-color: #d6d6d6
     width: 26vw
     height: 27vh
-    margin-right: 2vw
+    margin-left: 2vw
     margin-top: 4vh
+    &:hover
+        +zoom(1.1)
 
 footer
     margin-top: 20vh
