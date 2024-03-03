@@ -4,7 +4,6 @@ import { AccommodationService } from 'src/app/services/accommodation.service';
 import { ActivatedRoute } from '@angular/router';
 import { TextService } from 'src/app/services/text.service';
 import { LanguageLabel } from 'src/app/model/language-label.model';
-import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-redirect-page',
@@ -108,23 +107,38 @@ export class RedirectPageComponent {
     if (this.type === 'verify') {
       this.accommodationService
         .verifyEmail(email as string, id as string, code as string)
-        .subscribe(callback1, callback2);
+        .subscribe({
+          complete: callback1,
+          error: callback2,
+        });
     } else if (this.type === 'reject') {
       this.accommodationService
         .reject(email as string, id as string, code as string)
-        .subscribe(callback1, callback2);
+        .subscribe({
+          complete: callback1,
+          error: callback2,
+        });
     } else if (this.type === 'accept') {
       this.accommodationService
         .accept(email as string, id as string, code as string)
-        .subscribe(callback1, callback2);
+        .subscribe({
+          complete: callback1,
+          error: callback2,
+        });
     } else if (this.type === 'cancel') {
       this.accommodationService
         .cancel(email as string, id as string, code as string)
-        .subscribe(callback1, callback2);
+        .subscribe({
+          complete: callback1,
+          error: callback2,
+        });
     } else if (this.type === 'reserve') {
       this.accommodationService
         .reserve(email as string, id as string, code as string)
-        .subscribe(callback1, callback2);
+        .subscribe({
+          complete: callback1,
+          error: callback2,
+        });
     }
   }
 }

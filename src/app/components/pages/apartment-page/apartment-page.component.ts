@@ -55,17 +55,17 @@ export class ApartmentPageComponent {
     private calendarService: CalendarService,
     private validator: ValidatorService,
     private notificationService: NotificationService
-  ) {
+  ) {}
+
+  ngOnInit() {
     this.calendarService.startDate.subscribe(
       (data) => (this.chosenStartDate = data)
     );
     this.calendarService.endDate.subscribe(
       (data) => (this.chosenEndDate = data)
     );
-  }
-
-  ngOnInit() {
     this.textService.text.subscribe((data) => (this.text = data));
+
     this.commonService.removeWheelEvent();
     this.headerComponent?.changeHeaderTheme(true);
   }
@@ -78,30 +78,32 @@ export class ApartmentPageComponent {
 
     let data = this.generateData();
 
-    this.accommodationService.checkPrice(data).subscribe(
-      (data: any) => {
+    this.accommodationService.checkPrice(data).subscribe({
+      next: (data: any) => {
         let priceResponse = data as PriceResponse;
         this.receiptItems = priceResponse.priceItems;
         this.totalPrice = priceResponse.totalPrice;
       },
-      (error) => {
-        this.notificationService.showError(error.error.message);
-      }
-    );
+      error: (error) => this.notificationService.showError(error.error.message),
+    });
   }
 
   protected isAvailabilityDisabled(): boolean {
-    return !this.firstName || 
-           !this.lastName ||
-           !this.email ||
-           this.isCalculationDisabled();
+    return (
+      !this.firstName ||
+      !this.lastName ||
+      !this.email ||
+      this.isCalculationDisabled()
+    );
   }
 
   protected isCalculationDisabled(): boolean {
-    return !this.validator.validateApartments(this.lodging) || 
-           !this.validator.validateGuests(this.guests) || 
-           !this.chosenStartDate || 
-           !this.chosenEndDate;
+    return (
+      !this.validator.validateApartments(this.lodging) ||
+      !this.validator.validateGuests(this.guests) ||
+      !this.chosenStartDate ||
+      !this.chosenEndDate
+    );
   }
 
   generateData() {
@@ -134,8 +136,8 @@ export class ApartmentPageComponent {
 
     let data = this.generateData();
 
-    this.accommodationService.checkAvailability(data).subscribe(
-      (data) => {
+    this.accommodationService.checkAvailability(data).subscribe({
+      complete: () => {
         this.firstName = '';
         this.lastName = '';
         this.email = '';
@@ -145,10 +147,8 @@ export class ApartmentPageComponent {
         // TODO: Prevedi sve errore i poruke
         this.notificationService.showSuccess('Uspesno poslat zahtev');
       },
-      (error) => {
-        this.notificationService.showError(error.error.message);
-      }
-    );
+      error: (error) => this.notificationService.showError(error.error.message),
+    });
   }
 
   saveTextValue(textValue: TextValue) {
@@ -170,7 +170,7 @@ export class ApartmentPageComponent {
         apartment2: intValues.value2,
         apartment3: intValues.value3,
       };
-      console.log(this.lodging)
+      console.log(this.lodging);
     } else {
       this.guests = {
         adults: intValues.value1,
@@ -178,7 +178,7 @@ export class ApartmentPageComponent {
         infants: intValues.value3,
         pets: intValues.value4,
       };
-      console.log(this.guests)
+      console.log(this.guests);
     }
   }
 }

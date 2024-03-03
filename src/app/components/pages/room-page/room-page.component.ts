@@ -55,17 +55,17 @@ export class RoomPageComponent {
     private calendarService: CalendarService,
     private validator: ValidatorService,
     private notificationService: NotificationService
-  ) {
+  ) {}
+
+  ngOnInit() {
     this.calendarService.startDate.subscribe(
       (data) => (this.chosenStartDate = data)
     );
     this.calendarService.endDate.subscribe(
       (data) => (this.chosenEndDate = data)
     );
-  }
-
-  ngOnInit() {
     this.textService.text.subscribe((data) => (this.text = data));
+
     this.commonService.removeWheelEvent();
     this.headerComponent?.changeHeaderTheme(true);
   }
@@ -73,16 +73,14 @@ export class RoomPageComponent {
   calculatePrice() {
     let data = this.generateData();
 
-    this.accommodationService.checkPrice(data).subscribe(
-      (data: any) => {
+    this.accommodationService.checkPrice(data).subscribe({
+      next: (data: any) => {
         let priceResponse = data as PriceResponse;
         this.receiptItems = priceResponse.priceItems;
         this.totalPrice = priceResponse.totalPrice;
       },
-      (error) => {
-        this.notificationService.showError(error.error.message);
-      }
-    );
+      error: (error) => this.notificationService.showError(error.error.message),
+    });
   }
 
   generateData() {
@@ -115,14 +113,20 @@ export class RoomPageComponent {
 
     let data = this.generateData();
 
-    this.accommodationService.checkAvailability(data).subscribe(
-      (data) => {
+    this.accommodationService.checkAvailability(data).subscribe({
+      complete: () => {
+        // TODO Reset other fields
+        this.firstName = '';
+        this.lastName = '';
+        this.email = '';
+        this.commonService.resetDropdowns();
+        this.calendarService.updateStartDate(undefined);
+        this.calendarService.updateEndDate(undefined);
+        // TODO: Prevedi sve errore i poruke
         this.notificationService.showSuccess('Uspesno poslat zahtev');
       },
-      (error) => {
-        this.notificationService.showError(error.error.message);
-      }
-    );
+      error: (error) => this.notificationService.showError(error.error.message),
+    });
   }
 
   saveTextValue(textValue: TextValue) {
