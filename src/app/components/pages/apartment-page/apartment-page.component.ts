@@ -78,7 +78,7 @@ export class ApartmentPageComponent {
 
     let data = this.generateData();
 
-    this.accommodationService.checkPrice(data).subscribe({
+    this.accommodationService.checkPriceForRoomOrApartment(data).subscribe({
       next: (data: any) => {
         let priceResponse = data as PriceResponse;
         this.receiptItems = priceResponse.priceItems;

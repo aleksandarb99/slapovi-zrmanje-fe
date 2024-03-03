@@ -8,9 +8,16 @@ import { environment as env } from 'src/environment/environment';
 export class AccommodationService {
   constructor(private http: HttpClient) {}
 
-  public checkPrice(data: any) {
+  public checkPriceForCamp(data: any) {
     return this.http.post<void>(
-      `${env.apiUrl}/api/accommodation/check-price`,
+      `${env.apiUrl}/api/accommodation/check-price/camp`,
+      data
+    );
+  }
+
+  public checkPriceForRoomOrApartment(data: any) {
+    return this.http.post<void>(
+      `${env.apiUrl}/api/accommodation/check-price/room-or-apartment`,
       data
     );
   }
