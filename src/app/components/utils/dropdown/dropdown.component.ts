@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { IntValues } from 'src/app/model/int-values.model';
 import { CommonService } from 'src/app/services/common.service';
+import { TextService } from 'src/app/services/text.service';
 
 @Component({
   selector: 'app-dropdown',
@@ -32,7 +33,7 @@ export class DropdownComponent {
   @Output() valueChangedEvent = new EventEmitter<IntValues>();
   @Output() showDivEvent = new EventEmitter<string>();
 
-  constructor(private commonService: CommonService) {
+  constructor(private commonService: CommonService, protected textService: TextService) {
     this.commonService.resetDropdownEmitter.subscribe(() => this.resetValues());
     this.commonService.componentOpenedCampPage.subscribe(
       (incomingLabel) => (this.divIsOpened = this.label === incomingLabel)

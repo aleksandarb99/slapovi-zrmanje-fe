@@ -54,7 +54,7 @@ export class CalendarComponent implements OnInit {
   chosenEndDate: Date | undefined;
 
   constructor(
-    private textService: TextService,
+    protected textService: TextService,
     private calendarService: CalendarService,
     private commonService: CommonService
   ) {

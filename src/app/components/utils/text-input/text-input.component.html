@@ -1,5 +1,11 @@
 <div class="input-wrapper">
-    <p class="input-label">{{label}}</p>
+    <p class="input-label" 
+       [class.content-en]="textService.getLanguage() === 'EN'" 
+       [class.content-de]="textService.getLanguage() === 'DE'" 
+       [class.content-hr]="textService.getLanguage() === 'HR'" 
+    >
+    {{label}}
+    </p>
     <input 
         class="input-rectangle"
         [ngClass]="{'fill': fill === true}"

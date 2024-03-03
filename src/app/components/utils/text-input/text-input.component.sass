@@ -24,17 +24,23 @@ $div-extended-width: 45.1vw
         color: red
         position: absolute
         top: -8px
-        right: -8px  
+        right: -8px 
     &::after
-        content: 'Required' // TODO Check how to change based on language
         position: absolute
-        top: -18px
-        right: -60px
+        top: -10px
+        right: -65px
         color: $base-blue-color
         opacity: 0
         pointer-events: none
         font-size: 12px
         transition: opacity 0.3s ease-in-out
+    &.content-en::after
+        content: 'Required' 
+    &.content-hr::after
+        content: 'Obavezno' 
+    &.content-de::after
+        content: 'Erforderlich'
+        right: -80px !important
 
 .input-label:hover:after
     opacity: 1
