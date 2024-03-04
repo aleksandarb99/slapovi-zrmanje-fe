@@ -90,6 +90,27 @@ export class RoomPageComponent {
     });
   }
 
+  getItemName(name: string) {
+    if (name === 'Room 1') {
+      return this.text!.dropdownRoomLodgingTitle1;
+    }
+    if (name === 'Room 2') {
+      return this.text!.dropdownRoomLodgingTitle2;
+    }
+    if (name === 'Room 3') {
+      return this.text!.dropdownRoomLodgingTitle3;
+    }
+    return name;
+  }
+
+  getNightsWord() {
+    let firstItem = this.receiptItems[0];
+    if (firstItem.nights == 1) {
+      return this.text!.nightWordSingluar;
+    }
+    return this.text!.nightWordPlural;
+  }
+
   protected isAvailabilityDisabled(): boolean {
     return (
       !this.firstName ||
