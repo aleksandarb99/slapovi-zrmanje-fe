@@ -68,9 +68,16 @@ export class RoomPageComponent {
 
     this.commonService.removeWheelEvent();
     this.headerComponent?.changeHeaderTheme(true);
+    this.calendarService.updateStartDate(undefined);
+    this.calendarService.updateEndDate(undefined);
   }
 
-  calculatePrice() {
+  calculatePrice(event: Event) {
+    if (this.isCalculationDisabled()) {
+      event.stopPropagation();
+      return;
+    }
+
     let data = this.generateData();
 
     this.accommodationService.checkPriceForRoomOrApartment(data).subscribe({
@@ -81,6 +88,24 @@ export class RoomPageComponent {
       },
       error: (error) => this.notificationService.showError(error.error.message),
     });
+  }
+
+  protected isAvailabilityDisabled(): boolean {
+    return (
+      !this.firstName ||
+      !this.lastName ||
+      !this.email ||
+      this.isCalculationDisabled()
+    );
+  }
+
+  protected isCalculationDisabled(): boolean {
+    return (
+      !this.validator.validateRooms(this.lodging) ||
+      !this.validator.validateGuests(this.guests) ||
+      !this.chosenStartDate ||
+      !this.chosenEndDate
+    );
   }
 
   generateData() {
@@ -101,7 +126,7 @@ export class RoomPageComponent {
   }
 
   checkAvailability(event: Event) {
-    if (!this.firstName || !this.lastName || !this.email) {
+    if (this.isAvailabilityDisabled()) {
       event.stopPropagation();
       return;
     }
@@ -115,7 +140,6 @@ export class RoomPageComponent {
 
     this.accommodationService.checkAvailability(data).subscribe({
       complete: () => {
-        // TODO Reset other fields
         this.firstName = '';
         this.lastName = '';
         this.email = '';

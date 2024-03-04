@@ -68,6 +68,8 @@ export class ApartmentPageComponent {
 
     this.commonService.removeWheelEvent();
     this.headerComponent?.changeHeaderTheme(true);
+    this.calendarService.updateStartDate(undefined);
+    this.calendarService.updateEndDate(undefined);
   }
 
   calculatePrice(event: Event) {
@@ -178,7 +180,6 @@ export class ApartmentPageComponent {
         apartment2: intValues.value2,
         apartment3: intValues.value3,
       };
-      console.log(this.lodging);
     } else {
       this.guests = {
         adults: intValues.value1,
@@ -186,7 +187,6 @@ export class ApartmentPageComponent {
         infants: intValues.value3,
         pets: intValues.value4,
       };
-      console.log(this.guests);
     }
   }
 }
