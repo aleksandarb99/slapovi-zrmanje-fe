@@ -83,19 +83,26 @@ export class ApartmentPageComponent {
     this.accommodationService.checkPriceForRoomOrApartment(data).subscribe({
       next: (data: any) => {
         let priceResponse = data as PriceResponse;
+        this.receiptItems = priceResponse.priceItems;
         this.totalPrice = priceResponse.totalPrice;
-        this.setReceiptItems(priceResponse.priceItems);
       },
       error: (error) => this.notificationService.showError(error.error.message),
     });
   }
 
-  setReceiptItems(items: PriceItem[]) {
-    // if (text) {
-    // }
-    // TODO: Map here items to correct language
+  getItemName(name: string) {
+    if (name === 'Apartment 1') {
+      return this.text!.dropdownApartmentLodgingTitle1;
+    }
+    return name;
+  }
 
-    this.receiptItems = items;
+  getNightsWord() {
+    let firstItem = this.receiptItems[0];
+    if (firstItem.nights == 1) {
+      return this.text!.nightWordSingluar;
+    }
+    return this.text!.nightWordPlural;
   }
 
   protected isAvailabilityDisabled(): boolean {
