@@ -92,6 +92,45 @@ export class CampPageComponent {
     });
   }
 
+  getItemName(name: string) {
+    if (name === 'Adults') {
+      return this.text!.dropdownGuestsTitle1;
+    }
+    if (name === 'Children') {
+      return this.text!.dropdownGuestsTitle2;
+    }
+    if (name === 'Infants') {
+      return this.text!.dropdownGuestsTitle3;
+    }
+    if (name === 'Pets') {
+      return this.text!.dropdownGuestsTitle4;
+    }
+    if (name === 'Caravan') {
+      return this.text!.dropdownLodgingTitle2;
+    }
+    if (name === 'Tent') {
+      return this.text!.dropdownLodgingTitle1;
+    }
+    if (name === 'Car') {
+      return this.text!.dropdownLodgingTitle3;
+    }
+    if (name === 'SleepingBag') {
+      return this.text!.dropdownLodgingTitle4;
+    }
+    if (name === 'PowerSupply') {
+      return this.text!.checkBoxTitle;
+    }
+    return name;
+  }
+
+  getNightsWord() {
+    let firstItem = this.receiptItems[0];
+    if (firstItem.nights == 1) {
+      return this.text!.nightWordSingluar;
+    }
+    return this.text!.nightWordPlural;
+  }
+
   checkAvailability(event: Event) {
     if (this.isAvailabilityDisabled()) {
       event.stopPropagation();

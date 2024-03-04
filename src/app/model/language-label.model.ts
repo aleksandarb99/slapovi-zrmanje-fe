@@ -92,4 +92,7 @@ export interface LanguageLabel {
   successContentCancel: string;
   failedTitleCancel: string;
   failedContentCancel: string;
+
+  nightWordSingluar: string;
+  nightWordPlural: string;
 }

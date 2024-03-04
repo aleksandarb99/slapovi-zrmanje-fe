@@ -103,6 +103,9 @@ export const texts: LanguageLabel[] = [
     successContentCancel: 'Uspešno ste otkazali smeštaj.',
     failedTitleCancel: 'Greška prilikom otkazivanja!',
     failedContentCancel: 'Iz nepoznatog razloga nije moguće otkazati smeštaj.',
+
+    nightWordSingluar: 'Noć',
+    nightWordPlural: 'Noći',
   },
   {
     // English
@@ -209,6 +212,9 @@ export const texts: LanguageLabel[] = [
     failedTitleCancel: 'Cancellation Error!',
     failedContentCancel:
       'For unknown reasons, it is not possible to cancel accommodation.',
+
+    nightWordSingluar: 'Night',
+    nightWordPlural: 'Nights',
   },
   {
     // German
@@ -315,5 +321,8 @@ export const texts: LanguageLabel[] = [
     failedTitleCancel: 'Stornierungsfehler!',
     failedContentCancel:
       'Aus unbekannten Gründen ist es nicht möglich, die Unterkunft zu stornieren.',
+
+    nightWordSingluar: 'Nacht',
+    nightWordPlural: 'Nächte',
   },
 ];
