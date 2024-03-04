@@ -146,10 +146,10 @@ export class ApartmentPageComponent {
       return;
     }
 
-    if (!this.validator.validateEmail(this.email)) {
-      this.notificationService.showError('Email address is invalid');
-      return;
-    }
+    // if (!this.validator.validateEmail(this.email)) {
+    //   this.notificationService.showError('Email address is invalid');
+    //   return;
+    // }
 
     let data = this.generateData();
 
