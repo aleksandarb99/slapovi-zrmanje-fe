@@ -67,7 +67,7 @@
                     [inputType]="'TEXT'"
                     (valueChangedEvent)="saveTextValue($event)">
                 </app-text-input>
-                <div class="send-button" [ngClass]="{'disable-send-button': !this.name || !this.email || !this.message}" (click)="sendMessage($event)">{{text!.sendButtonText}}</div>
+                <button class="send-button" [ngClass]="{'disable-send-button': !this.name || !this.email || !this.message}" (click)="sendMessage($event)">{{text!.sendButtonText}}</button>
             </div>
         </div>
     </div>
