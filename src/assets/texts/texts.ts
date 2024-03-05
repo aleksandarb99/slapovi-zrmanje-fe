@@ -106,6 +106,9 @@ export const texts: LanguageLabel[] = [
 
     nightWordSingluar: 'Noć',
     nightWordPlural: 'Noći',
+
+    messageAfterCheck:
+      'Poslat Vam je e-mail da potvrdite svoj nalog e-pošte. Nakon Vaše potvrde, biće poslat zahtev za proveru dostupnosti.',
   },
   {
     // English
@@ -215,6 +218,9 @@ export const texts: LanguageLabel[] = [
 
     nightWordSingluar: 'Night',
     nightWordPlural: 'Nights',
+
+    messageAfterCheck:
+      'You have been sent an email for verifying your email account. Upon your confirmation, a request for availability check will be sent.',
   },
   {
     // German
@@ -324,5 +330,8 @@ export const texts: LanguageLabel[] = [
 
     nightWordSingluar: 'Nacht',
     nightWordPlural: 'Nächte',
+
+    messageAfterCheck:
+      'Ihnen wurde eine E-Mail zur Bestätigung Ihres E-Mail-Kontos gesendet. Nach Ihrer Bestätigung wird eine Anfrage zur Überprüfung der Verfügbarkeit gesendet.',
   },
 ];

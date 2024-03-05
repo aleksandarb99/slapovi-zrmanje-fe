@@ -95,4 +95,6 @@ export interface LanguageLabel {
 
   nightWordSingluar: string;
   nightWordPlural: string;
+
+  messageAfterCheck: string;
 }

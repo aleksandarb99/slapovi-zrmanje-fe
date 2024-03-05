@@ -169,8 +169,8 @@ export class RoomPageComponent {
         this.calendarService.updateEndDate(undefined);
         this.receiptItems = [];
         this.totalPrice = 0;
-        // TODO: Prevedi sve errore i poruke
-        this.notificationService.showSuccess('Uspesno poslat zahtev');
+
+        this.notificationService.showSuccess(this.text!.messageAfterCheck);
       },
       error: (error) => this.notificationService.showError(error.error.message),
     });
