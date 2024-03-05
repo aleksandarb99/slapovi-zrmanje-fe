@@ -161,6 +161,8 @@ export class ApartmentPageComponent {
         this.commonService.resetDropdowns();
         this.calendarService.updateStartDate(undefined);
         this.calendarService.updateEndDate(undefined);
+        this.receiptItems = [];
+        this.totalPrice = 0;
         // TODO: Prevedi sve errore i poruke
         this.notificationService.showSuccess('Uspesno poslat zahtev');
       },
