@@ -7,23 +7,12 @@
     {{label}}
     </p>
     <input 
-        *ngIf="inputType.toLowerCase() === 'text'"
-        type="text"
         #input
         class="input-rectangle"
         [ngClass]="{'fill': fill === true}"
+        type="{{inputType.toLowerCase()}}" 
         [(ngModel)] = "value"
         (input)="onInput()"
         >
-    <input
-        *ngIf="inputType.toLowerCase() === 'email'"
-        type="email"
-        regex="[\w-\.]+@([\w-]+\.)+[\w-]{2,4}" 
-        #input
-        class="input-rectangle"
-        [ngClass]="{'fill': fill === true}"
-        [(ngModel)] = "value"
-        (input)="onInput()"
-        > 
 
 </div>

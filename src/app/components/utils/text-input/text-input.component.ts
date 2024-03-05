@@ -22,7 +22,11 @@ export class TextInputComponent {
 
   @ViewChild('input') input: any;
 
-  constructor(protected textService: TextService) {}
+  private regex: RegExp | undefined;
+
+  constructor(protected textService: TextService) {
+    this.regex = new RegExp(/[\w-\.]+@([\w-]+\.)+[\w-]{2,4}/);
+  }
 
   onInput() {
     this.value = this.input.nativeElement.value;
@@ -33,7 +37,11 @@ export class TextInputComponent {
     };
     this.valueChangedEvent.emit(textValue);
 
-    if (textValue.value === '') {
+    if (
+      textValue.value === '' ||
+      (this.inputType.toLowerCase() === 'email' &&
+        !this.regex!.test(this.value))
+    ) {
       this.input.nativeElement.setCustomValidity('Empty');
     } else {
       this.input.nativeElement.setCustomValidity('');
