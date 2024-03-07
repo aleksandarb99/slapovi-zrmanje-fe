@@ -88,7 +88,13 @@ export class CampPageComponent {
         this.receiptItems = priceResponse.priceItems;
         this.totalPrice = priceResponse.totalPrice;
       },
-      error: (error) => this.notificationService.showError(error.error.message),
+      error: (error) =>
+        this.notificationService.showError(
+          error.error.message,
+          this.textService.getLanguage(),
+          this.text!.notificationErrorTitle,
+          error.error.alreadyTranslated
+        ),
     });
   }
 
@@ -137,11 +143,6 @@ export class CampPageComponent {
       return;
     }
 
-    if (!this.validator.validateEmail(this.email)) {
-      this.notificationService.showError('Email address is invalid');
-      return;
-    }
-
     let data = this.generateData();
 
     this.accommodationService.checkAvailability(data).subscribe({
@@ -155,9 +156,18 @@ export class CampPageComponent {
         this.receiptItems = [];
         this.totalPrice = 0;
 
-        this.notificationService.showSuccess(this.text!.messageAfterCheck);
+        this.notificationService.showSuccess(
+          this.text!.messageAfterCheck,
+          this.text!.notificationSuccessTitle
+        );
       },
-      error: (error) => this.notificationService.showError(error.error.message),
+      error: (error) =>
+        this.notificationService.showError(
+          error.error.message,
+          this.textService.getLanguage(),
+          this.text!.notificationErrorTitle,
+          error.error.alreadyTranslated
+        ),
     });
   }
 

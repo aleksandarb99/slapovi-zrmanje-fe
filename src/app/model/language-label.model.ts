@@ -97,4 +97,8 @@ export interface LanguageLabel {
   nightWordPlural: string;
 
   messageAfterCheck: string;
+  messageAfterGetInTouch: string;
+
+  notificationSuccessTitle: string;
+  notificationErrorTitle: string;
 }

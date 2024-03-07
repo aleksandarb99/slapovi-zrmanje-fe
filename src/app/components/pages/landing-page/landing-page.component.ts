@@ -21,21 +21,28 @@ export class LandingPageComponent implements OnInit {
   screenIsMoving = false;
   currentSectionIndex = 0;
   sections: LandingPageSection[] = [];
-  @ViewChild(HeaderComponent, {static : true}) headerComponent : HeaderComponent | undefined;
+  @ViewChild(HeaderComponent, { static: true }) headerComponent:
+    | HeaderComponent
+    | undefined;
 
   constructor(
-    private el: ElementRef, 
-    private textService: TextService, 
-    private commonService: CommonService, 
+    private el: ElementRef,
+    private textService: TextService,
+    private commonService: CommonService,
     private accommodationService: AccommodationService,
-    private notificationService: NotificationService) {
+    private notificationService: NotificationService
+  ) {
     this.commonService.overrideWheelEvent(this);
   }
 
   ngOnInit() {
-    this.commonService.contactEmitter.subscribe(() => this.scrollToLastSection());
-    this.commonService.aboutUsEmitter.subscribe(() => this.scrollToAboutUsSection());
-    this.textService.text.subscribe(data => this.text = data);
+    this.commonService.contactEmitter.subscribe(() =>
+      this.scrollToLastSection()
+    );
+    this.commonService.aboutUsEmitter.subscribe(() =>
+      this.scrollToAboutUsSection()
+    );
+    this.textService.text.subscribe((data) => (this.text = data));
     this.headerComponent!.checkSavedPreferableLanguage();
   }
 
@@ -45,7 +52,9 @@ export class LandingPageComponent implements OnInit {
 
   onScroll(event: Event): void {
     const element = event.target as HTMLElement;
-    this.headerComponent?.changeHeaderTheme(element.scrollTop > 600 ? true : false);
+    this.headerComponent?.changeHeaderTheme(
+      element.scrollTop > 600 ? true : false
+    );
   }
 
   scrollToStart(): void {
@@ -146,16 +155,27 @@ export class LandingPageComponent implements OnInit {
     let data = {
       name: this.name,
       email: this.email,
-      message: this.message
-    }
+      message: this.message,
+    };
 
     this.accommodationService.getInTouch(data).subscribe({
       complete: () => {
         this.name = '';
         this.email = '';
         this.message = '';
-        this.notificationService.showSuccess("Successfully sent!")},
-      error: (error) => this.notificationService.showError(error.error.message)
+
+        this.notificationService.showSuccess(
+          this.text!.messageAfterGetInTouch,
+          this.text!.notificationSuccessTitle
+        );
+      },
+      error: (error) =>
+        this.notificationService.showError(
+          error.error.message,
+          this.textService.getLanguage(),
+          this.text!.notificationErrorTitle,
+          error.error.alreadyTranslated
+        ),
     });
   }
 }
