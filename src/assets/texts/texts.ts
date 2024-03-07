@@ -107,8 +107,13 @@ export const texts: LanguageLabel[] = [
     nightWordSingluar: 'Noć',
     nightWordPlural: 'Noći',
 
+    messageAfterGetInTouch:
+      'Poslat Vam je e-mail da potvrdite svoj nalog e-pošte. Nakon Vaše potvrde, biće poslata poruka.',
     messageAfterCheck:
       'Poslat Vam je e-mail da potvrdite svoj nalog e-pošte. Nakon Vaše potvrde, biće poslat zahtev za proveru dostupnosti.',
+
+    notificationErrorTitle: 'Greška',
+    notificationSuccessTitle: 'Uspeh',
   },
   {
     // English
@@ -219,8 +224,13 @@ export const texts: LanguageLabel[] = [
     nightWordSingluar: 'Night',
     nightWordPlural: 'Nights',
 
+    messageAfterGetInTouch:
+      'You have been sent an email for verifying your email account. Upon your confirmation, a message will be sent.',
     messageAfterCheck:
       'You have been sent an email for verifying your email account. Upon your confirmation, a request for availability check will be sent.',
+
+    notificationErrorTitle: 'Error',
+    notificationSuccessTitle: 'Success',
   },
   {
     // German
@@ -331,7 +341,12 @@ export const texts: LanguageLabel[] = [
     nightWordSingluar: 'Nacht',
     nightWordPlural: 'Nächte',
 
+    messageAfterGetInTouch:
+      'Sie haben eine E-Mail zur Bestätigung Ihres E-Mail-Kontos erhalten. Nach Ihrer Bestätigung wird eine Nachricht gesendet.',
     messageAfterCheck:
       'Ihnen wurde eine E-Mail zur Bestätigung Ihres E-Mail-Kontos gesendet. Nach Ihrer Bestätigung wird eine Anfrage zur Überprüfung der Verfügbarkeit gesendet.',
+
+    notificationErrorTitle: 'Fehler',
+    notificationSuccessTitle: 'Erfolg',
   },
 ];

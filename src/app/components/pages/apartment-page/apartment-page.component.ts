@@ -86,7 +86,16 @@ export class ApartmentPageComponent {
         this.receiptItems = priceResponse.priceItems;
         this.totalPrice = priceResponse.totalPrice;
       },
-      error: (error) => this.notificationService.showError(error.error.message),
+      error: (error) => {
+        console.log(error);
+
+        this.notificationService.showError(
+          error.error.message,
+          this.textService.getLanguage(),
+          this.text!.notificationErrorTitle,
+          error.error.alreadyTranslated
+        );
+      },
     });
   }
 
@@ -159,9 +168,18 @@ export class ApartmentPageComponent {
         this.receiptItems = [];
         this.totalPrice = 0;
 
-        this.notificationService.showSuccess(this.text!.messageAfterCheck);
+        this.notificationService.showSuccess(
+          this.text!.messageAfterCheck,
+          this.text!.notificationSuccessTitle
+        );
       },
-      error: (error) => this.notificationService.showError(error.error.message),
+      error: (error) =>
+        this.notificationService.showError(
+          error.error.message,
+          this.textService.getLanguage(),
+          this.text!.notificationErrorTitle,
+          error.error.alreadyTranslated
+        ),
     });
   }
 
