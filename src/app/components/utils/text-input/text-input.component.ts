@@ -16,6 +16,7 @@ import { TextService } from 'src/app/services/text.service';
 export class TextInputComponent {
   @Input() value: string = '';
   @Input() fill: boolean = false;
+  @Input() isMobile: boolean = false;
   @Input() label: string = '';
   @Input() inputType: string = 'TEXT';
   @Output() valueChangedEvent = new EventEmitter<TextValue>();

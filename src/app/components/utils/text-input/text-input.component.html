@@ -1,5 +1,6 @@
-<div class="input-wrapper">
+<div class="input-wrapper" [ngClass]="{'mobile-input-wrapper': isMobile}">
     <p class="input-label" 
+       [ngClass]="{'mobile-input-label': isMobile}"
        [class.content-en]="textService.getLanguage() === 'EN'" 
        [class.content-de]="textService.getLanguage() === 'DE'" 
        [class.content-hr]="textService.getLanguage() === 'HR'" 
@@ -9,7 +10,7 @@
     <input 
         #input
         class="input-rectangle"
-        [ngClass]="{'fill': fill === true}"
+        [ngClass]="{'fill': fill === true, 'mobile-input-rectangle': isMobile}"
         type="{{inputType.toLowerCase()}}" 
         [(ngModel)] = "value"
         (input)="onInput()"

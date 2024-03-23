@@ -1,7 +1,6 @@
 .text-image-wrapper
     display: flex
     width: 85vw
-    height: 500px
     padding-top: 24vh
     padding-bottom: 80px
     margin-left: 15vw
@@ -34,7 +33,7 @@
 
 .description
     text-align: justify
-    max-height: 350
+    max-height: 350px
     overflow-y: auto
     color: #17555E
     font-size: 16px
@@ -56,3 +55,28 @@
 .comment
     font-weight: 700
     margin-bottom: 10px !important
+
+// Mobile view classes
+@media only screen and (max-width: 600px)
+    .text-image-wrapper
+        flex-direction: column 
+        padding-top: 5vh
+        padding-bottom: 5vh
+        width: 90vw
+        margin-left: 5vw
+    
+    .text-wrapper
+        max-width: 90vw
+        margin-bottom: 5vh
+        margin-right: auto
+        height: auto
+
+    .description
+        max-height: none
+    .chosen-picture
+        height: 50vh
+        width: 95vw
+        object-fit: cover
+
+    .reverse-image-text
+        margin-right: auto

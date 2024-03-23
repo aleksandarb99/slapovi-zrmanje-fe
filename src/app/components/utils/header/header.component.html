@@ -21,7 +21,13 @@
         <h3 class="menu-item second-level" (click)="selectPreferableLanguage(2)">{{text!.landingPageBurgerLanguageGerman}}</h3>
     </div>
 </div>
-<header (click)="revertFlags()" [ngClass]="{'position-sticky': position === 'sticky', 'position-fixed': position === 'fixed'}">
+<header 
+    (click)="revertFlags()" 
+    [ngClass]="{
+        'position-sticky': position === 'sticky', 
+        'position-fixed': position === 'fixed',
+        'position-absolute': position === 'absolute',
+        }">
     <div class="header-reservations-container" (click)="changeReservationFlag($event)">
         <img [src]="reservationImage" class="reservation-icon"/>
         <h3 [ngClass]="{'reservations-text': !isDarkHeader, 'dark-reservations-text': isDarkHeader}">{{text!.landingPageReservationTitle}}</h3>
