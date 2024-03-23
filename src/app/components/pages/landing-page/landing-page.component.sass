@@ -4,7 +4,6 @@ $base-white: #FFF
 
 main
     width: 100vw
-    height: 100vh
     overflow-y: hidden
     overflow-x: hidden
 
@@ -14,6 +13,7 @@ main
         width: 100vw
         height: 100vh
         position: absolute
+        object-fit: cover
 
 .landing-image-shadow
     width: 100vw
@@ -46,11 +46,11 @@ h2
     margin-top: 100vh
 
 .arrow
-    width: 53px !important
-    height: 53px !important
+    width: 4vw !important
+    height: 5vh !important
     z-index: 10000
     top: 88vh
-    left: 49vw
+    left: 48vw
     cursor: pointer
     animation: bounce 2s infinite
 
@@ -159,3 +159,70 @@ footer
 
 h4
     margin: 0
+
+// Mobile view classes
+@media only screen and (max-width: 600px)
+    .about-info
+        height: auto
+        padding: 5vh 5vw
+
+    .contact-container
+        flex-direction: column
+        flex-flow: column-reverse
+        height: auto
+    h1
+        font-size: 50px
+        top: 45vh
+    h2
+        font-size: 20px
+        top: 65vh
+        line-height: 30px
+    .landing-text
+        width: 90vw
+        margin-left: 5vw
+    .arrow
+        width: 10vw !important
+        left: 45vw
+    .contact-container, h1
+        z-index: 2
+        position: sticky
+    .contact-image-shadow
+        width: 100vw
+        height: 100%
+        background-color: rgba(0, 0, 0, 0.7)
+        position: absolute
+        z-index: 1
+    .contact-container-wrapper
+        width: 100vw
+        color: $base-white
+        margin: unset
+        position: relative
+        h1
+            font-size: 2rem !important
+            padding-top: 5vh
+            padding-bottom: 5vh
+            padding-left: 10vw
+            margin: auto
+        ::ng-deep .input-rectangle
+            width: 78vw !important
+    hr
+        width: 65vw
+        margin-left: 0
+        margin-top: 5vh
+    .contact-img
+        position: absolute
+        z-index: 0
+        height: 100%
+        width: 100vw
+        object-fit: cover
+    .contact-info
+        width: auto !important
+        margin: 0 10vw
+    .input-info
+        width: 100% !important
+    .send-button
+        margin-left: 10vw
+        width: 80vw
+    footer
+        margin: auto
+

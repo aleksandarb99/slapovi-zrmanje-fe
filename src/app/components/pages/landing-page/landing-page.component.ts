@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { LandingPageSection } from 'src/app/model/landing-page-section.model';
 import { LanguageLabel } from 'src/app/model/language-label.model';
 import { TextService } from 'src/app/services/text.service';
@@ -19,6 +19,7 @@ export class LandingPageComponent implements OnInit {
   message: string = '';
   email: string = '';
   screenIsMoving = false;
+  isMobile = false;
   currentSectionIndex = 0;
   sections: LandingPageSection[] = [];
   @ViewChild(HeaderComponent, { static: true }) headerComponent:
@@ -177,5 +178,20 @@ export class LandingPageComponent implements OnInit {
           error.error.alreadyTranslated
         ),
     });
+  }
+  
+  onScreenWidth600(isMobile: boolean) {
+    this.isMobile = isMobile;
+    if (isMobile) {
+      // Invoke your specific function here
+      this.commonService.removeWheelEvent();
+    }
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll(event: any) {
+    // Check if the user has scrolled
+    const scrollY = window.scrollY;
+    this.headerComponent?.changeHeaderTheme(scrollY > 600 ? true : false);
   }
 }
