@@ -123,6 +123,9 @@ $div-width-extended: 47.1vw
     opacity: 0.3
     cursor: default
 
+.disable-cursor
+    cursor: default !important
+
 .disabled:hover
     background-color: white
 
@@ -140,6 +143,23 @@ button
 .hidden-button
     border: none
 
+.mobile-next-button
+    margin-right: 30px !important
+
+.next-button
+    &:hover
+        cursor: none
+        background-color: white
+
+.next-icon
+    cursor: pointer
+    width: 20px
+    height: 20px
+
+.mobile-next-icon
+    height: 8vw !important
+    width: 8vw !important
+
 .mobile-hidden-button
     width: 12.11vw !important
     height: 12.11vw !important
@@ -152,6 +172,8 @@ button:hover
     background-color: $base-light-blue-color
 
 .month-year-container
+    // margin-left: 3vw
+    // margin-right: 3vw
     width: 100%
     height: 7vh
     display: flex

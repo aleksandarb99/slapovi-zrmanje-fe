@@ -15,8 +15,13 @@
         <div class="input-calendar-container-item" [ngClass]="{'mobile-input-calendar-container-item': isMobile}">
             <div class="month-year-container">
                 <div>
-                    <button [ngClass]="{'disabled-button': !isLeftCalendarBackBtnClickable}" (click)="decreaseBothCalendars()"><</button>
-                    <button (click)="increaseBothCalendars()">></button>
+                    <button [ngClass]="{'mobile-next-button': isMobile, 'disabled-button': !isLeftCalendarBackBtnClickable}" (click)="decreaseBothCalendars()" class="next-button">
+                        <img *ngIf="isLeftCalendarBackBtnClickable" src="../../../assets/icons/previous.png" class="next-icon" [ngClass]="{'mobile-next-icon': isMobile}"/>
+                        <img *ngIf="!isLeftCalendarBackBtnClickable" src="../../../assets/icons/previousDisabled.png" class="next-icon disable-cursor" [ngClass]="{'mobile-next-icon': isMobile}"/>
+                    </button>
+                    <button (click)="increaseBothCalendars()" class="next-button" [ngClass]="{'mobile-next-button': isMobile}">
+                        <img src="../../../assets/icons/next.png" class="next-icon" [ngClass]="{'mobile-next-icon': isMobile}"/>
+                    </button>
                 </div>
                 <p class="month-year">{{leftCalendarMonth}} {{leftYearCounter}}</p>
             </div>
@@ -36,8 +41,12 @@
         <div class="input-calendar-container-item" [ngClass]="{'mobile-input-calendar-container-item': isMobile}">
             <div class="month-year-container reverse-month-year-arrows">
                 <div>
-                    <button [ngClass]="{'disabled-button': !isRightCalendarBackBtnClickable}" (click)="decreaseRightCalendar(true)"><</button>
-                    <button (click)="increaseRightCalendar(true)">></button>
+                    <button [ngClass]="{'mobile-next-button': isMobile, 'disabled-button': !isRightCalendarBackBtnClickable}" (click)="decreaseRightCalendar(true)" class="next-button">
+                        <img *ngIf="isRightCalendarBackBtnClickable" src="../../../assets/icons/previous.png" class="next-icon" [ngClass]="{'mobile-next-icon': isMobile}"/>
+                        <img *ngIf="!isRightCalendarBackBtnClickable" src="../../../assets/icons/previousDisabled.png" class="next-icon disable-cursor" [ngClass]="{'mobile-next-icon': isMobile}"/>                    </button>
+                    <button (click)="increaseRightCalendar(true)"  class="next-button" [ngClass]="{'mobile-next-button': isMobile}">
+                        <img src="../../../assets/icons/next.png" class="next-icon" [ngClass]="{'mobile-next-icon': isMobile}"/>
+                    </button>
                 </div>
                 <p class="month-year">{{rightCalendarMonth}} {{rightYearCounter}}</p>
             </div>
