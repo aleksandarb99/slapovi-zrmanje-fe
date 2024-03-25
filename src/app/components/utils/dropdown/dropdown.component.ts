@@ -58,6 +58,17 @@ export class DropdownComponent {
     event.stopPropagation();
   }
 
+  getLine() {
+    this.line =
+      this.value1 == 0 &&
+      this.value2 == 0 &&
+      this.value3 == 0 &&
+      this.value4 == 0
+        ? this.initialLine
+        : this.generateLine();
+    return this.line;
+  }
+
   generateLine(): string {
     let line = '';
     if (this.value1 !== 0) {
@@ -84,6 +95,7 @@ export class DropdownComponent {
       }
       line += this.value4 + ' ' + this.title4;
     }
+
     return line;
   }
 

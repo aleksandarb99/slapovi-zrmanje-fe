@@ -7,9 +7,8 @@
     {{label}}
     </p>
     <div class="input-rectangle" [ngClass]="{'input-rectangle-fill': this.fill}" (click)="this.showOrHide($event)" [ngClass]="{'mobile-input-rectangle': isMobile}">
-        <p class="input-rectangle-text" [ngClass]="{'disable-bold': this.line == this.initialLine}">
-            {{chosenStartDate ? generateDateString(chosenStartDate) : checkInLabel}} - 
-            {{chosenEndDate ?  generateDateString(chosenEndDate) : checkOutLabel}}</p>
+        <p class="input-rectangle-text" [ngClass]="{'disable-bold': isBalded()}">
+            {{getLine()}}</p>
     </div>
     <div *ngIf="divIsOpened" class="input-calendar-container" [ngClass]="{'mobile-input-calendar-container': isMobile}" (click)="preventEvent($event)">
         <div class="input-calendar-container-item" [ngClass]="{'mobile-input-calendar-container-item': isMobile}">
@@ -53,7 +52,7 @@
             <div class="days">
                 <div *ngFor="let day of days">{{day}}</div>
             </div>
-            <button *ngFor="let day of [].constructor(rightCalendarsDayOfFirst); let i = index" class="hidden-button"></button>
+            <button *ngFor="let day of [].constructor(rightCalendarsDayOfFirst); let i = index" class="hidden-button"  [ngClass]="{'mobile-hidden-button': isMobile}"></button>
             <app-calendar-day *ngFor="let day of rightCalendarDaysList; let i = index" 
             [isMobile]="isMobile"
             [currentDay]="currentDay"

@@ -94,6 +94,8 @@ export class CalendarComponent implements OnInit {
   // TODO: Disable placeholders
 
   ngOnInit(): void {
+    this.line = this.initialLine;
+
     this.textService.text.subscribe((data) =>
       this.saveTextAndUpdateVariables(data)
     );
@@ -106,6 +108,28 @@ export class CalendarComponent implements OnInit {
     this.commonService.componentOpenedCampPage.subscribe(
       (incomingLabel) => (this.divIsOpened = this.label === incomingLabel)
     );
+  }
+
+  isBalded(): boolean {
+    if (this.getPlaceholderDefault() === this.getLine()) {
+      return true;
+    }
+    return false;
+  }
+
+  getPlaceholderDefault() {
+    return `${this.checkInLabel} - ${this.checkOutLabel}`;
+  }
+
+  getLine() {
+    let part1: string = this.chosenStartDate
+      ? this.generateDateString(this.chosenStartDate)
+      : this.checkInLabel;
+    let part2: string = this.chosenEndDate
+      ? this.generateDateString(this.chosenEndDate)
+      : this.checkOutLabel;
+    this.line = `${part1} - ${part2}`;
+    return this.line;
   }
 
   saveTextAndUpdateVariables(data: LanguageLabel) {

@@ -7,11 +7,8 @@
     {{label}}
     </p>
     <div class="input-rectangle" (click)="this.showOrHide($event)" [ngClass]="{'mobile-input-rectangle': isMobile}">
-        <p class="input-rectangle-text" [ngClass]="{'disable-bold': this.line == this.initialLine}">
-            {{value1 == 0 &&
-                value2 == 0 &&
-                value3 == 0 &&
-                value4 == 0 ? initialLine : generateLine()}}</p>
+        <p class="input-rectangle-text" [ngClass]="{'disable-bold': this.getLine() === this.initialLine}">
+            {{getLine()}}</p>
     </div>
     <div *ngIf="divIsOpened" class="input-dropdown-container" (click)="preventEvent($event)" [ngClass]="{'mobile-input-dropdown-container': isMobile}">
         <div class="input-dropdown-container-item">
