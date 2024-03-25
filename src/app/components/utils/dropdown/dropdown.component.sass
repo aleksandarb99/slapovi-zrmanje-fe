@@ -14,6 +14,25 @@ $div-width: 22.5vw
 .mobile-input-wrapper
     margin-left: 0
 
+.next-button
+    border: none
+    &:hover
+        cursor: default
+        background-color: white
+
+.next-icon
+    margin-top: 5px
+    cursor: pointer
+    width: 30px
+    height: 30px
+
+.mobile-next-icon
+    height: 8vw !important
+    width: 8vw !important
+
+.disable-cursor
+    cursor: default !important
+
 .input-label
     color: $base-blue-color
     font-family: Roboto Slab
@@ -144,7 +163,7 @@ button
     cursor: pointer
     background-color: white
     border: 1px solid $base-light-blue-color
-    padding: 6px 12px
+    // padding: 6px 12px
     font-weight: bold
     color: $base-blue-color
     font-size: 16px
