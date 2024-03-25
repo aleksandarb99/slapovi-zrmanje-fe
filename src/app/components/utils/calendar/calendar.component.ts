@@ -91,6 +91,8 @@ export class CalendarComponent implements OnInit {
     );
   }
 
+  // TODO: Disable placeholders
+
   ngOnInit(): void {
     this.textService.text.subscribe((data) =>
       this.saveTextAndUpdateVariables(data)

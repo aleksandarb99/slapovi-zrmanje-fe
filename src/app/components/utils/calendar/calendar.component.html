@@ -11,8 +11,8 @@
             {{chosenStartDate ? generateDateString(chosenStartDate) : checkInLabel}} - 
             {{chosenEndDate ?  generateDateString(chosenEndDate) : checkOutLabel}}</p>
     </div>
-    <div *ngIf="divIsOpened" class="input-calendar-container" (click)="preventEvent($event)">
-        <div class="input-calendar-container-item">
+    <div *ngIf="divIsOpened" class="input-calendar-container" [ngClass]="{'mobile-input-calendar-container': isMobile}" (click)="preventEvent($event)">
+        <div class="input-calendar-container-item" [ngClass]="{'mobile-input-calendar-container-item': isMobile}">
             <div class="month-year-container">
                 <div>
                     <button [ngClass]="{'disabled-button': !isLeftCalendarBackBtnClickable}" (click)="decreaseBothCalendars()"><</button>
@@ -25,6 +25,7 @@
             </div>
             <button *ngFor="let day of [].constructor(leftCalendarsDayOfFirst); let i = index" class="hidden-button"></button>
             <app-calendar-day *ngFor="let day of leftCalendarDaysList; let i = index" 
+            [isMobile]="isMobile"
             [currentDay]="currentDay"
             [currentMonth]="currentMonth"
             [currentYear]="currentYear"
@@ -32,7 +33,7 @@
             [month]="leftMonthCounter"
             [year]="leftYearCounter"></app-calendar-day>
         </div>
-        <div class="input-calendar-container-item">
+        <div class="input-calendar-container-item" [ngClass]="{'mobile-input-calendar-container-item': isMobile}">
             <div class="month-year-container reverse-month-year-arrows">
                 <div>
                     <button [ngClass]="{'disabled-button': !isRightCalendarBackBtnClickable}" (click)="decreaseRightCalendar(true)"><</button>
@@ -45,6 +46,7 @@
             </div>
             <button *ngFor="let day of [].constructor(rightCalendarsDayOfFirst); let i = index" class="hidden-button"></button>
             <app-calendar-day *ngFor="let day of rightCalendarDaysList; let i = index" 
+            [isMobile]="isMobile"
             [currentDay]="currentDay"
             [currentMonth]="currentMonth"
             [currentYear]="currentYear"

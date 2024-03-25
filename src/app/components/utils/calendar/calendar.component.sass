@@ -96,12 +96,19 @@ $div-width-extended: 47.1vw
     padding-bottom: 2vh
     box-shadow: 0px 12px 24px 0px rgba(0, 0, 0, 0.10)
 
+.mobile-input-calendar-container
+    flex-direction: column
+
 .input-calendar-container-item
     display: flex
     flex-wrap: wrap
     justify-content: flex-start
     width: 14vw
     overflow-x: hidden
+
+.mobile-input-calendar-container-item
+    width: 85vw
+    height: 85vw
 
 .around-value
     width: 30px
@@ -132,6 +139,8 @@ button
 
 .hidden-button
     border: none
+    width: 12.11vw !important
+    height: 12.11vw !important
 
 .hidden-button:hover
     background-color: white
