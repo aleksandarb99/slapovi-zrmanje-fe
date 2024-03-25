@@ -61,8 +61,8 @@
                             (valueChangedEvent)="saveCheckboxValue($event)"></app-checkbox>
                     </div>
                     <div class="page-row buttons">
-                        <button class="check-button" [ngClass]="{'disable-button': isAvailabilityDisabled()}" (click)="checkAvailability($event)">{{text!.checkAvailabilityButtonText}}</button>
-                        <button *ngIf="isMobile" class="check-button" [ngClass]="{'disable-button': isCalculationDisabled()}" (click)="calculatePrice($event)">{{text!.calculateButtonText}}</button>
+                        <button class="check-button left-button" [ngClass]="{'disable-button': isAvailabilityDisabled()}" (click)="checkAvailability($event)">{{text!.checkAvailabilityButtonText}}</button>
+                        <button *ngIf="isMobile" class="check-button right-button" [ngClass]="{'disable-button': isCalculationDisabled()}" (click)="calculatePrice($event)">{{text!.calculateButtonText}}</button>
                     </div>
                 </div>
                 <div class="receipt-div" *ngIf="!isMobile">
