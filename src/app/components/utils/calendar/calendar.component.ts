@@ -17,6 +17,8 @@ export class CalendarComponent implements OnInit {
   isLeftCalendarBackBtnClickable = false;
   isRightCalendarBackBtnClickable = false;
 
+  @Input() isMobile: boolean = false;
+
   @Input() label: string = '';
   checkInLabel: string = '';
   checkOutLabel: string = '';
@@ -88,6 +90,8 @@ export class CalendarComponent implements OnInit {
       this.rightMonthCounter
     );
   }
+
+  // TODO: Disable placeholders
 
   ngOnInit(): void {
     this.textService.text.subscribe((data) =>

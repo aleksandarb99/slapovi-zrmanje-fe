@@ -1,7 +1,8 @@
 <button 
     [ngClass]="{'chosen-day': isChosenDay, 
                 'between-day': isBetweenDays, 
-                'past-day': isForbidden
+                'past-day': isForbidden,
+                'mobile-day': isMobile
                }" 
     (click)="clickedButton($event)">
     {{day}}

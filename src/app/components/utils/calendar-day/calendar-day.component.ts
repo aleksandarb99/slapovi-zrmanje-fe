@@ -4,7 +4,7 @@ import { CalendarService } from 'src/app/services/calendar.service';
 @Component({
   selector: 'app-calendar-day',
   templateUrl: './calendar-day.component.html',
-  styleUrls: ['./calendar-day.component.sass']
+  styleUrls: ['./calendar-day.component.sass'],
 })
 export class CalendarDayComponent implements OnInit {
   isChosenDay: boolean = false;
@@ -21,18 +21,25 @@ export class CalendarDayComponent implements OnInit {
   @Input() month: number | undefined;
   @Input() year: number | undefined;
 
+  @Input() isMobile: boolean = false;
+
   date: Date = new Date();
 
-  constructor(private calendarService: CalendarService) {
-  }
+  constructor(private calendarService: CalendarService) {}
 
   ngOnInit() {
     this.date = new Date(`${this.year}-${this.month}-${this.day}`);
-    if (this.day && this.currentDay && this.day < this.currentDay && this.month === this.currentMonth && this.year === this.currentYear) {
+    if (
+      this.day &&
+      this.currentDay &&
+      this.day < this.currentDay &&
+      this.month === this.currentMonth &&
+      this.year === this.currentYear
+    ) {
       this.isForbidden = true;
     }
-    this.calendarService.startDate.subscribe(data => this.setStartDate(data));
-    this.calendarService.endDate.subscribe(data => this.setEndDate(data));
+    this.calendarService.startDate.subscribe((data) => this.setStartDate(data));
+    this.calendarService.endDate.subscribe((data) => this.setEndDate(data));
   }
 
   clickedButton(event: Event) {
@@ -66,14 +73,20 @@ export class CalendarDayComponent implements OnInit {
 
   setEndDate(incomingEndDate: Date | undefined) {
     this.endDate = incomingEndDate;
-    if (this.date.getTime() === this.endDate?.getTime() || this.date.getTime() === this.startDate?.getTime()) {
+    if (
+      this.date.getTime() === this.endDate?.getTime() ||
+      this.date.getTime() === this.startDate?.getTime()
+    ) {
       this.isChosenDay = true;
       return;
     }
     if (!this.startDate || !this.endDate) {
       return;
     }
-    if (this.date.getTime() > this.startDate?.getTime() && this.date.getTime() < this.endDate.getTime()) {
+    if (
+      this.date.getTime() > this.startDate?.getTime() &&
+      this.date.getTime() < this.endDate.getTime()
+    ) {
       this.isBetweenDays = true;
     } else {
       this.isBetweenDays = false;

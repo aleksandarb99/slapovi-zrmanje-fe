@@ -1,6 +1,6 @@
-<div class="input-wrapper" [ngClass]="{'mobile-input-wrapper': isMobile}">
+<div class="input-wrapper" [ngClass]="{'mobile-input-wrapper': isMobile && !labelIsBlack, 'mobile-input-wrapper-not-landing-page': isMobile && labelIsBlack}" >
     <p class="input-label" 
-       [ngClass]="{'mobile-input-label': isMobile}"
+       [ngClass]="{'mobile-input-label': !labelIsBlack}"
        [class.content-en]="textService.getLanguage() === 'EN'" 
        [class.content-de]="textService.getLanguage() === 'DE'" 
        [class.content-hr]="textService.getLanguage() === 'HR'" 
