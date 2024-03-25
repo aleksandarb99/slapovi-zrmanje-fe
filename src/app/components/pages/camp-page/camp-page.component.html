@@ -55,16 +55,17 @@
                         </app-dropdown>
                     </div>
                     <div class="page-row">
-                        <app-calendar></app-calendar>
+                        <app-calendar [isMobile]="isMobile"></app-calendar>
                         <app-checkbox 
                             [label]="text!.checkBoxTitle"
                             (valueChangedEvent)="saveCheckboxValue($event)"></app-checkbox>
                     </div>
-                    <div class="page-row">
+                    <div class="page-row buttons">
                         <button class="check-button" [ngClass]="{'disable-button': isAvailabilityDisabled()}" (click)="checkAvailability($event)">{{text!.checkAvailabilityButtonText}}</button>
+                        <button *ngIf="isMobile" class="check-button" [ngClass]="{'disable-button': isCalculationDisabled()}" (click)="calculatePrice($event)">{{text!.calculateButtonText}}</button>
                     </div>
                 </div>
-                <div class="receipt-div">
+                <div class="receipt-div" *ngIf="!isMobile">
                     <div>
                         <h2>{{text!.calculator}}</h2>
                         <div class="receipt-item-div"  *ngFor="let item of receiptItems">
