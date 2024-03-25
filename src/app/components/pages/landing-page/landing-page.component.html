@@ -52,7 +52,6 @@
             <hr *ngIf="isMobile"/>
             <div class="input-info">
                 <app-text-input
-                    [labelIsBlack]="true"
                     [isMobile]="isMobile"
                     [value]="name"
                     [label]="text!.inputNameText"
@@ -60,7 +59,6 @@
                     (valueChangedEvent)="saveTextValue($event)">
                 </app-text-input>
                 <app-text-input
-                    [labelIsBlack]="true"
                     [isMobile]="isMobile"
                     [value]="email"
                     [label]="text!.inputEmailText"
@@ -68,7 +66,6 @@
                     (valueChangedEvent)="saveTextValue($event)">
                 </app-text-input>
                 <app-text-input
-                    [labelIsBlack]="true"
                     [isMobile]="isMobile"
                     [value]="message"
                     class="message-input"
