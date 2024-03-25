@@ -23,7 +23,7 @@
             <div class="days">
                 <div *ngFor="let day of days">{{day}}</div>
             </div>
-            <button *ngFor="let day of [].constructor(leftCalendarsDayOfFirst); let i = index" class="hidden-button"></button>
+            <button *ngFor="let day of [].constructor(leftCalendarsDayOfFirst); let i = index" class="hidden-button" [ngClass]="{'mobile-hidden-button': isMobile}"></button>
             <app-calendar-day *ngFor="let day of leftCalendarDaysList; let i = index" 
             [isMobile]="isMobile"
             [currentDay]="currentDay"
