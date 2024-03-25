@@ -32,7 +32,13 @@ main
     margin-right: 2vw
     width: 100%
 
-.receipt-div
+.receipt-div-on-mobile
+    margin-top: 5vh
+    margin-left: 0
+    margin-right: 2vw
+    width: 100%
+
+.receipt-div, .receipt-div-on-mobile
     display: flex
     width: 100%
     flex-direction: column
@@ -98,7 +104,6 @@ main
     padding-left: 1vw
     padding-right: 1vw
     width: 100%
-    // width: 45.4vw
     height: 52px
     margin-top: 52px
     margin-bottom: 16px
@@ -109,6 +114,20 @@ main
     cursor: pointer
     &:hover
         background-color: $hover-blue-color
+
+.close-icon
+    width: 10vw
+    height: 10vw
+    cursor: pointer
+
+.spread-items
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+
+.button-top-margin
+    margin-top: 3vh
 
 .disable-button
     cursor: default !important
@@ -170,7 +189,7 @@ footer
     .upper-content
         flex-direction: column
 
-    .receipt-div
+    .receipt-div, .receipt-div-on-mobile
         flex-direction: column
 
     .buttons

@@ -60,9 +60,29 @@
                             [label]="text!.checkBoxTitle"
                             (valueChangedEvent)="saveCheckboxValue($event)"></app-checkbox>
                     </div>
+                    <div class="receipt-div-on-mobile" *ngIf="calculateIsPressed && isMobile">
+                        <div>
+                            <div class="spread-items">
+                                <h2>{{text!.calculator}}</h2>
+                                <img (click)="closeReceipt()" src="../../../assets/icons/closeIcon.png" class="close-icon"/>
+                            </div>
+                            <div class="receipt-item-div"  *ngFor="let item of receiptItems">
+                                <p style="width: 120px;">{{ getItemName(item.name)}}</p>
+                                <p style="width: 50px; text-align: right;">{{item.count}}</p>
+                                <p style="width: 100px; text-align: right;">{{item.nights}} {{ getNightsWord()}}</p>
+                                <p style="width: 50px; text-align: right;">{{item.price}} €</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="receipt-total-div">
+                                <p>{{text!.totalText}}</p>
+                                <p>{{totalPrice}} €</p>
+                            </div>
+                        </div>
+                    </div>
                     <div class="page-row buttons">
-                        <button class="check-button left-button" [ngClass]="{'disable-button': isAvailabilityDisabled()}" (click)="checkAvailability($event)">{{text!.checkAvailabilityButtonText}}</button>
-                        <button *ngIf="isMobile" class="check-button right-button" [ngClass]="{'disable-button': isCalculationDisabled()}" (click)="calculatePrice($event)">{{text!.calculateButtonText}}</button>
+                        <button class="check-button left-button" [ngClass]="{'button-top-margin': calculateIsPressed && isMobile, 'disable-button': isAvailabilityDisabled()}" (click)="checkAvailability($event)">{{text!.checkAvailabilityButtonText}}</button>
+                        <button *ngIf="isMobile" class="check-button right-button" [ngClass]="{'button-top-margin': calculateIsPressed && isMobile, 'disable-button': isCalculationDisabled()}" (click)="calculatePrice($event)">{{text!.calculateButtonText}}</button>
                     </div>
                 </div>
                 <div class="receipt-div" *ngIf="!isMobile">

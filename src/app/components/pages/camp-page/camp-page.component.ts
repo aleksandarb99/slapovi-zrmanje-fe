@@ -31,6 +31,8 @@ export class CampPageComponent {
   receiptItems: PriceItem[] = [];
   totalPrice: number = 0;
 
+  calculateIsPressed: boolean = false;
+
   firstName: string = '';
   lastName: string = '';
   email: string = '';
@@ -76,6 +78,10 @@ export class CampPageComponent {
     this.calendarService.updateEndDate(undefined);
   }
 
+  closeReceipt() {
+    this.calculateIsPressed = false;
+  }
+
   calculatePrice(event: Event) {
     if (this.isCalculationDisabled()) {
       event.stopPropagation();
@@ -86,6 +92,8 @@ export class CampPageComponent {
 
     this.accommodationService.checkPriceForCamp(data).subscribe({
       next: (data: any) => {
+        this.calculateIsPressed = true;
+
         let priceResponse = data as PriceResponse;
         this.receiptItems = priceResponse.priceItems;
         this.totalPrice = priceResponse.totalPrice;
