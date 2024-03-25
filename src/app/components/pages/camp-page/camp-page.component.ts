@@ -21,6 +21,8 @@ import { NotificationService } from 'src/app/services/notification.service';
   styleUrls: ['./camp-page.component.sass'],
 })
 export class CampPageComponent {
+  isMobile = false;
+
   text: LanguageLabel | undefined;
   @ViewChild(HeaderComponent, { static: true }) headerComponent:
     | HeaderComponent
@@ -238,5 +240,13 @@ export class CampPageComponent {
 
   saveCheckboxValue(booleanValue: boolean) {
     this.powerSupply = booleanValue;
+  }
+
+  onScreenWidth600(isMobile: boolean) {
+    this.isMobile = isMobile;
+    if (isMobile) {
+      // Invoke your specific function here
+      this.commonService.removeWheelEvent();
+    }
   }
 }

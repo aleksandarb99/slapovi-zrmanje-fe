@@ -1,4 +1,4 @@
-<main>
+<main appMobileView600 (screenWidth600)="onScreenWidth600($event)">
     <app-header #appHeader [position]="'sticky'"></app-header>
     <div class="gallery-page" (click)="appHeader.revertFlags()">
         <h1>{{text!.restaurant}}</h1>

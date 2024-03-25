@@ -7,18 +7,31 @@ import { CommonService } from 'src/app/services/common.service';
 @Component({
   selector: 'app-gallery-page',
   templateUrl: './gallery-page.component.html',
-  styleUrls: ['./gallery-page.component.sass']
+  styleUrls: ['./gallery-page.component.sass'],
 })
 export class GalleryPageComponent {
+  isMobile = false;
   text: LanguageLabel | undefined;
-  @ViewChild(HeaderComponent, {static : true}) headerComponent : HeaderComponent | undefined;
+  @ViewChild(HeaderComponent, { static: true }) headerComponent:
+    | HeaderComponent
+    | undefined;
 
-  constructor(private textService: TextService, protected commonService: CommonService) {
-  }
+  constructor(
+    private textService: TextService,
+    protected commonService: CommonService
+  ) {}
 
   ngOnInit() {
-    this.textService.text.subscribe(data => this.text = data);
+    this.textService.text.subscribe((data) => (this.text = data));
     this.commonService.removeWheelEvent();
     this.headerComponent?.changeHeaderTheme(true);
+  }
+
+  onScreenWidth600(isMobile: boolean) {
+    this.isMobile = isMobile;
+    if (isMobile) {
+      // Invoke your specific function here
+      this.commonService.removeWheelEvent();
+    }
   }
 }

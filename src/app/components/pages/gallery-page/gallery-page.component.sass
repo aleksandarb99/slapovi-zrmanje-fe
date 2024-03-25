@@ -25,9 +25,9 @@ h1
     flex-wrap: wrap
 
 =zoom($scale)
-  transition: transform 0.3s ease-in-out
-  transform-origin: center
-  transform: scale($scale)
+    transition: transform 0.3s ease-in-out
+    transform-origin: center
+    transform: scale($scale)
 
 .photo-div
     background-color: #d6d6d6
@@ -49,3 +49,16 @@ footer
     h3
         font-size: 14px
         color: white
+
+// Mobile view classes
+@media only screen and (max-width: 600px)
+    .gallery-page
+        width: 90vw
+        margin-left: 5vw
+        margin-right: 5vw
+        padding: 0
+
+    .photo-div
+        width: 89vw
+        margin-left: 0
+        margin-right: 0
