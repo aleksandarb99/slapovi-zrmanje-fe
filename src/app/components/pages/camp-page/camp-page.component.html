@@ -7,12 +7,16 @@
                 <div class="form-div">
                     <div class="page-row">
                         <app-text-input
+                            [labelIsBlack]="true"
+                            [isMobile]="isMobile"
                             [value]="firstName"
                             [label]="text!.inputFirstNameText"
                             [inputType]="'TEXT'"
                             (valueChangedEvent)="saveTextValue($event)">
                         </app-text-input>
                         <app-text-input
+                            [labelIsBlack]="true"
+                            [isMobile]="isMobile"
                             [value]="lastName"
                             [label]="text!.inputLastNameText"
                             [inputType]="'TEXT'"
@@ -21,6 +25,8 @@
                     </div>
                     <div class="page-row">
                         <app-text-input
+                            [labelIsBlack]="true"
+                            [isMobile]="isMobile"
                             [value]="email"
                             [label]="text!.inputEmailText"
                             [inputType]="'EMAIL'"

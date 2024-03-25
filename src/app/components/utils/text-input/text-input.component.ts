@@ -17,6 +17,7 @@ export class TextInputComponent {
   @Input() value: string = '';
   @Input() fill: boolean = false;
   @Input() isMobile: boolean = false;
+  @Input() labelIsBlack: boolean = false;
   @Input() label: string = '';
   @Input() inputType: string = 'TEXT';
   @Output() valueChangedEvent = new EventEmitter<TextValue>();
