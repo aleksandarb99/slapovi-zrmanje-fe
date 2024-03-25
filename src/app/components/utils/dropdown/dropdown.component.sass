@@ -11,6 +11,9 @@ $div-width: 22.5vw
     flex-direction: column
     margin-left: 2vw
 
+.mobile-input-wrapper
+    margin-left: 0
+
 .input-label
     color: $base-blue-color
     font-family: Roboto Slab
@@ -24,7 +27,7 @@ $div-width: 22.5vw
         color: red
         position: absolute
         top: -8px
-        right: -8px  
+        right: -8px
     &::after
         position: absolute
         top: -10px
@@ -35,9 +38,9 @@ $div-width: 22.5vw
         font-size: 12px
         transition: opacity 0.3s ease-in-out
     &.content-en::after
-        content: 'Required' 
+        content: 'Required'
     &.content-hr::after
-        content: 'Obavezno' 
+        content: 'Obavezno'
     &.content-de::after
         content: 'Erforderlich'
         right: -80px !important
@@ -57,6 +60,9 @@ $div-width: 22.5vw
     border: 1px solid $base-light-blue-color
     background: $base-white
     cursor: pointer
+
+.mobile-input-rectangle
+    width: 86vw !important
 
 .input-rectangle-text
     margin-left: 1vw
@@ -81,6 +87,9 @@ $div-width: 22.5vw
     flex-shrink: 0
     border: 1px solid $base-light-blue-color
     background: $base-white
+
+.mobile-input-dropdown-container
+    width: 86vw !important
 
 .input-dropdown-container-item
     padding: 5px 0px

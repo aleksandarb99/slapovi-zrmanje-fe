@@ -17,6 +17,8 @@ export class DropdownComponent {
   value3: number = 0;
   value4: number = 0;
 
+  @Input() isMobile: boolean = false;
+
   @Input() max1: boolean = false;
 
   @Input() label: string = '';
@@ -33,7 +35,10 @@ export class DropdownComponent {
   @Output() valueChangedEvent = new EventEmitter<IntValues>();
   @Output() showDivEvent = new EventEmitter<string>();
 
-  constructor(private commonService: CommonService, protected textService: TextService) {
+  constructor(
+    private commonService: CommonService,
+    protected textService: TextService
+  ) {
     this.commonService.resetDropdownEmitter.subscribe(() => this.resetValues());
     this.commonService.componentOpenedCampPage.subscribe(
       (incomingLabel) => (this.divIsOpened = this.label === incomingLabel)
@@ -165,7 +170,7 @@ export class DropdownComponent {
       value4: this.value4,
       label: this.label,
     };
-    
+
     this.valueChangedEvent.emit(object);
   }
 }
