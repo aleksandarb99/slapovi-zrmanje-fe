@@ -57,6 +57,7 @@
                     <div class="page-row">
                         <app-calendar [isMobile]="isMobile"></app-calendar>
                         <app-checkbox 
+                            [isMobile]="isMobile"
                             [label]="text!.checkBoxTitle"
                             (valueChangedEvent)="saveCheckboxValue($event)"></app-checkbox>
                     </div>

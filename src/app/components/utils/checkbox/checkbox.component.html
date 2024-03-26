@@ -1,4 +1,4 @@
-<div class="input-wrapper">
+<div class="input-wrapper" [ngClass]="{'mobile-input-wrapper': isMobile}">
     <p class="input-label">{{label}}</p>
     <label class="container">
         <input type="checkbox" (click)="onInput($event)">
