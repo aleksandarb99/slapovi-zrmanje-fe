@@ -1,4 +1,11 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { IntValues } from 'src/app/model/int-values.model';
 import { LanguageLabel } from 'src/app/model/language-label.model';
 import { CalendarService } from 'src/app/services/calendar.service';
@@ -13,6 +20,8 @@ import { TextService } from 'src/app/services/text.service';
 export class CalendarComponent implements OnInit {
   line: string = '';
   divIsOpened: boolean = false;
+
+  @ViewChild('error') errorInput: any;
 
   isLeftCalendarBackBtnClickable = false;
   isRightCalendarBackBtnClickable = false;
@@ -54,6 +63,8 @@ export class CalendarComponent implements OnInit {
 
   chosenStartDate: Date | undefined;
   chosenEndDate: Date | undefined;
+
+  errorPresent: boolean = false;
 
   constructor(
     protected textService: TextService,
@@ -148,8 +159,19 @@ export class CalendarComponent implements OnInit {
     event.stopPropagation();
   }
 
+  showErrorIfDatesAreInvalid() {
+    if (!this.chosenStartDate || !this.chosenEndDate) {
+      this.errorPresent = true;
+      this.errorInput.nativeElement.innerHTML = 'Input is required';
+    } else {
+      this.errorPresent = false;
+      this.errorInput.nativeElement.innerHTML = '';
+    }
+  }
+
   showOrHide(event: Event | undefined) {
     if (this.divIsOpened) {
+      this.showErrorIfDatesAreInvalid();
       this.divIsOpened = false;
     } else {
       this.commonService.updateComponentVisibility(this.label);

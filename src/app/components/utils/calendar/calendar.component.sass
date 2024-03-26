@@ -3,6 +3,7 @@ $base-light-blue-color: #CBD5E1
 $base-white: #FFF
 $div-width: 37vw
 $div-width-extended: 47.1vw
+$base-red: #FF0000
 
 .input-wrapper
     display: flex
@@ -68,6 +69,17 @@ $div-width-extended: 47.1vw
 
 .input-rectangle-fill
     width: $div-width-extended
+
+.error-present
+    border: 1px solid $base-red !important
+
+#validity-paragraph
+    margin-top: 5px !important
+    margin-bottom: 1px !important
+    color: $base-red
+    font-size: 16px
+    height: 15px
+    font-weight: bold
 
 .input-rectangle-text
     margin-left: 1vw
