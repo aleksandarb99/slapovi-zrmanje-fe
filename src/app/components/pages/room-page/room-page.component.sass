@@ -32,7 +32,13 @@ main
     margin-right: 2vw
     width: 100%
 
-.receipt-div
+.receipt-div-on-mobile
+    margin-top: 5vh
+    margin-left: 0
+    margin-right: 2vw
+    width: 100%
+
+.receipt-div, .receipt-div-on-mobile
     display: flex
     width: 100%
     flex-direction: column
@@ -69,9 +75,9 @@ main
         margin-top: 10px
 
 =zoom($scale)
-  transition: transform 0.3s ease-in-out
-  transform-origin: center
-  transform: scale($scale)
+    transition: transform 0.3s ease-in-out
+    transform-origin: center
+    transform: scale($scale)
 
 .photo-div
     background-color: $base-blue-color
@@ -97,7 +103,7 @@ main
     margin-left: 2vw
     padding-left: 1vw
     padding-right: 1vw
-    width: 45.4vw
+    width: 100%
     height: 52px
     margin-top: 52px
     margin-bottom: 16px
@@ -113,7 +119,7 @@ main
     cursor: default !important
     opacity: 0.7
     &:hover
-        background-color: $base-blue-color  !important
+        background-color: $base-blue-color !important
 
 .calculate-button
     border: none
@@ -150,3 +156,50 @@ footer
     h3
         font-size: 14px
         color: white
+
+.close-icon
+    width: 10vw
+    height: 10vw
+    cursor: pointer
+
+.spread-items
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+
+.button-top-margin
+    margin-top: 3vh
+
+        // Mobile view classes
+@media only screen and (max-width: 600px)
+    .room-page
+        padding: 0
+
+    .photo-div
+        width: 100%
+        margin-left: 0
+        margin-right: 0
+
+    .page-row
+        flex-direction: column
+        margin-left: 0
+        margin-right: 0
+
+    .upper-content
+        flex-direction: column
+
+    .receipt-div, .receipt-div-on-mobile
+        flex-direction: column
+
+    .buttons
+        flex-direction: row !important
+
+    .check-button
+        margin-left: 0
+
+    .left-button
+        margin-right: 1vw !important
+
+    .right-button
+        margin-left: 1vw !important
