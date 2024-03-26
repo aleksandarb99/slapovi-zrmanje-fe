@@ -10,7 +10,8 @@
         <p class="input-rectangle-text" [ngClass]="{'disable-bold': this.getLine() === this.initialLine}">
             {{getLine()}}</p>
     </div>
-    <p #error id="validity-paragraph"></p>
+    <p *ngIf="!errorPresent" #error id="validity-paragraph"></p>
+    <p *ngIf="errorPresent" #error id="validity-paragraph">{{this.text!.requiredErrorMessage}}</p>
     <div *ngIf="divIsOpened" class="input-dropdown-container" (click)="preventEvent($event)" [ngClass]="{'mobile-input-dropdown-container': isMobile}">
         <div class="input-dropdown-container-item">
             <div class="around-p">

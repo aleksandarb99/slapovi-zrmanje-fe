@@ -114,6 +114,9 @@ export const texts: LanguageLabel[] = [
 
     notificationErrorTitle: 'Greška',
     notificationSuccessTitle: 'Uspeh',
+
+    requiredErrorMessage: 'Unos je obavezan',
+    emailNotValidErrorMessage: 'Adresa e-pošte nije važeća',
   },
   {
     // English
@@ -231,6 +234,9 @@ export const texts: LanguageLabel[] = [
 
     notificationErrorTitle: 'Error',
     notificationSuccessTitle: 'Success',
+
+    requiredErrorMessage: 'Input is required',
+    emailNotValidErrorMessage: 'The email address is not valid',
   },
   {
     // German
@@ -348,5 +354,8 @@ export const texts: LanguageLabel[] = [
 
     notificationErrorTitle: 'Fehler',
     notificationSuccessTitle: 'Erfolg',
+
+    requiredErrorMessage: 'Die Eingabe ist erforderlich',
+    emailNotValidErrorMessage: 'Die E-Mail-adresse ist nicht gültig',
   },
 ];

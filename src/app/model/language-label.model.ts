@@ -101,4 +101,7 @@ export interface LanguageLabel {
 
   notificationSuccessTitle: string;
   notificationErrorTitle: string;
+
+  requiredErrorMessage: string;
+  emailNotValidErrorMessage: string;
 }
