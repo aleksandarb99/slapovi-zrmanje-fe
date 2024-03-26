@@ -10,6 +10,7 @@
         <p class="input-rectangle-text" [ngClass]="{'disable-bold': isBalded()}">
             {{getLine()}}</p>
     </div>
+    <p *ngIf="!errorPresent" #error id="validity-paragraph"></p>
     <p *ngIf="errorPresent" #error id="validity-paragraph">{{this.text!.requiredErrorMessage}}</p>
     <div *ngIf="divIsOpened" class="input-calendar-container" [ngClass]="{'mobile-input-calendar-container': isMobile}" (click)="preventEvent($event)">
         <div class="input-calendar-container-item" [ngClass]="{'mobile-input-calendar-container-item': isMobile}">
