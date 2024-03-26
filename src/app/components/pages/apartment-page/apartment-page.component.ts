@@ -48,6 +48,9 @@ export class ApartmentPageComponent {
   chosenStartDate: Date | undefined;
   chosenEndDate: Date | undefined;
 
+  isMobile = false;
+  calculateIsPressed: boolean = false;
+
   constructor(
     private accommodationService: AccommodationService,
     private textService: TextService,
@@ -72,6 +75,18 @@ export class ApartmentPageComponent {
     this.calendarService.updateEndDate(undefined);
   }
 
+  closeReceipt() {
+    this.calculateIsPressed = false;
+  }
+
+  onScreenWidth600(isMobile: boolean) {
+    this.isMobile = isMobile;
+    if (isMobile) {
+      // Invoke your specific function here
+      this.commonService.removeWheelEvent();
+    }
+  }
+
   calculatePrice(event: Event) {
     if (this.isCalculationDisabled()) {
       event.stopPropagation();
@@ -82,6 +97,8 @@ export class ApartmentPageComponent {
 
     this.accommodationService.checkPriceForRoomOrApartment(data).subscribe({
       next: (data: any) => {
+        this.calculateIsPressed = true;
+
         let priceResponse = data as PriceResponse;
         this.receiptItems = priceResponse.priceItems;
         this.totalPrice = priceResponse.totalPrice;
