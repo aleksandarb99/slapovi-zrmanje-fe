@@ -24,6 +24,8 @@ export class TextInputComponent {
 
   @ViewChild('input') input: any;
 
+  @ViewChild('error') errorInput: any;
+
   private regex: RegExp | undefined;
 
   constructor(protected textService: TextService) {
@@ -44,9 +46,18 @@ export class TextInputComponent {
       (this.inputType.toLowerCase() === 'email' &&
         !this.regex!.test(this.value))
     ) {
-      this.input.nativeElement.setCustomValidity('Empty');
+      // TODO: languages
+      this.input.nativeElement.setCustomValidity('Required');
+
+      if (textValue.value === '') {
+        this.errorInput.nativeElement.innerHTML = 'Input is required';
+      } else {
+        this.errorInput.nativeElement.innerHTML =
+          'The email address is not valid';
+      }
     } else {
       this.input.nativeElement.setCustomValidity('');
+      this.errorInput.nativeElement.innerHTML = '';
     }
   }
 }
