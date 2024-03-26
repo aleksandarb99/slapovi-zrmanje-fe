@@ -6,6 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { IntValues } from 'src/app/model/int-values.model';
+import { LanguageLabel } from 'src/app/model/language-label.model';
 import { CommonService } from 'src/app/services/common.service';
 import { TextService } from 'src/app/services/text.service';
 
@@ -44,10 +45,14 @@ export class DropdownComponent {
   errorPresent: boolean = false;
   @ViewChild('error') errorInput: any;
 
+  text: LanguageLabel | undefined;
+
   constructor(
     private commonService: CommonService,
     protected textService: TextService
   ) {
+    this.textService.text.subscribe((data) => (this.text = data));
+
     this.commonService.resetDropdownEmitter.subscribe(() => this.resetValues());
     this.commonService.componentOpenedCampPage.subscribe(
       (incomingLabel) => (this.divIsOpened = this.label === incomingLabel)
@@ -66,7 +71,7 @@ export class DropdownComponent {
       this.value4 == 0
     ) {
       this.errorPresent = true;
-      this.errorInput.nativeElement.innerHTML = 'Input is required';
+      this.errorInput.nativeElement.innerHTML = this.text?.requiredErrorMessage;
     } else {
       this.errorPresent = false;
       this.errorInput.nativeElement.innerHTML = '';
@@ -76,8 +81,6 @@ export class DropdownComponent {
   showOrHide(event: Event) {
     if (this.divIsOpened) {
       this.divIsOpened = false;
-
-      // this.ifEmptySetErrorMessage();
     } else {
       this.commonService.updateComponentVisibility(this.label);
     }

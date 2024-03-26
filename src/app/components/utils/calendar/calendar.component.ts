@@ -66,6 +66,8 @@ export class CalendarComponent implements OnInit {
 
   errorPresent: boolean = false;
 
+  text: LanguageLabel | undefined;
+
   constructor(
     protected textService: TextService,
     private calendarService: CalendarService,
@@ -145,6 +147,8 @@ export class CalendarComponent implements OnInit {
   }
 
   saveTextAndUpdateVariables(data: LanguageLabel) {
+    this.text = data;
+
     this.days = data.calendarDays.split(',');
     this.months = data.calendarMonths.split(',');
     this.leftCalendarMonth = this.months[this.leftMonthCounter - 1];
@@ -162,7 +166,7 @@ export class CalendarComponent implements OnInit {
   showErrorIfDatesAreInvalid() {
     if (!this.chosenStartDate || !this.chosenEndDate) {
       this.errorPresent = true;
-      this.errorInput.nativeElement.innerHTML = 'Input is required';
+      this.errorInput.nativeElement.innerHTML = this.text!.requiredErrorMessage;
     } else {
       this.errorPresent = false;
       this.errorInput.nativeElement.innerHTML = '';
