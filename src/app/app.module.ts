@@ -51,7 +51,9 @@ import { MobileHeaderComponent } from './components/utils/mobile-header/mobile-h
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 10000,
+    }),
   ],
   providers: [
     {

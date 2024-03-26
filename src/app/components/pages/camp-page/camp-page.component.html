@@ -7,12 +7,16 @@
                 <div class="form-div">
                     <div class="page-row">
                         <app-text-input
+                            [labelIsBlack]="true"
+                            [isMobile]="isMobile"
                             [value]="firstName"
                             [label]="text!.inputFirstNameText"
                             [inputType]="'TEXT'"
                             (valueChangedEvent)="saveTextValue($event)">
                         </app-text-input>
                         <app-text-input
+                            [labelIsBlack]="true"
+                            [isMobile]="isMobile"
                             [value]="lastName"
                             [label]="text!.inputLastNameText"
                             [inputType]="'TEXT'"
@@ -21,6 +25,8 @@
                     </div>
                     <div class="page-row">
                         <app-text-input
+                            [labelIsBlack]="true"
+                            [isMobile]="isMobile"
                             [value]="email"
                             [label]="text!.inputEmailText"
                             [inputType]="'EMAIL'"
@@ -30,6 +36,7 @@
                     </div>
                     <div class="page-row">
                         <app-dropdown 
+                            [isMobile]="isMobile"
                             [initialLine]="text!.dropdownGuestsInitialLine" [label]="text!.dropdownGuestsLabel"
                             [title1]="text!.dropdownGuestsTitle1" [subtitle1]="text!.dropdownGuestsSubtitle1"
                             [title2]="text!.dropdownGuestsTitle2" [subtitle2]="text!.dropdownGuestsSubtitle2"
@@ -38,6 +45,7 @@
                             (valueChangedEvent)="saveIntValues($event)">
                         </app-dropdown>
                         <app-dropdown 
+                            [isMobile]="isMobile"
                             [initialLine]="text!.dropdownLodgingInitialLine" [label]="text!.dropdownLodgingLabel"
                             [title1]="text!.dropdownLodgingTitle1" [subtitle1]="text!.dropdownLodgingSubtitle1"
                             [title2]="text!.dropdownLodgingTitle2" [subtitle2]="text!.dropdownLodgingSubtitle2"
@@ -47,16 +55,38 @@
                         </app-dropdown>
                     </div>
                     <div class="page-row">
-                        <app-calendar></app-calendar>
+                        <app-calendar [isMobile]="isMobile"></app-calendar>
                         <app-checkbox 
+                            [isMobile]="isMobile"
                             [label]="text!.checkBoxTitle"
                             (valueChangedEvent)="saveCheckboxValue($event)"></app-checkbox>
                     </div>
-                    <div class="page-row">
-                        <button class="check-button" [ngClass]="{'disable-button': isAvailabilityDisabled()}" (click)="checkAvailability($event)">{{text!.checkAvailabilityButtonText}}</button>
+                    <div class="receipt-div-on-mobile" *ngIf="calculateIsPressed && isMobile">
+                        <div>
+                            <div class="spread-items">
+                                <h2>{{text!.calculator}}</h2>
+                                <img (click)="closeReceipt()" src="../../../assets/icons/closeIcon.png" class="close-icon"/>
+                            </div>
+                            <div class="receipt-item-div"  *ngFor="let item of receiptItems">
+                                <p style="width: 120px;">{{ getItemName(item.name)}}</p>
+                                <p style="width: 50px; text-align: right;">{{item.count}}</p>
+                                <p style="width: 100px; text-align: right;">{{item.nights}} {{ getNightsWord()}}</p>
+                                <p style="width: 50px; text-align: right;">{{item.price}} €</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="receipt-total-div">
+                                <p>{{text!.totalText}}</p>
+                                <p>{{totalPrice}} €</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-row buttons">
+                        <button class="check-button left-button" [ngClass]="{'button-top-margin': calculateIsPressed && isMobile, 'disable-button': isAvailabilityDisabled()}" (click)="checkAvailability($event)">{{text!.checkAvailabilityButtonText}}</button>
+                        <button *ngIf="isMobile" class="check-button right-button" [ngClass]="{'button-top-margin': calculateIsPressed && isMobile, 'disable-button': isCalculationDisabled()}" (click)="calculatePrice($event)">{{text!.calculateButtonText}}</button>
                     </div>
                 </div>
-                <div class="receipt-div">
+                <div class="receipt-div" *ngIf="!isMobile">
                     <div>
                         <h2>{{text!.calculator}}</h2>
                         <div class="receipt-item-div"  *ngFor="let item of receiptItems">

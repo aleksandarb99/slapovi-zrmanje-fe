@@ -20,6 +20,8 @@ export class NotificationService {
   }
 
   showSuccess(message: string, title: string): void {
-    this.toastr.success(message, title);
+    this.toastr.success(message, title, {
+      timeOut: 15000,
+    });
   }
 }

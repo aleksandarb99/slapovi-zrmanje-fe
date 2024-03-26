@@ -17,6 +17,8 @@ export class CalendarComponent implements OnInit {
   isLeftCalendarBackBtnClickable = false;
   isRightCalendarBackBtnClickable = false;
 
+  @Input() isMobile: boolean = false;
+
   @Input() label: string = '';
   checkInLabel: string = '';
   checkOutLabel: string = '';
@@ -90,18 +92,45 @@ export class CalendarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.line = this.initialLine;
+
     this.textService.text.subscribe((data) =>
       this.saveTextAndUpdateVariables(data)
     );
-    this.calendarService.startDate.subscribe(
-      (startDate) => (this.chosenStartDate = startDate)
-    );
-    this.calendarService.endDate.subscribe(
-      (endDate) => (this.chosenEndDate = endDate)
-    );
+    this.calendarService.startDate.subscribe((startDate) => {
+      this.chosenStartDate = startDate;
+    });
+    this.calendarService.endDate.subscribe((endDate) => {
+      this.chosenEndDate = endDate;
+
+      if (this.chosenEndDate != this.chosenStartDate && this.chosenEndDate)
+        this.showOrHide(undefined);
+    });
     this.commonService.componentOpenedCampPage.subscribe(
       (incomingLabel) => (this.divIsOpened = this.label === incomingLabel)
     );
+  }
+
+  isBalded(): boolean {
+    if (this.getPlaceholderDefault() === this.getLine()) {
+      return true;
+    }
+    return false;
+  }
+
+  getPlaceholderDefault() {
+    return `${this.checkInLabel} - ${this.checkOutLabel}`;
+  }
+
+  getLine() {
+    let part1: string = this.chosenStartDate
+      ? this.generateDateString(this.chosenStartDate)
+      : this.checkInLabel;
+    let part2: string = this.chosenEndDate
+      ? this.generateDateString(this.chosenEndDate)
+      : this.checkOutLabel;
+    this.line = `${part1} - ${part2}`;
+    return this.line;
   }
 
   saveTextAndUpdateVariables(data: LanguageLabel) {
@@ -119,13 +148,14 @@ export class CalendarComponent implements OnInit {
     event.stopPropagation();
   }
 
-  showOrHide(event: Event) {
+  showOrHide(event: Event | undefined) {
     if (this.divIsOpened) {
       this.divIsOpened = false;
     } else {
       this.commonService.updateComponentVisibility(this.label);
     }
-    event.stopPropagation();
+
+    if (event) event.stopPropagation();
   }
 
   increaseBothCalendars() {

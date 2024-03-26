@@ -1,4 +1,4 @@
-<div class="input-wrapper">
+<div class="input-wrapper" [ngClass]="{'mobile-input-wrapper': isMobile}">
     <p class="input-label" 
        [class.content-en]="textService.getLanguage() === 'EN'" 
        [class.content-de]="textService.getLanguage() === 'DE'" 
@@ -6,25 +6,30 @@
     >
     {{label}}
     </p>
-    <div class="input-rectangle" [ngClass]="{'input-rectangle-fill': this.fill}" (click)="this.showOrHide($event)">
-        <p class="input-rectangle-text" [ngClass]="{'disable-bold': this.line == this.initialLine}">
-            {{chosenStartDate ? generateDateString(chosenStartDate) : checkInLabel}} - 
-            {{chosenEndDate ?  generateDateString(chosenEndDate) : checkOutLabel}}</p>
+    <div class="input-rectangle" [ngClass]="{'mobile-input-rectangle': isMobile, 'input-rectangle-fill': this.fill}" (click)="this.showOrHide($event)">
+        <p class="input-rectangle-text" [ngClass]="{'disable-bold': isBalded()}">
+            {{getLine()}}</p>
     </div>
-    <div *ngIf="divIsOpened" class="input-calendar-container" (click)="preventEvent($event)">
-        <div class="input-calendar-container-item">
+    <div *ngIf="divIsOpened" class="input-calendar-container" [ngClass]="{'mobile-input-calendar-container': isMobile}" (click)="preventEvent($event)">
+        <div class="input-calendar-container-item" [ngClass]="{'mobile-input-calendar-container-item': isMobile}">
             <div class="month-year-container">
                 <div>
-                    <button [ngClass]="{'disabled-button': !isLeftCalendarBackBtnClickable}" (click)="decreaseBothCalendars()"><</button>
-                    <button (click)="increaseBothCalendars()">></button>
+                    <button [ngClass]="{'mobile-next-button': isMobile, 'disabled-button': !isLeftCalendarBackBtnClickable}" (click)="decreaseBothCalendars()" class="next-button">
+                        <img *ngIf="isLeftCalendarBackBtnClickable" src="../../../assets/icons/previous.png" class="next-icon" [ngClass]="{'mobile-next-icon': isMobile}"/>
+                        <img *ngIf="!isLeftCalendarBackBtnClickable" src="../../../assets/icons/previousDisabled.png" class="next-icon disable-cursor" [ngClass]="{'mobile-next-icon': isMobile}"/>
+                    </button>
+                    <button (click)="increaseBothCalendars()" class="next-button" [ngClass]="{'mobile-next-button': isMobile}">
+                        <img src="../../../assets/icons/next.png" class="next-icon" [ngClass]="{'mobile-next-icon': isMobile}"/>
+                    </button>
                 </div>
-                <p class="month-year">{{leftCalendarMonth}} {{leftYearCounter}}</p>
+                <p class="month-year" [ngClass]="{'mobile-month-year': isMobile}">{{leftCalendarMonth}} {{leftYearCounter}}</p>
             </div>
             <div class="days">
                 <div *ngFor="let day of days">{{day}}</div>
             </div>
-            <button *ngFor="let day of [].constructor(leftCalendarsDayOfFirst); let i = index" class="hidden-button"></button>
+            <button *ngFor="let day of [].constructor(leftCalendarsDayOfFirst); let i = index" class="hidden-button" [ngClass]="{'mobile-hidden-button': isMobile}"></button>
             <app-calendar-day *ngFor="let day of leftCalendarDaysList; let i = index" 
+            [isMobile]="isMobile"
             [currentDay]="currentDay"
             [currentMonth]="currentMonth"
             [currentYear]="currentYear"
@@ -32,19 +37,24 @@
             [month]="leftMonthCounter"
             [year]="leftYearCounter"></app-calendar-day>
         </div>
-        <div class="input-calendar-container-item">
+        <div class="input-calendar-container-item" [ngClass]="{'mobile-input-calendar-container-item': isMobile}">
             <div class="month-year-container reverse-month-year-arrows">
                 <div>
-                    <button [ngClass]="{'disabled-button': !isRightCalendarBackBtnClickable}" (click)="decreaseRightCalendar(true)"><</button>
-                    <button (click)="increaseRightCalendar(true)">></button>
+                    <button [ngClass]="{'mobile-next-button': isMobile, 'disabled-button': !isRightCalendarBackBtnClickable}" (click)="decreaseRightCalendar(true)" class="next-button">
+                        <img *ngIf="isRightCalendarBackBtnClickable" src="../../../assets/icons/previous.png" class="next-icon" [ngClass]="{'mobile-next-icon': isMobile}"/>
+                        <img *ngIf="!isRightCalendarBackBtnClickable" src="../../../assets/icons/previousDisabled.png" class="next-icon disable-cursor" [ngClass]="{'mobile-next-icon': isMobile}"/>                    </button>
+                    <button (click)="increaseRightCalendar(true)"  class="next-button" [ngClass]="{'mobile-next-button': isMobile}">
+                        <img src="../../../assets/icons/next.png" class="next-icon" [ngClass]="{'mobile-next-icon': isMobile}"/>
+                    </button>
                 </div>
-                <p class="month-year">{{rightCalendarMonth}} {{rightYearCounter}}</p>
+                <p class="month-year" [ngClass]="{'mobile-month-year': isMobile}">{{rightCalendarMonth}} {{rightYearCounter}}</p>
             </div>
             <div class="days">
                 <div *ngFor="let day of days">{{day}}</div>
             </div>
-            <button *ngFor="let day of [].constructor(rightCalendarsDayOfFirst); let i = index" class="hidden-button"></button>
+            <button *ngFor="let day of [].constructor(rightCalendarsDayOfFirst); let i = index" class="hidden-button"  [ngClass]="{'mobile-hidden-button': isMobile}"></button>
             <app-calendar-day *ngFor="let day of rightCalendarDaysList; let i = index" 
+            [isMobile]="isMobile"
             [currentDay]="currentDay"
             [currentMonth]="currentMonth"
             [currentYear]="currentYear"

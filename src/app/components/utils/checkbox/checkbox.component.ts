@@ -10,6 +10,8 @@ export class CheckboxComponent {
   @Input() label: string = '';
   @Output() valueChangedEvent = new EventEmitter<boolean>();
 
+  @Input() isMobile: boolean = false;
+
   constructor() {}
 
   onInput(event: Event) {

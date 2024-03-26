@@ -1,4 +1,10 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ViewChild,
+} from '@angular/core';
 import { IntValues } from 'src/app/model/int-values.model';
 import { CommonService } from 'src/app/services/common.service';
 import { TextService } from 'src/app/services/text.service';
@@ -17,6 +23,8 @@ export class DropdownComponent {
   value3: number = 0;
   value4: number = 0;
 
+  @Input() isMobile: boolean = false;
+
   @Input() max1: boolean = false;
 
   @Input() label: string = '';
@@ -33,7 +41,13 @@ export class DropdownComponent {
   @Output() valueChangedEvent = new EventEmitter<IntValues>();
   @Output() showDivEvent = new EventEmitter<string>();
 
-  constructor(private commonService: CommonService, protected textService: TextService) {
+  errorPresent: boolean = false;
+  @ViewChild('error') errorInput: any;
+
+  constructor(
+    private commonService: CommonService,
+    protected textService: TextService
+  ) {
     this.commonService.resetDropdownEmitter.subscribe(() => this.resetValues());
     this.commonService.componentOpenedCampPage.subscribe(
       (incomingLabel) => (this.divIsOpened = this.label === incomingLabel)
@@ -44,13 +58,44 @@ export class DropdownComponent {
     event.stopPropagation();
   }
 
+  ifEmptySetErrorMessage() {
+    if (
+      this.value1 == 0 &&
+      this.value2 == 0 &&
+      this.value3 == 0 &&
+      this.value4 == 0
+    ) {
+      this.errorPresent = true;
+      this.errorInput.nativeElement.innerHTML = 'Input is required';
+    } else {
+      this.errorPresent = false;
+      this.errorInput.nativeElement.innerHTML = '';
+    }
+  }
+
   showOrHide(event: Event) {
     if (this.divIsOpened) {
       this.divIsOpened = false;
+
+      // this.ifEmptySetErrorMessage();
     } else {
       this.commonService.updateComponentVisibility(this.label);
     }
     event.stopPropagation();
+  }
+
+  getLine() {
+    this.line =
+      this.value1 == 0 &&
+      this.value2 == 0 &&
+      this.value3 == 0 &&
+      this.value4 == 0
+        ? this.initialLine
+        : this.generateLine();
+
+    // this.ifEmptySetErrorMessage();
+
+    return this.line;
   }
 
   generateLine(): string {
@@ -79,6 +124,7 @@ export class DropdownComponent {
       }
       line += this.value4 + ' ' + this.title4;
     }
+
     return line;
   }
 
@@ -115,6 +161,8 @@ export class DropdownComponent {
 
     this.valueChangedEvent.emit(object);
     event.stopPropagation();
+
+    this.ifEmptySetErrorMessage();
   }
 
   raise(fieldIndex: number, event: Event) {
@@ -150,6 +198,8 @@ export class DropdownComponent {
 
     this.valueChangedEvent.emit(object);
     event.stopPropagation();
+
+    this.ifEmptySetErrorMessage();
   }
 
   private resetValues(): void {
@@ -165,7 +215,9 @@ export class DropdownComponent {
       value4: this.value4,
       label: this.label,
     };
-    
+
     this.valueChangedEvent.emit(object);
+
+    this.ifEmptySetErrorMessage();
   }
 }

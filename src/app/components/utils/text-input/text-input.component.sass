@@ -11,8 +11,16 @@ $div-extended-width: 45.1vw
     flex-direction: column
     margin-left: 2vw
 
+#validity-paragraph
+    margin-top: 5px !important
+    margin-bottom: 1px !important
+    color: $base-red
+    font-size: 16px
+    height: 15px
+    font-weight: bold
+
 .input-label
-    color: $base-blue-color
+    color: white
     font-family: Roboto Slab
     font-size: 16px
     font-style: normal
@@ -24,7 +32,7 @@ $div-extended-width: 45.1vw
         color: red
         position: absolute
         top: -8px
-        right: -8px 
+        right: -8px
     &::after
         position: absolute
         top: -10px
@@ -35,9 +43,9 @@ $div-extended-width: 45.1vw
         font-size: 12px
         transition: opacity 0.3s ease-in-out
     &.content-en::after
-        content: 'Required' 
+        content: 'Required'
     &.content-hr::after
-        content: 'Obavezno' 
+        content: 'Obavezno'
     &.content-de::after
         content: 'Erforderlich'
         right: -80px !important
@@ -68,8 +76,12 @@ $div-extended-width: 45.1vw
     width: 80vw !important
     margin-left: 10vw !important
 
+.mobile-input-wrapper-not-landing-page
+    width: 84vw !important
+    margin-left: 0
+
 .mobile-input-label
-    color: white !important
+    color: $base-blue-color !important
 
 .mobile-input-rectangle
     width: 100% !important
