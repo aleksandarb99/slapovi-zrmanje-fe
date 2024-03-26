@@ -1,0 +1,38 @@
+<div class="menu burger-menu-position" [ngClass]="{'menu-spread': isBurgerSpread}">
+    <div class="menu-advanced">
+        <div class="landing-image-shadow"></div>
+        <img class="landing-image" src="../../../assets/pictures/LandingPage.png"/>
+        <div class="menu-header-close-wrapper">
+            <div class="menu-header-close">
+                <div class="header-reservations-container" (click)="revertFlags()">
+                    <img src="../../../assets/avatars/Reservation.png" class="reservation-icon"/>
+                    <h3 class="reservations-text">{{text!.landingPageReservationTitle}}</h3>
+                </div>
+                <img src="../../../assets/avatars/CloseHeader.png" class="close-icon" (click)="changeBurgerFlag($event)"/>
+            </div>
+            <hr/>
+            <div class="menu-reservations">
+                <h3 class="menu-reservation-item" (click)="redirectTo('camp')">{{text!.landingPageReservationCamp}}</h3>
+                <h3 class="menu-reservation-item" (click)="redirectTo('room')">{{text!.landingPageReservationRooms}}</h3>
+                <h3 class="menu-reservation-item" (click)="redirectTo('apartment')">{{text!.landingPageReservationApartments}}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="menu-basic">
+        <h3 class="menu-basic-item" routerLink="/gallery">{{text!.landingPageBurgerGallery}}</h3>
+        <h3 class="menu-basic-item" (click)="moveToContactSection()">{{text!.landingPageBurgerContact}}</h3>
+        <h3 class="menu-basic-item" (click)="moveToAboutUsSection()">{{text!.landingPageBurgerAboutUs}}</h3>
+        <h3 class="menu-basic-item" (click)="openLanguageMenu($event)">{{text!.landingPageBurgerLanguage}}</h3>
+        <div *ngIf="languageMenuIsOpened">
+            <h3 class="menu-basic-item second-level" (click)="selectPreferableLanguage(0)">{{text!.landingPageBurgerLanguageCroatian}}</h3>
+            <h3 class="menu-basic-item second-level" (click)="selectPreferableLanguage(1)">{{text!.landingPageBurgerLanguageEnglish}}</h3>
+            <h3 class="menu-basic-item second-level" (click)="selectPreferableLanguage(2)">{{text!.landingPageBurgerLanguageGerman}}</h3>
+        </div>
+    </div>
+</div>
+<header>
+    <div class="logo-container">
+        <img [src]="logoImage" class="mobile-logo" (click)="navigateToLanding()"/>
+        <img src="../../../assets/avatars/Burger.png" class="burger-icon" (click)="changeBurgerFlag($event)"/>
+    </div>
+</header>

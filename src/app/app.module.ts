@@ -23,6 +23,7 @@ import { SpinnerComponent } from './components/utils/spinner/spinner.component';
 import { LoadingInterceptor } from './loading.interceptor';
 import { RedirectPageComponent } from './components/pages/redirect-page/redirect-page.component';
 import { MobileView600Directive } from './directives/mobile-view-600.directive';
+import { MobileHeaderComponent } from './components/utils/mobile-header/mobile-header.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { MobileView600Directive } from './directives/mobile-view-600.directive';
     SpinnerComponent,
     RedirectPageComponent,
     MobileView600Directive,
+    MobileHeaderComponent,
   ],
   imports: [
     BrowserModule,
