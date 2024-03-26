@@ -6,10 +6,11 @@
     >
     {{label}}
     </p>
-    <div class="input-rectangle" (click)="this.showOrHide($event)" [ngClass]="{'mobile-input-rectangle': isMobile}">
+    <div class="input-rectangle" (click)="this.showOrHide($event)" [ngClass]="{'mobile-input-rectangle': isMobile, 'error-present':errorPresent}">
         <p class="input-rectangle-text" [ngClass]="{'disable-bold': this.getLine() === this.initialLine}">
             {{getLine()}}</p>
     </div>
+    <p #error id="validity-paragraph"></p>
     <div *ngIf="divIsOpened" class="input-dropdown-container" (click)="preventEvent($event)" [ngClass]="{'mobile-input-dropdown-container': isMobile}">
         <div class="input-dropdown-container-item">
             <div class="around-p">

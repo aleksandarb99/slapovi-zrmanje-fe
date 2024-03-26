@@ -1,6 +1,7 @@
 $base-blue-color: #17555E
 $base-light-blue-color: #CBD5E1
 $base-white: #FFF
+$base-red: #FF0000
 $div-width: 22.5vw
 // $div-width: 330px
 
@@ -13,6 +14,9 @@ $div-width: 22.5vw
 
 .mobile-input-wrapper
     margin-left: 0
+
+.error-present
+    border: 1px solid $base-red !important
 
 .next-button
     border: none
@@ -79,6 +83,14 @@ $div-width: 22.5vw
     border: 1px solid $base-light-blue-color
     background: $base-white
     cursor: pointer
+
+#validity-paragraph
+    margin-top: 5px !important
+    margin-bottom: 1px !important
+    color: $base-red
+    font-size: 16px
+    height: 15px
+    font-weight: bold
 
 .mobile-input-rectangle
     width: 86vw !important

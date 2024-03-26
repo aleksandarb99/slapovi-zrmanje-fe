@@ -1,4 +1,10 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ViewChild,
+} from '@angular/core';
 import { IntValues } from 'src/app/model/int-values.model';
 import { CommonService } from 'src/app/services/common.service';
 import { TextService } from 'src/app/services/text.service';
@@ -35,6 +41,9 @@ export class DropdownComponent {
   @Output() valueChangedEvent = new EventEmitter<IntValues>();
   @Output() showDivEvent = new EventEmitter<string>();
 
+  errorPresent: boolean = false;
+  @ViewChild('error') errorInput: any;
+
   constructor(
     private commonService: CommonService,
     protected textService: TextService
@@ -49,9 +58,26 @@ export class DropdownComponent {
     event.stopPropagation();
   }
 
+  ifEmptySetErrorMessage() {
+    if (
+      this.value1 == 0 &&
+      this.value2 == 0 &&
+      this.value3 == 0 &&
+      this.value4 == 0
+    ) {
+      this.errorPresent = true;
+      this.errorInput.nativeElement.innerHTML = 'Input is required';
+    } else {
+      this.errorPresent = false;
+      this.errorInput.nativeElement.innerHTML = '';
+    }
+  }
+
   showOrHide(event: Event) {
     if (this.divIsOpened) {
       this.divIsOpened = false;
+
+      // this.ifEmptySetErrorMessage();
     } else {
       this.commonService.updateComponentVisibility(this.label);
     }
@@ -66,6 +92,9 @@ export class DropdownComponent {
       this.value4 == 0
         ? this.initialLine
         : this.generateLine();
+
+    // this.ifEmptySetErrorMessage();
+
     return this.line;
   }
 
@@ -132,6 +161,8 @@ export class DropdownComponent {
 
     this.valueChangedEvent.emit(object);
     event.stopPropagation();
+
+    this.ifEmptySetErrorMessage();
   }
 
   raise(fieldIndex: number, event: Event) {
@@ -167,6 +198,8 @@ export class DropdownComponent {
 
     this.valueChangedEvent.emit(object);
     event.stopPropagation();
+
+    this.ifEmptySetErrorMessage();
   }
 
   private resetValues(): void {
@@ -184,5 +217,7 @@ export class DropdownComponent {
     };
 
     this.valueChangedEvent.emit(object);
+
+    this.ifEmptySetErrorMessage();
   }
 }
