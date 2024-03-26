@@ -218,6 +218,6 @@ export class DropdownComponent {
 
     this.valueChangedEvent.emit(object);
 
-    this.ifEmptySetErrorMessage();
+    this.errorPresent = false;
   }
 }
