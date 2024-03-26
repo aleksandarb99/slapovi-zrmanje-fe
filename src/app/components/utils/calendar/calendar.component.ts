@@ -21,8 +21,6 @@ export class CalendarComponent implements OnInit {
   line: string = '';
   divIsOpened: boolean = false;
 
-  @ViewChild('error') errorInput: any;
-
   isLeftCalendarBackBtnClickable = false;
   isRightCalendarBackBtnClickable = false;
 
@@ -166,10 +164,8 @@ export class CalendarComponent implements OnInit {
   showErrorIfDatesAreInvalid() {
     if (!this.chosenStartDate || !this.chosenEndDate) {
       this.errorPresent = true;
-      this.errorInput.nativeElement.innerHTML = this.text!.requiredErrorMessage;
     } else {
       this.errorPresent = false;
-      this.errorInput.nativeElement.innerHTML = '';
     }
   }
 

@@ -43,7 +43,6 @@ export class DropdownComponent {
   @Output() showDivEvent = new EventEmitter<string>();
 
   errorPresent: boolean = false;
-  @ViewChild('error') errorInput: any;
 
   text: LanguageLabel | undefined;
 
@@ -71,10 +70,8 @@ export class DropdownComponent {
       this.value4 == 0
     ) {
       this.errorPresent = true;
-      this.errorInput.nativeElement.innerHTML = this.text?.requiredErrorMessage;
     } else {
       this.errorPresent = false;
-      this.errorInput.nativeElement.innerHTML = '';
     }
   }
 

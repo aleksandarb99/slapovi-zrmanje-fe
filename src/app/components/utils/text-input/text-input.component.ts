@@ -25,9 +25,10 @@ export class TextInputComponent {
 
   @ViewChild('input') input: any;
 
-  @ViewChild('error') errorInput: any;
-
   text: LanguageLabel | undefined;
+
+  errorRequiredPresent: boolean = false;
+  errorEmailInvalidPresent: boolean = false;
 
   private regex: RegExp | undefined;
 
@@ -54,15 +55,16 @@ export class TextInputComponent {
       this.input.nativeElement.setCustomValidity('Required');
 
       if (textValue.value === '') {
-        this.errorInput.nativeElement.innerHTML =
-          this.text!.requiredErrorMessage;
+        this.errorRequiredPresent = true;
+        this.errorEmailInvalidPresent = false;
       } else {
-        this.errorInput.nativeElement.innerHTML =
-          this.text!.emailNotValidErrorMessage;
+        this.errorRequiredPresent = false;
+        this.errorEmailInvalidPresent = true;
       }
     } else {
       this.input.nativeElement.setCustomValidity('');
-      this.errorInput.nativeElement.innerHTML = '';
+      this.errorRequiredPresent = false;
+      this.errorEmailInvalidPresent = false;
     }
   }
 }
