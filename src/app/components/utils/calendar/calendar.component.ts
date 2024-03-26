@@ -91,20 +91,21 @@ export class CalendarComponent implements OnInit {
     );
   }
 
-  // TODO: Disable placeholders
-
   ngOnInit(): void {
     this.line = this.initialLine;
 
     this.textService.text.subscribe((data) =>
       this.saveTextAndUpdateVariables(data)
     );
-    this.calendarService.startDate.subscribe(
-      (startDate) => (this.chosenStartDate = startDate)
-    );
-    this.calendarService.endDate.subscribe(
-      (endDate) => (this.chosenEndDate = endDate)
-    );
+    this.calendarService.startDate.subscribe((startDate) => {
+      this.chosenStartDate = startDate;
+    });
+    this.calendarService.endDate.subscribe((endDate) => {
+      this.chosenEndDate = endDate;
+
+      if (this.chosenEndDate != this.chosenStartDate && this.chosenEndDate)
+        this.showOrHide(undefined);
+    });
     this.commonService.componentOpenedCampPage.subscribe(
       (incomingLabel) => (this.divIsOpened = this.label === incomingLabel)
     );
@@ -147,13 +148,14 @@ export class CalendarComponent implements OnInit {
     event.stopPropagation();
   }
 
-  showOrHide(event: Event) {
+  showOrHide(event: Event | undefined) {
     if (this.divIsOpened) {
       this.divIsOpened = false;
     } else {
       this.commonService.updateComponentVisibility(this.label);
     }
-    event.stopPropagation();
+
+    if (event) event.stopPropagation();
   }
 
   increaseBothCalendars() {
