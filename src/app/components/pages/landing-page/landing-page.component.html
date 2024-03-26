@@ -1,5 +1,6 @@
 <main (scroll)="onScroll($event)" appMobileView600 (screenWidth600)="onScreenWidth600($event)">
     <app-header #appHeader (sectionsEvent)="setSections($event)" (scrollUpEvent)="scrollToStart()" [position]="isMobile ? 'absolute' : 'fixed'"></app-header>
+    <app-mobile-header [position]="isMobile ? 'absolute' : 'fixed'" *ngIf="isMobile"></app-mobile-header>
     <div class="landing-container" (click)="appHeader.revertFlags()">
         <div class="landing-image-shadow" id="page0"></div>
         <img src="../../../assets/pictures/LandingPage.png"/>
