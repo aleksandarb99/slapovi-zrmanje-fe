@@ -49,7 +49,9 @@ import { MobileView600Directive } from './directives/mobile-view-600.directive';
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 10000,
+    }),
   ],
   providers: [
     {
