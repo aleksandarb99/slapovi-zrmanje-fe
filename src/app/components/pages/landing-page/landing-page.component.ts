@@ -20,6 +20,7 @@ export class LandingPageComponent implements OnInit {
   email: string = '';
   screenIsMoving = false;
   isMobile = false;
+  isBurgerOpened = false;
   currentSectionIndex = 0;
   sections: LandingPageSection[] = [];
   @ViewChild(HeaderComponent, { static: true }) headerComponent:
@@ -53,6 +54,7 @@ export class LandingPageComponent implements OnInit {
 
   onScroll(event: Event): void {
     const element = event.target as HTMLElement;
+    console.log(this.headerComponent);
     this.headerComponent?.changeHeaderTheme(
       element.scrollTop > 600 ? true : false
     );
@@ -193,5 +195,14 @@ export class LandingPageComponent implements OnInit {
     // Check if the user has scrolled
     const scrollY = window.scrollY;
     this.headerComponent?.changeHeaderTheme(scrollY > 600 ? true : false);
+  }
+
+  reset() {
+    this.headerComponent?.revertFlags();
+    this.commonService.updateComponentVisibility('');
+  }
+
+  updateBurgerEvent(burgerEvent: boolean) {
+    this.isBurgerOpened = burgerEvent;
   }
 }

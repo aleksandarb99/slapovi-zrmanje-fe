@@ -22,6 +22,7 @@ import { NotificationService } from 'src/app/services/notification.service';
 })
 export class CampPageComponent {
   isMobile = false;
+  isBurgerOpened = false;
 
   text: LanguageLabel | undefined;
   @ViewChild(HeaderComponent, { static: true }) headerComponent:
@@ -256,5 +257,14 @@ export class CampPageComponent {
       // Invoke your specific function here
       this.commonService.removeWheelEvent();
     }
+  }
+
+  reset() {
+    this.headerComponent?.revertFlags();
+    this.commonService.updateComponentVisibility('');
+  }
+
+  updateBurgerEvent(burgerEvent: boolean) {
+    this.isBurgerOpened = burgerEvent;
   }
 }

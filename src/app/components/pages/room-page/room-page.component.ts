@@ -49,6 +49,7 @@ export class RoomPageComponent {
   chosenEndDate: Date | undefined;
 
   isMobile = false;
+  isBurgerOpened = false;
   calculateIsPressed: boolean = false;
 
   constructor(
@@ -230,5 +231,14 @@ export class RoomPageComponent {
         pets: intValues.value4,
       };
     }
+  }
+
+  reset() {
+    this.headerComponent?.revertFlags();
+    this.commonService.updateComponentVisibility('');
+  }
+
+  updateBurgerEvent(burgerEvent: boolean) {
+    this.isBurgerOpened = burgerEvent;
   }
 }

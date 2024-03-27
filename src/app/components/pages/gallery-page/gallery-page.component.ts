@@ -11,6 +11,7 @@ import { CommonService } from 'src/app/services/common.service';
 })
 export class GalleryPageComponent {
   isMobile = false;
+  isBurgerOpened = false;
   text: LanguageLabel | undefined;
   @ViewChild(HeaderComponent, { static: true }) headerComponent:
     | HeaderComponent
@@ -33,5 +34,9 @@ export class GalleryPageComponent {
       // Invoke your specific function here
       this.commonService.removeWheelEvent();
     }
+  }
+
+  updateBurgerEvent(burgerEvent: boolean) {
+    this.isBurgerOpened = burgerEvent;
   }
 }
