@@ -1,7 +1,7 @@
 <main appMobileView600 (screenWidth600)="onScreenWidth600($event)" [ngClass]="isBurgerOpened ? 'burger-opened' : 'burger-closed'">
     <app-header #appHeader [position]="isMobile ? 'absolute' : 'sticky'"></app-header>
     <app-mobile-header *ngIf="isMobile" [isLandingHeader]="false" (burgerEvent)="updateBurgerEvent($event)"></app-mobile-header>
-    <div (click)="appHeader.revertFlags(); commonService.updateComponentVisibility('')">
+    <div (click)="reset()">
         <div class="room-page">
             <h1>{{text!.landingPageReservationRooms}}</h1>
             <div class="upper-content">
@@ -112,7 +112,7 @@
             </div>
         </div>
     </div>
-    <footer (click)="appHeader.revertFlags(); commonService.updateComponentVisibility('')">
+    <footer (click)="reset()">
         <h3>{{text!.landingPageCopyrightText}} 2024 - Slapovi Zrmanje</h3>
     </footer>
 </main>
