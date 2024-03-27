@@ -4,7 +4,7 @@
         <img class="landing-image" src="../../../assets/pictures/LandingPage.png"/>
         <div class="menu-header-close-wrapper">
             <div class="menu-header-close">
-                <div class="header-reservations-container" (click)="revertFlags()">
+                <div class="header-reservations-container">
                     <img src="../../../assets/avatars/Reservation.png" class="reservation-icon"/>
                     <h3 class="reservations-text">{{text!.landingPageReservationTitle}}</h3>
                 </div>
@@ -32,7 +32,7 @@
 </div>
 <header>
     <div class="logo-container">
-        <img [src]="logoImage" class="mobile-logo" (click)="navigateToLanding()"/>
-        <img src="../../../assets/avatars/Burger.png" class="burger-icon" (click)="changeBurgerFlag($event)"/>
+        <img [src]="isLandingHeader ? '../../../assets/Logo.png' : '../../../assets/DarkLogo.png'" class="mobile-logo" (click)="navigateToLanding()"/>
+        <img [src]="isLandingHeader ? '../../../assets/avatars/Burger.png' : '../../../assets/avatars/DarkBurger.png'" class="burger-icon" (click)="changeBurgerFlag($event)"/>
     </div>
 </header>

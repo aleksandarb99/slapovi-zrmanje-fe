@@ -1,5 +1,6 @@
-<main appMobileView600 (screenWidth600)="onScreenWidth600($event)">
-    <app-header #appHeader [position]="'sticky'"></app-header>
+<main appMobileView600 (screenWidth600)="onScreenWidth600($event)" [ngClass]="isBurgerOpened ? 'burger-opened' : 'burger-closed'">
+    <app-header #appHeader [position]="isMobile ? 'absolute' : 'sticky'"></app-header>
+    <app-mobile-header *ngIf="isMobile" [isLandingHeader]="false" (burgerEvent)="updateBurgerEvent($event)"></app-mobile-header>
     <div (click)="appHeader.revertFlags(); commonService.updateComponentVisibility('')">
         <div class="room-page">
             <h1>{{text!.landingPageReservationRooms}}</h1>

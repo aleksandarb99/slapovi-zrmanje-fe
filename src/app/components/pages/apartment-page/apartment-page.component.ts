@@ -49,6 +49,7 @@ export class ApartmentPageComponent {
   chosenEndDate: Date | undefined;
 
   isMobile = false;
+  isBurgerOpened = false;
   calculateIsPressed: boolean = false;
 
   constructor(
@@ -227,5 +228,14 @@ export class ApartmentPageComponent {
         pets: intValues.value4,
       };
     }
+  }
+
+  reset() {
+    this.headerComponent?.revertFlags();
+    this.commonService.updateComponentVisibility('');
+  }
+
+  updateBurgerEvent(burgerEvent: boolean) {
+    this.isBurgerOpened = burgerEvent;
   }
 }

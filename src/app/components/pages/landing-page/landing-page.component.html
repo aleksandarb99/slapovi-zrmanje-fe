@@ -1,14 +1,14 @@
-<main (scroll)="onScroll($event)" appMobileView600 (screenWidth600)="onScreenWidth600($event)">
+<main (scroll)="onScroll($event)" appMobileView600 (screenWidth600)="onScreenWidth600($event)" [ngClass]="isBurgerOpened ? 'burger-opened' : 'burger-closed'">
     <app-header #appHeader (sectionsEvent)="setSections($event)" (scrollUpEvent)="scrollToStart()" [position]="isMobile ? 'absolute' : 'fixed'"></app-header>
-    <app-mobile-header [position]="isMobile ? 'absolute' : 'fixed'" *ngIf="isMobile"></app-mobile-header>
-    <div class="landing-container" (click)="appHeader.revertFlags()">
+    <app-mobile-header *ngIf="isMobile" [isLandingHeader]="true" (burgerEvent)="updateBurgerEvent($event)"></app-mobile-header>
+    <div class="landing-container" (click)="reset()">
         <div class="landing-image-shadow" id="page0"></div>
         <img src="../../../assets/pictures/LandingPage.png"/>
         <h1 class="landing-text">{{text!.landingPageTitle}}</h1>
         <h2 class="landing-text">{{text!.landingPageSubTitle}}</h2>
         <img src="../../../assets/avatars/Arrow.png" class="arrow" (click)="scrollToSection(100)"/>
     </div>
-    <div class="content" id="jumpingArea" (click)="appHeader.revertFlags()">
+    <div class="content" id="jumpingArea" (click)="reset()">
         <app-page-section *ngFor="let section of sections; index as i"
             [title]="section.title"
             [description]="section.description"
@@ -17,11 +17,11 @@
             [image]="section.image"
             [sectionIndex]="i + 1"/>
     </div>
-    <div class="about-info" id="{{ 'page' + ( this.sections.length + 1 ) }}" (click)="appHeader.revertFlags()">
+    <div class="about-info" id="{{ 'page' + ( this.sections.length + 1 ) }}" (click)="reset()">
         <h1>{{text!.landingPageAboutUsTitle}}</h1>
         <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, beatae architecto illum fugit, explicabo saepe id sint reprehenderit vero accusantium sapiente laborum voluptate. Placeat voluptate nemo quam accusamus dolorum amet voluptates voluptatem beatae non quisquam, animi minus asperiores culpa accusantium a facere fugit mollitia consequuntur, error aperiam deleniti modi molestias, excepturi odit. Perspiciatis in assumenda molestias nostrum doloribus quam soluta, dolore ab, ut velit voluptatibus est fuga dolorem nulla. Eligendi quod, quibusdam quas eveniet aspernatur maxime non odio! Modi, rerum non. Aliquid sed optio inventore tempora odio commodi pariatur explicabo quos cumque in, debitis possimus temporibus eveniet doloribus aliquam ad odit nulla hic aspernatur aperiam ea fugiat praesentium repellendus non? Asperiores distinctio harum impedit omnis dolorem fugit cumque, maxime delectus. Maiores dolorum alias totam distinctio, nisi dicta tempora ipsa quibusdam aperiam? Necessitatibus labore, eveniet eligendi consequatur deserunt quae. Labore saepe commodi eius perferendis blanditiis similique quaerat, itaque cupiditate sint assumenda.</p>
     </div>
-    <div class="contact-container-wrapper" id="{{ 'page' + ( this.sections.length + 2 ) }}" (click)="appHeader.revertFlags()">
+    <div class="contact-container-wrapper" id="{{ 'page' + ( this.sections.length + 2 ) }}" (click)="reset()">
         <div class="contact-image-shadow" *ngIf="isMobile"></div>
         <img class="contact-img" src="../../../assets/pictures/LandingPage.png" *ngIf="isMobile"/>
         <h1>{{text!.getInTouch}}</h1>
@@ -78,7 +78,7 @@
             </div>
         </div>
     </div>
-    <footer (click)="appHeader.revertFlags()">
+    <footer (click)="reset()">
         <h3>{{text!.landingPageCopyrightText}} 2024 - Slapovi Zrmanje</h3>
     </footer>
 </main>

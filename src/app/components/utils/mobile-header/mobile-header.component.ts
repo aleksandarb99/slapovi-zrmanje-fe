@@ -12,19 +12,12 @@ import { pages } from 'src/assets/texts/sections';
   styleUrls: ['./mobile-header.component.sass']
 })
 export class MobileHeaderComponent {
-  isDarkHeader: boolean = false;
-  path: string = '../../../assets';
-  reservationImage = `${this.path}/avatars/Reservation.png`;
-  burgerImage = `${this.path}/avatars/Burger.png`;
-  logoImage = `${this.path}/Logo.png`;
   languageMenuIsOpened = false;
   isBurgerSpread = false;
   text: LanguageLabel | undefined;
   @Output() sectionsEvent = new EventEmitter<LandingPageSection[]>();
-  @Output() scrollUpEvent = new EventEmitter<void>();
-  @Output() contactEvent = new EventEmitter<void>();
-
-  @Input() position: string = 'fixed';
+  @Output() burgerEvent = new EventEmitter<boolean>(true);
+  @Input() isLandingHeader: boolean = true;
 
   constructor(
     private textService: TextService,
@@ -55,31 +48,22 @@ export class MobileHeaderComponent {
 
   changeBurgerFlag(event: Event) {
     this.isBurgerSpread = !this.isBurgerSpread;
-    console.log(this.isBurgerSpread)
+    this.burgerEvent.emit(this.isBurgerSpread);
+    // if (this.isBurgerSpread) {
+    //   window.addEventListener('scroll', this.disableScroll, true);
+    // } else {
+    //   window.removeEventListener('scroll', this.disableScroll, true);
+    // }
     event.stopPropagation();
   }
 
-  revertFlags() {
-    this.isBurgerSpread = false;
-    this.languageMenuIsOpened = false;
+  disableScroll= () => {
+    window.scrollTo(0, 0);
   }
 
   openLanguageMenu(event: Event) {
     this.languageMenuIsOpened = !this.languageMenuIsOpened;
     event.stopPropagation();
-  }
-
-  changeHeaderTheme(isDarkHeader: boolean) {
-    this.isDarkHeader = isDarkHeader;
-    if (isDarkHeader) {
-      this.reservationImage = `${this.path}/avatars/DarkReservation.png`;
-      this.burgerImage = `${this.path}/avatars/DarkBurger.png`;
-      this.logoImage = `${this.path}/DarkLogo.png`;
-    } else {
-      this.reservationImage = `${this.path}/avatars/Reservation.png`;
-      this.burgerImage = `${this.path}/avatars/Burger.png`;
-      this.logoImage = `${this.path}/Logo.png`;
-    }
   }
 
   /**
@@ -117,4 +101,8 @@ export class MobileHeaderComponent {
       this.commonService.scrollToAboutUsSectionEmit();
     }
   }
+
+  // onScroll(event: Event) {
+  //   event.stopPropagation();
+  // }
 }
