@@ -335,7 +335,7 @@ export class CalendarComponent implements OnInit {
    * @returns 0 - Mon, 1 - Thu, 2 - Whe, 3 - Thr, 4 - Fri, 5 - Sat, 6 - Sun
    */
   calculateDayOfWeek(year: number, month: number): number {
-    let firstOfMonth = new Date(`${year}-${month}-01`);
+    let firstOfMonth = new Date(`${year}/${month}/01`); // Use / instead of - due to Safari browser
     let dayOfWeek = firstOfMonth.getDay() === 0 ? 6 : firstOfMonth.getDay() - 1;
     return dayOfWeek;
   }

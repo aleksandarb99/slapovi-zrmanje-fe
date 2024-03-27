@@ -54,7 +54,6 @@ export class LandingPageComponent implements OnInit {
 
   onScroll(event: Event): void {
     const element = event.target as HTMLElement;
-    console.log(this.headerComponent);
     this.headerComponent?.changeHeaderTheme(
       element.scrollTop > 600 ? true : false
     );
