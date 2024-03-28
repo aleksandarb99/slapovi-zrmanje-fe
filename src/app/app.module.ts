@@ -24,6 +24,7 @@ import { LoadingInterceptor } from './loading.interceptor';
 import { RedirectPageComponent } from './components/pages/redirect-page/redirect-page.component';
 import { MobileView600Directive } from './directives/mobile-view-600.directive';
 import { MobileHeaderComponent } from './components/utils/mobile-header/mobile-header.component';
+import { TextAreaInputComponent } from './components/utils/text-area-input/text-area-input.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { MobileHeaderComponent } from './components/utils/mobile-header/mobile-h
     RedirectPageComponent,
     MobileView600Directive,
     MobileHeaderComponent,
+    TextAreaInputComponent,
   ],
   imports: [
     BrowserModule,

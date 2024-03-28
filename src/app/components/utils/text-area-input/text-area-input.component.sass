@@ -1,0 +1,87 @@
+$base-blue-color: #17555E
+$base-light-blue-color: #CBD5E1
+$base-white: #FFF
+$base-red: #FF0000
+$div-width: 20.5vw
+$div-extended-width: 45.1vw
+
+.input-wrapper
+    display: flex
+    align-items: flex-start
+    flex-direction: column
+    margin-left: 2vw
+
+#validity-paragraph
+    margin-top: 5px !important
+    margin-bottom: 1px !important
+    color: $base-red
+    font-size: 16px
+    height: 15px
+    font-weight: bold
+
+.input-label
+    color: white
+    font-family: Roboto Slab
+    font-size: 16px
+    font-style: normal
+    font-weight: bold
+    line-height: 20px
+    position: relative
+    &::before
+        content: '*'
+        color: red
+        position: absolute
+        top: -8px
+        right: -8px
+    &::after
+        position: absolute
+        top: -10px
+        right: -65px
+        color: $base-blue-color
+        opacity: 0
+        pointer-events: none
+        font-size: 12px
+        transition: opacity 0.3s ease-in-out
+    &.content-en::after
+        content: 'Required'
+    &.content-hr::after
+        content: 'Obavezno'
+    &.content-de::after
+        content: 'Erforderlich'
+        right: -80px !important
+
+.input-label:hover:after
+    opacity: 1
+
+.input-rectangle
+    width: $div-width
+    height: 44px
+    border: 1px solid $base-light-blue-color
+    background: $base-white
+    font-size: 16px
+    color: $base-blue-color
+    padding-left: 1vw
+    padding-right: 1vw
+    font-family: Roboto Slab
+    font-weight: bold
+    outline: none
+
+.fill
+    width: $div-extended-width
+
+.input-rectangle:invalid
+    border: 1px solid $base-red
+
+.mobile-input-wrapper
+    width: 80vw !important
+    margin-left: 10vw !important
+
+.mobile-input-wrapper-not-landing-page
+    width: 84vw !important
+    margin-left: 0
+
+.mobile-input-label
+    color: $base-blue-color !important
+
+.mobile-input-rectangle
+    width: 100% !important

@@ -1,0 +1,21 @@
+<div class="input-wrapper" [ngClass]="{'mobile-input-wrapper': isMobile && !labelIsBlack, 'mobile-input-wrapper-not-landing-page': isMobile && labelIsBlack}" >
+    <p class="input-label" 
+       [ngClass]="{'mobile-input-label': labelIsBlack || !isMobile}"
+       [class.content-en]="textService.getLanguage() === 'EN'" 
+       [class.content-de]="textService.getLanguage() === 'DE'" 
+       [class.content-hr]="textService.getLanguage() === 'HR'" 
+    >
+    {{label}}
+    </p>
+    <input 
+        #input
+        class="input-rectangle"
+        [ngClass]="{'fill': fill === true, 'mobile-input-rectangle': isMobile}"
+        type="{{inputType.toLowerCase()}}" 
+        [(ngModel)] = "value"
+        (input)="onInput()"
+        >
+    <p *ngIf="!errorRequiredPresent && !errorEmailInvalidPresent" #error id="validity-paragraph"></p>
+    <p *ngIf="errorRequiredPresent" #error id="validity-paragraph">{{this.text!.requiredErrorMessage}}</p>
+    <p *ngIf="errorEmailInvalidPresent && !errorRequiredPresent" #error id="validity-paragraph">{{this.text!.emailNotValidErrorMessage}}</p>
+</div>
