@@ -80,7 +80,8 @@
                         </div>
                     </div>
                     <div class="page-row buttons">
-                        <button class="check-button left-button" [ngClass]="{'button-top-margin': calculateIsPressed && isMobile, 'disable-button': isAvailabilityDisabled()}" (click)="checkAvailability($event)">{{text!.checkAvailabilityButtonText}}</button>
+                        <button class="check-button left-button left" [ngClass]="{'button-top-margin': calculateIsPressed && isMobile, 'disable-button': isAvailabilityDisabled()}" (click)="checkAvailability($event)">{{text!.checkAvailabilityButtonText}}</button>
+                        <button class="check-button left-button clear" [ngClass]="{'disable-button': dataIsCleared}" (click)="resetAll()">{{text!.resetFormLabel}}</button>
                         <button *ngIf="isMobile" class="check-button right-button" [ngClass]="{'button-top-margin': calculateIsPressed && isMobile, 'disable-button': isCalculationDisabled()}" (click)="calculatePrice($event)">{{text!.calculateButtonText}}</button>
                     </div>
                 </div>

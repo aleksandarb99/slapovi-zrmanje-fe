@@ -104,4 +104,6 @@ export interface LanguageLabel {
 
   requiredErrorMessage: string;
   emailNotValidErrorMessage: string;
+
+  resetFormLabel: string;
 }

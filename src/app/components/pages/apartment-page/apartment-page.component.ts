@@ -56,6 +56,8 @@ export class ApartmentPageComponent {
 
   dataIsInitialized: boolean = false;
 
+  dataIsCleared: boolean = true;
+
   constructor(
     private accommodationService: AccommodationService,
     private textService: TextService,
@@ -88,6 +90,8 @@ export class ApartmentPageComponent {
         data!.toDateString() !== moment().toDate().toDateString() &&
         this.dataIsInitialized
       ) {
+        this.dataIsCleared = false;
+        this.clearDatesIfInvalid();
         this.requestSaverService.saveData(
           this.apartmentKey,
           this.generateData()
@@ -105,6 +109,8 @@ export class ApartmentPageComponent {
         data!.toDateString() !== moment().toDate().toDateString() &&
         this.dataIsInitialized
       ) {
+        this.dataIsCleared = false;
+        this.clearDatesIfInvalid();
         this.requestSaverService.saveData(
           this.apartmentKey,
           this.generateData()
@@ -126,6 +132,21 @@ export class ApartmentPageComponent {
     });
   }
 
+  clearDatesIfInvalid() {
+    if (this.chosenStartDate && this.chosenEndDate) {
+      console.log(this.chosenStartDate);
+      console.log(this.chosenEndDate);
+
+      if (
+        this.chosenStartDate?.getTime() - this.chosenEndDate?.getTime() >=
+        0
+      ) {
+        this.calendarService.updateStartDate(undefined);
+        this.calendarService.updateEndDate(undefined);
+      }
+    }
+  }
+
   setDataIfPreviousExist() {
     let data = this.requestSaverService.getAndDeleteData(this.apartmentKey);
     this.dataIsInitialized = true;
@@ -140,6 +161,9 @@ export class ApartmentPageComponent {
 
       this.calendarService.updateStartDate(this.chosenStartDate);
       this.calendarService.updateEndDate(this.chosenEndDate);
+
+      this.dataIsCleared = false;
+      this.clearDatesIfInvalid();
     }
   }
 
@@ -242,14 +266,7 @@ export class ApartmentPageComponent {
 
     this.accommodationService.checkAvailability(data).subscribe({
       complete: () => {
-        this.firstName = '';
-        this.lastName = '';
-        this.email = '';
-        this.commonService.resetDropdowns();
-        this.calendarService.updateStartDate(undefined);
-        this.calendarService.updateEndDate(undefined);
-        this.receiptItems = [];
-        this.totalPrice = 0;
+        this.resetAll();
 
         this.notificationService.showSuccess(
           this.text!.messageAfterCheck,
@@ -266,6 +283,20 @@ export class ApartmentPageComponent {
     });
   }
 
+  resetAll() {
+    this.firstName = '';
+    this.lastName = '';
+    this.email = '';
+    this.commonService.resetDropdowns();
+    this.calendarService.updateStartDate(undefined);
+    this.calendarService.updateEndDate(undefined);
+    this.receiptItems = [];
+    this.totalPrice = 0;
+
+    this.requestSaverService.clear(this.apartmentKey);
+    this.dataIsCleared = true;
+  }
+
   saveTextValue(textValue: TextValue) {
     if (textValue.label === this.text!.inputFirstNameText) {
       this.firstName = textValue.value;
@@ -278,6 +309,7 @@ export class ApartmentPageComponent {
     }
 
     this.requestSaverService.saveData(this.apartmentKey, this.generateData());
+    this.dataIsCleared = false;
   }
 
   saveIntValues(intValues: IntValues) {
@@ -297,6 +329,7 @@ export class ApartmentPageComponent {
     }
 
     this.requestSaverService.saveData(this.apartmentKey, this.generateData());
+    this.dataIsCleared = false;
   }
 
   reset() {
