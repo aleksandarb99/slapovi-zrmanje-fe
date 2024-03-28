@@ -9,7 +9,7 @@ import { pages } from 'src/assets/texts/sections';
 @Component({
   selector: 'app-mobile-header',
   templateUrl: './mobile-header.component.html',
-  styleUrls: ['./mobile-header.component.sass']
+  styleUrls: ['./mobile-header.component.sass'],
 })
 export class MobileHeaderComponent {
   isDarkHeader: boolean = false;
@@ -55,7 +55,6 @@ export class MobileHeaderComponent {
 
   changeBurgerFlag(event: Event) {
     this.isBurgerSpread = !this.isBurgerSpread;
-    console.log(this.isBurgerSpread)
     event.stopPropagation();
   }
 

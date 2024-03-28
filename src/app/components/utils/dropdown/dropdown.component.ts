@@ -4,6 +4,8 @@ import {
   Output,
   EventEmitter,
   ViewChild,
+  OnChanges,
+  SimpleChanges,
 } from '@angular/core';
 import { IntValues } from 'src/app/model/int-values.model';
 import { LanguageLabel } from 'src/app/model/language-label.model';
@@ -15,7 +17,7 @@ import { TextService } from 'src/app/services/text.service';
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.sass'],
 })
-export class DropdownComponent {
+export class DropdownComponent implements OnChanges {
   line: string = '';
   divIsOpened: boolean = false;
 
@@ -23,6 +25,8 @@ export class DropdownComponent {
   value2: number = 0;
   value3: number = 0;
   value4: number = 0;
+
+  @Input() value: any;
 
   @Input() isMobile: boolean = false;
 
@@ -56,6 +60,29 @@ export class DropdownComponent {
     this.commonService.componentOpenedCampPage.subscribe(
       (incomingLabel) => (this.divIsOpened = this.label === incomingLabel)
     );
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    let currentValue = changes['value'].currentValue;
+    if (
+      changes['value'].previousValue == undefined &&
+      currentValue !== undefined
+    ) {
+      if (currentValue.apartment1 !== undefined) {
+        this.value1 = currentValue.apartment1;
+      }
+      if (currentValue.adults !== undefined) {
+        this.value1 = currentValue.adults;
+      }
+      if (currentValue.children !== undefined) {
+        this.value2 = currentValue.children;
+      }
+      if (currentValue.infants !== undefined) {
+        this.value3 = currentValue.infants;
+      }
+      if (currentValue.pets !== undefined) {
+        this.value4 = currentValue.pets;
+      }
+    }
   }
 
   preventEvent(event: Event) {
@@ -92,9 +119,6 @@ export class DropdownComponent {
       this.value4 == 0
         ? this.initialLine
         : this.generateLine();
-
-    // this.ifEmptySetErrorMessage();
-
     return this.line;
   }
 

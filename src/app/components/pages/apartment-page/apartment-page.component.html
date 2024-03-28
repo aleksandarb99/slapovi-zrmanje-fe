@@ -36,6 +36,7 @@
                     </div>
                     <div class="page-row">
                         <app-dropdown 
+                            [value]="guests"
                             [isMobile]="isMobile"
                             [initialLine]="text!.dropdownGuestsInitialLine" [label]="text!.dropdownGuestsLabel"
                             [title1]="text!.dropdownGuestsTitle1" [subtitle1]="text!.dropdownGuestsSubtitle1"
@@ -44,6 +45,7 @@
                             (valueChangedEvent)="saveIntValues($event)">
                         </app-dropdown>
                         <app-dropdown 
+                            [value]="lodging"
                             [isMobile]="isMobile"
                             [max1]="true"
                             [initialLine]="text!.dropdownLodgingInitialLine" [label]="text!.dropdownLodgingLabel"

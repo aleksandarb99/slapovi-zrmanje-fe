@@ -14,6 +14,7 @@ import { PriceResponse } from 'src/app/model/price-response.model';
 import { PriceItem } from 'src/app/model/price-item.model';
 import { ValidatorService } from 'src/app/services/validator.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { RequestSaverService } from 'src/app/services/request-saver.service';
 
 @Component({
   selector: 'app-room-page',
@@ -43,7 +44,6 @@ export class RoomPageComponent {
     room2: 0,
     room3: 0,
   };
-  dates: string[] = [];
 
   chosenStartDate: Date | undefined;
   chosenEndDate: Date | undefined;
@@ -57,7 +57,8 @@ export class RoomPageComponent {
     protected commonService: CommonService,
     private calendarService: CalendarService,
     private validator: ValidatorService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private requestSaverService: RequestSaverService
   ) {}
 
   ngOnInit() {

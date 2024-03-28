@@ -14,6 +14,7 @@ import { PriceResponse } from 'src/app/model/price-response.model';
 import { PriceItem } from 'src/app/model/price-item.model';
 import { NotificationService } from 'src/app/services/notification.service';
 import { ValidatorService } from 'src/app/services/validator.service';
+import { RequestSaverService } from 'src/app/services/request-saver.service';
 
 @Component({
   selector: 'app-apartment-page',
@@ -43,7 +44,6 @@ export class ApartmentPageComponent {
     apartment2: 0,
     apartment3: 0,
   };
-  dates: string[] = [];
 
   chosenStartDate: Date | undefined;
   chosenEndDate: Date | undefined;
@@ -51,28 +51,91 @@ export class ApartmentPageComponent {
   isMobile = false;
   calculateIsPressed: boolean = false;
 
+  apartmentKey: string = 'apartment-data';
+
+  dataIsInitialized: boolean = false;
+
   constructor(
     private accommodationService: AccommodationService,
     private textService: TextService,
     protected commonService: CommonService,
     private calendarService: CalendarService,
     private validator: ValidatorService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private requestSaverService: RequestSaverService
   ) {}
 
   ngOnInit() {
-    this.calendarService.startDate.subscribe(
-      (data) => (this.chosenStartDate = data)
-    );
-    this.calendarService.endDate.subscribe(
-      (data) => (this.chosenEndDate = data)
-    );
-    this.textService.text.subscribe((data) => (this.text = data));
+    this.calendarService.startDate.subscribe((data) => {
+      if (this.chosenStartDate == data) {
+        return;
+      }
+      this.chosenStartDate = data;
+      if (
+        data &&
+        data!.toDateString() !== moment().toDate().toDateString() &&
+        this.dataIsInitialized
+      ) {
+        this.requestSaverService.saveData(
+          this.apartmentKey,
+          this.generateData()
+        );
+      }
+    });
+    this.calendarService.endDate.subscribe((data) => {
+      if (this.chosenEndDate == data) {
+        return;
+      }
+
+      this.chosenEndDate = data;
+      if (
+        data &&
+        data!.toDateString() !== moment().toDate().toDateString() &&
+        this.dataIsInitialized
+      ) {
+        this.requestSaverService.saveData(
+          this.apartmentKey,
+          this.generateData()
+        );
+      }
+    });
+    this.textService.text.subscribe((data) => {
+      if (
+        this.text !== undefined &&
+        this.text !== data &&
+        this.dataIsInitialized
+      ) {
+        this.requestSaverService.saveData(
+          this.apartmentKey,
+          this.generateData()
+        );
+      }
+      this.text = data;
+    });
 
     this.commonService.removeWheelEvent();
     this.headerComponent?.changeHeaderTheme(true);
     this.calendarService.updateStartDate(undefined);
     this.calendarService.updateEndDate(undefined);
+
+    this.setDataIfPreviousExist();
+  }
+
+  setDataIfPreviousExist() {
+    let data = this.requestSaverService.getAndDeleteData(this.apartmentKey);
+    this.dataIsInitialized = true;
+    if (data) {
+      this.email = data.email;
+      this.firstName = data.firstName;
+      this.lastName = data.lastName;
+      this.guests = data.guests;
+      this.lodging = data.lodging;
+      this.chosenStartDate = moment(data.startDate).toDate();
+      this.chosenEndDate = moment(data.endDate).toDate();
+
+      this.calendarService.updateStartDate(this.chosenStartDate);
+      this.calendarService.updateEndDate(this.chosenEndDate);
+    }
   }
 
   closeReceipt() {
@@ -104,8 +167,6 @@ export class ApartmentPageComponent {
         this.totalPrice = priceResponse.totalPrice;
       },
       error: (error) => {
-        console.log(error);
-
         this.notificationService.showError(
           error.error.message,
           this.textService.getLanguage(),
@@ -210,6 +271,8 @@ export class ApartmentPageComponent {
     if (textValue.label === this.text!.inputEmailText) {
       this.email = textValue.value;
     }
+
+    this.requestSaverService.saveData(this.apartmentKey, this.generateData());
   }
 
   saveIntValues(intValues: IntValues) {
@@ -227,5 +290,7 @@ export class ApartmentPageComponent {
         pets: intValues.value4,
       };
     }
+
+    this.requestSaverService.saveData(this.apartmentKey, this.generateData());
   }
 }
