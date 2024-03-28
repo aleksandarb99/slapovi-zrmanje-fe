@@ -51,6 +51,10 @@ export class RoomPageComponent {
   isMobile = false;
   calculateIsPressed: boolean = false;
 
+  roomKey: string = 'room-data';
+
+  dataIsInitialized: boolean = false;
+
   constructor(
     private accommodationService: AccommodationService,
     private textService: TextService,
@@ -62,18 +66,70 @@ export class RoomPageComponent {
   ) {}
 
   ngOnInit() {
-    this.calendarService.startDate.subscribe(
-      (data) => (this.chosenStartDate = data)
-    );
-    this.calendarService.endDate.subscribe(
-      (data) => (this.chosenEndDate = data)
-    );
-    this.textService.text.subscribe((data) => (this.text = data));
+    this.setupCallbacks();
 
     this.commonService.removeWheelEvent();
     this.headerComponent?.changeHeaderTheme(true);
     this.calendarService.updateStartDate(undefined);
     this.calendarService.updateEndDate(undefined);
+
+    this.setDataIfPreviousExist();
+  }
+  setupCallbacks() {
+    this.calendarService.startDate.subscribe((data) => {
+      if (this.chosenStartDate == data) {
+        return;
+      }
+      this.chosenStartDate = data;
+      if (
+        data &&
+        data!.toDateString() !== moment().toDate().toDateString() &&
+        this.dataIsInitialized
+      ) {
+        this.requestSaverService.saveData(this.roomKey, this.generateData());
+      }
+    });
+    this.calendarService.endDate.subscribe((data) => {
+      if (this.chosenEndDate == data) {
+        return;
+      }
+
+      this.chosenEndDate = data;
+      if (
+        data &&
+        data!.toDateString() !== moment().toDate().toDateString() &&
+        this.dataIsInitialized
+      ) {
+        this.requestSaverService.saveData(this.roomKey, this.generateData());
+      }
+    });
+    this.textService.text.subscribe((data) => {
+      if (
+        this.text !== undefined &&
+        this.text !== data &&
+        this.dataIsInitialized
+      ) {
+        this.requestSaverService.saveData(this.roomKey, this.generateData());
+      }
+      this.text = data;
+    });
+  }
+
+  setDataIfPreviousExist() {
+    let data = this.requestSaverService.getAndDeleteData(this.roomKey);
+    this.dataIsInitialized = true;
+    if (data) {
+      this.email = data.email;
+      this.firstName = data.firstName;
+      this.lastName = data.lastName;
+      this.guests = data.guests;
+      this.lodging = data.lodging;
+      this.chosenStartDate = moment(data.startDate).toDate();
+      this.chosenEndDate = moment(data.endDate).toDate();
+
+      this.calendarService.updateStartDate(this.chosenStartDate);
+      this.calendarService.updateEndDate(this.chosenEndDate);
+    }
   }
 
   closeReceipt() {
@@ -214,6 +270,8 @@ export class RoomPageComponent {
     if (textValue.label === this.text!.inputEmailText) {
       this.email = textValue.value;
     }
+
+    this.requestSaverService.saveData(this.roomKey, this.generateData());
   }
 
   saveIntValues(intValues: IntValues) {
@@ -231,5 +289,7 @@ export class RoomPageComponent {
         pets: intValues.value4,
       };
     }
+
+    this.requestSaverService.saveData(this.roomKey, this.generateData());
   }
 }

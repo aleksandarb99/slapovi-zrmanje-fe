@@ -116,6 +116,27 @@ export class DropdownComponent implements OnChanges {
           this.value4 = currentValue.pets;
         }
       }
+      if (this.dropdownOn == 'room') {
+        if (currentValue.room1 !== undefined) {
+          this.value1 = currentValue.room1;
+        }
+        if (currentValue.room2 !== undefined) {
+          this.value2 = currentValue.room2;
+        }
+        if (currentValue.room3 !== undefined) {
+          this.value3 = currentValue.room3;
+        }
+
+        if (currentValue.adults !== undefined) {
+          this.value1 = currentValue.adults;
+        }
+        if (currentValue.children !== undefined) {
+          this.value2 = currentValue.children;
+        }
+        if (currentValue.infants !== undefined) {
+          this.value3 = currentValue.infants;
+        }
+      }
     }
   }
 
