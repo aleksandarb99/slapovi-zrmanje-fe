@@ -4,6 +4,7 @@ import { AccommodationService } from 'src/app/services/accommodation.service';
 import { ActivatedRoute } from '@angular/router';
 import { TextService } from 'src/app/services/text.service';
 import { LanguageLabel } from 'src/app/model/language-label.model';
+import { CommonService } from 'src/app/services/common.service';
 
 @Component({
   selector: 'app-redirect-page',
@@ -18,8 +19,11 @@ export class RedirectPageComponent {
   flag: boolean | undefined;
   type: string | undefined;
   text: LanguageLabel | undefined;
+  isMobile = false;
+  isBurgerOpened = false;
 
   constructor(
+    private commonService: CommonService,
     private accommodationService: AccommodationService,
     private route: ActivatedRoute,
     private textService: TextService
@@ -140,5 +144,23 @@ export class RedirectPageComponent {
           error: callback2,
         });
     }
+  }
+
+  onScreenWidth600(isMobile: boolean) {
+    this.isMobile = isMobile;
+    if (isMobile) {
+      console.log("Usao")
+      // Invoke your specific function here
+      this.commonService.removeWheelEvent();
+    }
+  }
+
+  reset() {
+    this.headerComponent?.revertFlags();
+    this.commonService.updateComponentVisibility('');
+  }
+
+  updateBurgerEvent(burgerEvent: boolean) {
+    this.isBurgerOpened = burgerEvent;
   }
 }

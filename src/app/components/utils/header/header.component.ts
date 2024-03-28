@@ -109,6 +109,10 @@ export class HeaderComponent {
     }
   }
 
+  isLandingPage() {
+    return this.router.url === '/';
+  }
+
   redirectTo(route: string) {
     this.router.navigate(['/' + route]);
   }

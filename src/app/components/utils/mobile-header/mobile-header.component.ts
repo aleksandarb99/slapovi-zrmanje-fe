@@ -81,25 +81,25 @@ export class MobileHeaderComponent {
   }
 
   moveToContactSection(): void {
+    this.isBurgerSpread = false;
+    this.burgerEvent.emit(this.isBurgerSpread);
     if (this.router.url !== '/') {
       this.router.navigate(['/']);
-      setTimeout(() => {
-        this.commonService.scrollToContactSectionEmit();
-      }, 400);
-    } else {
-      this.commonService.scrollToContactSectionEmit();
     }
+    setTimeout(() => {
+      this.commonService.scrollToContactSectionEmit();
+    }, 400);
   }
 
   moveToAboutUsSection(): void {
+    this.isBurgerSpread = false;
+    this.burgerEvent.emit(this.isBurgerSpread);
     if (this.router.url !== '/') {
       this.router.navigate(['/']);
-      setTimeout(() => {
-        this.commonService.scrollToAboutUsSectionEmit();
-      }, 400);
-    } else {
-      this.commonService.scrollToAboutUsSectionEmit();
     }
+    setTimeout(() => {
+      this.commonService.scrollToAboutUsSectionEmit();
+    }, 400);
   }
 
   // onScroll(event: Event) {

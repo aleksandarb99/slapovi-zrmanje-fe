@@ -1,4 +1,4 @@
-<div class="menu reservation-menu-position" [ngClass]="{'menu-spread': isReservationSpread}">
+<div class="menu reservation-menu-position" [ngClass]="{'menu-spread': isReservationSpread}" *ngIf="!isLandingPage()">
     <div class="header-reservations-container menu-margin add-top-margin-on-left-menu" (click)="revertFlags()">
         <img src="../../../assets/avatars/Reservation.png" class="reservation-icon"/>
         <h3 class="reservations-text">{{text!.landingPageReservationTitle}}</h3>
@@ -8,7 +8,7 @@
     <h3 class="menu-item" (click)="redirectTo('room')">{{text!.landingPageReservationRooms}}</h3>
     <h3 class="menu-item" (click)="redirectTo('apartment')">{{text!.landingPageReservationApartments}}</h3>
 </div>
-<div class="menu burger-menu-position" [ngClass]="{'menu-spread': isBurgerSpread}">
+<div class="menu burger-menu-position" [ngClass]="{'menu-spread': isBurgerSpread}" *ngIf="!isLandingPage()">
     <img src="../../../assets/avatars/Burger.png" class="burger-icon menu-margin add-top-margin-on-right-menu" (click)="revertFlags()"/>
     <hr>
     <h3 class="menu-item" routerLink="/gallery">{{text!.landingPageBurgerGallery}}</h3>
@@ -22,12 +22,35 @@
     </div>
 </div>
 <header 
-    (click)="revertFlags()" 
+    (click)="revertFlags()"
     [ngClass]="{
         'position-sticky': position === 'sticky', 
         'position-fixed': position === 'fixed',
         'position-absolute': position === 'absolute',
         }">
+    <div class="menu reservation-menu-position" [ngClass]="{'menu-spread': isReservationSpread}" *ngIf="isLandingPage()">
+        <div class="header-reservations-container menu-margin add-top-margin-on-left-menu" (click)="revertFlags()">
+            <img src="../../../assets/avatars/Reservation.png" class="reservation-icon"/>
+            <h3 class="reservations-text">{{text!.landingPageReservationTitle}}</h3>
+        </div>
+        <hr>
+        <h3 class="menu-item" (click)="redirectTo('camp')">{{text!.landingPageReservationCamp}}</h3>
+        <h3 class="menu-item" (click)="redirectTo('room')">{{text!.landingPageReservationRooms}}</h3>
+        <h3 class="menu-item" (click)="redirectTo('apartment')">{{text!.landingPageReservationApartments}}</h3>
+    </div>
+    <div class="menu burger-menu-position" [ngClass]="{'menu-spread': isBurgerSpread}" *ngIf="isLandingPage()">
+        <img src="../../../assets/avatars/Burger.png" class="burger-icon menu-margin add-top-margin-on-right-menu" (click)="revertFlags()"/>
+        <hr>
+        <h3 class="menu-item" routerLink="/gallery">{{text!.landingPageBurgerGallery}}</h3>
+        <h3 class="menu-item" (click)="moveToContactSection()">{{text!.landingPageBurgerContact}}</h3>
+        <h3 class="menu-item" (click)="moveToAboutUsSection()">{{text!.landingPageBurgerAboutUs}}</h3>
+        <h3 class="menu-item" (click)="openLanguageMenu($event)">{{text!.landingPageBurgerLanguage}}</h3>
+        <div *ngIf="languageMenuIsOpened">
+            <h3 class="menu-item second-level" (click)="selectPreferableLanguage(0)">{{text!.landingPageBurgerLanguageCroatian}}</h3>
+            <h3 class="menu-item second-level" (click)="selectPreferableLanguage(1)">{{text!.landingPageBurgerLanguageEnglish}}</h3>
+            <h3 class="menu-item second-level" (click)="selectPreferableLanguage(2)">{{text!.landingPageBurgerLanguageGerman}}</h3>
+        </div>
+    </div>
     <div class="header-reservations-container" (click)="changeReservationFlag($event)">
         <img [src]="reservationImage" class="reservation-icon"/>
         <h3 [ngClass]="{'reservations-text': !isDarkHeader, 'dark-reservations-text': isDarkHeader}">{{text!.landingPageReservationTitle}}</h3>
