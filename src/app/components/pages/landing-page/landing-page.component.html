@@ -66,14 +66,13 @@
                     [inputType]="'EMAIL'"
                     (valueChangedEvent)="saveTextValue($event)">
                 </app-text-input>
-                <app-text-input
+                <app-text-area-input
                     [isMobile]="isMobile"
                     [value]="message"
                     class="message-input"
                     [label]="text!.inputMessageText"
-                    [inputType]="'TEXT'"
                     (valueChangedEvent)="saveTextValue($event)">
-                </app-text-input>
+                </app-text-area-input>
                 <button class="send-button" [ngClass]="{'disable-send-button': !this.name || !this.email || !this.message}" (click)="sendMessage($event)">{{text!.sendButtonText}}</button>
             </div>
         </div>

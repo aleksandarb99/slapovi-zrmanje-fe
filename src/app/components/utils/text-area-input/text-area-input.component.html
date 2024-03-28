@@ -7,15 +7,14 @@
     >
     {{label}}
     </p>
-    <input 
+    <textarea 
         #input
         class="input-rectangle"
         [ngClass]="{'fill': fill === true, 'mobile-input-rectangle': isMobile}"
-        type="{{inputType.toLowerCase()}}" 
         [(ngModel)] = "value"
         (input)="onInput()"
         >
+    </textarea>
     <p *ngIf="!errorRequiredPresent && !errorEmailInvalidPresent" #error id="validity-paragraph"></p>
     <p *ngIf="errorRequiredPresent" #error id="validity-paragraph">{{this.text!.requiredErrorMessage}}</p>
-    <p *ngIf="errorEmailInvalidPresent && !errorRequiredPresent" #error id="validity-paragraph">{{this.text!.emailNotValidErrorMessage}}</p>
 </div>

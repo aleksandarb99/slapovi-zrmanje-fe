@@ -20,7 +20,6 @@ export class TextAreaInputComponent {
   @Input() isMobile: boolean = false;
   @Input() labelIsBlack: boolean = false;
   @Input() label: string = '';
-  @Input() inputType: string = 'TEXT';
   @Output() valueChangedEvent = new EventEmitter<TextValue>();
 
   @ViewChild('input') input: any;
@@ -30,11 +29,7 @@ export class TextAreaInputComponent {
   errorRequiredPresent: boolean = false;
   errorEmailInvalidPresent: boolean = false;
 
-  private regex: RegExp | undefined;
-
   constructor(protected textService: TextService) {
-    this.regex = new RegExp(/[\w-\.]+@([\w-]+\.)+[\w-]{2,4}/);
-
     this.textService.text.subscribe((data) => (this.text = data));
   }
 
@@ -47,11 +42,7 @@ export class TextAreaInputComponent {
     };
     this.valueChangedEvent.emit(textValue);
 
-    if (
-      textValue.value === '' ||
-      (this.inputType.toLowerCase() === 'email' &&
-        !this.regex!.test(this.value))
-    ) {
+    if (textValue.value === '') {
       this.input.nativeElement.setCustomValidity('Required');
 
       if (textValue.value === '') {
