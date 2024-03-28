@@ -31,7 +31,6 @@ export class RedirectPageComponent {
 
   ngOnInit() {
     this.textService.text.subscribe((data) => (this.text = data));
-
     this.headerComponent?.changeHeaderTheme(true);
 
     this.route.data.subscribe((data) => {
@@ -110,35 +109,60 @@ export class RedirectPageComponent {
 
     if (this.type === 'verify') {
       this.accommodationService
-        .verifyEmail(email as string, id as string, code as string)
+        .verifyEmail(
+          email as string,
+          id as string,
+          code as string,
+          this.textService.getLanguage()
+        )
         .subscribe({
           complete: callback1,
           error: callback2,
         });
     } else if (this.type === 'reject') {
       this.accommodationService
-        .reject(email as string, id as string, code as string)
+        .reject(
+          email as string,
+          id as string,
+          code as string,
+          this.textService.getLanguage()
+        )
         .subscribe({
           complete: callback1,
           error: callback2,
         });
     } else if (this.type === 'accept') {
       this.accommodationService
-        .accept(email as string, id as string, code as string)
+        .accept(
+          email as string,
+          id as string,
+          code as string,
+          this.textService.getLanguage()
+        )
         .subscribe({
           complete: callback1,
           error: callback2,
         });
     } else if (this.type === 'cancel') {
       this.accommodationService
-        .cancel(email as string, id as string, code as string)
+        .cancel(
+          email as string,
+          id as string,
+          code as string,
+          this.textService.getLanguage()
+        )
         .subscribe({
           complete: callback1,
           error: callback2,
         });
     } else if (this.type === 'reserve') {
       this.accommodationService
-        .reserve(email as string, id as string, code as string)
+        .reserve(
+          email as string,
+          id as string,
+          code as string,
+          this.textService.getLanguage()
+        )
         .subscribe({
           complete: callback1,
           error: callback2,
