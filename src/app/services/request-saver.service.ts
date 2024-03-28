@@ -12,10 +12,10 @@ export class RequestSaverService {
   }
 
   getAndDeleteData(name: string): any {
-    let campData = localStorage.getItem(name);
+    let data = localStorage.getItem(name);
     let time = localStorage.getItem(name + '-time');
 
-    if (!campData || !time) {
+    if (!data || !time) {
       return null;
     }
 
@@ -30,6 +30,6 @@ export class RequestSaverService {
       return null;
     }
 
-    return JSON.parse(campData);
+    return JSON.parse(data);
   }
 }
