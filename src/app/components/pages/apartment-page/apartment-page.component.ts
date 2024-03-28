@@ -66,6 +66,17 @@ export class ApartmentPageComponent {
   ) {}
 
   ngOnInit() {
+    this.setupCallbacks();
+
+    this.commonService.removeWheelEvent();
+    this.headerComponent?.changeHeaderTheme(true);
+    this.calendarService.updateStartDate(undefined);
+    this.calendarService.updateEndDate(undefined);
+
+    this.setDataIfPreviousExist();
+  }
+
+  setupCallbacks() {
     this.calendarService.startDate.subscribe((data) => {
       if (this.chosenStartDate == data) {
         return;
@@ -112,13 +123,6 @@ export class ApartmentPageComponent {
       }
       this.text = data;
     });
-
-    this.commonService.removeWheelEvent();
-    this.headerComponent?.changeHeaderTheme(true);
-    this.calendarService.updateStartDate(undefined);
-    this.calendarService.updateEndDate(undefined);
-
-    this.setDataIfPreviousExist();
   }
 
   setDataIfPreviousExist() {

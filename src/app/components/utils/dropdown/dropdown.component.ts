@@ -50,6 +50,9 @@ export class DropdownComponent implements OnChanges {
 
   text: LanguageLabel | undefined;
 
+  @Input()
+  dropdownOn: string = '';
+
   constructor(
     private commonService: CommonService,
     protected textService: TextService
@@ -62,25 +65,56 @@ export class DropdownComponent implements OnChanges {
     );
   }
   ngOnChanges(changes: SimpleChanges): void {
+    if (!changes['value']) return;
     let currentValue = changes['value'].currentValue;
     if (
       changes['value'].previousValue == undefined &&
       currentValue !== undefined
     ) {
-      if (currentValue.apartment1 !== undefined) {
-        this.value1 = currentValue.apartment1;
+      if (this.dropdownOn == 'apartment') {
+        if (currentValue.apartment1 !== undefined) {
+          this.value1 = currentValue.apartment1;
+        }
+
+        if (currentValue.adults !== undefined) {
+          this.value1 = currentValue.adults;
+        }
+        if (currentValue.children !== undefined) {
+          this.value2 = currentValue.children;
+        }
+        if (currentValue.infants !== undefined) {
+          this.value3 = currentValue.infants;
+        }
+        if (currentValue.pets !== undefined) {
+          this.value4 = currentValue.pets;
+        }
       }
-      if (currentValue.adults !== undefined) {
-        this.value1 = currentValue.adults;
-      }
-      if (currentValue.children !== undefined) {
-        this.value2 = currentValue.children;
-      }
-      if (currentValue.infants !== undefined) {
-        this.value3 = currentValue.infants;
-      }
-      if (currentValue.pets !== undefined) {
-        this.value4 = currentValue.pets;
+      if (this.dropdownOn == 'camp') {
+        if (currentValue.tent !== undefined) {
+          this.value1 = currentValue.tent;
+        }
+        if (currentValue.caravan !== undefined) {
+          this.value2 = currentValue.caravan;
+        }
+        if (currentValue.car !== undefined) {
+          this.value3 = currentValue.car;
+        }
+        if (currentValue.sleepingBag !== undefined) {
+          this.value4 = currentValue.sleepingBag;
+        }
+
+        if (currentValue.adults !== undefined) {
+          this.value1 = currentValue.adults;
+        }
+        if (currentValue.children !== undefined) {
+          this.value2 = currentValue.children;
+        }
+        if (currentValue.infants !== undefined) {
+          this.value3 = currentValue.infants;
+        }
+        if (currentValue.pets !== undefined) {
+          this.value4 = currentValue.pets;
+        }
       }
     }
   }
