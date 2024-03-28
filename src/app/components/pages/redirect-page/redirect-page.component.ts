@@ -149,7 +149,6 @@ export class RedirectPageComponent {
   onScreenWidth600(isMobile: boolean) {
     this.isMobile = isMobile;
     if (isMobile) {
-      console.log("Usao")
       // Invoke your specific function here
       this.commonService.removeWheelEvent();
     }

@@ -66,8 +66,6 @@ export class LandingPageComponent implements OnInit {
   }
 
   scrollToStart(): void {
-    console.log('toStart');
-
     if (this.currentSectionIndex === 0) {
       return;
     }
@@ -86,8 +84,6 @@ export class LandingPageComponent implements OnInit {
   }
 
   scrollToSection(deltaY: number): void {
-    console.log(deltaY);
-
     if (deltaY >= 0 && this.currentSectionIndex === this.sections.length + 2) {
       return;
     }
@@ -113,8 +109,6 @@ export class LandingPageComponent implements OnInit {
   }
 
   scrollToLastSection(): void {
-    console.log('To last');
-
     if (this.screenIsMoving === false) {
       this.screenIsMoving = true;
 
@@ -128,8 +122,6 @@ export class LandingPageComponent implements OnInit {
   }
 
   scrollToAboutUsSection(): void {
-    console.log('To about');
-
     if (this.screenIsMoving === false) {
       this.screenIsMoving = true;
 
@@ -143,11 +135,7 @@ export class LandingPageComponent implements OnInit {
   }
 
   scrollToElement(elementId: string): void {
-    console.log('TO element');
-
     const element = this.el.nativeElement.querySelector(`#${elementId}`);
-    console.log(elementId);
-
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
@@ -199,12 +187,8 @@ export class LandingPageComponent implements OnInit {
   }
 
   onScreenWidth600(isMobile: boolean) {
-    console.log('skrol na fonu');
-
     this.isMobile = isMobile;
     if (isMobile) {
-      console.log('is mobile');
-
       // Invoke your specific function here
       this.commonService.removeWheelEvent();
     } else {
