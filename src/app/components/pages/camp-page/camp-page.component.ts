@@ -14,6 +14,7 @@ import { PriceResponse } from 'src/app/model/price-response.model';
 import { PriceItem } from 'src/app/model/price-item.model';
 import { ValidatorService } from 'src/app/services/validator.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { RequestSaverService } from 'src/app/services/request-saver.service';
 
 @Component({
   selector: 'app-camp-page',
@@ -50,10 +51,13 @@ export class CampPageComponent {
     sleepingBag: 0,
   };
   powerSupply: boolean = false;
-  dates: string[] = [];
 
   chosenStartDate: Date | undefined;
   chosenEndDate: Date | undefined;
+
+  campKey: string = 'camp-data';
+
+  dataIsInitialized: boolean = false;
 
   constructor(
     private accommodationService: AccommodationService,
@@ -61,22 +65,78 @@ export class CampPageComponent {
     protected commonService: CommonService,
     private calendarService: CalendarService,
     private validator: ValidatorService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private requestSaverService: RequestSaverService
   ) {}
 
   ngOnInit() {
-    this.calendarService.startDate.subscribe(
-      (data) => (this.chosenStartDate = data)
-    );
-    this.calendarService.endDate.subscribe(
-      (data) => (this.chosenEndDate = data)
-    );
-    this.textService.text.subscribe((data) => (this.text = data));
+    this.setupCallbacks();
 
     this.commonService.removeWheelEvent();
     this.headerComponent?.changeHeaderTheme(true);
     this.calendarService.updateStartDate(undefined);
     this.calendarService.updateEndDate(undefined);
+
+    this.setDataIfPreviousExist();
+  }
+
+  setDataIfPreviousExist() {
+    let data = this.requestSaverService.getAndDeleteData(this.campKey);
+    this.dataIsInitialized = true;
+
+    if (data) {
+      this.email = data.email;
+      this.firstName = data.firstName;
+      this.lastName = data.lastName;
+      this.guests = data.guests;
+      this.lodging = data.lodging;
+      this.chosenStartDate = moment(data.startDate).toDate();
+      this.chosenEndDate = moment(data.endDate).toDate();
+      this.powerSupply = data.powerSupply;
+
+      this.calendarService.updateStartDate(this.chosenStartDate);
+      this.calendarService.updateEndDate(this.chosenEndDate);
+    }
+  }
+
+  setupCallbacks() {
+    this.calendarService.startDate.subscribe((data) => {
+      if (this.chosenStartDate == data) {
+        return;
+      }
+      this.chosenStartDate = data;
+      if (
+        data &&
+        data!.toDateString() !== moment().toDate().toDateString() &&
+        this.dataIsInitialized
+      ) {
+        this.requestSaverService.saveData(this.campKey, this.generateData());
+      }
+    });
+    this.calendarService.endDate.subscribe((data) => {
+      if (this.chosenEndDate == data) {
+        return;
+      }
+
+      this.chosenEndDate = data;
+      if (
+        data &&
+        data!.toDateString() !== moment().toDate().toDateString() &&
+        this.dataIsInitialized
+      ) {
+        this.requestSaverService.saveData(this.campKey, this.generateData());
+      }
+    });
+    this.textService.text.subscribe((data) => {
+      if (
+        this.text !== undefined &&
+        this.text !== data &&
+        this.dataIsInitialized
+      ) {
+        this.requestSaverService.saveData(this.campKey, this.generateData());
+      }
+      this.text = data;
+    });
   }
 
   closeReceipt() {
@@ -227,6 +287,8 @@ export class CampPageComponent {
     if (textValue.label === this.text!.inputEmailText) {
       this.email = textValue.value;
     }
+
+    this.requestSaverService.saveData(this.campKey, this.generateData());
   }
 
   saveIntValues(intValues: IntValues) {
@@ -245,16 +307,19 @@ export class CampPageComponent {
         pets: intValues.value4,
       };
     }
+
+    this.requestSaverService.saveData(this.campKey, this.generateData());
   }
 
   saveCheckboxValue(booleanValue: boolean) {
     this.powerSupply = booleanValue;
+
+    this.requestSaverService.saveData(this.campKey, this.generateData());
   }
 
   onScreenWidth600(isMobile: boolean) {
     this.isMobile = isMobile;
     if (isMobile) {
-      // Invoke your specific function here
       this.commonService.removeWheelEvent();
     }
   }

@@ -4,6 +4,8 @@ import {
   Output,
   EventEmitter,
   ViewChild,
+  OnChanges,
+  SimpleChanges,
 } from '@angular/core';
 import { IntValues } from 'src/app/model/int-values.model';
 import { LanguageLabel } from 'src/app/model/language-label.model';
@@ -15,7 +17,7 @@ import { TextService } from 'src/app/services/text.service';
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.sass'],
 })
-export class DropdownComponent {
+export class DropdownComponent implements OnChanges {
   line: string = '';
   divIsOpened: boolean = false;
 
@@ -23,6 +25,8 @@ export class DropdownComponent {
   value2: number = 0;
   value3: number = 0;
   value4: number = 0;
+
+  @Input() value: any;
 
   @Input() isMobile: boolean = false;
 
@@ -46,6 +50,9 @@ export class DropdownComponent {
 
   text: LanguageLabel | undefined;
 
+  @Input()
+  dropdownOn: string = '';
+
   constructor(
     private commonService: CommonService,
     protected textService: TextService
@@ -56,6 +63,81 @@ export class DropdownComponent {
     this.commonService.componentOpenedCampPage.subscribe(
       (incomingLabel) => (this.divIsOpened = this.label === incomingLabel)
     );
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (!changes['value']) return;
+    let currentValue = changes['value'].currentValue;
+    if (
+      changes['value'].previousValue == undefined &&
+      currentValue !== undefined
+    ) {
+      if (this.dropdownOn == 'apartment') {
+        if (currentValue.apartment1 !== undefined) {
+          this.value1 = currentValue.apartment1;
+        }
+
+        if (currentValue.adults !== undefined) {
+          this.value1 = currentValue.adults;
+        }
+        if (currentValue.children !== undefined) {
+          this.value2 = currentValue.children;
+        }
+        if (currentValue.infants !== undefined) {
+          this.value3 = currentValue.infants;
+        }
+        if (currentValue.pets !== undefined) {
+          this.value4 = currentValue.pets;
+        }
+      }
+      if (this.dropdownOn == 'camp') {
+        if (currentValue.tent !== undefined) {
+          this.value1 = currentValue.tent;
+        }
+        if (currentValue.caravan !== undefined) {
+          this.value2 = currentValue.caravan;
+        }
+        if (currentValue.car !== undefined) {
+          this.value3 = currentValue.car;
+        }
+        if (currentValue.sleepingBag !== undefined) {
+          this.value4 = currentValue.sleepingBag;
+        }
+
+        if (currentValue.adults !== undefined) {
+          this.value1 = currentValue.adults;
+        }
+        if (currentValue.children !== undefined) {
+          this.value2 = currentValue.children;
+        }
+        if (currentValue.infants !== undefined) {
+          this.value3 = currentValue.infants;
+        }
+        if (currentValue.pets !== undefined) {
+          this.value4 = currentValue.pets;
+        }
+      }
+      if (this.dropdownOn == 'room') {
+        if (currentValue.room1 !== undefined) {
+          this.value1 = currentValue.room1;
+        }
+        if (currentValue.room2 !== undefined) {
+          this.value2 = currentValue.room2;
+        }
+        if (currentValue.room3 !== undefined) {
+          this.value3 = currentValue.room3;
+        }
+
+        if (currentValue.adults !== undefined) {
+          this.value1 = currentValue.adults;
+        }
+        if (currentValue.children !== undefined) {
+          this.value2 = currentValue.children;
+        }
+        if (currentValue.infants !== undefined) {
+          this.value3 = currentValue.infants;
+        }
+      }
+    }
   }
 
   preventEvent(event: Event) {
@@ -92,9 +174,6 @@ export class DropdownComponent {
       this.value4 == 0
         ? this.initialLine
         : this.generateLine();
-
-    // this.ifEmptySetErrorMessage();
-
     return this.line;
   }
 

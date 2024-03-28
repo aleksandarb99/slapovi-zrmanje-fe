@@ -37,6 +37,8 @@
                     </div>
                     <div class="page-row">
                         <app-dropdown 
+                            [dropdownOn]="'camp'"
+                            [value]="guests"
                             [isMobile]="isMobile"
                             [initialLine]="text!.dropdownGuestsInitialLine" [label]="text!.dropdownGuestsLabel"
                             [title1]="text!.dropdownGuestsTitle1" [subtitle1]="text!.dropdownGuestsSubtitle1"
@@ -46,6 +48,8 @@
                             (valueChangedEvent)="saveIntValues($event)">
                         </app-dropdown>
                         <app-dropdown 
+                            [dropdownOn]="'camp'"
+                            [value]="lodging"
                             [isMobile]="isMobile"
                             [initialLine]="text!.dropdownLodgingInitialLine" [label]="text!.dropdownLodgingLabel"
                             [title1]="text!.dropdownLodgingTitle1" [subtitle1]="text!.dropdownLodgingSubtitle1"
@@ -58,6 +62,7 @@
                     <div class="page-row">
                         <app-calendar [isMobile]="isMobile"></app-calendar>
                         <app-checkbox 
+                            [passedValue]="powerSupply"
                             [isMobile]="isMobile"
                             [label]="text!.checkBoxTitle"
                             (valueChangedEvent)="saveCheckboxValue($event)"></app-checkbox>

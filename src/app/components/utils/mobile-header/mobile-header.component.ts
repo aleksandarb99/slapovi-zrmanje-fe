@@ -9,7 +9,7 @@ import { pages } from 'src/assets/texts/sections';
 @Component({
   selector: 'app-mobile-header',
   templateUrl: './mobile-header.component.html',
-  styleUrls: ['./mobile-header.component.sass']
+  styleUrls: ['./mobile-header.component.sass'],
 })
 export class MobileHeaderComponent {
   languageMenuIsOpened = false;
@@ -57,9 +57,9 @@ export class MobileHeaderComponent {
     event.stopPropagation();
   }
 
-  disableScroll= () => {
+  disableScroll = () => {
     window.scrollTo(0, 0);
-  }
+  };
 
   openLanguageMenu(event: Event) {
     this.languageMenuIsOpened = !this.languageMenuIsOpened;
