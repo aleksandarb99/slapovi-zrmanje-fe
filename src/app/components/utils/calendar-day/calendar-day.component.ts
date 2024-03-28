@@ -28,7 +28,7 @@ export class CalendarDayComponent implements OnInit {
   constructor(private calendarService: CalendarService) {}
 
   ngOnInit() {
-    this.date = new Date(`${this.year}-${this.month}-${this.day}`);
+    this.date = new Date(`${this.year}/${this.month}/${this.day}`);
     if (
       this.day &&
       this.currentDay &&

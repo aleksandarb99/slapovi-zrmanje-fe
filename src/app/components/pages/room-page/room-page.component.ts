@@ -49,6 +49,7 @@ export class RoomPageComponent {
   chosenEndDate: Date | undefined;
 
   isMobile = false;
+  isBurgerOpened = false;
   calculateIsPressed: boolean = false;
 
   roomKey: string = 'room-data';
@@ -291,5 +292,14 @@ export class RoomPageComponent {
     }
 
     this.requestSaverService.saveData(this.roomKey, this.generateData());
+  }
+
+  reset() {
+    this.headerComponent?.revertFlags();
+    this.commonService.updateComponentVisibility('');
+  }
+
+  updateBurgerEvent(burgerEvent: boolean) {
+    this.isBurgerOpened = burgerEvent;
   }
 }

@@ -23,6 +23,7 @@ import { RequestSaverService } from 'src/app/services/request-saver.service';
 })
 export class CampPageComponent {
   isMobile = false;
+  isBurgerOpened = false;
 
   text: LanguageLabel | undefined;
   @ViewChild(HeaderComponent, { static: true }) headerComponent:
@@ -321,5 +322,14 @@ export class CampPageComponent {
     if (isMobile) {
       this.commonService.removeWheelEvent();
     }
+  }
+
+  reset() {
+    this.headerComponent?.revertFlags();
+    this.commonService.updateComponentVisibility('');
+  }
+
+  updateBurgerEvent(burgerEvent: boolean) {
+    this.isBurgerOpened = burgerEvent;
   }
 }

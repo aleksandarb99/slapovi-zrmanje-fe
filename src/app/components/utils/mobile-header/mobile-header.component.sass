@@ -2,7 +2,6 @@
 header
     position: absolute
     width: 100vw
-    min-height: 100vh
     z-index: 10000
     display: flex
     justify-content: space-between
@@ -27,9 +26,6 @@ header
     align-items: center
     justify-content: space-around
 
-.dark-header
-    color: black
-
 .menu-spread
     width: 100% !important
 
@@ -49,12 +45,13 @@ header
 
 .menu-basic
     display: flex
-    justify-content: center
+    justify-content: flex-start
     flex-direction: column
     align-items: center
     width: 100%
     min-height: 50vh
     background-color: white
+    overflow-x: auto
     div
         display: flex
         align-items: center
@@ -92,12 +89,6 @@ header
     cursor: pointer
     z-index: 10001
 
-.add-top-margin-on-left-menu
-    margin-top: 6.5vh
-
-.add-top-margin-on-right-menu
-    margin-top: 8.5vh
-
 .header-reservations-container
     display: flex
     align-items: center
@@ -127,6 +118,7 @@ hr
 .mobile-logo
     width: 130px
     height: 130px
+    padding-top: 50px
     flex-shrink: 0
     cursor: pointer
 

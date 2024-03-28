@@ -49,6 +49,7 @@ export class ApartmentPageComponent {
   chosenEndDate: Date | undefined;
 
   isMobile = false;
+  isBurgerOpened = false;
   calculateIsPressed: boolean = false;
 
   apartmentKey: string = 'apartment-data';
@@ -296,5 +297,14 @@ export class ApartmentPageComponent {
     }
 
     this.requestSaverService.saveData(this.apartmentKey, this.generateData());
+  }
+
+  reset() {
+    this.headerComponent?.revertFlags();
+    this.commonService.updateComponentVisibility('');
+  }
+
+  updateBurgerEvent(burgerEvent: boolean) {
+    this.isBurgerOpened = burgerEvent;
   }
 }
