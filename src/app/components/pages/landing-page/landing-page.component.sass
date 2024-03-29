@@ -83,7 +83,6 @@ h2
     line-height: 24px
 
 footer
-    margin-top: 20vh
     width: 100vw
     height: 5vh
     background-color: #17555E
@@ -95,6 +94,7 @@ footer
         color: white
 
 .contact-container-wrapper
+    padding-top: 20vh
     width: 80vw
     margin: 0 auto
     color: #17555E
@@ -117,6 +117,7 @@ footer
 .contact-container
     display: flex
     flex-direction: row
+    margin-bottom: 5vh
     .contact-info
         padding-top: 3vh
         width: 40%
@@ -174,13 +175,14 @@ h4
         height: 100vh
 
     .about-info
-        height: auto
+        height: 100vh
         padding: 5vh 5vw
 
     .contact-container
         flex-direction: column
         flex-flow: column-reverse
         height: auto
+        margin-bottom: unset
     h1
         font-size: 50px
         top: 45vh
@@ -204,6 +206,7 @@ h4
         position: absolute
         z-index: 1
     .contact-container-wrapper
+        padding-top: unset
         width: 100vw
         color: $base-white
         margin: unset
