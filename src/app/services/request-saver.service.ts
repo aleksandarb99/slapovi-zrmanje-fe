@@ -11,6 +11,11 @@ export class RequestSaverService {
     localStorage.setItem(name + '-time', new Date().toString());
   }
 
+  clear(name: string) {
+    localStorage.removeItem(name);
+    localStorage.removeItem(name + '-time');
+  }
+
   getAndDeleteData(name: string): any {
     let data = localStorage.getItem(name);
     let time = localStorage.getItem(name + '-time');

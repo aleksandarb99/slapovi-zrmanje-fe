@@ -7,6 +7,13 @@ main
     height: 100vh
     overflow-x: hidden
 
+.buttons
+    display: flex
+    justify-content: space-between !important
+
+.clear
+    width: 10vw !important
+
 .apartment-page
     width: 86vw
     padding-top: 10vh
@@ -103,7 +110,7 @@ main
     margin-left: 2vw
     padding-left: 1vw
     padding-right: 1vw
-    width: 100%
+    width: 20vw
     height: 52px
     margin-top: 52px
     margin-bottom: 16px
@@ -168,16 +175,22 @@ footer
     justify-content: space-between
     align-items: center
 
+.left
+    width: 100% !important
+
 .button-top-margin
     margin-top: 3vh
 
 // Mobile view classes
 @media only screen and (max-width: 600px)
 
+    .clear
+        width: 20vw !important
+
     .burger-closed
         min-height: 100vh
         height: unset
-    
+
     .burger-opened
         min-height: unset
         height: 100vh
@@ -204,6 +217,7 @@ footer
 
     .buttons
         flex-direction: row !important
+        justify-content: space-between
 
     .check-button
         margin-left: 0

@@ -117,6 +117,8 @@ export const texts: LanguageLabel[] = [
 
     requiredErrorMessage: 'Unos je obavezan',
     emailNotValidErrorMessage: 'Adresa e-pošte nije važeća',
+
+    resetFormLabel: 'Očisti',
   },
   {
     // English
@@ -237,6 +239,8 @@ export const texts: LanguageLabel[] = [
 
     requiredErrorMessage: 'Input is required',
     emailNotValidErrorMessage: 'The email address is not valid',
+
+    resetFormLabel: 'Clear',
   },
   {
     // German
@@ -357,5 +361,7 @@ export const texts: LanguageLabel[] = [
 
     requiredErrorMessage: 'Die Eingabe ist erforderlich',
     emailNotValidErrorMessage: 'Die E-Mail-adresse ist nicht gültig',
+
+    resetFormLabel: 'Klar',
   },
 ];
